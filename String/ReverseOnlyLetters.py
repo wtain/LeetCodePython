@@ -60,4 +60,4 @@ for test in tests:
     if result == expected:
         print("PASS")
     else:
-        print("FAIL - expected " + str(expected) + ", got " + str(result))
+        print("FAIL - expected " + expected + ", got " + result)
