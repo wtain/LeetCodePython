@@ -1,11 +1,15 @@
 """
 https://leetcode.com/problems/merge-two-sorted-lists/
+https://leetcode.com/explore/challenge/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3592/
 Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.
 
 Example:
 
 Input: 1->2->4, 1->3->4
 Output: 1->1->2->3->4->4
+
+Runtime: 32 ms, faster than 91.61% of Python3 online submissions for Merge Two Sorted Lists.
+Memory Usage: 14.2 MB, less than 49.62% of Python3 online submissions for Merge Two Sorted Lists.
 """
 from typing import List
 
@@ -54,11 +58,13 @@ class Solution:
             prev.next = None
         return head
 
+
 def printList(l: ListNode):
     while l:
         print(l.val, flush=True, sep=' ', end=' ')
         l = l.next
     print()
+
 
 def createList(a: List[int]) -> ListNode:
     head = None
@@ -71,7 +77,6 @@ def createList(a: List[int]) -> ListNode:
             head = n
         prev = n
     return head
-
 
 
 printList(Solution().mergeTwoLists(createList([1, 2, 4]), createList([1, 3, 4])))  # 1 1 2 3 4 4
