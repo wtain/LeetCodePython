@@ -23,10 +23,10 @@ You may assume that all operations are valid (for example, no pop or top operati
 """
 
 """
-Runtime: 24 ms, faster than 93.69% of Python3 online submissions for Implement Stack using Queues.
-Memory Usage: 13.9 MB, less than 28.05% of Python3 online submissions for Implement Stack using Queues.
-Runtime: 68 ms, faster than 6.35% of Python3 online submissions for Implement Stack using Queues.
-Memory Usage: 13.9 MB, less than 40.27% of Python3 online submissions for Implement Stack using Queues.
+Runtime: 24 ms, faster than 93.69% of Python3 online submissions for Implement Stacks using Queues.
+Memory Usage: 13.9 MB, less than 28.05% of Python3 online submissions for Implement Stacks using Queues.
+Runtime: 68 ms, faster than 6.35% of Python3 online submissions for Implement Stacks using Queues.
+Memory Usage: 13.9 MB, less than 40.27% of Python3 online submissions for Implement Stacks using Queues.
 """
 class MyStack:
 

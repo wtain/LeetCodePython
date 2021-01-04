@@ -34,8 +34,8 @@ Methods pop, top and getMin operations will always be called on non-empty stacks
 """
 
 """
-Runtime: 56 ms, faster than 96.37% of Python3 online submissions for Min Stack.
-Memory Usage: 18.1 MB, less than 11.35% of Python3 online submissions for Min Stack.
+Runtime: 56 ms, faster than 96.37% of Python3 online submissions for Min Stacks.
+Memory Usage: 18.1 MB, less than 11.35% of Python3 online submissions for Min Stacks.
 """
 class MinStack:
     data = []

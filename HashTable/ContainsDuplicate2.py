@@ -18,12 +18,12 @@ Output: false
 from queue import Queue
 from typing import List, Dict
 
-# NO Queue
+# NO Queues
 """
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
         nearby: Dict[int, int] = {}
-        window: Queue[int] = Queue()
+        window: Queues[int] = Queues()
         for i, num in enumerate(nums):
             if num in nearby:
                 return True
