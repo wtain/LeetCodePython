@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/
+https://leetcode.com/explore/challenge/card/january-leetcoding-challenge-2021/580/week-2-january-8th-january-14th/3597/
 Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
 
 A string is represented by an array if the array elements concatenated in order forms the string.
@@ -32,6 +33,9 @@ Constraints:
 word1[i] and word2[i] consist of lowercase letters.
 Runtime: 52 ms, faster than 6.74% of Python3 online submissions for Check If Two String Arrays are Equivalent.
 Memory Usage: 14 MB, less than 99.83% of Python3 online submissions for Check If Two String Arrays are Equivalent.
+
+Runtime: 40 ms, faster than 19.73% of Python3 online submissions for Check If Two String Arrays are Equivalent.
+Memory Usage: 14.3 MB, less than 33.14% of Python3 online submissions for Check If Two String Arrays are Equivalent.
 """
 from typing import List
 
