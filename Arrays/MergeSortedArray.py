@@ -26,6 +26,9 @@ from typing import List
 """
 Runtime: 32 ms, faster than 92.32% of Python3 online submissions for Merge Sorted Array.
 Memory Usage: 13.8 MB, less than 69.88% of Python3 online submissions for Merge Sorted Array.
+
+Runtime: 68 ms, faster than 5.57% of Python3 online submissions for Merge Sorted Array.
+Memory Usage: 14.4 MB, less than 29.25% of Python3 online submissions for Merge Sorted Array.
 """
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
@@ -37,7 +40,7 @@ class Solution:
                 if nums1[r1] > nums2[r2]:
                     nums1[w] = nums1[r1]
                     r1 -= 1
-                    w -=1
+                    w -= 1
                 else:
                     nums1[w] = nums2[r2]
                     r2 -= 1

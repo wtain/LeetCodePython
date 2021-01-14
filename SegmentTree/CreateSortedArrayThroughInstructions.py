@@ -268,13 +268,6 @@ from typing import List
 #             done += 1
 #         return cost
 
-
-tests = [
-    ([1,5,6,2], 1),
-    ([1,2,3,6,5,4], 3),
-    ([1,3,3,3,2,4,2,1,2], 4)
-]
-
 # MLE/TLE
 # class Solution:
 #
@@ -384,6 +377,125 @@ class Solution:
             cost = (cost + cost_i) % MOD
             fenwick.add(vi, 1)
         return cost
+
+## TLE - 57 of 65
+# class Solution:
+#
+#     class SegmentNode:
+#
+#         def __init__(self, value, count=1):
+#             self.left = value
+#             self.right = value
+#             self.value = value
+#             self.count = count
+#             self.left_child = None
+#             self.right_child = None
+#
+#         def inside(self, value) -> bool:
+#             return self.left <= value <= self.right
+#
+#         def is_leaf(self) -> bool:
+#             return self.left == self.right
+#
+#         def get_mid(self) -> int:
+#             return self.left + (self.right - self.left) // 2
+#
+#         def get_left(self):
+#             if not self.left_child:
+#                 self.left_child = Solution.SegmentNode(0, 0)
+#                 self.left_child.left = self.left
+#                 self.left_child.right = self.get_mid()
+#             return self.left_child
+#
+#         def get_right(self):
+#             if not self.right_child:
+#                 self.right_child = Solution.SegmentNode(0, 0)
+#                 self.right_child.left = self.get_mid() + 1
+#                 self.right_child.right = self.right
+#             return self.right_child
+#
+#         def get_child(self, value: int):
+#             mid = self.get_mid()
+#             if value <= mid:
+#                 return self.get_left()
+#             return self.get_right()
+#
+#         def insert(self, value):
+#             node = self
+#             while not node.is_leaf():
+#                 node.count += 1
+#                 node = node.get_child(value)
+#             node.count += 1
+#
+#         def count_left(self, value) -> int:
+#             node = self
+#             result = 0
+#             while node:
+#                 if node.is_leaf():
+#                     if node.left < value:
+#                         result += node.count
+#                     break
+#                 else:
+#                     if node.right < value:
+#                         result += node.count
+#                         break
+#                     if node.left > value:
+#                         break
+#                     if value <= node.get_mid():
+#                         node = node.left_child
+#                     else:
+#                         result += node.left_child.count if node.left_child else 0
+#                         node = node.right_child
+#             return result
+#
+#         def count_right(self, value) -> int:
+#             node = self
+#             result = 0
+#             while node:
+#                 if node.is_leaf():
+#                     if node.left > value:
+#                         result += node.count
+#                     break
+#                 else:
+#                     if node.left > value:
+#                         result += node.count
+#                         break
+#                     if node.right < value:
+#                         break
+#                     if value > node.get_mid():
+#                         node = node.right_child
+#                     else:
+#                         result += node.right_child.count if node.right_child else 0
+#                         node = node.left_child
+#             return result
+#
+#         def get_cost(self, value) -> int:
+#             left_cost = self.count_left(value)
+#             right_cost = self.count_right(value)
+#             # print(str(left_cost) + " " + str(right_cost))
+#             return min(left_cost, right_cost)
+#
+#     def createSortedArray(self, instructions: List[int]) -> int:
+#         cost = 0
+#         root = self.SegmentNode(0, 0)
+#         root.left = 1
+#         root.right = 10 ** 5
+#         MOD = 10**9 + 7
+#         for vi in instructions:
+#             cost = (cost + root.get_cost(vi)) % MOD
+#             root.insert(vi)
+#         return cost
+
+
+tests = [
+
+
+
+    ([1,5,6,2], 1),
+    ([1,2,3,6,5,4], 3),
+    ([1,3,3,3,2,4,2,1,2], 4)
+]
+
 
 
 for test in tests:
