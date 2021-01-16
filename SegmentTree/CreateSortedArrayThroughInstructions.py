@@ -344,39 +344,39 @@ from typing import List
 
 # Runtime: 8284 ms, faster than 15.50% of Python3 online submissions for Create Sorted Array through Instructions.
 # Memory Usage: 28.1 MB, less than 87.43% of Python3 online submissions for Create Sorted Array through Instructions.
-class Solution:
-
-    class Fenwick:
-
-        def __init__(self, size):
-            self.data = [0] * size
-            self.size = size
-
-        def add(self, index: int, value: int):
-            while index < self.size:
-                self.data[index] += value
-                index += index & -index
-
-        def query(self, index: int) -> int:
-            result = 0
-            while index:
-                result += self.data[index]
-                index -= index & -index
-            return result
-
-
-    def createSortedArray(self, instructions):
-        MAXV = 10**5+1
-        fenwick = Solution.Fenwick(MAXV+1)
-        cost = 0
-        MOD = 10 ** 9 + 7
-        for i, vi in enumerate(instructions):
-            cost1 = fenwick.query(vi-1)
-            cost2 = i - fenwick.query(vi)
-            cost_i = min(cost1, cost2)
-            cost = (cost + cost_i) % MOD
-            fenwick.add(vi, 1)
-        return cost
+# class Solution:
+#
+#     class Fenwick:
+#
+#         def __init__(self, size):
+#             self.data = [0] * size
+#             self.size = size
+#
+#         def add(self, index: int, value: int):
+#             while index < self.size:
+#                 self.data[index] += value
+#                 index += index & -index
+#
+#         def query(self, index: int) -> int:
+#             result = 0
+#             while index:
+#                 result += self.data[index]
+#                 index -= index & -index
+#             return result
+#
+#
+#     def createSortedArray(self, instructions):
+#         MAXV = 10**5+1
+#         fenwick = Solution.Fenwick(MAXV+1)
+#         cost = 0
+#         MOD = 10 ** 9 + 7
+#         for i, vi in enumerate(instructions):
+#             cost1 = fenwick.query(vi-1)
+#             cost2 = i - fenwick.query(vi)
+#             cost_i = min(cost1, cost2)
+#             cost = (cost + cost_i) % MOD
+#             fenwick.add(vi, 1)
+#         return cost
 
 ## TLE - 57 of 65
 # class Solution:
@@ -485,6 +485,50 @@ class Solution:
 #             cost = (cost + root.get_cost(vi)) % MOD
 #             root.insert(vi)
 #         return cost
+
+# Runtime: 7848 ms, faster than 21.83% of Python3 online submissions for Create Sorted Array through Instructions.
+# Memory Usage: 53.7 MB, less than 6.40% of Python3 online submissions for Create Sorted Array through Instructions.
+class Solution:
+
+    class Node:
+
+        def __init__(self):
+            self.left = None
+            self.right = None
+            self.ln = 0
+            self.rn = 0
+
+    def insert(self, node: Node, v: int) -> int:
+        mask = 0x10000
+        l = r = 0
+        for i in range(16+1):
+            if v & mask == 0:
+                r += node.rn
+                node.ln += 1
+                if not node.left:
+                    node.left = self.Node()
+                node = node.left
+            else:
+                l += node.ln
+                node.rn += 1
+                if not node.right:
+                    node.right = self.Node()
+                node = node.right
+            mask >>= 1
+        return min(r, l)
+
+
+    def createSortedArray(self, instructions):
+        cost = 0
+        MOD = 10 ** 9 + 7
+        root = self.Node()
+        for vi in instructions:
+            cost += self.insert(root, vi)
+            cost %= MOD
+
+        return cost
+
+
 
 
 tests = [
