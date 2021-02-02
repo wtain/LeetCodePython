@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/number-of-1-bits/
+https://leetcode.com/explore/featured/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3625/
 
 Write a function that takes an unsigned integer and return the number of '1' bits it has (also known as the Hamming weight).
 
@@ -33,6 +34,7 @@ Follow up:
 If this function is called many times, how would you optimize it?
 """
 from typing import List
+
 
 """
 Runtime: 24 ms, faster than 95.76% of Python3 online submissions for Number of 1 Bits.
