@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/shortest-distance-to-a-character/
+https://leetcode.com/explore/featured/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3631/
 Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string.
 
 Example 1:
@@ -46,6 +47,8 @@ Memory Usage: 14.5 MB, less than 11.93% of Python3 online submissions for Shorte
 from typing import List
 
 
+# Runtime: 36 ms, faster than 93.15% of Python3 online submissions for Shortest Distance to a Character.
+# Memory Usage: 14.4 MB, less than 32.19% of Python3 online submissions for Shortest Distance to a Character.
 class Solution:
     def shortestToChar(self, S: str, C: str) -> List[int]:
         c: chr = C[0]

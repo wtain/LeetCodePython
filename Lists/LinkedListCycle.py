@@ -46,6 +46,9 @@ class ListNode:
 """
 Runtime: 56 ms, faster than 43.88% of Python3 online submissions for Linked List Cycle.
 Memory Usage: 17.1 MB, less than 17.07% of Python3 online submissions for Linked List Cycle.
+
+Runtime: 52 ms, faster than 44.73% of Python3 online submissions for Linked List Cycle.
+Memory Usage: 17.3 MB, less than 38.17% of Python3 online submissions for Linked List Cycle.
 """
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
