@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/valid-anagram/
+https://leetcode.com/explore/featured/card/february-leetcoding-challenge-2021/585/week-2-february-8th-february-14th/3636/
 Given two strings s and t , write a function to determine if t is an anagram of s.
 
 Example 1:
@@ -21,6 +22,8 @@ from typing import Dict
 """
 Runtime: 64 ms, faster than 32.90% of Python3 online submissions for Valid Anagram.
 Memory Usage: 14.2 MB, less than 40.11% of Python3 online submissions for Valid Anagram.
+Runtime: 52 ms, faster than 54.27% of Python3 online submissions for Valid Anagram.
+Memory Usage: 14.5 MB, less than 48.96% of Python3 online submissions for Valid Anagram.
 """
 class Solution:
 

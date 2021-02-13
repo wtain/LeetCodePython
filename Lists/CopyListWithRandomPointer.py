@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/copy-list-with-random-pointer/
+https://leetcode.com/explore/featured/card/february-leetcoding-challenge-2021/585/week-2-february-8th-february-14th/3635/
 
 A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
 
@@ -46,7 +47,7 @@ Memory Usage: 14.7 MB, less than 87.65% of Python3 online submissions for Copy L
 
 
 # Definition for a Node.
-from typing import List, Dict
+from typing import List
 
 
 class Node:
@@ -164,8 +165,6 @@ class Solution:
             curr2.next = next.next if next else None
             curr = next
         return head2
-
-
 
 
 def buildList(l: List[List[int]]) -> Node:
