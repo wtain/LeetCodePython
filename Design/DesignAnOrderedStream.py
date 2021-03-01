@@ -1,0 +1,101 @@
+"""
+https://leetcode.com/problems/design-an-ordered-stream/
+
+There is a stream of n (idKey, value) pairs arriving in an arbitrary order, where idKey is an integer between 1 and n and value is a string. No two pairs have the same id.
+
+Design a stream that returns the values in increasing order of their IDs by returning a chunk (list) of values after each insertion. The concatenation of all the chunks should result in a list of the sorted values.
+
+Implement the OrderedStream class:
+
+OrderedStream(int n) Constructs the stream to take n values.
+String[] insert(int idKey, String value) Inserts the pair (idKey, value) into the stream, then returns the largest possible chunk of currently inserted values that appear next in the order.
+
+
+Example:
+
+
+
+Input
+["OrderedStream", "insert", "insert", "insert", "insert", "insert"]
+[[5], [3, "ccccc"], [1, "aaaaa"], [2, "bbbbb"], [5, "eeeee"], [4, "ddddd"]]
+Output
+[null, [], ["aaaaa"], ["bbbbb", "ccccc"], [], ["ddddd", "eeeee"]]
+
+Explanation
+// Note that the values ordered by ID is ["aaaaa", "bbbbb", "ccccc", "ddddd", "eeeee"].
+OrderedStream os = new OrderedStream(5);
+os.insert(3, "ccccc"); // Inserts (3, "ccccc"), returns [].
+os.insert(1, "aaaaa"); // Inserts (1, "aaaaa"), returns ["aaaaa"].
+os.insert(2, "bbbbb"); // Inserts (2, "bbbbb"), returns ["bbbbb", "ccccc"].
+os.insert(5, "eeeee"); // Inserts (5, "eeeee"), returns [].
+os.insert(4, "ddddd"); // Inserts (4, "ddddd"), returns ["ddddd", "eeeee"].
+// Concatentating all the chunks returned:
+// [] + ["aaaaa"] + ["bbbbb", "ccccc"] + [] + ["ddddd", "eeeee"] = ["aaaaa", "bbbbb", "ccccc", "ddddd", "eeeee"]
+// The resulting order is the same as the order above.
+
+
+Constraints:
+
+1 <= n <= 1000
+1 <= id <= n
+value.length == 5
+value consists only of lowercase letters.
+Each call to insert will have a unique id.
+Exactly n calls will be made to insert.
+"""
+from typing import List
+
+
+# Runtime: 208 ms, faster than 93.20% of Python3 online submissions for Design an Ordered Stream.
+# Memory Usage: 14.9 MB, less than 95.79% of Python3 online submissions for Design an Ordered Stream.
+class OrderedStream:
+
+    def __init__(self, n: int):
+        self.next_id = 1
+        self.inserted = {}
+
+    def insert(self, idKey: int, value: str) -> List[str]:
+        self.inserted[idKey] = value
+        result = []
+        i = self.next_id
+        while self.inserted.get(i):
+            result.append(self.inserted[i])
+            del self.inserted[i]
+            i += 1
+        self.next_id = i
+        return result
+
+# Your OrderedStream object will be instantiated and called as such:
+# obj = OrderedStream(n)
+# param_1 = obj.insert(idKey,value)
+
+
+def call_method(o, name, *args, **kwargs):
+    # print("*** Calling " + name + " with " + str(args) + " and " + str(kwargs))
+    return getattr(o, name)(*args, **kwargs)
+
+null = None
+
+tests = [
+    (
+        ["OrderedStream", "insert", "insert", "insert", "insert", "insert"],
+        [[5], [3, "ccccc"], [1, "aaaaa"], [2, "bbbbb"], [5, "eeeee"], [4, "ddddd"]],
+        [null, [], ["aaaaa"], ["bbbbb", "ccccc"], [], ["ddddd", "eeeee"]]
+    )
+]
+
+for test in tests:
+    methods = test[0]
+    arguments = test[1]
+    expected = test[2]
+    n = len(methods)
+    object = OrderedStream(arguments[0][0])
+    fail = False
+    for i in range(1, n):
+        output = call_method(object, methods[i], *arguments[i])
+        if output != expected[i]:
+            fail = True
+            print("FAIL: " + str(output) + " != " + str(expected[i]))
+            break
+    if not fail:
+        print("PASS")
