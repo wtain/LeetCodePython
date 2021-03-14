@@ -48,6 +48,11 @@ from typing import List
 
 # Runtime: 208 ms, faster than 93.20% of Python3 online submissions for Design an Ordered Stream.
 # Memory Usage: 14.9 MB, less than 95.79% of Python3 online submissions for Design an Ordered Stream.
+from Arrays.SnapshotArray import call_method, null
+from Common import ObjectTestingUtils
+from Common.ObjectTestingUtils import create_object
+
+
 class OrderedStream:
 
     def __init__(self, n: int):
@@ -70,12 +75,6 @@ class OrderedStream:
 # param_1 = obj.insert(idKey,value)
 
 
-def call_method(o, name, *args, **kwargs):
-    # print("*** Calling " + name + " with " + str(args) + " and " + str(kwargs))
-    return getattr(o, name)(*args, **kwargs)
-
-null = None
-
 tests = [
     (
         ["OrderedStream", "insert", "insert", "insert", "insert", "insert"],
@@ -84,12 +83,15 @@ tests = [
     )
 ]
 
+ObjectTestingUtils.OrderedStream = OrderedStream
+
 for test in tests:
     methods = test[0]
     arguments = test[1]
     expected = test[2]
     n = len(methods)
-    object = OrderedStream(arguments[0][0])
+    # object = OrderedStream(arguments[0][0])
+    object = create_object(methods[0], arguments[0][0])
     fail = False
     for i in range(1, n):
         output = call_method(object, methods[i], *arguments[i])

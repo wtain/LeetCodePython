@@ -7,11 +7,14 @@ Memory Usage: 16.3 MB, less than 53.23% of Python3 online submissions for Valida
 
 
 # Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+from Common.Leetcode import TreeNode
+
+
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
         def isValidBSTImpl(root: TreeNode, vmin, vmax):

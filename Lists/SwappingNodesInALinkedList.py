@@ -43,14 +43,18 @@ The number of nodes in the list is n.
 from typing import List
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 
 
 # Runtime: 1128 ms, faster than 57.65% of Python3 online submissions for Swapping Nodes in a Linked List.
 # Memory Usage: 48.8 MB, less than 62.89% of Python3 online submissions for Swapping Nodes in a Linked List.
+from Common.Leetcode import ListNode
+from Common.ListUtils import build_list, lists_equal, list_to_string
+
+
 class Solution:
     def swapNodes(self, head: ListNode, k: int) -> ListNode:
 
@@ -74,36 +78,6 @@ class Solution:
         n1.val, n2.val = n2.val, n1.val
 
         return head
-
-
-def build_list(vals: List[int]) -> ListNode:
-    dummy = ListNode()
-    current = dummy
-    for v in vals:
-        current.next = ListNode(v)
-        current = current.next
-    return dummy.next
-
-
-def lists_equal(l1: ListNode, l2: ListNode) -> bool:
-    while l1 and l2:
-        if l1.val != l2.val:
-            return False
-        l1 = l1.next
-        l2 = l2.next
-    if l1 or l2:
-        return False
-    return True
-
-
-def list_to_string(l: ListNode) -> str:
-    result = ""
-    while l:
-        if result:
-            result += ","
-        result += str(l.val)
-        l = l.next
-    return "[" + result + "]"
 
 
 tests = [
