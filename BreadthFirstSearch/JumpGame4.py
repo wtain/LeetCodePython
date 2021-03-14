@@ -49,6 +49,8 @@ Memory Usage: 27.3 MB, less than 91.59% of Python3 online submissions for Jump G
 """
 from typing import List, Dict
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def minJumps(self, arr: List[int]) -> int:
@@ -103,10 +105,4 @@ tests = [
     ([11,22,7,7,7,7,7,7,7,22,13], 3)
 ]
 
-for test in tests:
-    result = Solution().minJumps(test[0])
-    expected = test[1]
-    if result == expected:
-        print("PASS")
-    else:
-        print("FAIL - expected " + str(expected), ", got " + str(result))
+run_functional_tests(Solution().minJumps, tests)

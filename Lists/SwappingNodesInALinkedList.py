@@ -53,6 +53,7 @@ from typing import List
 # Memory Usage: 48.8 MB, less than 62.89% of Python3 online submissions for Swapping Nodes in a Linked List.
 from Common.Leetcode import ListNode
 from Common.ListUtils import build_list, lists_equal, list_to_string
+from Common.ObjectTestingUtils import run_functional_tests, convert_test_params_to_lists
 
 
 class Solution:
@@ -81,18 +82,11 @@ class Solution:
 
 
 tests = [
-    ([1,2,3,4,5], 2, [1,4,3,2,5]),
-    ([7,9,6,6,7,8,3,0,9,5], 5, [7,9,6,6,8,7,3,0,9,5]),
-    ([1], 1, [1]),
-    ([1,2], 1, [2,1]),
-    ([1,2,3], 2, [1,2,3])
+    [[1,2,3,4,5], 2, [1,4,3,2,5]],
+    [[7,9,6,6,7,8,3,0,9,5], 5, [7,9,6,6,8,7,3,0,9,5]],
+    [[1], 1, [1]],
+    [[1,2], 1, [2,1]],
+    [[1,2,3], 2, [1,2,3]]
 ]
 
-for test in tests:
-    l = build_list(test[0])
-    l = Solution().swapNodes(l, test[1])
-    expected = build_list(test[2])
-    if lists_equal(expected, l):
-        print("PASS")
-    else:
-        print("FAIL - " + list_to_string(l))
+run_functional_tests(Solution().swapNodes, convert_test_params_to_lists(tests, [0, 2]))

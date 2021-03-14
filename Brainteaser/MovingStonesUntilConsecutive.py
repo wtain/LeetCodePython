@@ -39,6 +39,9 @@ from typing import List
 
 # Runtime: 28 ms, faster than 83.08% of Python3 online submissions for Moving Stones Until Consecutive.
 # Memory Usage: 14.1 MB, less than 94.03% of Python3 online submissions for Moving Stones Until Consecutive.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def numMovesStones(self, a: int, b: int, c: int) -> List[int]:
         a, b, c = sorted([a, b, c])
@@ -62,9 +65,4 @@ tests = [
     (3, 5, 1, [1,2])
 ]
 
-for test in tests:
-    result = Solution().numMovesStones(test[0], test[1], test[2])
-    if result == test[3]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().numMovesStones, tests)

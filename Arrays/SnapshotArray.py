@@ -57,6 +57,10 @@ import bisect
 
 # Runtime: 524 ms, faster than 32.32% of Python3 online submissions for Snapshot Array.
 # Memory Usage: 48.4 MB, less than 20.01% of Python3 online submissions for Snapshot Array.
+from Common.Constants import null
+from Common.ObjectTestingUtils import run_object_tests
+
+
 class SnapshotArray:
 
     def __init__(self, length: int):
@@ -85,7 +89,6 @@ class SnapshotArray:
 # param_2 = obj.snap()
 # param_3 = obj.get(index,snap_id)
 
-null = None
 
 tests = [
     (
@@ -110,23 +113,5 @@ tests = [
     )
 ]
 
-def call_method(o, name, *args, **kwargs):
-    # print("*** Calling " + name + " with " + str(args) + " and " + str(kwargs))
-    return getattr(o, name)(*args, **kwargs)
 
-
-for test in tests:
-    methods = test[0]
-    arguments = test[1]
-    expected = test[2]
-    n = len(methods)
-    object = SnapshotArray(arguments[0][0])
-    fail = False
-    for i in range(1, n):
-        output = call_method(object, methods[i], *arguments[i])
-        if output != expected[i]:
-            fail = True
-            print("FAIL: " + str(output) + " != " + str(expected[i]))
-            break
-    if not fail:
-        print("PASS")
+run_object_tests(tests, cls=SnapshotArray)
