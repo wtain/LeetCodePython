@@ -20,6 +20,8 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 68 ms, faster than 63.23% of Python3 online submissions for Best Time to Buy and Sell Stock.
 Memory Usage: 14.9 MB, less than 92.26% of Python3 online submissions for Best Time to Buy and Sell Stock.
@@ -37,6 +39,10 @@ class Solution:
         return maxProfit
 
 
-print(Solution().maxProfit([]))  # 0
-print(Solution().maxProfit([7,1,5,3,6,4]))  # 5
-print(Solution().maxProfit([7,6,4,3,1]))  # 0
+tests = [
+    ([], 0),
+    ([7,1,5,3,6,4], 5),
+    ([7,6,4,3,1], 0)
+]
+
+run_functional_tests(Solution().maxProfit, tests)

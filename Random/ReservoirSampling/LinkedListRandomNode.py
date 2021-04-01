@@ -42,11 +42,6 @@ from random import random, randint
 from typing import List
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
 
 # WRONG
 # class Solution:
@@ -88,6 +83,10 @@ class ListNode:
 
 # Runtime: 88 ms, faster than 54.69% of Python3 online submissions for Linked List Random Node.
 # Memory Usage: 17.2 MB, less than 89.26% of Python3 online submissions for Linked List Random Node.
+from Common.Leetcode import ListNode
+from Common.ListUtils import build_list
+
+
 class Solution:
 
     def __init__(self, head: ListNode):
@@ -118,18 +117,11 @@ class Solution:
 # param_1 = obj.getRandom()
 
 
-def build_linked_list(l: List[int]) -> ListNode:
-    list = ListNode()
-    prev = list
-    for v in l:
-        prev.next = ListNode(v)
-        prev = prev.next
-    return list.next
 
 
 n_samples = 1000
 n_values = 10
-head = build_linked_list(range(n_values))
+head = build_list(range(n_values))
 s = Solution(head)
 hist = [0] * n_values
 for i in range(n_samples):

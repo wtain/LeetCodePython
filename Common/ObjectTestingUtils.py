@@ -77,7 +77,10 @@ def run_functional_tests(function, tests, **kwargs):
         if comparison_result:
             print(str(i) + ") PASS")
         else:
-            print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result))
+            if type(expected) is str and type(result) is str:
+                print(str(i) + ") FAIL - expected '" + expected + "', got '" + result + "'")
+            else:
+                print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result))
             nfail += 1
     status = "OVERALL: " + ("SUCCESS" if nfail == 0 else "FAILED")
     print(status + ", " + str(nfail) + " failed of " + str(n))

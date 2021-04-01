@@ -85,6 +85,9 @@ from typing import List
 
 # Runtime: 1168 ms, faster than 74.17% of Python3 online submissions for Minimum Operations to Reduce X to Zero.
 # Memory Usage: 28.7 MB, less than 62.40% of Python3 online submissions for Minimum Operations to Reduce X to Zero.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
         n = len(nums)
@@ -130,9 +133,4 @@ tests = [
     ([3,2,20,1,1,3], 10, 5)
 ]
 
-for test in tests:
-    result = Solution().minOperations(test[0], test[1])
-    if result == test[2]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().minOperations, tests)

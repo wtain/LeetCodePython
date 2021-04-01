@@ -61,6 +61,9 @@ from typing import List
 
 # Runtime: 540 ms, faster than 34.98% of Python3 online submissions for Longest Turbulent Subarray.
 # Memory Usage: 18.6 MB, less than 69.23% of Python3 online submissions for Longest Turbulent Subarray.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def maxTurbulenceSize(self, arr: List[int]) -> int:
 
@@ -97,9 +100,4 @@ tests = [
     ([100], 1)
 ]
 
-for test in tests:
-    result = Solution().maxTurbulenceSize(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().maxTurbulenceSize, tests)

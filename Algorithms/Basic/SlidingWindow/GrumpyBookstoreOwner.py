@@ -30,6 +30,9 @@ from typing import List
 
 # Runtime: 268 ms, faster than 98.35% of Python3 online submissions for Grumpy Bookstore Owner.
 # Memory Usage: 16.4 MB, less than 74.05% of Python3 online submissions for Grumpy Bookstore Owner.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def maxSatisfied(self, customers: List[int], grumpy: List[int], X: int) -> int:
         result = 0
@@ -58,9 +61,4 @@ tests = [
     ([1,0,1,2,1,1,7,5], [0,1,0,1,0,1,0,1], 3, 16)
 ]
 
-for test in tests:
-    result = Solution().maxSatisfied(test[0], test[1], test[2])
-    if result == test[3]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().maxSatisfied, tests)

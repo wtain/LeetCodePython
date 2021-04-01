@@ -98,6 +98,8 @@ from typing import List
 #                     dp[i][j][k] = maxv
 #                     result = max(result, maxv)
 #         return result
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def cherryPickup(self, grid: List[List[int]]) -> int:
@@ -134,15 +136,38 @@ class Solution:
         return result
 
 
-print(Solution().cherryPickup([[3, 1, 1], [2, 5, 1], [1, 5, 5], [2, 1, 1]]))  # 24
+tests = [
+    (
+        [
+            [3, 1, 1],
+            [2, 5, 1],
+            [1, 5, 5],
+            [2, 1, 1]
+        ],
+        24
+    ),
+    (
+        [
+            [1,0,0,0,0,0,1],
+            [2,0,0,0,0,3,0],
+            [2,0,9,0,0,0,0],
+            [0,3,0,5,4,0,0],
+            [1,0,2,3,0,0,6]
+        ],
+        28
+    ),
+    (
+        [
+             [1,0,0,3],
+             [0,0,0,3],
+             [0,0,3,3],
+             [9,0,3,3]
+         ],
+        22
+    ),
+    (
+        [[1,1],[1,1]], 4
+    )
+]
 
-print(Solution().cherryPickup([
-        [1,0,0,0,0,0,1],
-        [2,0,0,0,0,3,0],
-        [2,0,9,0,0,0,0],
-        [0,3,0,5,4,0,0],
-        [1,0,2,3,0,0,6]]))  # 28
-
-print(Solution().cherryPickup([[1,0,0,3],[0,0,0,3],[0,0,3,3],[9,0,3,3]]))  # 22
-
-print(Solution().cherryPickup([[1,1],[1,1]]))  # 4
+run_functional_tests(Solution().cherryPickup, tests)

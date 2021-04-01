@@ -35,6 +35,8 @@ Constraints:
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 128 ms, faster than 6.41% of Python3 online submissions for Best Time to Buy and Sell Stock II.
 Memory Usage: 15.1 MB, less than 56.17% of Python3 online submissions for Best Time to Buy and Sell Stock II.
@@ -49,6 +51,10 @@ class Solution:
         return result
 
 
-print(Solution().maxProfit([7,1,5,3,6,4]))  # 7
-print(Solution().maxProfit([1,2,3,4,5]))  # 4
-print(Solution().maxProfit([7,6,4,3,1]))  # 0
+tests = [
+    ([7,1,5,3,6,4], 7),
+    ([1,2,3,4,5], 4),
+    ([7,6,4,3,1], 0)
+]
+
+run_functional_tests(Solution().maxProfit, tests)

@@ -63,6 +63,9 @@ from typing import List, Deque
 
 # Runtime: 868 ms, faster than 35.32% of Python3 online submissions for Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit.
 # Memory Usage: 36.4 MB, less than 6.52% of Python3 online submissions for Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def longestSubarray(self, nums: List[int], limit: int) -> int:
         n = len(nums)
@@ -103,9 +106,4 @@ tests = [
     ([4,2,2,2,4,4,2,2], 0, 3)
 ]
 
-for test in tests:
-    result = Solution().longestSubarray(test[0], test[1])
-    if result == test[2]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().longestSubarray, tests)

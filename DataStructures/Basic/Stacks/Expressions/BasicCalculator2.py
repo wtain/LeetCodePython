@@ -128,6 +128,9 @@ The answer is guaranteed to fit in a 32-bit integer.
 
 # Runtime: 140 ms, faster than 19.24% of Python3 online submissions for Basic Calculator II.
 # Memory Usage: 15.3 MB, less than 94.19% of Python3 online submissions for Basic Calculator II.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def calculate(self, s: str) -> int:
         n = len(s)
@@ -166,9 +169,4 @@ tests = [
     (" 3+5 / 2 ", 5)
 ]
 
-for test in tests:
-    result = Solution().calculate(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().calculate, tests)

@@ -49,4 +49,5 @@ class Solution:
 # obj = Solution(radius, x_center, y_center)
 # param_1 = obj.randPoint()
 
+
 print(Solution(1, 0, 0).randPoint())

@@ -21,6 +21,8 @@ Memory Usage: 14.8 MB, less than 56.27% of Python3 online submissions for Burst 
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def maxCoins(self, nums: List[int]) -> int:
@@ -40,4 +42,8 @@ class Solution:
         return dp[0][n-1]
 
 
-print(Solution().maxCoins( [3,1,5,8]))  # 167
+tests = [
+    ([3,1,5,8], 167)
+]
+
+run_functional_tests(Solution().maxCoins, tests)

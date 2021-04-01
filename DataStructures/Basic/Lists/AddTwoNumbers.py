@@ -35,14 +35,12 @@ It is guaranteed that the list represents a number that does not have leading ze
 from typing import List
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
 # Runtime: 72 ms, faster than 51.91% of Python3 online submissions for Add Two Numbers.
 # Memory Usage: 14.2 MB, less than 66.48% of Python3 online submissions for Add Two Numbers.
+from Common.Leetcode import ListNode
+from Common.ListUtils import compareLists
+
+
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         c = 0
@@ -80,17 +78,6 @@ def buildList(arr: List[int]) -> ListNode:
     if not h.next:
         return ListNode(0)
     return h.next
-
-
-def compareLists(l1: ListNode, l2: ListNode) -> bool:
-    c1 = l1
-    c2 = l2
-    while c1 and c2:
-        if c1.val != c2.val:
-            return False
-        c1 = c1.next
-        c2 = c2.next
-    return False if c1 or c2 else True
 
 
 for test in tests:

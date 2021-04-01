@@ -35,6 +35,7 @@ s consists of English letters, digits, symbols and spaces.
 Runtime: 160 ms, faster than 20.54% of Python3 online submissions for Longest Substring Without Repeating Characters.
 Memory Usage: 14.2 MB, less than 75.40% of Python3 online submissions for Longest Substring Without Repeating Characters.
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 
 class Solution:
@@ -62,9 +63,4 @@ tests = [
     ("", 0)
 ]
 
-for test in tests:
-    result = Solution().lengthOfLongestSubstring(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().lengthOfLongestSubstring, tests)

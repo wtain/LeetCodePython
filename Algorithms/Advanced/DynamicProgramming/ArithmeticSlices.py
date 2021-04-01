@@ -55,6 +55,9 @@ from typing import List
 
 # Runtime: 40 ms, faster than 48.59% of Python3 online submissions for Arithmetic Slices.
 # Memory Usage: 14.4 MB, less than 76.96% of Python3 online submissions for Arithmetic Slices.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def numberOfArithmeticSlices(self, A: List[int]) -> int:
         n = len(A)
@@ -74,9 +77,5 @@ tests = [
     ([1, 2, 3, 4], 3)
 ]
 
-for test in tests:
-    result = Solution().numberOfArithmeticSlices(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+
+run_functional_tests(Solution().numberOfArithmeticSlices, tests)

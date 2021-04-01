@@ -44,6 +44,9 @@ from typing import List
 
 # Runtime: 396 ms, faster than 52.62% of Python3 online submissions for Longest Subarray of 1's After Deleting One Element.
 # Memory Usage: 16.8 MB, less than 53.81% of Python3 online submissions for Longest Subarray of 1's After Deleting One Element.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
         result = 0
@@ -72,9 +75,4 @@ tests = [
     ([0,0,0], 0)
 ]
 
-for test in tests:
-    result = Solution().longestSubarray(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().longestSubarray, tests)

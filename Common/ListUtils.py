@@ -31,3 +31,14 @@ def list_to_string(l: ListNode) -> str:
         result += str(l.val)
         l = l.next
     return "[" + result + "]"
+
+
+def compareLists(l1: ListNode, l2: ListNode) -> bool:
+    c1 = l1
+    c2 = l2
+    while c1 and c2:
+        if c1.val != c2.val:
+            return False
+        c1 = c1.next
+        c2 = c2.next
+    return False if c1 or c2 else True
