@@ -23,13 +23,8 @@ Explanation: All root-to-leaf paths are: 1->2->5, 1->3
 # Definition for a binary tree node.
 from typing import List
 
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 36 ms, faster than 52.52% of Python3 online submissions for Binary Tree Paths.
@@ -61,5 +56,10 @@ t1.left = TreeNode(2)
 t1.left.right = TreeNode(5)
 t1.right = TreeNode(3)
 
-print(Solution().binaryTreePaths(t1))
+tests = [
+    (t1, ['1->2->5', '1->3'])
+]
+
+
+run_functional_tests(Solution().binaryTreePaths, tests)
 

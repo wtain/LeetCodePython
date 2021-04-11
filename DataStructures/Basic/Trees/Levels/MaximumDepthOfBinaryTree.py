@@ -17,14 +17,8 @@ Given binary tree [3,9,20,null,null,15,7],
    15   7
 return its depth = 3.
 """
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 48 ms, faster than 37.70% of Python3 online submissions for Maximum Depth of Binary Tree.
@@ -45,4 +39,8 @@ root.right = TreeNode(20)
 root.right.left = TreeNode(15)
 root.right.right = TreeNode(7)
 
-print(Solution().maxDepth(root))  # 3
+tests = [
+    (root, 3)
+]
+
+run_functional_tests(Solution().maxDepth, tests)

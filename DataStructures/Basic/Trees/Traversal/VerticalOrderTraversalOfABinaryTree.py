@@ -38,21 +38,17 @@ The number of nodes in the tree is in the range [1, 1000].
 """
 
 
-# Definition for a binary tree node.
 from typing import List, Dict
 
 from sortedcontainers import SortedDict
 
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-
 # Runtime: 36 ms, faster than 54.10% of Python3 online submissions for Vertical Order Traversal of a Binary Tree.
 # Memory Usage: 14.5 MB, less than 65.37% of Python3 online submissions for Vertical Order Traversal of a Binary Tree.
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
 
     def verticalTraversalImpl(self, cache: Dict[int, Dict[int, List[int]]], root: TreeNode, x: int, y: int):
@@ -102,9 +98,5 @@ tests = [
     (root2, [[4],[2],[1,5,6],[3],[7]])
 ]
 
-for test in tests:
-    result = Solution().verticalTraversal(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+
+run_functional_tests(Solution().verticalTraversal, tests)

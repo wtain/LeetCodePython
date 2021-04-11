@@ -35,14 +35,8 @@ Node values are digits from 1 to 9.
 Runtime: 376 ms, faster than 82.11% of Python3 online submissions for Pseudo-Palindromic Paths in a Binary Tree.
 Memory Usage: 49.8 MB, less than 58.42% of Python3 online submissions for Pseudo-Palindromic Paths in a Binary Tree.
 """
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
 
 
 class Solution:
@@ -80,10 +74,10 @@ root1.left.right = TreeNode(1)
 root1.right = TreeNode(1)
 root1.right.right = TreeNode(1)
 
-if Solution().pseudoPalindromicPaths(root1) == 2:
-    print("PASS")
-else:
-    print("FAIL")
+# if Solution().pseudoPalindromicPaths(root1) == 2:
+#     print("PASS")
+# else:
+#     print("FAIL")
 
 root2 = TreeNode(2)
 root2.left = TreeNode(1)
@@ -92,17 +86,17 @@ root2.left.right = TreeNode(3)
 root2.left.right.right = TreeNode(1)
 root2.right = TreeNode(1)
 
-if Solution().pseudoPalindromicPaths(root2) == 1:
-    print("PASS")
-else:
-    print("FAIL")
+# if Solution().pseudoPalindromicPaths(root2) == 1:
+#     print("PASS")
+# else:
+#     print("FAIL")
 
 root3 = TreeNode(9)
 
-if Solution().pseudoPalindromicPaths(root3) == 1:
-    print("PASS")
-else:
-    print("FAIL")
+# if Solution().pseudoPalindromicPaths(root3) == 1:
+#     print("PASS")
+# else:
+#     print("FAIL")
 
 
 root4 = TreeNode(9)
@@ -121,6 +115,16 @@ root4.left.left.left.right = TreeNode(3)
 root4.left.left.right = TreeNode(5)
 root4.left.left.right.left = TreeNode(1)
 root4.left.left.right.right = TreeNode(1)
+
+
+tests = [
+    (root1, 2),
+    (root2, 1),
+    (root3, 1),
+    (root4, 0)
+]
+
+run_functional_tests(Solution().pseudoPalindromicPaths, tests)
 
 # root1.left.right = TreeNode(1)
 

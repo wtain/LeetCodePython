@@ -18,15 +18,8 @@ Given binary tree [3,9,20,null,null,15,7],
    15   7
 return its minimum depth = 2.
 """
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 52 ms, faster than 35.71% of Python3 online submissions for Minimum Depth of Binary Tree.
@@ -101,10 +94,12 @@ tree1.right = TreeNode(20)
 tree1.right.left = TreeNode(15)
 tree1.right.right = TreeNode(7)
 
-print(Solution().minDepth(tree1))  # 2
-
-
 tree2 = TreeNode(1)
 tree2.left = TreeNode(2)
 
-print(Solution().minDepth(tree2))  # 2
+tests = [
+    (tree1, 2),
+    (tree2, 2)
+]
+
+run_functional_tests(Solution().minDepth, tests)

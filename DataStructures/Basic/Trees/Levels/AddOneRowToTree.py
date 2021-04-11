@@ -55,16 +55,13 @@ The given binary tree has at least one tree node.
 """
 
 
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-
 # Runtime: 52 ms, faster than 82.23% of Python3 online submissions for Add One Row to Tree.
 # Memory Usage: 16.2 MB, less than 89.12% of Python3 online submissions for Add One Row to Tree.
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.TreeUtils import compareTrees, printTree
+
+
 class Solution:
     def addOneRow(self, root: TreeNode, v: int, d: int) -> TreeNode:
 
@@ -164,31 +161,4 @@ tests = [
 ]
 
 
-def compareTrees(t1: TreeNode, t2: TreeNode) -> bool:
-    if not t1 and not t2:
-        return True
-    if not t1 or not t2:
-        return False
-    if t1.val != t2.val:
-        return False
-    return compareTrees(t1.left, t2.left) and compareTrees(t1.right, t2.right)
-
-
-def printTree(root: TreeNode):
-    def printTreeImpl(root: TreeNode):
-        if root is None:
-            return
-        print(root.val, '(', end='')
-        printTreeImpl(root.left)
-        printTreeImpl(root.right)
-        print(')', end='')
-    printTreeImpl(root)
-    print()
-
-for test in tests:
-    result = Solution().addOneRow(test[0], test[1], test[2])
-    if not compareTrees(result, test[3]):
-        print("FAIL")
-        printTree(result)
-    else:
-        print("PASS")
+run_functional_tests(Solution().addOneRow, tests)

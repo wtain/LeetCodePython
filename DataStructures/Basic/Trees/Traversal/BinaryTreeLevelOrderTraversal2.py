@@ -22,12 +22,8 @@ return its bottom-up level order traversal as:
 # Definition for a binary tree node.
 from typing import List
 
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 64 ms, faster than 11.41% of Python3 online submissions for Binary Tree Level Order Traversal II.
@@ -56,10 +52,16 @@ tree1.right = TreeNode(20)
 tree1.right.left = TreeNode(15)
 tree1.right.right = TreeNode(7)
 
-"""
-  [15,7],
-  [9,20],
-  [3]
-"""
-print(Solution().levelOrderBottom(tree1))
 
+tests = [
+    (
+        tree1,
+        [
+            [15,7],
+            [9,20],
+            [3]
+        ]
+    )
+]
+
+run_functional_tests(Solution().levelOrderBottom, tests)

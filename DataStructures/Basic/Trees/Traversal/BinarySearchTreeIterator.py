@@ -50,15 +50,13 @@ Memory Usage: 20.8 MB, less than 61.18% of Python3 online submissions for Binary
 """
 
 
-# Definition for a binary tree node.
 from typing import List
 
+from Common.Constants import null, true, false
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_object_tests
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+
 class BSTIterator:
 
     def move_first(self):
@@ -113,7 +111,17 @@ root.left.left = TreeNode(2)
 root.right = TreeNode(7)
 root.right.left = TreeNode(6)
 
-it = BSTIterator(root)
+# it = BSTIterator(root)
+#
+# while it.hasNext():
+#     print(it.next())
 
-while it.hasNext():
-    print(it.next())
+tests = [
+    (
+        ["BSTIterator", "hasNext", "next", "hasNext", "next", "hasNext", "next", "hasNext", "next", "hasNext", "next", "hasNext", "next", "hasNext"],
+        [[root], [], [], [], [], [], [], [], [], [], [], null, null, null],
+        [null, true, 2, true, 3, true, 4, true, 5, true, 6, true, 7, false]
+    )
+]
+
+run_object_tests(tests, cls=BSTIterator)

@@ -2,6 +2,7 @@ import timeit
 
 from Common.Leetcode import ListNode, TreeNode
 from Common.ListUtils import build_list, list_to_string, lists_equal
+from Common.TreeUtils import compareTrees, printTree
 
 
 def call_method(o, name, *args, **kwargs):
@@ -25,17 +26,19 @@ def run_object_tests(tests, **kwargs):
         arguments = test[1]
         expected = test[2]
         n = len(methods)
-        # object = OrderedStream(arguments[0][0])
         obj = create_object(methods[0], *arguments[0])
         fail = False
         for i in range(1, n):
-            output = call_method(obj, methods[i], *arguments[i])
+            args = arguments[i]
+            if not args:
+                args = []
+            output = call_method(obj, methods[i], *args)
             if not compare_values(output, expected[i]):
                 fail = True
-                print("FAIL: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
+                print(str(j+1) + ") FAIL: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
                 break
         if not fail:
-            print("PASS")
+            print(str(j+1) + ") PASS")
 
 
 def to_string(v) -> str:
@@ -52,6 +55,8 @@ def compare_floats(v1, v2, eps=1e-5):
 def compare_values(v1, v2) -> bool:
     if type(v1) is ListNode:
         return lists_equal(v1, v2)
+    elif type(v1) is TreeNode:
+        return compareTrees(v1, v2)
     elif type(v1) is float:
         return compare_floats(v1, v2)
     else:
@@ -95,15 +100,24 @@ def run_functional_tests(function, tests, **kwargs):
             comparison_result = compare_values(result, expected)
 
         if comparison_result:
-            print(str(i) + ") PASS, took: " + str(duration) + " on size="+str(input_size))
+            print(str(i) + ") PASS, took: " + "{:.3f}".format(duration) + " on size=" + str(input_size))
         else:
             if type(expected) is str and type(result) is str:
                 print(str(i) + ") FAIL - expected '" + expected + "', got '" + result + "'")
+            elif type(expected) is TreeNode or type(result) is TreeNode:
+                print("Expected:")
+                printTree(expected)
+                print("Got:")
+                printTree(result)
             else:
                 print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result))
             nfail += 1
-    status = "OVERALL: " + ("SUCCESS" if nfail == 0 else "FAILED")
-    print(status + ", " + str(nfail) + " failed of " + str(n))
+    is_success = nfail == 0
+    status = "OVERALL: " + ("SUCCESS" if is_success else "FAILED")
+    if is_success:
+        print(status)
+    else:
+        print(status + ", " + str(nfail) + " failed of " + str(n))
 
 
 def convert_test_params_to_lists(tests, indexes):

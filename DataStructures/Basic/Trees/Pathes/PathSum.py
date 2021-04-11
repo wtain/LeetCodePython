@@ -19,15 +19,8 @@ Given the below binary tree and sum = 22,
 return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 
 """
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 40 ms, faster than 89.58% of Python3 online submissions for Path Sum.
@@ -57,4 +50,8 @@ t1.right.right = TreeNode(4)
 
 t1.right.right.right = TreeNode(1)
 
-print(Solution().hasPathSum(t1, 22))  # True
+tests = [
+    (t1, 22, True)
+]
+
+run_functional_tests(Solution().hasPathSum, tests)

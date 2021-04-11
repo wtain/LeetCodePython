@@ -22,15 +22,12 @@ The range of node's value is in the range of 32-bit signed integer.
 from typing import List
 
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-
 # Runtime: 56 ms, faster than 32.08% of Python3 online submissions for Average of Levels in Binary Tree.
 # Memory Usage: 17.1 MB, less than 15.83% of Python3 online submissions for Average of Levels in Binary Tree.
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def averageOfLevels(self, root: TreeNode) -> List[float]:
 
@@ -63,9 +60,4 @@ tests = [
     (root1, [3, 14.5, 11])
 ]
 
-for test in tests:
-    result = Solution().averageOfLevels(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().averageOfLevels, tests)

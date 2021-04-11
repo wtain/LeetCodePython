@@ -184,4 +184,4 @@ tests = [
     (TreeNode(1, TreeNode(2), TreeNode(3)), [1, 2, 3], [])
 ]
 
-run_functional_tests(lambda *kargs: Solution().flipMatchVoyage(*kargs), tests)
+run_functional_tests(Solution().flipMatchVoyage, tests)

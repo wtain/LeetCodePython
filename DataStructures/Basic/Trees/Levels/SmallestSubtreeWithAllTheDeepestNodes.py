@@ -46,16 +46,10 @@ Runtime: 60 ms, faster than 5.45% of Python3 online submissions for Smallest Sub
 Memory Usage: 14.6 MB, less than 8.28% of Python3 online submissions for Smallest Subtree with all the Deepest Nodes.
 
 """
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Definition for a binary tree node.
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
 class Solution:
     def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
         def dfs(root: TreeNode) -> (TreeNode, int):
@@ -71,17 +65,6 @@ class Solution:
         return dfs(root)[0]
 
 
-def printTree(root: TreeNode):
-    def printTreeImpl(root: TreeNode):
-        if root is None:
-            return
-        printTreeImpl(root.left)
-        print(root.val, ' ', end='')
-        printTreeImpl(root.right)
-    printTreeImpl(root)
-    print()
-
-
 root = TreeNode(3)
 root.left = TreeNode(5)
 root.left.left = TreeNode(6)
@@ -92,5 +75,13 @@ root.right = TreeNode(1)
 root.right.left = TreeNode(0)
 root.right.right = TreeNode(8)
 
-res = Solution().subtreeWithAllDeepest(root)
-printTree(res)
+tests = [
+    (
+        root,
+        TreeNode(2,
+                 TreeNode(7),
+                 TreeNode(4))
+    )
+]
+
+run_functional_tests(Solution().subtreeWithAllDeepest, tests)

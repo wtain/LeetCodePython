@@ -34,15 +34,8 @@ Given the following tree [1,2,2,3,3,null,null,4,4]:
  4   4
 Return false.
 """
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 40 ms, faster than 99.16% of Python3 online submissions for Balanced Binary Tree.
@@ -70,7 +63,7 @@ tree1.right = TreeNode(20)
 tree1.right.left = TreeNode(15)
 tree1.right.right = TreeNode(7)
 
-print(Solution().isBalanced(tree1))  # True
+# print(Solution().isBalanced(tree1))  # True
 
 
 tree2 = TreeNode(1)
@@ -83,5 +76,12 @@ tree2.left.right = TreeNode(3)
 tree2.left.left.left = TreeNode(4)
 tree2.left.left.right = TreeNode(4)
 
-print(Solution().isBalanced(tree2))  # False
+# print(Solution().isBalanced(tree2))  # False
+
+tests = [
+    (tree1, True),
+    (tree2, False)
+]
+
+run_functional_tests(Solution().isBalanced, tests)
 

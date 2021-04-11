@@ -39,16 +39,14 @@ root is guaranteed to be a valid binary search tree.
 """
 
 
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
 
 # Runtime: 32 ms, faster than 67.28% of Python3 online submissions for Binary Search Tree to Greater Sum Tree.
 # Memory Usage: 14.2 MB, less than 65.37% of Python3 online submissions for Binary Search Tree to Greater Sum Tree.
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.TreeUtils import printTree
+
+
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
         def convertBSTImpl(root: TreeNode, v: int) -> (TreeNode, int):
@@ -74,17 +72,37 @@ root1.right.left = TreeNode(5)
 root1.right.right = TreeNode(7)
 root1.right.right.right = TreeNode(8)
 
-def printTree(root: TreeNode):
+"""
+30 
+    (36 
+        (36 ()
+         35 
+            (33 ())
+        )
+    21 
+        (26 ()
+         15 
+            (8 ())))
+"""
 
-    def printTreeImpl(root: TreeNode):
-        if root is None:
-            return
-        printTreeImpl(root.left)
-        print(root.val, flush=True, sep=' ', end=' ')
-        printTreeImpl(root.right)
+tests = [
+    (
+        root1,
+        TreeNode(30,
+                 TreeNode(36,
+                          TreeNode(36),
+                          TreeNode(35,
+                                   None,
+                                   TreeNode(33))),
+                 TreeNode(21,
+                          TreeNode(26),
+                          TreeNode(15,
+                                   None,
+                                   TreeNode(8))))
+    )
+]
 
-    printTreeImpl(root)
-    print()
 
+# printTree(Solution().bstToGst(root1))
 
-printTree(Solution().bstToGst(root1))
+run_functional_tests(Solution().bstToGst, tests)
