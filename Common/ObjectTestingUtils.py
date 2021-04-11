@@ -1,4 +1,6 @@
-from Common.Leetcode import ListNode
+import timeit
+
+from Common.Leetcode import ListNode, TreeNode
 from Common.ListUtils import build_list, list_to_string, lists_equal
 
 
@@ -18,7 +20,7 @@ def declare_class(CLASS):
 def run_object_tests(tests, **kwargs):
     if "cls" in kwargs:
         declare_class(kwargs["cls"])
-    for test in tests:
+    for j, test in enumerate(tests):
         methods = test[0]
         arguments = test[1]
         expected = test[2]
@@ -30,7 +32,7 @@ def run_object_tests(tests, **kwargs):
             output = call_method(obj, methods[i], *arguments[i])
             if not compare_values(output, expected[i]):
                 fail = True
-                print("FAIL: " + str(output) + " != " + str(expected[i]))
+                print("FAIL: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
                 break
         if not fail:
             print("PASS")
@@ -56,18 +58,36 @@ def compare_values(v1, v2) -> bool:
         return v1 == v2
 
 
+def count_tree_nodes(root: TreeNode) -> int:
+    if not root:
+        return 0
+    return 1 + count_tree_nodes(root.left) + count_tree_nodes(root.right)
+
+
 def run_functional_tests(function, tests, **kwargs):
     if "custom_check" in kwargs:
         custom_check = kwargs["custom_check"]
     else:
         custom_check = None
+    if "input_metric" in kwargs:
+        input_metric = kwargs["input_metric"]
+    else:
+        if type(tests[0][0]) is TreeNode:
+            input_metric = lambda test: count_tree_nodes(test[0])
+        else:
+            input_metric = lambda test: len(test[0])
     n = len(tests)
     nfail = 0
     i = 0
     for test in tests:
         i += 1
+        start = timeit.default_timer()
         result = function(*test[:-1])
+        stop = timeit.default_timer()
         expected = test[-1]
+
+        duration = stop - start
+        input_size = input_metric(test)
 
         if custom_check:
             comparison_result = custom_check(test, result)
@@ -75,7 +95,7 @@ def run_functional_tests(function, tests, **kwargs):
             comparison_result = compare_values(result, expected)
 
         if comparison_result:
-            print(str(i) + ") PASS")
+            print(str(i) + ") PASS, took: " + str(duration) + " on size="+str(input_size))
         else:
             if type(expected) is str and type(result) is str:
                 print(str(i) + ") FAIL - expected '" + expected + "', got '" + result + "'")
