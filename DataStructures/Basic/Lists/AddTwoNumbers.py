@@ -31,14 +31,14 @@ It is guaranteed that the list represents a number that does not have leading ze
 """
 
 
-# Definition for singly-linked list.
 from typing import List
 
 
 # Runtime: 72 ms, faster than 51.91% of Python3 online submissions for Add Two Numbers.
 # Memory Usage: 14.2 MB, less than 66.48% of Python3 online submissions for Add Two Numbers.
 from Common.Leetcode import ListNode
-from Common.ListUtils import compareLists
+from Common.ListUtils import compareLists, build_list, buildNumberAsList
+from Common.ObjectTestingUtils import run_functional_tests, convert_test_params
 
 
 class Solution:
@@ -62,28 +62,9 @@ class Solution:
 
 
 tests = [
-    ([2,4,3], [5,6,4], [7,0,8]),
-    ([0], [0], [0]),
-    ([9,9,9,9,9,9,9], [9,9,9,9], [8,9,9,9,0,0,0,1])
+    [[2,4,3], [5,6,4], [7,0,8]],
+    [[0], [0], [0]],
+    [[9,9,9,9,9,9,9], [9,9,9,9], [8,9,9,9,0,0,0,1]]
 ]
 
-
-def buildList(arr: List[int]) -> ListNode:
-    h = ListNode(-1)
-    c = h
-    for ai in arr:
-        c.next = ListNode(ai)
-        c = c.next
-
-    if not h.next:
-        return ListNode(0)
-    return h.next
-
-
-for test in tests:
-    result = Solution().addTwoNumbers(buildList(test[0]), buildList(test[1]))
-    expected = buildList(test[2])
-    if compareLists(result, expected):
-        print("PASS")
-    else:
-        print("FAIL")
+run_functional_tests(Solution().addTwoNumbers, convert_test_params(tests, buildNumberAsList))

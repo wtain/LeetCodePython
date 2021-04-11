@@ -31,13 +31,7 @@ p and q are different and both values will exist in the BST.
 # Definition for a binary tree node.
 from typing import List
 
-
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
-
+from Common.Leetcode import TreeNode
 
 """
 Runtime: 164 ms, faster than 5.25% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.

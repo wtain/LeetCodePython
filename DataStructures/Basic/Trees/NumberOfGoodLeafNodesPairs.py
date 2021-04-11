@@ -41,17 +41,11 @@ Each node's value is between [1, 100].
 """
 
 
-# Definition for a binary tree node.
 from typing import List
 
 from sortedcontainers import SortedDict
 
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
 
 # WRONG
 # class Solution:
@@ -85,6 +79,10 @@ class TreeNode:
 
 # Runtime: 536 ms, faster than 10.66% of Python3 online submissions for Number of Good Leaf Nodes Pairs.
 # Memory Usage: 16.8 MB, less than 5.48% of Python3 online submissions for Number of Good Leaf Nodes Pairs.
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def countPairs(self, root: TreeNode, distance: int) -> int:
 
@@ -148,9 +146,4 @@ tests = [
     (root2, 3, 2),
 ]
 
-for test in tests:
-    result = Solution().countPairs(test[0], test[1])
-    if result == test[2]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().countPairs, tests)

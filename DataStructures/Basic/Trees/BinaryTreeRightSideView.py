@@ -17,19 +17,15 @@ Explanation:
 """
 
 
-# Definition for a binary tree node.
 from typing import List
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
 
 
 # Runtime: 24 ms, faster than 97.59% of Python3 online submissions for Binary Tree Right Side View.
 # Memory Usage: 14.4 MB, less than 21.59% of Python3 online submissions for Binary Tree Right Side View.
+from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def rightSideView(self, root: TreeNode) -> List[int]:
         levels = []
@@ -58,12 +54,6 @@ tests = [
     (root1, [1, 3, 4])
 ]
 
-
-for test in tests:
-    result = Solution().rightSideView(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().rightSideView, tests)
 
 

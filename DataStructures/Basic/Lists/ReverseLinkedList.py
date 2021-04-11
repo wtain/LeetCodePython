@@ -10,13 +10,7 @@ Follow up:
 
 A linked list can be reversed either iteratively or recursively. Could you implement both?
 """
-
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from Common.Leetcode import ListNode
 
 """
 Runtime: 52 ms, faster than 24.51% of Python3 online submissions for Reverse Linked List.

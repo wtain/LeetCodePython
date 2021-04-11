@@ -34,14 +34,7 @@ Follow up:
 
 Can you solve it using O(1) (i.e. constant) memory?
 """
-
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
+from Common.Leetcode import ListNode
 
 """
 Runtime: 56 ms, faster than 43.88% of Python3 online submissions for Linked List Cycle.

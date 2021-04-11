@@ -37,19 +37,14 @@ Number of nodes will not exceed 30.
 Each node's value is either 0 or 1.
 """
 
-
-# Definition for singly-linked list.
 from typing import List
-
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
 
 
 # Runtime: 32 ms, faster than 64.91% of Python3 online submissions for Convert Binary Number in a Linked List to Integer.
 # Memory Usage: 14 MB, less than 89.96% of Python3 online submissions for Convert Binary Number in a Linked List to Integer.
+from Common.Leetcode import ListNode
+
+
 class Solution:
     def getDecimalValue(self, head: ListNode) -> int:
         result = 0

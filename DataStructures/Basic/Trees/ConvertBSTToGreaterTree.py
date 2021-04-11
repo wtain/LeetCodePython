@@ -12,16 +12,12 @@ Note: This question is the same as 1038: https://leetcode.com/problems/binary-se
 """
 
 
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-
 # Runtime: 92 ms, faster than 24.06% of Python3 online submissions for Convert BST to Greater Tree.
 # Memory Usage: 18.8 MB, less than 5.07% of Python3 online submissions for Convert BST to Greater Tree.
+from Common.Leetcode import TreeNode
+from Common.TreeUtils import printTree
+
+
 class Solution:
     def convertBST(self, root: TreeNode) -> TreeNode:
 
@@ -47,18 +43,6 @@ root1.left.right.right = TreeNode(3)
 root1.right.left = TreeNode(5)
 root1.right.right = TreeNode(7)
 root1.right.right.right = TreeNode(8)
-
-def printTree(root: TreeNode):
-
-    def printTreeImpl(root: TreeNode):
-        if root is None:
-            return
-        printTreeImpl(root.left)
-        print(root.val, flush=True, sep=' ', end=' ')
-        printTreeImpl(root.right)
-
-    printTreeImpl(root)
-    print()
 
 
 printTree(Solution().convertBST(root1))

@@ -19,11 +19,7 @@ Accepted
 
 from typing import List
 
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from Common.Leetcode import ListNode
 
 """
 Runtime: 80 ms, faster than 5.15% of Python3 online submissions for Remove Duplicates from Sorted List.

@@ -33,6 +33,14 @@ def list_to_string(l: ListNode) -> str:
     return "[" + result + "]"
 
 
+def list_length(l: ListNode) -> int:
+    result = 0
+    while l:
+        result += 1
+        l = l.next
+    return result
+
+
 def compareLists(l1: ListNode, l2: ListNode) -> bool:
     c1 = l1
     c2 = l2
@@ -42,3 +50,17 @@ def compareLists(l1: ListNode, l2: ListNode) -> bool:
         c1 = c1.next
         c2 = c2.next
     return False if c1 or c2 else True
+
+
+def buildNumberAsList(arr: List[int]) -> ListNode:
+    h = build_list(arr)
+
+    if not h:
+        return ListNode(0)
+    return h
+
+
+def printList(l: ListNode):
+    while l:
+        print(l.val, flush=True, sep=' ', end=' ')
+        l = l.next

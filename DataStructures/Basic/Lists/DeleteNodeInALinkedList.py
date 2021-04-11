@@ -27,14 +27,7 @@ All of the nodes' values will be unique.
 The given node will not be the tail and it will always be a valid node of the linked list.
 Do not return anything from your function.
 """
-
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
+from Common.Leetcode import ListNode
 
 """
 Runtime: 44 ms, faster than 33.28% of Python3 online submissions for Delete Node in a Linked List.

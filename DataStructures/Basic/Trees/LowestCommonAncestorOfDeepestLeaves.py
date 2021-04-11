@@ -40,13 +40,9 @@ The number of nodes in the tree will be in the range [1, 1000].
 0 <= Node.val <= 1000
 The values of the nodes in the tree are unique.
 """
+from Common.Leetcode import TreeNode
 
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+
 class Solution:
     def lcaDeepestLeaves(self, root: TreeNode) -> TreeNode:
         def dfs(root: TreeNode) -> (TreeNode, int):

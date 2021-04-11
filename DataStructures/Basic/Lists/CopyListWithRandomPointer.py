@@ -46,15 +46,10 @@ Memory Usage: 14.7 MB, less than 87.65% of Python3 online submissions for Copy L
 """
 
 
-# Definition for a Node.
+
 from typing import List
 
 
-class Node:
-    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
-        self.val = int(x)
-        self.next = next
-        self.random = random
 
 
 # class Solution:
@@ -143,6 +138,9 @@ class Node:
 
 # Runtime: 40 ms, faster than 26.60% of Python3 online submissions for Copy List with Random Pointer.
 # Memory Usage: 14.8 MB, less than 88.50% of Python3 online submissions for Copy List with Random Pointer.
+from Common.Leetcode import Node
+
+
 class Solution:
     def copyRandomList(self, head: 'Node') -> 'Node':
         curr = head

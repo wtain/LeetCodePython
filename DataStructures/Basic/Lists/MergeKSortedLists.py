@@ -41,45 +41,17 @@ The sum of lists[i].length won't exceed 10^4.
 """
 
 
-# Definition for singly-linked list.
 import heapq
 from typing import List
 
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
-def buildList(v: List[int]) -> ListNode:
-    head = ListNode()
-    prev = head
-    for vi in v:
-        prev.next = ListNode(vi)
-        prev = prev.next
-    return head.next
-
-
-def printList(l: ListNode):
-    while l:
-        print(l.val, flush=True, sep=' ', end=' ')
-        l = l.next
-
-
-def compareList(h1: ListNode, h2: ListNode) -> bool:
-    while h1 and h2:
-        if h1.val != h2.val:
-            return False
-        h1 = h1.next
-        h2 = h2.next
-    if h1 or h2:
-        return False
-    return True
+from Common.Leetcode import ListNode
 
 
 # Runtime: 128 ms, faster than 36.99% of Python3 online submissions for Merge k Sorted Lists.
 # Memory Usage: 18.6 MB, less than 15.14% of Python3 online submissions for Merge k Sorted Lists.
+from Common.ListUtils import build_list, compareLists, printList
+
+
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         class ListEntry:
@@ -116,16 +88,16 @@ tests = [
     ),
 
     (
-        [buildList([1,4,5]),
-        buildList([1,3,4]),
-        buildList([2,6])],
-        buildList([1,1,2,3,4,4,5,6])
+        [build_list([1,4,5]),
+        build_list([1,3,4]),
+        build_list([2,6])],
+        build_list([1,1,2,3,4,4,5,6])
     )
 ]
 
 for test in tests:
     result = Solution().mergeKLists(test[0])
-    if compareList(result, test[1]):
+    if compareLists(result, test[1]):
         print("PASS")
     else:
         print("FAIL - [", flush=True, sep=' ', end=' ')

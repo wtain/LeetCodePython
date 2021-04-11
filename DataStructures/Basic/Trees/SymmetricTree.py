@@ -25,16 +25,9 @@ Follow up: Solve it both recursively and iteratively.
 
 """
 
-# Definition for a binary tree node.
 from typing import List
 
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
+from Common.Leetcode import TreeNode
 
 """
 Runtime: 32 ms, faster than 81.75% of Python3 online submissions for Symmetric Tree.

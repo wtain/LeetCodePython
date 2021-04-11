@@ -44,14 +44,7 @@ You may assume there are no cycles anywhere in the entire linked structure.
 Each value on each linked list is in the range [1, 10^9].
 Your code should preferably run in O(n) time and use only O(1) memory.
 """
-
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
+from Common.Leetcode import ListNode
 
 """
 Runtime: 184 ms, faster than 42.00% of Python3 online submissions for Intersection of Two Linked Lists.

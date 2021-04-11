@@ -41,19 +41,13 @@ root is guaranteed to be a valid binary search tree.
 """
 
 
-# Definition for a binary tree node.
 from typing import List
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
 
 # Runtime: 88 ms, faster than 5.30% of Python3 online submissions for Trim a Binary Search Tree.
 # Memory Usage: 18.4 MB, less than 18.20% of Python3 online submissions for Trim a Binary Search Tree.
+from Common.Leetcode import TreeNode
+
+
 class Solution:
     def trimBST(self, root: TreeNode, low: int, high: int) -> TreeNode:
         if not root:

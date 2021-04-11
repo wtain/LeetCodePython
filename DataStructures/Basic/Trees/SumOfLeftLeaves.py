@@ -12,14 +12,7 @@ Example:
 
 There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
 """
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from Common.Leetcode import TreeNode
 
 """
 Runtime: 24 ms, faster than 98.02% of Python3 online submissions for Sum of Left Leaves.

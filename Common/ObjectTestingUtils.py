@@ -1,7 +1,7 @@
 import timeit
 
 from Common.Leetcode import ListNode, TreeNode
-from Common.ListUtils import build_list, list_to_string, lists_equal
+from Common.ListUtils import build_list, list_to_string, lists_equal, list_length
 from Common.TreeUtils import compareTrees, printTree
 
 
@@ -79,6 +79,8 @@ def run_functional_tests(function, tests, **kwargs):
     else:
         if type(tests[0][0]) is TreeNode:
             input_metric = lambda test: count_tree_nodes(test[0])
+        elif type(tests[0][0]) is ListNode:
+            input_metric = lambda test: list_length(test[0])
         else:
             input_metric = lambda test: len(test[0])
     n = len(tests)
@@ -120,8 +122,16 @@ def run_functional_tests(function, tests, **kwargs):
         print(status + ", " + str(nfail) + " failed of " + str(n))
 
 
-def convert_test_params_to_lists(tests, indexes):
+def convert_test_params(tests, function, **kwargs):
+    if "indexes" in kwargs:
+        indexes = kwargs["indexes"]
+    else:
+        indexes = range(len(tests[0]))
     for test in tests:
         for i in indexes:
-            test[i] = build_list(test[i])
+            test[i] = function(test[i])
     return tests
+
+
+def convert_test_params_to_lists(tests, indexes):
+    return convert_test_params(tests, build_list, indexes=indexes)

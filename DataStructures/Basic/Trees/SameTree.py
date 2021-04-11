@@ -32,14 +32,7 @@ Input:     1         1
 
 Output: false
 """
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from Common.Leetcode import TreeNode
 
 """
 Runtime: 40 ms, faster than 23.85% of Python3 online submissions for Same Tree.

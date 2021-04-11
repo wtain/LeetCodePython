@@ -18,17 +18,10 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
  -10  5
 """
 
-
-# Definition for a binary tree node.
 from typing import List
 
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
+from Common.Leetcode import TreeNode
+from Common.TreeUtils import printTree
 
 """
 Runtime: 92 ms, faster than 26.96% of Python3 online submissions for Convert Sorted Array to Binary Search Tree.
@@ -46,19 +39,6 @@ class Solution:
             return TreeNode(nums[m], sortedArrayToBSTImpl(nums, l, m), sortedArrayToBSTImpl(nums, m+1, r))
 
         return sortedArrayToBSTImpl(nums, 0, len(nums))
-
-
-def printTree(root: TreeNode):
-
-    def printTreeImpl(root: TreeNode):
-        if root is None:
-            return
-        printTreeImpl(root.left)
-        print(root.val, flush=True, sep=' ', end=' ')
-        printTreeImpl(root.right)
-
-    printTreeImpl(root)
-    print()
 
 
 """

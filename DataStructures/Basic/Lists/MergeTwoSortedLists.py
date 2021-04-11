@@ -13,11 +13,7 @@ Memory Usage: 14.2 MB, less than 49.62% of Python3 online submissions for Merge 
 """
 from typing import List
 
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from Common.Leetcode import ListNode
 
 """
 Runtime: 48 ms, faster than 26.85% of Python3 online submissions for Merge Two Sorted Lists.

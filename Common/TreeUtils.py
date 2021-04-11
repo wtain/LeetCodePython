@@ -1,6 +1,15 @@
 from Common.Leetcode import TreeNode
 
 
+def cloneTree(root: TreeNode) -> TreeNode:
+    if root:
+        newRoot = TreeNode(root.val)
+        newRoot.left = cloneTree(root.left)
+        newRoot.right = cloneTree(root.right)
+        return newRoot
+    return None
+
+
 def compareTrees(t1: TreeNode, t2: TreeNode) -> bool:
     if not t1 and not t2:
         return True

@@ -52,14 +52,8 @@ target node is a node from the original tree and is not null.
 Runtime: 608 ms, faster than 88.54% of Python3 online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
 Memory Usage: 24 MB, less than 66.17% of Python3 online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
 """
-
-
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+from Common.Leetcode import TreeNode
+from Common.TreeUtils import cloneTree
 
 
 class Solution:
@@ -73,14 +67,6 @@ class Solution:
             return resultLeft
         return self.getTargetCopy(original.right, cloned.right, target)
 
-
-def cloneTree(root: TreeNode) -> TreeNode:
-    if root:
-        newRoot = TreeNode(root.val)
-        newRoot.left = cloneTree(root.left)
-        newRoot.right = cloneTree(root.right)
-        return newRoot
-    return None
 
 
 root1 = TreeNode(7)
