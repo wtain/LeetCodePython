@@ -38,8 +38,8 @@ s only contains lower case English letters.
 """
 
 
-# Runtime: 92 ms, faster than 38.54% of Python3 online submissions for Remove All Adjacent Duplicates in String II.
-# Memory Usage: 15.8 MB, less than 50.98% of Python3 online submissions for Remove All Adjacent Duplicates in String II.
+# Runtime: 92 ms, faster than 38.54% of Python3 online submissions for Remove All Adjacent Duplicates in Strings II.
+# Memory Usage: 15.8 MB, less than 50.98% of Python3 online submissions for Remove All Adjacent Duplicates in Strings II.
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
         st = []

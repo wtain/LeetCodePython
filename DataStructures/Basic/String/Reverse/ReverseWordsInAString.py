@@ -34,8 +34,8 @@ For C programmers, try to solve it in-place in O(1) extra space.
 """
 
 """
-Runtime: 48 ms, faster than 25.05% of Python3 online submissions for Reverse Words in a String.
-Memory Usage: 14.2 MB, less than 97.87% of Python3 online submissions for Reverse Words in a String.
+Runtime: 48 ms, faster than 25.05% of Python3 online submissions for Reverse Words in a Strings.
+Memory Usage: 14.2 MB, less than 97.87% of Python3 online submissions for Reverse Words in a Strings.
 """
 class Solution:
 

@@ -24,8 +24,8 @@ S consists only of English lowercase letters.
 """
 
 
-# Runtime: 144 ms, faster than 14.18% of Python3 online submissions for Remove All Adjacent Duplicates In String.
-# Memory Usage: 14.6 MB, less than 56.09% of Python3 online submissions for Remove All Adjacent Duplicates In String.
+# Runtime: 144 ms, faster than 14.18% of Python3 online submissions for Remove All Adjacent Duplicates In Strings.
+# Memory Usage: 14.6 MB, less than 56.09% of Python3 online submissions for Remove All Adjacent Duplicates In Strings.
 class Solution:
     def removeDuplicates(self, S: str) -> str:
         st = []

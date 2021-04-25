@@ -59,8 +59,8 @@ from typing import List
 
 
 """
-Runtime: 60 ms, faster than 74.33% of Python3 online submissions for String Compression.
-Memory Usage: 13.8 MB, less than 83.58% of Python3 online submissions for String Compression.
+Runtime: 60 ms, faster than 74.33% of Python3 online submissions for Strings Compression.
+Memory Usage: 13.8 MB, less than 83.58% of Python3 online submissions for Strings Compression.
 """
 class Solution:
     def compress(self, chars: List[str]) -> int:

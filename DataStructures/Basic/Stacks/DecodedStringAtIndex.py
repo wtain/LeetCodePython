@@ -39,8 +39,8 @@ S starts with a letter.
 It's guaranteed that K is less than or equal to the length of the decoded string.
 The decoded string is guaranteed to have less than 2^63 letters.
 
-Runtime: 32 ms, faster than 44.35% of Python3 online submissions for Decoded String at Index.
-Memory Usage: 14.3 MB, less than 19.76% of Python3 online submissions for Decoded String at Index.
+Runtime: 32 ms, faster than 44.35% of Python3 online submissions for Decoded Strings at Index.
+Memory Usage: 14.3 MB, less than 19.76% of Python3 online submissions for Decoded Strings at Index.
 """
 
 

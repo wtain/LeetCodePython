@@ -21,8 +21,8 @@ from typing import List
 
 
 """
-Runtime: 308 ms, faster than 11.99% of Python3 online submissions for Reverse String.
-Memory Usage: 18.3 MB, less than 52.77% of Python3 online submissions for Reverse String.
+Runtime: 308 ms, faster than 11.99% of Python3 online submissions for Reverse Strings.
+Memory Usage: 18.3 MB, less than 52.77% of Python3 online submissions for Reverse Strings.
 """
 class Solution:
     def reverseString(self, s: List[str]) -> None:

@@ -16,7 +16,7 @@ Example 1:
 
 Input: s = "ababa"
 Output: 1
-Explanation: String is already palindrome
+Explanation: Strings is already palindrome
 Example 2:
 
 Input: s = "abb"

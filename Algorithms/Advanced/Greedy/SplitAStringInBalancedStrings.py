@@ -37,8 +37,8 @@ s[i] = 'L' or 'R'
 """
 
 
-# Runtime: 32 ms, faster than 59.24% of Python3 online submissions for Split a String in Balanced Strings.
-# Memory Usage: 14 MB, less than 88.78% of Python3 online submissions for Split a String in Balanced Strings.
+# Runtime: 32 ms, faster than 59.24% of Python3 online submissions for Split a Strings in Balanced Strings.
+# Memory Usage: 14 MB, less than 88.78% of Python3 online submissions for Split a Strings in Balanced Strings.
 class Solution:
     def balancedStringSplit(self, s: str) -> int:
         cnt = 0

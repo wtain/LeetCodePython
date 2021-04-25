@@ -30,8 +30,8 @@ Constraints:
 from collections import Counter
 
 
-# Runtime: 36 ms, faster than 18.04% of Python3 online submissions for Generate a String With Characters That Have Odd Counts.
-# Memory Usage: 14.3 MB, less than 41.46% of Python3 online submissions for Generate a String With Characters That Have Odd Counts.
+# Runtime: 36 ms, faster than 18.04% of Python3 online submissions for Generate a Strings With Characters That Have Odd Counts.
+# Memory Usage: 14.3 MB, less than 41.46% of Python3 online submissions for Generate a Strings With Characters That Have Odd Counts.
 class Solution:
     def generateTheString(self, n: int) -> str:
         return "a" * n if n % 2 == 1 else "a" * (n-1) + "b"

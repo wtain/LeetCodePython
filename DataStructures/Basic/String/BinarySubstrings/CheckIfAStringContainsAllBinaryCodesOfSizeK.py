@@ -41,8 +41,8 @@ s consists of 0's and 1's only.
 """
 
 
-# Runtime: 496 ms, faster than 38.40% of Python3 online submissions for Check If a String Contains All Binary Codes of Size K.
-# Memory Usage: 23.6 MB, less than 65.82% of Python3 online submissions for Check If a String Contains All Binary Codes of Size K.
+# Runtime: 496 ms, faster than 38.40% of Python3 online submissions for Check If a Strings Contains All Binary Codes of Size K.
+# Memory Usage: 23.6 MB, less than 65.82% of Python3 online submissions for Check If a Strings Contains All Binary Codes of Size K.
 # class Solution:
 #     def hasAllCodes(self, s: str, k: int) -> bool:
 #         n = len(s)
@@ -72,8 +72,8 @@ s consists of 0's and 1's only.
 #
 #         return len(values) == 2 ** k
 
-# Runtime: 272 ms, faster than 89.87% of Python3 online submissions for Check If a String Contains All Binary Codes of Size K.
-# Memory Usage: 27.4 MB, less than 41.35% of Python3 online submissions for Check If a String Contains All Binary Codes of Size K.
+# Runtime: 272 ms, faster than 89.87% of Python3 online submissions for Check If a Strings Contains All Binary Codes of Size K.
+# Memory Usage: 27.4 MB, less than 41.35% of Python3 online submissions for Check If a Strings Contains All Binary Codes of Size K.
 class Solution:
     def hasAllCodes(self, s: str, k: int) -> bool:
         return len({s[i-k : i] for i in range(k, len(s)+1)}) == 1 << k

@@ -16,8 +16,8 @@ Note: You may assume the string contains only lowercase English letters.
 
 
 """
-Runtime: 136 ms, faster than 50.84% of Python3 online submissions for First Unique Character in a String.
-Memory Usage: 14 MB, less than 34.37% of Python3 online submissions for First Unique Character in a String.
+Runtime: 136 ms, faster than 50.84% of Python3 online submissions for First Unique Character in a Strings.
+Memory Usage: 14 MB, less than 34.37% of Python3 online submissions for First Unique Character in a Strings.
 """
 class Solution:
     def firstUniqChar(self, s: str) -> int:

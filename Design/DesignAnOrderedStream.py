@@ -8,7 +8,7 @@ Design a stream that returns the values in increasing order of their IDs by retu
 Implement the OrderedStream class:
 
 OrderedStream(int n) Constructs the stream to take n values.
-String[] insert(int idKey, String value) Inserts the pair (idKey, value) into the stream, then returns the largest possible chunk of currently inserted values that appear next in the order.
+Strings[] insert(int idKey, Strings value) Inserts the pair (idKey, value) into the stream, then returns the largest possible chunk of currently inserted values that appear next in the order.
 
 
 Example:

@@ -29,8 +29,8 @@ n <= k <= 26 * n
 """
 
 
-# Runtime: 8980 ms, faster than 5.02% of Python3 online submissions for Smallest String With A Given Numeric Value.
-# Memory Usage: 15.6 MB, less than 55.02% of Python3 online submissions for Smallest String With A Given Numeric Value.
+# Runtime: 8980 ms, faster than 5.02% of Python3 online submissions for Smallest Strings With A Given Numeric Value.
+# Memory Usage: 15.6 MB, less than 55.02% of Python3 online submissions for Smallest Strings With A Given Numeric Value.
 # TLE??
 # class Solution:
 #     def getSmallestString(self, n: int, k: int) -> str:
@@ -46,8 +46,8 @@ n <= k <= 26 * n
 #             value += diff
 #         return result
 
-# Runtime: 40 ms, faster than 87.17% of Python3 online submissions for Smallest String With A Given Numeric Value.
-# Memory Usage: 15.4 MB, less than 75.28% of Python3 online submissions for Smallest String With A Given Numeric Value.
+# Runtime: 40 ms, faster than 87.17% of Python3 online submissions for Smallest Strings With A Given Numeric Value.
+# Memory Usage: 15.4 MB, less than 75.28% of Python3 online submissions for Smallest Strings With A Given Numeric Value.
 class Solution:
     def getSmallestString(self, n: int, k: int) -> str:
         value = n

@@ -38,8 +38,8 @@ s will be valid string such that mapping is always possible.
 """
 
 
-# Runtime: 32 ms, faster than 61.83% of Python3 online submissions for Decrypt String from Alphabet to Integer Mapping.
-# Memory Usage: 14.2 MB, less than 81.94% of Python3 online submissions for Decrypt String from Alphabet to Integer Mapping.
+# Runtime: 32 ms, faster than 61.83% of Python3 online submissions for Decrypt Strings from Alphabet to Integer Mapping.
+# Memory Usage: 14.2 MB, less than 81.94% of Python3 online submissions for Decrypt Strings from Alphabet to Integer Mapping.
 class Solution:
     def freqAlphabets(self, s: str) -> str:
         result = ""

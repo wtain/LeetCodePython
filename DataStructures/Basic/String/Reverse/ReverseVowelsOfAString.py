@@ -60,8 +60,8 @@ class Solution:
 """
 
 """
-Runtime: 92 ms, faster than 25.32% of Python3 online submissions for Reverse Vowels of a String.
-Memory Usage: 14.8 MB, less than 52.46% of Python3 online submissions for Reverse Vowels of a String.
+Runtime: 92 ms, faster than 25.32% of Python3 online submissions for Reverse Vowels of a Strings.
+Memory Usage: 14.8 MB, less than 52.46% of Python3 online submissions for Reverse Vowels of a Strings.
 """
 class Solution:
     def reverseVowels(self, s: str) -> str:

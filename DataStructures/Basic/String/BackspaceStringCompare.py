@@ -34,8 +34,8 @@ Follow up:
 
 Can you solve it in O(N) time and O(1) space?
 
-Runtime: 28 ms, faster than 82.54% of Python3 online submissions for Backspace String Compare.
-Memory Usage: 14.3 MB, less than 27.62% of Python3 online submissions for Backspace String Compare.
+Runtime: 28 ms, faster than 82.54% of Python3 online submissions for Backspace Strings Compare.
+Memory Usage: 14.3 MB, less than 27.62% of Python3 online submissions for Backspace Strings Compare.
 """
 
 

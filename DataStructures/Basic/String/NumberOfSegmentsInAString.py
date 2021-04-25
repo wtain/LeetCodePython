@@ -12,8 +12,8 @@ Output: 5
 
 
 """
-Runtime: 32 ms, faster than 56.91% of Python3 online submissions for Number of Segments in a String.
-Memory Usage: 13.8 MB, less than 40.74% of Python3 online submissions for Number of Segments in a String.
+Runtime: 32 ms, faster than 56.91% of Python3 online submissions for Number of Segments in a Strings.
+Memory Usage: 13.8 MB, less than 40.74% of Python3 online submissions for Number of Segments in a Strings.
 """
 class Solution:
     def countSegments(self, s: str) -> int:

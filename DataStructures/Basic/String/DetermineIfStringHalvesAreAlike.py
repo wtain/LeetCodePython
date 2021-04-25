@@ -42,8 +42,8 @@ from collections import Counter
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 36 ms, faster than 57.16% of Python3 online submissions for Determine if String Halves Are Alike.
-# Memory Usage: 14.4 MB, less than 37.10% of Python3 online submissions for Determine if String Halves Are Alike.
+# Runtime: 36 ms, faster than 57.16% of Python3 online submissions for Determine if Strings Halves Are Alike.
+# Memory Usage: 14.4 MB, less than 37.10% of Python3 online submissions for Determine if Strings Halves Are Alike.
 class Solution:
     def halvesAreAlike(self, s: str) -> bool:
         s = str.lower(s)

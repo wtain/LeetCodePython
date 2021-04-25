@@ -31,11 +31,11 @@ Constraints:
 1 <= word1[i].length, word2[i].length <= 103
 1 <= sum(word1[i].length), sum(word2[i].length) <= 103
 word1[i] and word2[i] consist of lowercase letters.
-Runtime: 52 ms, faster than 6.74% of Python3 online submissions for Check If Two String Arrays are Equivalent.
-Memory Usage: 14 MB, less than 99.83% of Python3 online submissions for Check If Two String Arrays are Equivalent.
+Runtime: 52 ms, faster than 6.74% of Python3 online submissions for Check If Two Strings Arrays are Equivalent.
+Memory Usage: 14 MB, less than 99.83% of Python3 online submissions for Check If Two Strings Arrays are Equivalent.
 
-Runtime: 40 ms, faster than 19.73% of Python3 online submissions for Check If Two String Arrays are Equivalent.
-Memory Usage: 14.3 MB, less than 33.14% of Python3 online submissions for Check If Two String Arrays are Equivalent.
+Runtime: 40 ms, faster than 19.73% of Python3 online submissions for Check If Two Strings Arrays are Equivalent.
+Memory Usage: 14.3 MB, less than 33.14% of Python3 online submissions for Check If Two Strings Arrays are Equivalent.
 """
 from typing import List
 
