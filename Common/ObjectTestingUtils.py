@@ -2,6 +2,7 @@ import timeit
 
 from Common.Leetcode import ListNode, TreeNode
 from Common.ListUtils import build_list, list_to_string, lists_equal, list_length
+from Common.NAryTree import Node
 from Common.TreeUtils import compareTrees, printTree
 
 
@@ -69,6 +70,20 @@ def count_tree_nodes(root: TreeNode) -> int:
     return 1 + count_tree_nodes(root.left) + count_tree_nodes(root.right)
 
 
+def count_nary_tree_nodes(root: Node) -> int:
+    if not root:
+        return 0
+    result = 1
+    if root.children:
+        for child in root.children:
+            result += count_nary_tree_nodes(child)
+    return result
+
+
+# todo: recursive calc_size, e.g. List of Lists
+# def calc_size(obj) -> int:
+
+
 def run_functional_tests(function, tests, **kwargs):
     if "custom_check" in kwargs:
         custom_check = kwargs["custom_check"]
@@ -79,8 +94,12 @@ def run_functional_tests(function, tests, **kwargs):
     else:
         if type(tests[0][0]) is TreeNode:
             input_metric = lambda test: count_tree_nodes(test[0])
+        elif type(tests[0][0]) is Node:
+            input_metric = lambda test: count_nary_tree_nodes(test[0])
         elif type(tests[0][0]) is ListNode:
             input_metric = lambda test: list_length(test[0])
+        elif type(tests[0][0]) is int:
+            input_metric = lambda test: test[0]
         else:
             input_metric = lambda test: len(test[0])
     n = len(tests)
@@ -88,13 +107,13 @@ def run_functional_tests(function, tests, **kwargs):
     i = 0
     for test in tests:
         i += 1
+        input_size = input_metric(test)
         start = timeit.default_timer()
         result = function(*test[:-1])
         stop = timeit.default_timer()
         expected = test[-1]
 
         duration = stop - start
-        input_size = input_metric(test)
 
         if custom_check:
             comparison_result = custom_check(test, result)

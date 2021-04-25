@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
+https://leetcode.com/explore/featured/card/april-leetcoding-challenge-2021/595/week-3-april-15th-april-21st/3710/
 Given a string s, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them causing the left and the right side of the deleted substring to concatenate together.
 
 We repeatedly make k duplicate removals on s until we no longer can.

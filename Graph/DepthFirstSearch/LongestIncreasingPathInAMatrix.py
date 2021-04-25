@@ -38,6 +38,7 @@ from functools import lru_cache
 from itertools import product
 from typing import List
 
+from Common.MatrixUtils import matrix_size
 from Common.ObjectTestingUtils import run_functional_tests
 
 
@@ -245,4 +246,4 @@ tests = [
     ([[1]], 1)
 ]
 
-run_functional_tests(Solution().longestIncreasingPath, tests, input_metric=lambda test: len(test[0])*len(test[0][0]))
+run_functional_tests(Solution().longestIncreasingPath, tests, input_metric=lambda test: matrix_size(test[0]))
