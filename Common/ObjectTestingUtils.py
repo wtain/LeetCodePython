@@ -89,6 +89,10 @@ def run_functional_tests(function, tests, **kwargs):
         custom_check = kwargs["custom_check"]
     else:
         custom_check = None
+    if "run_tests" in kwargs:
+        run_tests = kwargs["run_tests"]
+    else:
+        run_tests = None
     if "input_metric" in kwargs:
         input_metric = kwargs["input_metric"]
     else:
@@ -107,6 +111,8 @@ def run_functional_tests(function, tests, **kwargs):
     i = 0
     for test in tests:
         i += 1
+        if run_tests and i not in run_tests:
+            continue
         input_size = input_metric(test)
         start = timeit.default_timer()
         result = function(*test[:-1])

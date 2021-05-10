@@ -1,4 +1,5 @@
 """
+https://leetcode.com/explore/featured/card/april-leetcoding-challenge-2021/597/week-5-april-29th-april-30th/3726/
 https://leetcode.com/problems/powerful-integers/
 Given two positive integers x and y, an integer is powerful if it is equal to x^i + y^j for some integers i >= 0 and j >= 0.
 
@@ -38,6 +39,8 @@ Memory Usage: 14.2 MB, less than 71.92% of Python3 online submissions for Powerf
 from typing import List
 
 
+# Runtime: 28 ms, faster than 88.33% of Python3 online submissions for Powerful Integers.
+# Memory Usage: 14.2 MB, less than 65.42% of Python3 online submissions for Powerful Integers.
 class Solution:
     def powerfulIntegers(self, x: int, y: int, bound: int) -> List[int]:
         i = 0

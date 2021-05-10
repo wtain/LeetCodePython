@@ -1,4 +1,5 @@
 """
+https://leetcode.com/explore/featured/card/april-leetcoding-challenge-2021/596/week-4-april-22nd-april-28th/3722/
 https://leetcode.com/problems/power-of-three/
 Given an integer, write a function to determine if it is a power of three.
 
@@ -23,6 +24,8 @@ Could you do it without using any loop / recursion?
 """
 
 
+# Runtime: 68 ms, faster than 86.65% of Python3 online submissions for Power of Three.
+# Memory Usage: 14.2 MB, less than 47.05% of Python3 online submissions for Power of Three.
 """
 Runtime: 84 ms, faster than 64.35% of Python3 online submissions for Power of Three.
 Memory Usage: 13.6 MB, less than 97.62% of Python3 online submissions for Power of Three.

@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/count-primes/
+https://leetcode.com/explore/featured/card/may-leetcoding-challenge-2021/599/week-2-may-8th-may-14th/3738/
 Count the number of prime numbers less than a non-negative number, n.
 
 Example:
