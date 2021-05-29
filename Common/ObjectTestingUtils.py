@@ -1,4 +1,6 @@
+import copy
 import timeit
+from typing import List
 
 from Common.Leetcode import ListNode, TreeNode
 from Common.ListUtils import build_list, list_to_string, lists_equal, list_length
@@ -82,6 +84,16 @@ def count_nary_tree_nodes(root: Node) -> int:
 
 # todo: recursive calc_size, e.g. List of Lists
 # def calc_size(obj) -> int:
+
+def make_inplace(function):
+
+    def inner(args):
+        arg0 = args
+        arg0 = copy.deepcopy(arg0)
+        function(arg0)
+        return arg0
+
+    return inner
 
 
 def run_functional_tests(function, tests, **kwargs):
