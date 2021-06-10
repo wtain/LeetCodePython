@@ -51,6 +51,9 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 # Runtime: 88 ms, faster than 61.86% of Python3 online submissions for Find Duplicate File in System.
 # Memory Usage: 24 MB, less than 77.03% of Python3 online submissions for Find Duplicate File in System.
+from Common.ResultComparators import compareSets
+
+
 class Solution:
     def findDuplicate(self, paths: List[str]) -> List[List[str]]:
         h = {}
@@ -82,10 +85,4 @@ tests = [
 ]
 
 
-def customCheck(test, result) -> bool:
-    expected = test[-1]
-    if len(expected) != len(result):
-        return False
-    return sorted(expected) == sorted(result)
-
-run_functional_tests(Solution().findDuplicate, tests, custom_check=customCheck)
+run_functional_tests(Solution().findDuplicate, tests, custom_check=compareSets)
