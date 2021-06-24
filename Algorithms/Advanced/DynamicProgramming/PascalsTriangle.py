@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/pascals-triangle/
+https://leetcode.com/explore/featured/card/june-leetcoding-challenge-2021/605/week-3-june-15th-june-21st/3786/
 
 Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
 
