@@ -149,7 +149,7 @@ def run_functional_tests(function, tests, **kwargs):
                 print("Got:")
                 printTree(result)
             else:
-                print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result))
+                print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.3f}".format(duration))
             nfail += 1
     is_success = nfail == 0
     status = "OVERALL: " + ("SUCCESS" if is_success else "FAILED")
