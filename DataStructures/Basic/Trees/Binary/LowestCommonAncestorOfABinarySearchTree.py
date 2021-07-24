@@ -1,4 +1,5 @@
 """
+https://leetcode.com/explore/featured/card/july-leetcoding-challenge-2021/610/week-3-july-15th-july-21st/3819/
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
 
@@ -37,39 +38,55 @@ from Common.Leetcode import TreeNode
 Runtime: 164 ms, faster than 5.25% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.
 Memory Usage: 17.7 MB, less than 75.52% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.
 """
+# class Solution:
+#
+#     def getPath(self, root: TreeNode, p: TreeNode) -> List[TreeNode]:
+#         def getPathImpl(root: TreeNode, p: TreeNode, path: List[TreeNode]):
+#             path.append(root)
+#             if root is p:
+#                 return True
+#             if root.left and getPathImpl(root.left, p, path):
+#                 return True
+#             if root.right and getPathImpl(root.right, p, path):
+#                 return True
+#             path.pop()
+#             return False
+#
+#         path: List[TreeNode] = []
+#         getPathImpl(root, p, path)
+#         return path
+#
+#     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+#         path1: List[TreeNode] = self.getPath(root, p)
+#         path2: List[TreeNode] = self.getPath(root, q)
+#         n1 = len(path1)
+#         n2 = len(path2)
+#         i1 = n1-1
+#         i2 = n2-1
+#         while i2 > i1:
+#             i2 -= 1
+#         while i1 > i2:
+#             i1 -= 1
+#         while path1[i1] is not path2[i2]:
+#             i1 -= 1
+#             i2 -= 1
+#         return path2[i1]
+
+
+# Runtime: 80 ms, faster than 55.25% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.
+# Memory Usage: 18.2 MB, less than 79.58% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.
+# https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solution/
 class Solution:
 
-    def getPath(self, root: TreeNode, p: TreeNode) -> List[TreeNode]:
-        def getPathImpl(root: TreeNode, p: TreeNode, path: List[TreeNode]):
-            path.append(root)
-            if root is p:
-                return True
-            if root.left and getPathImpl(root.left, p, path):
-                return True
-            if root.right and getPathImpl(root.right, p, path):
-                return True
-            path.pop()
-            return False
-
-        path: List[TreeNode] = []
-        getPathImpl(root, p, path)
-        return path
-
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        path1: List[TreeNode] = self.getPath(root, p)
-        path2: List[TreeNode] = self.getPath(root, q)
-        n1 = len(path1)
-        n2 = len(path2)
-        i1 = n1-1
-        i2 = n2-1
-        while i2 > i1:
-            i2 -= 1
-        while i1 > i2:
-            i1 -= 1
-        while path1[i1] is not path2[i2]:
-            i1 -= 1
-            i2 -= 1
-        return path2[i1]
+        node = root
+        while node:
+            if node.val > p.val and node.val > q.val:
+                node = node.left
+            elif node.val < q.val and node.val < p.val:
+                node = node.right
+            else:
+                return node
 
 
 t1 = TreeNode(6)

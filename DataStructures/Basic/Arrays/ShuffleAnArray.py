@@ -1,4 +1,5 @@
 """
+https://leetcode.com/explore/featured/card/july-leetcoding-challenge-2021/610/week-3-july-15th-july-21st/3820/
 https://leetcode.com/problems/shuffle-an-array/
 
 Given an integer array nums, design an algorithm to randomly shuffle the array.
@@ -63,6 +64,7 @@ from typing import List
 
 # Runtime: 328 ms, faster than 43.22% of Python3 online submissions for Shuffle an Array.
 # Memory Usage: 19.4 MB, less than 39.51% of Python3 online submissions for Shuffle an Array.
+# https://leetcode.com/problems/shuffle-an-array/solution/
 class Solution:
 
     def __init__(self, nums: List[int]):
@@ -83,6 +85,7 @@ class Solution:
 # obj = Solution(nums)
 # param_1 = obj.reset()
 # param_2 = obj.shuffle()
+
 
 s = Solution([1, 2, 3, 4, 5])
 print(s.shuffle())

@@ -24,6 +24,7 @@ def declare_class(CLASS):
 def run_object_tests(tests, **kwargs):
     if "cls" in kwargs:
         declare_class(kwargs["cls"])
+    overall = True
     for j, test in enumerate(tests):
         methods = test[0]
         arguments = test[1]
@@ -38,10 +39,15 @@ def run_object_tests(tests, **kwargs):
             output = call_method(obj, methods[i], *args)
             if not compare_values(output, expected[i]):
                 fail = True
+                overall = False
                 print(str(j+1) + ") FAIL: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
                 break
         if not fail:
             print(str(j+1) + ") PASS")
+    if overall:
+        print("Overall status: PASS")
+    else:
+        print("Overall status: FAIL")
 
 
 def to_string(v) -> str:

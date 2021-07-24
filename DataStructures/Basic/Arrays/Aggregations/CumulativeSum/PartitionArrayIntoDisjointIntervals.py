@@ -1,4 +1,5 @@
 """
+https://leetcode.com/explore/featured/card/july-leetcoding-challenge-2021/611/week-4-july-22nd-july-28th/3823/
 https://leetcode.com/problems/partition-array-into-disjoint-intervals/
 
 Given an array A, partition it into two (contiguous) subarrays left and right so that:
@@ -55,25 +56,43 @@ from typing import List
 
 # Runtime: 208 ms, faster than 51.61% of Python3 online submissions for Partition Array into Disjoint Intervals.
 # Memory Usage: 18.3 MB, less than 70.65% of Python3 online submissions for Partition Array into Disjoint Intervals.
+# https://leetcode.com/problems/partition-array-into-disjoint-intervals/solution/
+# class Solution:
+#     def partitionDisjoint(self, A: List[int]) -> int:
+#
+#         # max(left) < min(right)
+#         n = len(A)
+#         rmins = [0] * n
+#
+#         rmins[-1] = A[-1]
+#         for i in range(1, n):
+#             rmins[-i-1] = min(A[-i-1], rmins[-i])
+#
+#         i = 0
+#         mx = A[0]
+#         while i < n-1 and mx > rmins[i+1]:
+#             i += 1
+#             mx = max(mx, A[i])
+#
+#         return i + 1
+
+
+# Runtime: 172 ms, faster than 96.35% of Python3 online submissions for Partition Array into Disjoint Intervals.
+# Memory Usage: 18.3 MB, less than 91.29% of Python3 online submissions for Partition Array into Disjoint Intervals.
+# https://leetcode.com/problems/partition-array-into-disjoint-intervals/solution/224152
 class Solution:
     def partitionDisjoint(self, A: List[int]) -> int:
-
-        # max(left) < min(right)
-        n = len(A)
-        rmins = [0] * n
-
-        rmins[-1] = A[-1]
-        for i in range(1, n):
-            rmins[-i-1] = min(A[-i-1], rmins[-i])
-
-        i = 0
         mx = A[0]
-        while i < n-1 and mx > rmins[i+1]:
-            i += 1
-            mx = max(mx, A[i])
-
-        return i + 1
-
+        allmx = A[0]
+        res = 1
+        n = len(A)
+        for i in range(n):
+            if A[i] < mx:
+                res = i + 1
+                mx = allmx
+            else:
+                allmx = max(allmx, A[i])
+        return res
 
 
 tests = [

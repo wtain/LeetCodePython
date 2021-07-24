@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/isomorphic-strings/
+https://leetcode.com/explore/featured/card/july-leetcoding-challenge-2021/609/week-2-july-8th-july-14th/3811/
 Given two strings s and t, determine if they are isomorphic.
 
 Two strings are isomorphic if the characters in s can be replaced to get t.
