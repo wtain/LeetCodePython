@@ -5,6 +5,7 @@ from typing import List
 from Common.Leetcode import ListNode, TreeNode
 from Common.ListUtils import build_list, list_to_string, lists_equal, list_length
 from Common.NAryTree import Node
+from Common.NestedInteger import NestedInteger, nestedIntegerToString
 from Common.TreeUtils import compareTrees, printTree
 
 
@@ -53,6 +54,8 @@ def run_object_tests(tests, **kwargs):
 def to_string(v) -> str:
     if type(v) is ListNode:
         return list_to_string(v)
+    elif type(v) is NestedInteger:
+        return nestedIntegerToString(v)
     else:
         return str(v)
 
@@ -133,7 +136,8 @@ def run_functional_tests(function, tests, **kwargs):
             continue
         input_size = input_metric(test)
         start = timeit.default_timer()
-        result = function(*test[:-1])
+        parameters = test[:-1];
+        result = function(*parameters)
         stop = timeit.default_timer()
         expected = test[-1]
 
@@ -148,14 +152,14 @@ def run_functional_tests(function, tests, **kwargs):
             print(str(i) + ") PASS, took: " + "{:.3f}".format(duration) + " on size=" + str(input_size))
         else:
             if type(expected) is str and type(result) is str:
-                print(str(i) + ") FAIL - expected '" + expected + "', got '" + result + "'")
+                print(str(i) + ") FAIL - expected '" + expected + "', got '" + result + "', params: " + str(parameters))
             elif type(expected) is TreeNode or type(result) is TreeNode:
                 print("Expected:")
                 printTree(expected)
                 print("Got:")
                 printTree(result)
             else:
-                print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.3f}".format(duration))
+                print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.3f}".format(duration) + ", params: " + str(parameters))
             nfail += 1
     is_success = nfail == 0
     status = "OVERALL: " + ("SUCCESS" if is_success else "FAILED")

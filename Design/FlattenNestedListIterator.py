@@ -32,6 +32,7 @@ The values of the integers in the nested list is in the range [-106, 106].
 from collections import deque
 
 from Common.ListUtils import lists_equal
+from Common.NestedInteger import NestedInteger, ConvertToList, CreateNestedList
 from Common.ObjectTestingUtils import run_functional_tests
 
 """
@@ -39,55 +40,7 @@ This is the interface that allows for creating nested lists.
 You should not implement it, or speculate about its implementation
 """
 
-def CreateNestedInteger(arg):
-    return NestedInteger(arg)
-    # if type(arg) is int:
-    #     return NestedInteger(arg)
-    # return [ NestedInteger(argi) for argi in arg ]
 
-
-def CreateNestedList(arg):
-    return [CreateNestedInteger(arg)]
-
-
-def ConvertToList(it):
-    result = []
-    while it.hasNext():
-        result.append(it.next())
-    return result
-
-
-class NestedInteger:
-
-    def __init__(self, arg):
-        if type(arg) is int:
-            self.value = arg
-            self.type = "int"
-        else:
-            self.type = "list"
-            self.value = []
-            for v in arg:
-                self.value.append(CreateNestedInteger(v))
-
-    def isInteger(self) -> bool:
-        """
-        @return True if this NestedInteger holds a single integer, rather than a nested list.
-        """
-        return self.type == "int"
-    
-    def getInteger(self) -> int:
-        """
-        @return the single integer that this NestedInteger holds, if it holds a single integer
-        Return None if this NestedInteger holds a nested list
-        """
-        return self.value
-    
-    def getList(self): # -> [NestedInteger]:
-        """
-        @return the nested list that this NestedInteger holds, if it holds a nested list
-        Return None if this NestedInteger holds a single integer
-        """
-        return self.value
 
 
 # class NestedIterator:
@@ -119,7 +72,6 @@ class NestedInteger:
 # Runtime: 68 ms, faster than 57.27% of Python3 online submissions for Flatten Nested List Iterator.
 # Memory Usage: 17.8 MB, less than 40.61% of Python3 online submissions for Flatten Nested List Iterator.
 class NestedIterator:
-
 
     def __init__(self, nestedList: [NestedInteger]):
         self.deq = deque(nestedList)

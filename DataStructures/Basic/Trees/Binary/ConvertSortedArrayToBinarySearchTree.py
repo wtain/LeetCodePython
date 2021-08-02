@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+https://leetcode.com/explore/featured/card/july-leetcoding-challenge-2021/611/week-4-july-22nd-july-28th/3827/
 
 Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
 
@@ -26,6 +27,8 @@ from Common.TreeUtils import printTree
 """
 Runtime: 92 ms, faster than 26.96% of Python3 online submissions for Convert Sorted Array to Binary Search Tree.
 Memory Usage: 16.1 MB, less than 77.03% of Python3 online submissions for Convert Sorted Array to Binary Search Tree.
+Runtime: 56 ms, faster than 88.65% of Python3 online submissions for Convert Sorted Array to Binary Search Tree.
+Memory Usage: 15.7 MB, less than 59.53% of Python3 online submissions for Convert Sorted Array to Binary Search Tree.
 """
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> TreeNode:

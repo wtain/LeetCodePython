@@ -264,7 +264,6 @@ class Solution:
             q1 = visited
         return found
 
-
     def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
         self.currPath = []
         self.adjList = collections.defaultdict(list)
@@ -280,6 +279,49 @@ class Solution:
         return self.shortestPaths
 
 
+# UNFINISHED
+# class Solution:
+#     def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+#         if endWord not in wordList:
+#             return []
+#         result = []
+#         L = len(beginWord)
+#
+#         words = set(wordList)
+#
+#         connections = collections.defaultdict(list)
+#         for word in wordList:
+#             for i in range(L):
+#                 w1 = word[:i] + '*' + word[i+1:]
+#                 connections[w1].append(word)
+#
+#         q1, q2 = [beginWord], [endWord]
+#         forward = True
+#         found = False
+#         while q1:
+#             if len(q1) > len(q2):
+#                 q1, q2 = q2, q1
+#                 forward = not forward
+#             next_level = []
+#             for w in q1:
+#                 for i in range(L):
+#                     w1 = w[:i] + '*' + w[i + 1:]
+#                     for next_word in connections[w1]:
+#                         if next_word in q2:
+#                             found = True
+#                             if forward:
+#                                 connections[w].append(next_word)
+#                             else:
+#                                 connections[next_word].append(w)
+#                         elif found and next_word not in q1:
+#                             next_level.append(next_word)
+#                             if forward:
+#                                 connections[w].append(next_word)
+#                             else:
+#                                 connections[next_word].append(w)
+#
+#
+#         return result
 
 
 tests = [
