@@ -27,7 +27,11 @@ Memory Usage: 32.7 MB, less than 5.29% of Python3 online submissions for Palindr
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
+
+# Runtime: 919 ms, faster than 9.97% of Python3 online submissions for Palindrome Partitioning.
+# Memory Usage: 32.4 MB, less than 8.53% of Python3 online submissions for Palindrome Partitioning.
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         result = []
@@ -60,8 +64,23 @@ class Solution:
         return result
 
 
-print(Solution().partition("efe"))  # [["e","f","e"],["efe"]]
-print(Solution().partition("aaba"))  # [['a', 'a', 'b', 'a'], ['a', 'aba'], ['aa', 'b', 'a']]
-print(Solution().partition("aab"))  # [["a","a","b"],["aa","b"]]
-print(Solution().partition("a"))  # [["a"]]
+tests = [
+    [
+        "efe",
+        [["e","f","e"],["efe"]]
+    ],
+    [
+        "aaba",
+        [['a', 'a', 'b', 'a'], ['a', 'aba'], ['aa', 'b', 'a']]
+    ],
+    [
+        "aab",
+        [["a","a","b"],["aa","b"]]
+    ],
+    [
+        "a",
+        [["a"]]
+    ]
+]
 
+run_functional_tests(Solution().partition, tests)

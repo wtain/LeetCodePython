@@ -136,30 +136,35 @@ def run_functional_tests(function, tests, **kwargs):
             continue
         input_size = input_metric(test)
         start = timeit.default_timer()
-        parameters = test[:-1];
-        result = function(*parameters)
-        stop = timeit.default_timer()
-        expected = test[-1]
+        parameters = test[:-1]
+        try:
+            result = function(*parameters)
+            stop = timeit.default_timer()
+            expected = test[-1]
 
-        duration = stop - start
+            duration = stop - start
 
-        if custom_check:
-            comparison_result = custom_check(test, result)
-        else:
-            comparison_result = compare_values(result, expected)
-
-        if comparison_result:
-            print(str(i) + ") PASS, took: " + "{:.3f}".format(duration) + " on size=" + str(input_size))
-        else:
-            if type(expected) is str and type(result) is str:
-                print(str(i) + ") FAIL - expected '" + expected + "', got '" + result + "', params: " + str(parameters))
-            elif type(expected) is TreeNode or type(result) is TreeNode:
-                print("Expected:")
-                printTree(expected)
-                print("Got:")
-                printTree(result)
+            if custom_check:
+                comparison_result = custom_check(test, result)
             else:
-                print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.3f}".format(duration) + ", params: " + str(parameters))
+                comparison_result = compare_values(result, expected)
+
+            if comparison_result:
+                print(str(i) + ") PASS, took: " + "{:.3f}".format(duration) + " on size=" + str(input_size))
+            else:
+                if type(expected) is str and type(result) is str:
+                    print(str(i) + ") FAIL - expected '" + expected + "', got '" + result + "', params: " + str(parameters))
+                elif type(expected) is TreeNode or type(result) is TreeNode:
+                    print("Expected:")
+                    printTree(expected)
+                    print("Got:")
+                    printTree(result)
+                else:
+                    print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.3f}".format(duration) + ", params: " + str(parameters))
+                nfail += 1
+        except Exception as e:
+            print(str(i) + ") FAIL - CRASH, params: " + str(parameters))
+            print(e)
             nfail += 1
     is_success = nfail == 0
     status = "OVERALL: " + ("SUCCESS" if is_success else "FAILED")
