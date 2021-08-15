@@ -1,5 +1,6 @@
 import copy
 import timeit
+import traceback
 from typing import List
 
 from Common.Leetcode import ListNode, TreeNode
@@ -165,6 +166,7 @@ def run_functional_tests(function, tests, **kwargs):
         except Exception as e:
             print(str(i) + ") FAIL - CRASH, params: " + str(parameters))
             print(e)
+            print(e, traceback.format_exc())
             nfail += 1
     is_success = nfail == 0
     status = "OVERALL: " + ("SUCCESS" if is_success else "FAILED")

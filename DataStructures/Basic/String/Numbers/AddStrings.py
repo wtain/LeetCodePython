@@ -1,4 +1,5 @@
 """
+https://leetcode.com/explore/featured/card/august-leetcoding-challenge-2021/614/week-2-august-8th-august-14th/3875/
 https://leetcode.com/problems/add-strings/
 Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
 
@@ -13,6 +14,8 @@ You must not use any built-in BigInteger library or convert the inputs to intege
 """
 Runtime: 44 ms, faster than 73.75% of Python3 online submissions for Add Strings.
 Memory Usage: 13.7 MB, less than 90.81% of Python3 online submissions for Add Strings.
+Runtime: 32 ms, faster than 91.77% of Python3 online submissions for Add Strings.
+Memory Usage: 14.4 MB, less than 40.18% of Python3 online submissions for Add Strings.
 """
 class Solution:
     def addStrings(self, num1: str, num2: str) -> str:
