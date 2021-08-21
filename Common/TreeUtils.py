@@ -1,3 +1,6 @@
+from typing import List
+
+from Common.Constants import null
 from Common.Leetcode import TreeNode
 
 
@@ -31,3 +34,29 @@ def printTree(root: TreeNode):
         print(')', end='')
     printTreeImpl(root)
     print()
+
+
+def build_tree_from_list(values: List[int]) -> TreeNode:
+    n = len(values)
+    if not n:
+        return null
+    root = TreeNode(values[0])
+    level = [root]
+    i = 1
+    while i < n:
+        next_level = []
+        for node in level:
+            if i >= n:
+                break
+            if values[i]:
+                node.left = TreeNode(values[i])
+                next_level.append(node.left)
+            i += 1
+            if i >= n:
+                break
+            if values[i]:
+                node.right = TreeNode(values[i])
+                next_level.append(node.right)
+            i += 1
+        level = next_level
+    return root
