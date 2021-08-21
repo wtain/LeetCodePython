@@ -1,5 +1,7 @@
 """
 https://leetcode.com/problems/range-sum-query-immutable/
+https://leetcode.com/explore/featured/card/august-leetcoding-challenge-2021/615/week-3-august-15th-august-21st/3892/
+
 Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
 
 Example:
@@ -14,10 +16,11 @@ There are many calls to sumRange function.
 """
 from typing import List
 
-
 """
 Runtime: 160 ms, faster than 35.24% of Python3 online submissions for Range Sum Query - Immutable.
 Memory Usage: 17.5 MB, less than 24.00% of Python3 online submissions for Range Sum Query - Immutable.
+Runtime: 80 ms, faster than 62.86% of Python3 online submissions for Range Sum Query - Immutable.
+Memory Usage: 17.7 MB, less than 62.73% of Python3 online submissions for Range Sum Query - Immutable.
 """
 class NumArray:
 

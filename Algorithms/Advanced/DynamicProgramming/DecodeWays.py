@@ -1,6 +1,7 @@
 """
 https://leetcode.com/problems/decode-ways/
 https://leetcode.com/explore/challenge/card/december-leetcoding-challenge/572/week-4-december-22nd-december-28th/3581/
+https://leetcode.com/explore/featured/card/august-leetcoding-challenge-2021/615/week-3-august-15th-august-21st/3902/
 
 Runtime: 32 ms, faster than 63.92% of Python3 online submissions for Decode Ways.
 Memory Usage: 14.4 MB, less than 26.32% of Python3 online submissions for Decode Ways.
