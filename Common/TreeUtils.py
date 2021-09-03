@@ -23,6 +23,13 @@ def compareTrees(t1: TreeNode, t2: TreeNode) -> bool:
     return compareTrees(t1.left, t2.left) and compareTrees(t1.right, t2.right)
 
 
+def compareTreeLists(l1: List[TreeNode], l2: List[TreeNode]) -> bool:
+    for t1,t2 in zip(l1,l2):
+        if not compareTrees(t1,t2):
+            return False
+    return True
+
+
 def printTree(root: TreeNode):
     def printTreeImpl(root: TreeNode):
         if root is None:
@@ -48,15 +55,19 @@ def build_tree_from_list(values: List[int]) -> TreeNode:
         for node in level:
             if i >= n:
                 break
-            if values[i]:
+            if values[i] is not None:
                 node.left = TreeNode(values[i])
                 next_level.append(node.left)
             i += 1
             if i >= n:
                 break
-            if values[i]:
+            if values[i] is not None:
                 node.right = TreeNode(values[i])
                 next_level.append(node.right)
             i += 1
         level = next_level
     return root
+
+
+def build_tree_list_from_lists(values: List[List[int]]) -> List[TreeNode]:
+    return list(map(build_tree_from_list, values))

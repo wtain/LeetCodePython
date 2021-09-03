@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/
+https://leetcode.com/explore/featured/card/august-leetcoding-challenge-2021/616/week-4-august-22nd-august-28th/3920/
 
 One way to serialize a binary tree is to use preorder traversal. When we encounter a non-null node, we record the node's value. If it is a null node, we record using a sentinel value such as '#'.
 

@@ -7,7 +7,7 @@ from Common.Leetcode import ListNode, TreeNode
 from Common.ListUtils import build_list, list_to_string, lists_equal, list_length
 from Common.NAryTree import Node
 from Common.NestedInteger import NestedInteger, nestedIntegerToString
-from Common.TreeUtils import compareTrees, printTree
+from Common.TreeUtils import compareTrees, printTree, build_tree_from_list, compareTreeLists
 
 
 def call_method(o, name, *args, **kwargs):
@@ -42,10 +42,10 @@ def run_object_tests(tests, **kwargs):
             if not compare_values(output, expected[i]):
                 fail = True
                 overall = False
-                print(str(j+1) + ") FAIL: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
+                print(str(j + 1) + ") FAIL: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
                 break
         if not fail:
-            print(str(j+1) + ") PASS")
+            print(str(j + 1) + ") PASS")
     if overall:
         print("Overall status: PASS")
     else:
@@ -65,13 +65,21 @@ def compare_floats(v1, v2, eps=1e-5):
     return abs(v1 - v2) < eps
 
 
+def compare_bools(v1: bool, v2: bool) -> bool:
+    return v1 and v2 or not v1 and not v2  # Deal with None's
+
+
 def compare_values(v1, v2) -> bool:
     if type(v1) is ListNode:
         return lists_equal(v1, v2)
     elif type(v1) is TreeNode:
         return compareTrees(v1, v2)
+    elif type(v1) is list and v1 and type(v1[0]) is TreeNode:
+        return compareTreeLists(v1, v2)
     elif type(v1) is float:
         return compare_floats(v1, v2)
+    elif type(v1) is bool or type(v2) is bool:
+        return compare_bools(v1, v2)
     else:
         return v1 == v2
 
@@ -96,7 +104,6 @@ def count_nary_tree_nodes(root: Node) -> int:
 # def calc_size(obj) -> int:
 
 def make_inplace(function):
-
     def inner(args):
         arg0 = args
         arg0 = copy.deepcopy(arg0)
@@ -160,6 +167,12 @@ def run_functional_tests(function, tests, **kwargs):
                     printTree(expected)
                     print("Got:")
                     printTree(result)
+                elif type(expected) is list and expected and type(expected[0]) is TreeNode or type(result) is list and result and type(result[0]) is TreeNode:
+                    for exp, res in zip(expected, result):
+                        print("Expected:")
+                        printTree(exp)
+                        print("Got:")
+                        printTree(res)
                 else:
                     print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.3f}".format(duration) + ", params: " + str(parameters))
                 nfail += 1
@@ -189,3 +202,7 @@ def convert_test_params(tests, function, **kwargs):
 
 def convert_test_params_to_lists(tests, indexes):
     return convert_test_params(tests, build_list, indexes=indexes)
+
+
+def convert_test_params_to_trees(tests, indexes):
+    return convert_test_params(tests, build_tree_from_list, indexes=indexes)
