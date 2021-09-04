@@ -34,8 +34,8 @@ s[i] is either '0' or '1'.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 76 ms, faster than 19.53% of Python3 online submissions for Minimum Changes To Make Alternating Binary String.
-# Memory Usage: 14.4 MB, less than 38.12% of Python3 online submissions for Minimum Changes To Make Alternating Binary String.
+# Runtime: 76 ms, faster than 19.53% of Python3 online submissions for Minimum Changes To Make Alternating Binary Strings.
+# Memory Usage: 14.4 MB, less than 38.12% of Python3 online submissions for Minimum Changes To Make Alternating Binary Strings.
 # class Solution:
 #     def minOperations(self, s: str) -> int:
 #         cnt1 = cnt2 = 0
@@ -48,8 +48,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return min(cnt1, cnt2)
 
 
-# Runtime: 80 ms, faster than 15.88% of Python3 online submissions for Minimum Changes To Make Alternating Binary String.
-# Memory Usage: 14.3 MB, less than 65.65% of Python3 online submissions for Minimum Changes To Make Alternating Binary String.
+# Runtime: 80 ms, faster than 15.88% of Python3 online submissions for Minimum Changes To Make Alternating Binary Strings.
+# Memory Usage: 14.3 MB, less than 65.65% of Python3 online submissions for Minimum Changes To Make Alternating Binary Strings.
 class Solution:
     def minOperations(self, s: str) -> int:
         return min(sum([c != str(i % 2) for i, c in enumerate(s)]), sum([c != str(1 - i % 2) for i, c in enumerate(s)]))

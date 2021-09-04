@@ -46,8 +46,8 @@ s consists of lowercase English letters.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 40 ms, faster than 46.37% of Python3 online submissions for Sum of Digits of String After Convert.
-# Memory Usage: 14.3 MB, less than 26.82% of Python3 online submissions for Sum of Digits of String After Convert.
+# Runtime: 40 ms, faster than 46.37% of Python3 online submissions for Sum of Digits of Strings After Convert.
+# Memory Usage: 14.3 MB, less than 26.82% of Python3 online submissions for Sum of Digits of Strings After Convert.
 # class Solution:
 #     def getLucky(self, s: str, k: int) -> int:
 #
@@ -68,8 +68,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return v
 
 
-# Runtime: 32 ms, faster than 90.07% of Python3 online submissions for Sum of Digits of String After Convert.
-# Memory Usage: 14.1 MB, less than 82.80% of Python3 online submissions for Sum of Digits of String After Convert.
+# Runtime: 32 ms, faster than 90.07% of Python3 online submissions for Sum of Digits of Strings After Convert.
+# Memory Usage: 14.1 MB, less than 82.80% of Python3 online submissions for Sum of Digits of Strings After Convert.
 class Solution:
     def getLucky(self, s: str, k: int) -> int:
 

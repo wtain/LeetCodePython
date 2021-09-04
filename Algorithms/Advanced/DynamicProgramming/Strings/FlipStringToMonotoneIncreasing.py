@@ -35,8 +35,8 @@ s[i] is either '0' or '1'.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 536 ms, faster than 5.30% of Python3 online submissions for Flip String to Monotone Increasing.
-# Memory Usage: 26.4 MB, less than 5.30% of Python3 online submissions for Flip String to Monotone Increasing.
+# Runtime: 536 ms, faster than 5.30% of Python3 online submissions for Flip Strings to Monotone Increasing.
+# Memory Usage: 26.4 MB, less than 5.30% of Python3 online submissions for Flip Strings to Monotone Increasing.
 # class Solution:
 #     def minFlipsMonoIncr(self, s: str) -> int:
 #         n = len(s)
@@ -57,8 +57,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return min(dp[-1][0], dp[-1][1])
 
 
-# Runtime: 204 ms, faster than 13.26% of Python3 online submissions for Flip String to Monotone Increasing.
-# Memory Usage: 14.9 MB, less than 48.48% of Python3 online submissions for Flip String to Monotone Increasing.
+# Runtime: 204 ms, faster than 13.26% of Python3 online submissions for Flip Strings to Monotone Increasing.
+# Memory Usage: 14.9 MB, less than 48.48% of Python3 online submissions for Flip Strings to Monotone Increasing.
 # class Solution:
 #     def minFlipsMonoIncr(self, s: str) -> int:
 #         n = len(s)
@@ -78,8 +78,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 
 # https://leetcode.com/problems/flip-string-to-monotone-increasing/solution/
-# Runtime: 360 ms, faster than 5.30% of Python3 online submissions for Flip String to Monotone Increasing.
-# Memory Usage: 18.8 MB, less than 7.95% of Python3 online submissions for Flip String to Monotone Increasing.
+# Runtime: 360 ms, faster than 5.30% of Python3 online submissions for Flip Strings to Monotone Increasing.
+# Memory Usage: 18.8 MB, less than 7.95% of Python3 online submissions for Flip Strings to Monotone Increasing.
 class Solution:
     def minFlipsMonoIncr(self, s: str) -> int:
         P = [0]

@@ -47,15 +47,15 @@ from typing import List
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 64 ms, faster than 12.45% of Python3 online submissions for Shuffle String.
-# Memory Usage: 14.4 MB, less than 18.54% of Python3 online submissions for Shuffle String.
+# Runtime: 64 ms, faster than 12.45% of Python3 online submissions for Shuffle Strings.
+# Memory Usage: 14.4 MB, less than 18.54% of Python3 online submissions for Shuffle Strings.
 # class Solution:
 #     def restoreString(self, s: str, indices: List[int]) -> str:
 #         return "".join(c for i, c in sorted([i, c] for i, c in zip(indices, s)))
 
 
-# Runtime: 96 ms, faster than 5.05% of Python3 online submissions for Shuffle String.
-# Memory Usage: 14.1 MB, less than 92.21% of Python3 online submissions for Shuffle String.
+# Runtime: 96 ms, faster than 5.05% of Python3 online submissions for Shuffle Strings.
+# Memory Usage: 14.1 MB, less than 92.21% of Python3 online submissions for Shuffle Strings.
 class Solution:
     def restoreString(self, s: str, indices: List[int]) -> str:
         result = [' '] * len(s)

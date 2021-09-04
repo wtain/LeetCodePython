@@ -39,8 +39,8 @@ s consists only of lowercase English letters.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 712 ms, faster than 62.68% of Python3 online submissions for Delete Characters to Make Fancy String.
-# Memory Usage: 16.4 MB, less than 50.60% of Python3 online submissions for Delete Characters to Make Fancy String.
+# Runtime: 712 ms, faster than 62.68% of Python3 online submissions for Delete Characters to Make Fancy Strings.
+# Memory Usage: 16.4 MB, less than 50.60% of Python3 online submissions for Delete Characters to Make Fancy Strings.
 # class Solution:
 #     def makeFancyString(self, s: str) -> str:
 #         result = s[:2]
@@ -52,8 +52,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return result
 
 
-# Runtime: 852 ms, faster than 41.66% of Python3 online submissions for Delete Characters to Make Fancy String.
-# Memory Usage: 16.9 MB, less than 13.78% of Python3 online submissions for Delete Characters to Make Fancy String.
+# Runtime: 852 ms, faster than 41.66% of Python3 online submissions for Delete Characters to Make Fancy Strings.
+# Memory Usage: 16.9 MB, less than 13.78% of Python3 online submissions for Delete Characters to Make Fancy Strings.
 class Solution:
     def makeFancyString(self, s: str) -> str:
         a = [c for c in s]

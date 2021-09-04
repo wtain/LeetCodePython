@@ -36,8 +36,8 @@ word consists of digits and lowercase English letters.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 32 ms, faster than 67.94% of Python3 online submissions for Number of Different Integers in a String.
-# Memory Usage: 14.2 MB, less than 56.04% of Python3 online submissions for Number of Different Integers in a String.
+# Runtime: 32 ms, faster than 67.94% of Python3 online submissions for Number of Different Integers in a Strings.
+# Memory Usage: 14.2 MB, less than 56.04% of Python3 online submissions for Number of Different Integers in a Strings.
 class Solution:
     def numDifferentIntegers(self, word: str) -> int:
         s = set()

@@ -36,8 +36,8 @@ from typing import List, Dict
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 2960 ms, faster than 5.01% of Python3 online submissions for Longest String Chain.
-# Memory Usage: 15.2 MB, less than 24.55% of Python3 online submissions for Longest String Chain.
+# Runtime: 2960 ms, faster than 5.01% of Python3 online submissions for Longest Strings Chain.
+# Memory Usage: 15.2 MB, less than 24.55% of Python3 online submissions for Longest Strings Chain.
 # class Solution:
 #     def longestStrChain(self, words: List[str]) -> int:
 #
@@ -80,8 +80,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return maxlen
 
 
-# Runtime: 1892 ms, faster than 9.43% of Python3 online submissions for Longest String Chain.
-# Memory Usage: 14.6 MB, less than 90.08% of Python3 online submissions for Longest String Chain.
+# Runtime: 1892 ms, faster than 9.43% of Python3 online submissions for Longest Strings Chain.
+# Memory Usage: 14.6 MB, less than 90.08% of Python3 online submissions for Longest Strings Chain.
 # class Solution:
 #     def longestStrChain(self, words: List[str]) -> int:
 #
@@ -121,8 +121,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return maxlen
 
 
-# Runtime: 1764 ms, faster than 10.80% of Python3 online submissions for Longest String Chain.
-# Memory Usage: 14.8 MB, less than 54.22% of Python3 online submissions for Longest String Chain.
+# Runtime: 1764 ms, faster than 10.80% of Python3 online submissions for Longest Strings Chain.
+# Memory Usage: 14.8 MB, less than 54.22% of Python3 online submissions for Longest Strings Chain.
 class Solution:
     def longestStrChain(self, words: List[str]) -> int:
 

@@ -25,8 +25,8 @@ s[0] is '1'.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 24 ms, faster than 94.77% of Python3 online submissions for Check if Binary String Has at Most One Segment of Ones.
-# Memory Usage: 14.1 MB, less than 90.31% of Python3 online submissions for Check if Binary String Has at Most One Segment of Ones.
+# Runtime: 24 ms, faster than 94.77% of Python3 online submissions for Check if Binary Strings Has at Most One Segment of Ones.
+# Memory Usage: 14.1 MB, less than 90.31% of Python3 online submissions for Check if Binary Strings Has at Most One Segment of Ones.
 class Solution:
     def checkOnesSegment(self, s: str) -> bool:
         found, inside = False, False

@@ -37,8 +37,8 @@ s1 and s2 consist of only lowercase English letters.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 32 ms, faster than 63.28% of Python3 online submissions for Check if One String Swap Can Make Strings Equal.
-# Memory Usage: 14.3 MB, less than 19.39% of Python3 online submissions for Check if One String Swap Can Make Strings Equal.
+# Runtime: 32 ms, faster than 63.28% of Python3 online submissions for Check if One Strings Swap Can Make Strings Equal.
+# Memory Usage: 14.3 MB, less than 19.39% of Python3 online submissions for Check if One Strings Swap Can Make Strings Equal.
 class Solution:
     def areAlmostEqual(self, s1: str, s2: str) -> bool:
         n = len(s1)

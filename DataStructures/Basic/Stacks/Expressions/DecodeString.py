@@ -39,8 +39,8 @@ All the integers in s are in the range [1, 300].
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 39 ms, faster than 17.02% of Python3 online submissions for Decode String.
-# Memory Usage: 14.3 MB, less than 20.70% of Python3 online submissions for Decode String.
+# Runtime: 39 ms, faster than 17.02% of Python3 online submissions for Decode Strings.
+# Memory Usage: 14.3 MB, less than 20.70% of Python3 online submissions for Decode Strings.
 class Solution:
     def decodeString(self, s: str) -> str:
         i, n = 0, len(s)

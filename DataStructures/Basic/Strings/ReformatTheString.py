@@ -42,8 +42,8 @@ s consists of only lowercase English letters and/or digits.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 80 ms, faster than 5.60% of Python3 online submissions for Reformat The String.
-# Memory Usage: 14.5 MB, less than 12.77% of Python3 online submissions for Reformat The String.
+# Runtime: 80 ms, faster than 5.60% of Python3 online submissions for Reformat The Strings.
+# Memory Usage: 14.5 MB, less than 12.77% of Python3 online submissions for Reformat The Strings.
 class Solution:
     def reformat(self, s: str) -> str:
         digits = [c for c in s if str.isdigit(c)]

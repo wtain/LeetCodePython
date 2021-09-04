@@ -41,8 +41,8 @@ s contains only lower and upper case English letters.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 40 ms, faster than 33.15% of Python3 online submissions for Make The String Great.
-# Memory Usage: 14.3 MB, less than 48.43% of Python3 online submissions for Make The String Great.
+# Runtime: 40 ms, faster than 33.15% of Python3 online submissions for Make The Strings Great.
+# Memory Usage: 14.3 MB, less than 48.43% of Python3 online submissions for Make The Strings Great.
 class Solution:
     def makeGood(self, s: str) -> str:
         res = []

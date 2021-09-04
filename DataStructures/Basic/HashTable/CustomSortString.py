@@ -27,8 +27,8 @@ order and str consist of lowercase letters only.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 32 ms, faster than 62.80% of Python3 online submissions for Custom Sort String.
-# Memory Usage: 14.1 MB, less than 81.58% of Python3 online submissions for Custom Sort String.
+# Runtime: 32 ms, faster than 62.80% of Python3 online submissions for Custom Sort Strings.
+# Memory Usage: 14.1 MB, less than 81.58% of Python3 online submissions for Custom Sort Strings.
 class Solution:
     def customSortString(self, order: str, str: str) -> str:
         h = {}

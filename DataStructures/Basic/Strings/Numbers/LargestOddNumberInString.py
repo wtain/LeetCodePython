@@ -32,8 +32,8 @@ num only consists of digits and does not contain any leading zeros.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 36 ms, faster than 98.37% of Python3 online submissions for Largest Odd Number in String.
-# Memory Usage: 15.3 MB, less than 58.41% of Python3 online submissions for Largest Odd Number in String.
+# Runtime: 36 ms, faster than 98.37% of Python3 online submissions for Largest Odd Number in Strings.
+# Memory Usage: 15.3 MB, less than 58.41% of Python3 online submissions for Largest Odd Number in Strings.
 class Solution:
     def largestOddNumber(self, num: str) -> str:
         n = len(num)

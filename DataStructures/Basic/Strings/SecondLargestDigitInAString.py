@@ -27,8 +27,8 @@ s consists of only lowercase English letters and/or digits.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 28 ms, faster than 97.50% of Python3 online submissions for Second Largest Digit in a String.
-# Memory Usage: 14.2 MB, less than 77.31% of Python3 online submissions for Second Largest Digit in a String.
+# Runtime: 28 ms, faster than 97.50% of Python3 online submissions for Second Largest Digit in a Strings.
+# Memory Usage: 14.2 MB, less than 77.31% of Python3 online submissions for Second Largest Digit in a Strings.
 class Solution:
     def secondHighest(self, s: str) -> int:
         a, b = -1, -1

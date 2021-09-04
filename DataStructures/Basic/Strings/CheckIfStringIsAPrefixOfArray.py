@@ -35,8 +35,8 @@ from typing import List
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 36 ms, faster than 80.03% of Python3 online submissions for Check If String Is a Prefix of Array.
-# Memory Usage: 14.3 MB, less than 33.29% of Python3 online submissions for Check If String Is a Prefix of Array.
+# Runtime: 36 ms, faster than 80.03% of Python3 online submissions for Check If Strings Is a Prefix of Array.
+# Memory Usage: 14.3 MB, less than 33.29% of Python3 online submissions for Check If Strings Is a Prefix of Array.
 # class Solution:
 #     def isPrefixString(self, s: str, words: List[str]) -> bool:
 #         r = ""
@@ -49,8 +49,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return False
 
 
-# Runtime: 36 ms, faster than 80.03% of Python3 online submissions for Check If String Is a Prefix of Array.
-# Memory Usage: 14.3 MB, less than 63.18% of Python3 online submissions for Check If String Is a Prefix of Array.
+# Runtime: 36 ms, faster than 80.03% of Python3 online submissions for Check If Strings Is a Prefix of Array.
+# Memory Usage: 14.3 MB, less than 63.18% of Python3 online submissions for Check If Strings Is a Prefix of Array.
 class Solution:
     def isPrefixString(self, s: str, words: List[str]) -> bool:
         n = len(s)

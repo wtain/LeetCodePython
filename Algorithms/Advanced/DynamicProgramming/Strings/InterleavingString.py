@@ -65,8 +65,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return solve(0, 0, "")
 
 
-# Runtime: 44 ms, faster than 34.60% of Python3 online submissions for Interleaving String.
-# Memory Usage: 14.4 MB, less than 73.39% of Python3 online submissions for Interleaving String.
+# Runtime: 44 ms, faster than 34.60% of Python3 online submissions for Interleaving Strings.
+# Memory Usage: 14.4 MB, less than 73.39% of Python3 online submissions for Interleaving Strings.
 # class Solution:
 #     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
 #         n1, n2 = len(s1), len(s2)
@@ -87,8 +87,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return dp[n1][n2]
 
 
-# Runtime: 40 ms, faster than 45.56% of Python3 online submissions for Interleaving String.
-# Memory Usage: 13.9 MB, less than 99.78% of Python3 online submissions for Interleaving String.
+# Runtime: 40 ms, faster than 45.56% of Python3 online submissions for Interleaving Strings.
+# Memory Usage: 13.9 MB, less than 99.78% of Python3 online submissions for Interleaving Strings.
 class Solution:
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
         n1, n2 = len(s1), len(s2)

@@ -37,8 +37,8 @@ The string s consists of characters '0' and '1' only.
 from Common.ObjectTestingUtils import run_functional_tests
 
 
-# Runtime: 32 ms, faster than 82.95% of Python3 online submissions for Maximum Score After Splitting a String.
-# Memory Usage: 14.1 MB, less than 73.40% of Python3 online submissions for Maximum Score After Splitting a String.
+# Runtime: 32 ms, faster than 82.95% of Python3 online submissions for Maximum Score After Splitting a Strings.
+# Memory Usage: 14.1 MB, less than 73.40% of Python3 online submissions for Maximum Score After Splitting a Strings.
 class Solution:
     def maxScore(self, s: str) -> int:
         max_score = 0
