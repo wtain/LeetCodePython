@@ -50,32 +50,56 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Runtime: 1212 ms, faster than 7.04% of Python3 online submissions for Maximum Profit in Job Scheduling.
 # Memory Usage: 126.9 MB, less than 5.01% of Python3 online submissions for Maximum Profit in Job Scheduling.
 # https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/1411876/Java-DP-%2B-binary-search
+# class Solution:
+#     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+#         jobs = sorted(zip(startTime, endTime, profit))
+#         n = len(jobs)
+#
+#         @lru_cache(None)
+#         def dp(k: int) -> int:
+#             if k == n:
+#                 return 0
+#
+#             def bin_search(et: int) -> int:
+#                 if et > jobs[-1][0]:
+#                     return n
+#                 l, r = 0, n
+#                 while l < r:
+#                     mid = l + (r-l) // 2
+#                     if jobs[mid][0] < et:
+#                         l = mid +1
+#                     else:
+#                         r = mid
+#                 return r
+#
+#             sti = bin_search(jobs[k][1])
+#             return max(dp(k+1), jobs[k][2] + dp(sti))
+#
+#         return dp(0)
+
+
+# Runtime: 773 ms, faster than 31.11% of Python3 online submissions for Maximum Profit in Job Scheduling.
+# Memory Usage: 39.9 MB, less than 24.38% of Python3 online submissions for Maximum Profit in Job Scheduling.
+# https://leetcode.com/problems/maximum-profit-in-job-scheduling/discuss/1430324/c%2B%2B-solution-without-binary-search
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        n = len(startTime)
+        times = sorted(startTime + endTime)
+        idx = {t: i for i, t in enumerate(times)}
         jobs = sorted(zip(startTime, endTime, profit))
-        n = len(jobs)
-
-        @lru_cache(None)
-        def dp(k: int) -> int:
-            if k == n:
-                return 0
-
-            def bin_search(et: int) -> int:
-                if et > jobs[-1][0]:
-                    return n
-                l, r = 0, n
-                while l < r:
-                    mid = l + (r-l) // 2
-                    if jobs[mid][0] < et:
-                        l = mid +1
-                    else:
-                        r = mid
-                return r
-
-            sti = bin_search(jobs[k][1])
-            return max(dp(k+1), jobs[k][2] + dp(sti))
-
-        return dp(0)
+        j, m = 1, len(times)
+        dp = [0] * (m+1)
+        for i in range(n):
+            st, end, val = jobs[i]
+            st, end = idx[st], idx[end]
+            while j <= st:
+                dp[j] = max(dp[j-1], dp[j])
+                j += 1
+            dp[end] = max(dp[end], dp[st] + val)
+        while j <= m:
+            dp[j] = max(dp[j-1], dp[j])
+            j += 1
+        return dp[m]
 
 
 tests = [
