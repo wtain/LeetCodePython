@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/slowest-key/
+https://leetcode.com/explore/featured/card/september-leetcoding-challenge-2021/636/week-1-september-1st-september-7th/3965/
 
 A newly designed keypad was tested, where a tester pressed a sequence of n keys, one at a time.
 
@@ -53,18 +54,40 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 # Runtime: 64 ms, faster than 24.78% of Python3 online submissions for Slowest Key.
 # Memory Usage: 14.6 MB, less than 5.80% of Python3 online submissions for Slowest Key.
+# Runtime: 52 ms, faster than 87.20% of Python3 online submissions for Slowest Key.
+# Memory Usage: 14.2 MB, less than 94.18% of Python3 online submissions for Slowest Key.
+# class Solution:
+#     def slowestKey(self, releaseTimes: List[int], keysPressed: str) -> str:
+#         prev, max_duration, max_duration_char, times = 0, 0, "", {}
+#         n = len(keysPressed)
+#         for i in range(n):
+#             duration = releaseTimes[i] - prev
+#             c = keysPressed[i]
+#             times[c] = max(times.get(c, 0), duration)
+#             if (times[c], c) > (max_duration, max_duration_char):
+#                 max_duration, max_duration_char = times[c], c
+#             prev = releaseTimes[i]
+#         return max_duration_char
+
+
+# Runtime: 56 ms, faster than 70.22% of Python3 online submissions for Slowest Key.
+# Memory Usage: 14.6 MB, less than 25.12% of Python3 online submissions for Slowest Key.
+# class Solution:
+#     def slowestKey(self, releaseTimes: List[int], keysPressed: str) -> str:
+#         prev, max_duration, max_duration_char, times = 0, 0, "", {}
+#         for releaseTime, c, prev in zip(releaseTimes, keysPressed, [0] + releaseTimes):
+#             duration = releaseTime - prev
+#             times[c] = max(times.get(c, 0), duration)
+#             if (times[c], c) > (max_duration, max_duration_char):
+#                 max_duration, max_duration_char = times[c], c
+#         return max_duration_char
+
+
+# Runtime: 56 ms, faster than 70.22% of Python3 online submissions for Slowest Key.
+# Memory Usage: 14.6 MB, less than 5.53% of Python3 online submissions for Slowest Key.
 class Solution:
     def slowestKey(self, releaseTimes: List[int], keysPressed: str) -> str:
-        prev, max_duration, max_duration_char, times = 0, 0, "", {}
-        n = len(keysPressed)
-        for i in range(n):
-            duration = releaseTimes[i] - prev
-            c = keysPressed[i]
-            times[c] = max(times.get(c, 0), duration)
-            if (times[c], c) > (max_duration, max_duration_char):
-                max_duration, max_duration_char = times[c], c
-            prev = releaseTimes[i]
-        return max_duration_char
+        return max((releaseTime - prev, c) for releaseTime, c, prev in zip(releaseTimes, keysPressed, [0] + releaseTimes))[1]
 
 
 tests = [

@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/reverse-linked-list/
+https://leetcode.com/explore/featured/card/september-leetcoding-challenge-2021/636/week-1-september-1st-september-7th/3966/
 Reverse a singly linked list.
 
 Example:
@@ -11,11 +12,11 @@ Follow up:
 A linked list can be reversed either iteratively or recursively. Could you implement both?
 """
 from Common.Leetcode import ListNode
+from Common.ObjectTestingUtils import convert_test_params_to_lists, run_functional_tests
 
-"""
-Runtime: 52 ms, faster than 24.51% of Python3 online submissions for Reverse Linked List.
-Memory Usage: 15.3 MB, less than 62.20% of Python3 online submissions for Reverse Linked List.
-"""
+
+# Runtime: 52 ms, faster than 24.51% of Python3 online submissions for Reverse Linked List.
+# Memory Usage: 15.3 MB, less than 62.20% of Python3 online submissions for Reverse Linked List.
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
         curr = head
@@ -28,18 +29,19 @@ class Solution:
         return prev
 
 
-def printList(l: ListNode):
-    while l:
-        print(l.val, flush=True, sep=' ', end=' ')
-        l = l.next
-    print()
+tests = [
+    [
+        [1],
+        [1]
+    ],
+    [
+        [],
+        []
+    ],
+    [
+        [1, 2, 3, 4, 5],
+        [5, 4, 3, 2, 1]
+    ]
+]
 
-
-l = ListNode(1)
-l.next = ListNode(2)
-l.next.next = ListNode(3)
-l.next.next.next = ListNode(4)
-l.next.next.next.next = ListNode(5)
-
-printList(Solution().reverseList(l))  # 5 4 3 2 1
-
+run_functional_tests(Solution().reverseList, convert_test_params_to_lists(tests))

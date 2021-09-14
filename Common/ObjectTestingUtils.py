@@ -135,9 +135,7 @@ def run_functional_tests(function, tests, **kwargs):
             input_metric = lambda test: test[0]
         else:
             input_metric = lambda test: len(test[0])
-    n = len(tests)
-    nfail = 0
-    i = 0
+    n, nfail, i = len(tests), 0, 0
     for test in tests:
         i += 1
         if run_tests and i not in run_tests:
@@ -146,7 +144,8 @@ def run_functional_tests(function, tests, **kwargs):
         start = timeit.default_timer()
         parameters = test[:-1]
         try:
-            result = function(*parameters)
+            params = copy.deepcopy(parameters)
+            result = function(*params)
             stop = timeit.default_timer()
             expected = test[-1]
 
@@ -158,7 +157,7 @@ def run_functional_tests(function, tests, **kwargs):
                 comparison_result = compare_values(result, expected)
 
             if comparison_result:
-                print(str(i) + ") PASS, took: " + "{:.3f}".format(duration) + " on size=" + str(input_size))
+                print(str(i) + ") PASS, took: " + "{:.6f}".format(duration) + " on size=" + str(input_size))
             else:
                 if type(expected) is str and type(result) is str:
                     print(str(i) + ") FAIL - expected '" + expected + "', got '" + result + "', params: " + str(parameters))
@@ -174,7 +173,7 @@ def run_functional_tests(function, tests, **kwargs):
                         print("Got:")
                         printTree(res)
                 else:
-                    print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.3f}".format(duration) + ", params: " + str(parameters))
+                    print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.6f}".format(duration) + ", params: " + str(parameters))
                 nfail += 1
         except Exception as e:
             print(str(i) + ") FAIL - CRASH, params: " + str(parameters))
@@ -190,7 +189,7 @@ def run_functional_tests(function, tests, **kwargs):
 
 
 def convert_test_params(tests, function, **kwargs):
-    if "indexes" in kwargs:
+    if "indexes" in kwargs and kwargs["indexes"]:
         indexes = kwargs["indexes"]
     else:
         indexes = range(len(tests[0]))
@@ -200,7 +199,7 @@ def convert_test_params(tests, function, **kwargs):
     return tests
 
 
-def convert_test_params_to_lists(tests, indexes):
+def convert_test_params_to_lists(tests, indexes=None):
     return convert_test_params(tests, build_list, indexes=indexes)
 
 
