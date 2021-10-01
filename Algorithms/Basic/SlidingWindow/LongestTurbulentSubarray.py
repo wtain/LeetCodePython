@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/longest-turbulent-subarray/
+https://leetcode.com/explore/featured/card/september-leetcoding-challenge-2021/638/week-3-september-15th-september-21st/3976/
 
 Given an integer array arr, return the length of a maximum size turbulent subarray of arr.
 
@@ -64,6 +65,8 @@ from typing import List
 from Common.ObjectTestingUtils import run_functional_tests
 
 
+# Runtime: 528 ms, faster than 43.31% of Python3 online submissions for Longest Turbulent Subarray.
+# Memory Usage: 18.8 MB, less than 28.87% of Python3 online submissions for Longest Turbulent Subarray.
 class Solution:
     def maxTurbulenceSize(self, arr: List[int]) -> int:
 

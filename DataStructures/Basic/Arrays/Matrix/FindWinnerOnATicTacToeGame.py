@@ -1,5 +1,6 @@
 """
 https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/
+https://leetcode.com/explore/featured/card/september-leetcoding-challenge-2021/638/week-3-september-15th-september-21st/3981/
 Tic-tac-toe is played by two players A and B on a 3 x 3 grid.
 
 Here are the rules of Tic-Tac-Toe:

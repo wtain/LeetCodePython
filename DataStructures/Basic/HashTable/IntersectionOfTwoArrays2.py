@@ -1,5 +1,7 @@
 """
 https://leetcode.com/problems/intersection-of-two-arrays-ii/
+https://leetcode.com/explore/featured/card/september-leetcoding-challenge-2021/638/week-3-september-15th-september-21st/3978/
+
 Given two arrays, write a function to compute their intersection.
 
 Example 1:
@@ -80,6 +82,9 @@ class Solution:
 """
 Runtime: 116 ms, faster than 7.30% of Python3 online submissions for Intersection of Two Arrays II.
 Memory Usage: 13.9 MB, less than 55.15% of Python3 online submissions for Intersection of Two Arrays II.
+
+Runtime: 36 ms, faster than 99.18% of Python3 online submissions for Intersection of Two Arrays II.
+Memory Usage: 14.4 MB, less than 69.97% of Python3 online submissions for Intersection of Two Arrays II.
 """
 class Solution:
 
