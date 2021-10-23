@@ -29,6 +29,7 @@ Return:
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 40 ms, faster than 86.57% of Python3 online submissions for Fizz Buzz.
@@ -49,4 +50,8 @@ class Solution:
         return result
 
 
-print(Solution().fizzBuzz(15))
+tests = [
+    [15, ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11', 'Fizz', '13', '14', 'FizzBuzz']]
+]
+
+run_functional_tests(Solution().fizzBuzz, tests)

@@ -14,6 +14,8 @@ Memory Usage: 14.2 MB, less than 49.62% of Python3 online submissions for Merge 
 from typing import List
 
 from Common.Leetcode import ListNode
+from Common.ListUtils import printList, build_list
+from Common.ObjectTestingUtils import run_functional_tests, convert_test_params_to_lists
 
 """
 Runtime: 48 ms, faster than 26.85% of Python3 online submissions for Merge Two Sorted Lists.
@@ -55,29 +57,11 @@ class Solution:
         return head
 
 
-def printList(l: ListNode):
-    while l:
-        print(l.val, flush=True, sep=' ', end=' ')
-        l = l.next
-    print()
+tests = [
+    [[1, 2, 4], [1, 3, 4], [1, 1, 2, 3, 4, 4]],
+    [[1, 2, 4], [], [1,2,4]],
+    [[], [1, 3, 4], [1,3,4]],
+    [[], [], []]
+]
 
-
-def createList(a: List[int]) -> ListNode:
-    head = None
-    prev: ListNode = None
-    for i in a:
-        n = ListNode(i)
-        if prev:
-            prev.next = n
-        else:
-            head = n
-        prev = n
-    return head
-
-
-printList(Solution().mergeTwoLists(createList([1, 2, 4]), createList([1, 3, 4])))  # 1 1 2 3 4 4
-
-printList(Solution().mergeTwoLists(createList([1, 2, 4]), createList([])))  # 1 2 4
-printList(Solution().mergeTwoLists(createList([]), createList([1, 3, 4])))  # 1 3 4
-
-printList(Solution().mergeTwoLists(createList([]), createList([])))  #
+run_functional_tests(Solution().mergeTwoLists, convert_test_params_to_lists(tests))

@@ -16,6 +16,7 @@ Output:
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 420 ms, faster than 51.39% of Python3 online submissions for Find All Numbers Disappeared in an Array.
@@ -36,4 +37,7 @@ class Solution:
         return result
 
 
-print(Solution().findDisappearedNumbers([4,3,2,7,8,2,3,1]))  # 5, 6
+tests = [
+    [[4,3,2,7,8,2,3,1], [5, 6]]
+]
+run_functional_tests(Solution().findDisappearedNumbers, tests)

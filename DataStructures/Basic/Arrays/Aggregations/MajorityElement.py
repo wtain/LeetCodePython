@@ -15,6 +15,8 @@ Output: 2
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 216 ms, faster than 33.40% of Python3 online submissions for Majority Element.
 Memory Usage: 15.3 MB, less than 24.30% of Python3 online submissions for Majority Element.
@@ -35,6 +37,10 @@ class Solution:
         return maj
 
 
-print(Solution().majorityElement([3,2,3]))  # 3
-print(Solution().majorityElement([2,2,1,1,1,2,2]))  # 2
-print(Solution().majorityElement([3,3,4]))  # 3
+tests = [
+    [[3,2,3], 3],
+    [[2,2,1,1,1,2,2], 2],
+    [[3,3,4],3]
+]
+
+run_functional_tests(Solution().majorityElement, tests)

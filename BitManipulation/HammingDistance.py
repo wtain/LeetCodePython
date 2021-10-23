@@ -20,6 +20,7 @@ Explanation:
 
 The above arrows point to positions where the corresponding bits are different.
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 24 ms, faster than 96.62% of Python3 online submissions for Hamming Distance.
@@ -38,4 +39,8 @@ class Solution:
         return cnt
 
 
-print(Solution().hammingDistance(1, 4))  # 2
+tests = [
+    [1, 4, 2]
+]
+
+run_functional_tests(Solution().hammingDistance, tests)

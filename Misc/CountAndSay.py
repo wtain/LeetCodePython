@@ -43,6 +43,7 @@ The following are the terms from n=1 to n=10 of the count-and-say sequence:
 To generate the nth term, just count and say the n-1th term.
 
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 60 ms, faster than 11.16% of Python3 online submissions for Count and Say.
@@ -71,6 +72,10 @@ class Solution:
         return res
 
 
-print(Solution().countAndSay(1))  # 1
-print(Solution().countAndSay(4))  # 1211
-print(Solution().countAndSay(10))  # 13211311123113112211
+tests = [
+    [1, "1"],
+    [4, "1211"],
+    [10, "13211311123113112211"]
+]
+
+run_functional_tests(Solution().countAndSay, tests)
