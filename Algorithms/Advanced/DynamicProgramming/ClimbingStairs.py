@@ -26,6 +26,7 @@ Constraints:
 1 <= n <= 45
 
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 44 ms, faster than 15.79% of Python3 online submissions for Climbing Stairs.
@@ -47,8 +48,11 @@ class Solution:
         return c2
 
 
-print(Solution().climbStairs(2))  # 2
-print(Solution().climbStairs(3))  # 3
-print(Solution().climbStairs(10))  # 89
-print(Solution().climbStairs(45))  # 1836311903
+tests = [
+    [2, 2],
+    [3, 3],
+    [10, 89],
+    [45, 1836311903]
+]
 
+run_functional_tests(Solution().climbStairs, tests)

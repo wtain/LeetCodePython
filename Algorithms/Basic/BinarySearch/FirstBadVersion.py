@@ -22,6 +22,8 @@ Then 4 is the first bad version.
 # @param version, an integer
 # @return an integer
 # def isBadVersion(version):
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 def isBadVersion(version):
     return version >= 10
@@ -48,4 +50,8 @@ class Solution:
         return l
 
 
-print(Solution().firstBadVersion(100))
+tests = [
+    [100, 10]
+]
+
+run_functional_tests(Solution().firstBadVersion, tests)

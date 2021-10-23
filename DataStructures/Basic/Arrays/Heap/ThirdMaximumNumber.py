@@ -25,6 +25,7 @@ Both numbers with value 2 are both considered as second maximum.
 from heapq import heappush, heappop
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 56 ms, faster than 68.53% of Python3 online submissions for Third Maximum Number.
@@ -46,7 +47,11 @@ class Solution:
         return h[0]
 
 
-print(Solution().thirdMax([3, 2, 1]))  # 1
-print(Solution().thirdMax([1, 2]))  # 2
-print(Solution().thirdMax([1, 2, 2]))  # 2
-print(Solution().thirdMax([2, 2, 3, 1]))  # 1
+tests = [
+    [[3, 2, 1], 1],
+    [[1, 2], 2],
+    [[1, 2, 2], 2],
+    [[2, 2, 3, 1], 1]
+]
+
+run_functional_tests(Solution().thirdMax, tests)

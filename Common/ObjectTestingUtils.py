@@ -1,4 +1,5 @@
 import copy
+import random
 import timeit
 import traceback
 from typing import List
@@ -26,6 +27,8 @@ def declare_class(CLASS):
 def run_object_tests(tests, **kwargs):
     if "cls" in kwargs:
         declare_class(kwargs["cls"])
+    if "rndseed" in kwargs:
+        random.seed(kwargs["rndseed"])
     overall = True
     for j, test in enumerate(tests):
         methods = test[0]

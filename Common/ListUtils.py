@@ -64,3 +64,13 @@ def printList(l: ListNode):
     while l:
         print(l.val, flush=True, sep=' ', end=' ')
         l = l.next
+
+
+def print_list_n(nums: List[int], cnt: int):
+    for i in range(cnt):
+        print(nums[i], flush=True, sep=' ', end=' ')
+    print()
+
+
+def list_copy_n(nums: List[int], cnt: int):
+    return nums[:cnt]

@@ -23,6 +23,7 @@ The length of both nums1 and nums2 would not exceed 1000.
 """
 from typing import List, Dict
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 44 ms, faster than 94.53% of Python3 online submissions for Next Greater Element I.
@@ -51,5 +52,9 @@ class Solution:
         return result
 
 
-print(Solution().nextGreaterElement([4,1,2], [1,3,4,2]))  # [-1,3,-1]
-print(Solution().nextGreaterElement([2,4], [1,2,3,4]))  # [3,-1]
+tests = [
+    [[4,1,2], [1,3,4,2], [-1,3,-1]],
+    [[2,4], [1,2,3,4], [3,-1]]
+]
+
+run_functional_tests(Solution().nextGreaterElement, tests)

@@ -24,6 +24,7 @@ s consists of only lowercase English letters.
 1 <= k <= 105
 """
 import heapq
+import tokenize
 from collections import Counter, defaultdict
 
 from Common.ObjectTestingUtils import run_functional_tests
@@ -99,6 +100,35 @@ class Solution:
                 if uniq == cu and uniq == cnt_at_least_k:
                     result = max(we - ws, result)
         return result
+
+
+# WRONG
+# https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/solution/1112156
+# class Solution:
+#     def longestSubstring(self, s: str, k: int) -> int:
+#         l = []
+#
+#         def countSubStrings(s: str):
+#             nonlocal k, l
+#             if len(s) < k:
+#                 return
+#             sb = set()
+#             counts = Counter(s)
+#             for c in counts.keys():
+#                 if counts[c] < k:
+#                     sb.add(c)
+#
+#             sb = "".join(sb)
+#
+#             if len(sb) == 0:
+#                 l.append(len(s))
+#                 return
+#
+#             for t in s.split(sb):
+#                 countSubStrings(t)
+#
+#         countSubStrings(s)
+#         return max(l)
 
 
 tests = [

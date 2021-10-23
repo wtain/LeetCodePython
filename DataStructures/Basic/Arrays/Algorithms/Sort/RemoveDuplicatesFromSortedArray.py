@@ -37,6 +37,9 @@ for (int i = 0; i < len; i++) {
 """
 from typing import List
 
+from Common.ListUtils import list_copy_n
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 140 ms, faster than 21.82% of Python3 online submissions for Remove Duplicates from Sorted Array.
 Memory Usage: 15.4 MB, less than 88.95% of Python3 online submissions for Remove Duplicates from Sorted Array.
@@ -53,13 +56,11 @@ class Solution:
                 w += 1
         return w
 
-def printList(nums: List[int], cnt: int):
-    for i in range(cnt):
-        print(nums[i], flush=True, sep=' ', end=' ')
-    print()
 
-l1 = [1,1,2]
-printList(l1, Solution().removeDuplicates(l1))  # 1 2
+tests = [
+    [[1,1,2], [1, 2]],
+    [[0,0,1,1,1,2,2,3,3,4], [0, 1, 2, 3, 4]]
+]
 
-l2 = [0,0,1,1,1,2,2,3,3,4]
-printList(l2, Solution().removeDuplicates(l2))  # 0 1 2 3 4
+run_functional_tests(lambda nums: list_copy_n(nums, Solution().removeDuplicates(nums)), tests)
+

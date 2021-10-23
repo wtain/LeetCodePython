@@ -26,6 +26,7 @@ You need to output 2.
 from bisect import bisect_left
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """WRONG"""
 """
@@ -68,6 +69,10 @@ class Solution:
         return cnt
 
 
-print(Solution().findContentChildren([1,2,3], [1,1]))  # 1
-print(Solution().findContentChildren([1,2], [1,2,3]))  # 2
-print(Solution().findContentChildren([10,9,8,7], [5,6,7,8]))  # 2
+tests = [
+    [[1,2,3], [1,1], 1],
+    [[1,2], [1,2,3], 2],
+    [[10,9,8,7], [5,6,7,8], 2]
+]
+
+run_functional_tests(Solution().findContentChildren, tests)

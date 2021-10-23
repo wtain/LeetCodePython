@@ -20,6 +20,8 @@ Accepted
 from typing import List
 
 from Common.Leetcode import ListNode
+from Common.ListUtils import build_list, printList
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 80 ms, faster than 5.15% of Python3 online submissions for Remove Duplicates from Sorted List.
@@ -42,29 +44,13 @@ class Solution:
         return head
 
 
-def printList(l: ListNode):
-    while l:
-        print(l.val, flush=True, sep=' ', end=' ')
-        l = l.next
-    print()
+tests = [
+    [build_list([1,1,2]), build_list([1,2])],
+    [build_list([1,1,2,3,3]), build_list([1,2,3])],
+    [build_list([1,1,1]), build_list([1])],
+    [build_list([1]), build_list([1])],
+    [build_list([1,1]), build_list([1])],
+    [build_list([]), build_list([])],
+]
 
-def createList(a: List[int]) -> ListNode:
-    head = None
-    prev: ListNode = None
-    for i in a:
-        n = ListNode(i)
-        if prev:
-            prev.next = n
-        else:
-            head = n
-        prev = n
-    return head
-
-
-printList(Solution().deleteDuplicates(createList([1,1,2])))  # 1 2
-printList(Solution().deleteDuplicates(createList([1,1,2,3,3])))  # 1 2 3
-printList(Solution().deleteDuplicates(createList([1,1,1])))  # 1
-printList(Solution().deleteDuplicates(createList([1])))  # 1
-printList(Solution().deleteDuplicates(createList([1,1])))  # 1
-printList(Solution().deleteDuplicates(createList([])))  #
-
+run_functional_tests(Solution().deleteDuplicates, tests)

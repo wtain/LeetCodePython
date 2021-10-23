@@ -17,6 +17,8 @@ Note: Your solution should be in logarithmic time complexity.
 """
 
 # WRONG
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 class Solution:
     def trailingZeroes(self, n: int) -> int:
@@ -43,7 +45,10 @@ class Solution:
         return n5
 
 
-print(Solution().trailingZeroes(3))  # 0
-print(Solution().trailingZeroes(5))  # 1
-print(Solution().trailingZeroes(500))  # 124
+tests = [
+    [3, 0],
+    [5, 1],
+    [500, 124]
+]
 
+run_functional_tests(Solution().trailingZeroes, tests)

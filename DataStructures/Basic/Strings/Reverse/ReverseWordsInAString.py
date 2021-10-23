@@ -32,6 +32,7 @@ Follow up:
 
 For C programmers, try to solve it in-place in O(1) extra space.
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 48 ms, faster than 25.05% of Python3 online submissions for Reverse Words in a Strings.
@@ -59,6 +60,10 @@ class Solution:
         return result
 
 
-print(Solution().reverseWords("the sky is blue"))  # "blue is sky the"
-print(Solution().reverseWords("  hello world!  "))  # "world! hello"
-print(Solution().reverseWords("a good   example"))  # "example good a"
+tests = [
+    ["the sky is blue", "blue is sky the"],
+    ["  hello world!  ", "world! hello"],
+    ["a good   example", "example good a"]
+]
+
+run_functional_tests(Solution().reverseWords, tests)

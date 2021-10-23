@@ -13,6 +13,8 @@ If you have figured out the O(n) solution, try coding another solution using the
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 88 ms, faster than 27.46% of Python3 online submissions for Maximum Subarray.
 Memory Usage: 14.7 MB, less than 21.36% of Python3 online submissions for Maximum Subarray.
@@ -27,7 +29,12 @@ class Solution:
         return ms
 
 
-print(Solution().maxSubArray([-2, 1]))  # 1
-print(Solution().maxSubArray([1]))  # 1
-print(Solution().maxSubArray([-1]))  # -1
-print(Solution().maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))  # 6
+tests = [
+    [[-2, 1], 1],
+    [[1], 1],
+    [[-1], -1],
+    [[-2,1,-3,4,-1,2,1,-5,4], 6]
+]
+
+
+run_functional_tests(Solution().maxSubArray, tests)

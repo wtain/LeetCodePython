@@ -27,6 +27,8 @@ Constraints:
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 32 ms, faster than 69.04% of Python3 online submissions for House Robber.
 Memory Usage: 13.8 MB, less than 59.62% of Python3 online submissions for House Robber.
@@ -46,6 +48,10 @@ class Solution:
         return max(result[n - 1][0], result[n - 1][1])
 
 
-print(Solution().rob([]))  # 0
-print(Solution().rob([1, 2, 3, 1]))  # 4
-print(Solution().rob([2, 7, 9, 3, 1]))  # 12
+tests = [
+    [[], 0],
+    [[1, 2, 3, 1], 4],
+    [[2, 7, 9, 3, 1], 12]
+]
+
+run_functional_tests(Solution().rob, tests)

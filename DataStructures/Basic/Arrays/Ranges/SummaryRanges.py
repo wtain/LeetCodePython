@@ -54,6 +54,8 @@ Memory Usage: 14 MB, less than 75.44% of Python3 online submissions for Summary 
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
@@ -78,8 +80,12 @@ class Solution:
         return result
 
 
-print(Solution().summaryRanges([0,1,2,4,5,7]))  # ["0->2","4->5","7"]
-print(Solution().summaryRanges([0,2,3,4,6,8,9]))  # ["0","2->4","6","8->9"]
-print(Solution().summaryRanges([]))  # []
-print(Solution().summaryRanges([-1]))  # ["-1"]
-print(Solution().summaryRanges([0]))  # ["0"]
+tests = [
+    [[0,1,2,4,5,7], ["0->2","4->5","7"]],
+    [[0,2,3,4,6,8,9], ["0","2->4","6","8->9"]],
+    [[], []],
+    [[-1], ["-1"]],
+    [[0], ["0"]]
+]
+
+run_functional_tests(Solution().summaryRanges, tests)

@@ -22,6 +22,7 @@ Output:
 
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 32 ms, faster than 59.60% of Python3 online submissions for Pascal's Triangle.
@@ -47,4 +48,8 @@ class Solution:
         return result
 
 
-print(Solution().generate(5))
+tests = [
+    [5, [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]]
+]
+
+run_functional_tests(Solution().generate, tests)

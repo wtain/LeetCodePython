@@ -30,6 +30,7 @@ Explanation: The two heater was placed in the position 1 and 4. We need to use r
 from bisect import bisect_left
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 484 ms, faster than 25.85% of Python3 online submissions for Heaters.
@@ -58,7 +59,11 @@ class Solution:
         return maxd
 
 
-print(Solution().findRadius([282475249,622650073,984943658,144108930,470211272,101027544,457850878,458777923], [823564440,115438165,784484492,74243042,114807987,137522503,441282327,16531729,823378840,143542612]))  # 161834419
-print(Solution().findRadius([1,2,3],[1,2,3]))  # 0
-print(Solution().findRadius([1,2,3],[2]))  # 1
-print(Solution().findRadius([1,2,3,4],[1,4]))  # 1
+tests = [
+    [[282475249,622650073,984943658,144108930,470211272,101027544,457850878,458777923], [823564440,115438165,784484492,74243042,114807987,137522503,441282327,16531729,823378840,143542612], 161834419],
+    [[1,2,3],[1,2,3], 0],
+    [[1,2,3],[2], 1],
+    [[1,2,3,4],[1,4], 1]
+]
+
+run_functional_tests(Solution().findRadius, tests)

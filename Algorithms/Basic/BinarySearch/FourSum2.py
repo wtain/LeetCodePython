@@ -26,6 +26,8 @@ Memory Usage: 34.9 MB, less than 86.51% of Python3 online submissions for 4Sum I
 """
 from typing import List, Dict
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
@@ -43,8 +45,14 @@ class Solution:
         return result
 
 
-A = [ 1, 2]
-B = [-2,-1]
-C = [-1, 2]
-D = [ 0, 2]
-print(Solution().fourSumCount(A, B, C, D))  # 2
+tests = [
+    [
+        [ 1, 2],
+        [-2,-1],
+        [-1, 2],
+        [ 0, 2],
+        2
+    ]
+]
+
+run_functional_tests(Solution().fourSumCount, tests)

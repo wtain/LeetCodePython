@@ -9,7 +9,7 @@ Example:
 Input: "Hello, my name is John"
 Output: 5
 """
-
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 32 ms, faster than 56.91% of Python3 online submissions for Number of Segments in a Strings.
@@ -30,4 +30,8 @@ class Solution:
         return cnt
 
 
-print(Solution().countSegments("Hello, my name is John"))  # 5
+tests = [
+    ["Hello, my name is John", 5]
+]
+
+run_functional_tests(Solution().countSegments, tests)

@@ -18,6 +18,7 @@ Could you optimize your algorithm to use only O(k) extra space?
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 24 ms, faster than 94.39% of Python3 online submissions for Pascal's Triangle II.
@@ -39,7 +40,10 @@ class Solution:
         return prev
 
 
-print(Solution().getRow(3))  # [1,3,3,1]
+tests = [
+    [3, [1,3,3,1]],
+    [4, [1,4,6,4,1]]
+]
 
-print(Solution().getRow(4))  # [1,4,6,4,1]
+run_functional_tests(Solution().getRow, tests)
 

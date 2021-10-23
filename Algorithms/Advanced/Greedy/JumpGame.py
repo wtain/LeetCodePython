@@ -27,6 +27,7 @@ Constraints:
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 80 ms, faster than 98.62% of Python3 online submissions for Jump Game.
@@ -42,5 +43,9 @@ class Solution:
         return lastPos == 0
 
 
-print(Solution().canJump([2,3,1,1,4]))  # True
-print(Solution().canJump([3,2,1,0,4]))  # False
+run_functional_tests(Solution().canJump, [
+    [[2,3,1,1,4], True],
+    [[3,2,1,0,4], False]
+])
+
+

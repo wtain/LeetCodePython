@@ -22,6 +22,8 @@ Output: 6
 # @param num, your guess
 # @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
 # def guess(num: int) -> int:
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 def guess(num: int) -> int:
     if num > 6:
@@ -51,4 +53,6 @@ class Solution:
         return l
 
 
-print(Solution().guessNumber(10))  # 6
+run_functional_tests(Solution().guessNumber, [
+    [10, 6]
+])

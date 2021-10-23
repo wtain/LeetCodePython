@@ -35,6 +35,7 @@ If this function is called many times, how would you optimize it?
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 24 ms, faster than 95.76% of Python3 online submissions for Number of 1 Bits.
@@ -72,6 +73,10 @@ class Solution:
                self.hammingWeight8((n >> 24) & 255)
 
 
-print(Solution().hammingWeight(0b00000000000000000000000000001011))  # 3
-print(Solution().hammingWeight(0b00000000000000000000000010000000))  # 1
-print(Solution().hammingWeight(0b11111111111111111111111111111101))  # 31
+tests = [
+    [0b00000000000000000000000000001011, 3],
+    [0b00000000000000000000000010000000, 1],
+    [0b11111111111111111111111111111101, 31]
+]
+
+run_functional_tests(Solution().hammingWeight, tests)

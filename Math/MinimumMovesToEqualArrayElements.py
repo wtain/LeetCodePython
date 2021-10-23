@@ -17,6 +17,7 @@ Only three moves are needed (remember each move increments two elements):
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 264 ms, faster than 91.41% of Python3 online submissions for Minimum Moves to Equal Array Elements.
@@ -36,4 +37,8 @@ class Solution:
         return s - vmin * n
 
 
-print(Solution().minMoves([1,2,3]))  # 3
+tests = [
+    [[1, 2, 3], 3]
+]
+
+run_functional_tests(Solution().minMoves, tests)

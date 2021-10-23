@@ -23,6 +23,7 @@ Input:
 Output:
 "ffffffff"
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 32 ms, faster than 57.10% of Python3 online submissions for Convert a Number to Hexadecimal.
@@ -43,6 +44,10 @@ class Solution:
         return result[::-1]
 
 
-print(Solution().toHex(26))  # 1a
-print(Solution().toHex(-1))  # ffffffff
-print(Solution().toHex(0))  # 0
+tests = [
+    [26, "1a"],
+    [-1, "ffffffff"],
+    [0, "0"]
+]
+
+run_functional_tests(Solution().toHex, tests)
