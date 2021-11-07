@@ -30,6 +30,8 @@ Both strings consists only of lowercase characters.
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 108 ms, faster than 5.13% of Python3 online submissions for Is Subsequence.
 Memory Usage: 13.7 MB, less than 94.77% of Python3 online submissions for Is Subsequence.
@@ -72,6 +74,11 @@ class Solution:
         return i == ns
 
 
-print(Solution().isSubsequence(s = "acb", t = "ahbgdc"))  # False
-print(Solution().isSubsequence(s = "abc", t = "ahbgdc"))  # True
-print(Solution().isSubsequence(s = "axc", t = "ahbgdc"))  # False
+tests = [
+    ["acb", "ahbgdc", False],
+    ["abc", "ahbgdc", True],
+    ["axc", "ahbgdc", False],
+]
+
+run_functional_tests(Solution().isSubsequence, tests)
+

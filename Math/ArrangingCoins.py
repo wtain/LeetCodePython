@@ -30,9 +30,12 @@ Because the 4th row is incomplete, we return 3.
 """
 from math import sqrt, floor
 
+
 """
 Runtime: 32 ms, faster than 88.58% of Python3 online submissions for Arranging Coins.
-Memory Usage: 14 MB, less than 22.70% of Python3 online submissions for Arranging Coins.]
+Memory Usage: 14 MB, less than 22.70% of Python3 online submissions for Arranging Coins.
+Runtime: 24 ms, faster than 99.40% of Python3 online submissions for Arranging Coins.
+Memory Usage: 14.1 MB, less than 70.56% of Python3 online submissions for Arranging Coins.
 """
 class Solution:
     def arrangeCoins(self, n: int) -> int:

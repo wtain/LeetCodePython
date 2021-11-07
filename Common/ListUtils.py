@@ -60,10 +60,16 @@ def buildNumberAsList(arr: List[int]) -> ListNode:
     return h
 
 
-def printList(l: ListNode):
+def printList(l: ListNode, new_line=False):
     while l:
         print(l.val, flush=True, sep=' ', end=' ')
         l = l.next
+    if new_line:
+        print()
+
+
+def print_list_nl(l: ListNode):
+    printList(l, True)
 
 
 def print_list_n(nums: List[int], cnt: int):

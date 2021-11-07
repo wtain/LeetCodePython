@@ -36,6 +36,9 @@ Memory Usage: 15.5 MB, less than 17.68% of Python3 online submissions for Valid 
 """
 from typing import List
 
+from Common.Constants import false, true
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def validMountainArray(self, arr: List[int]) -> bool:
@@ -50,9 +53,13 @@ class Solution:
         return i == n
 
 
-print(Solution().validMountainArray([2,1]))  # false
-print(Solution().validMountainArray([3,5,5]))  # false
-print(Solution().validMountainArray([0,3,2,1]))  # true
-print(Solution().validMountainArray([9,8,7,6,5,4,3,2,1,0]))  # false
-print(Solution().validMountainArray([1,3,2]))  # true
+tests = [
+    [[2, 1], false],
+    [[3, 5, 5], false],
+    [[0, 3, 2, 1], true],
+    [[9, 8, 7, 6, 5, 4, 3, 2, 1, 0], false],
+    [[1, 3, 2], true],
+]
+
+run_functional_tests(Solution().validMountainArray, tests)
 

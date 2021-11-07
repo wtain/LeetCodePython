@@ -12,6 +12,7 @@ Input: 5
 Output: false
 Follow up: Could you solve it without loops/recursion?
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 60 ms, faster than 5.53% of Python3 online submissions for Power of Four.
@@ -22,5 +23,9 @@ class Solution:
         return num > 0 and num & (num-1) == 0 and num & 0xAAAAAAAAAAAAAAAA == 0
 
 
-print(Solution().isPowerOfFour(16))  # True
-print(Solution().isPowerOfFour(5))  # false
+tests = [
+    [16, True],
+    [5, False]
+]
+
+run_functional_tests(Solution().isPowerOfFour, tests)

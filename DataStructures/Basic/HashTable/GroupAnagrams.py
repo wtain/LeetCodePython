@@ -32,7 +32,7 @@ from collections import Counter, defaultdict
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets, compareOfSets
+from Common.ResultComparators import compareSets, compareSetsOfSets
 
 
 # Runtime: 251 ms, faster than 5.01% of Python3 online submissions for Group Anagrams.
@@ -123,4 +123,4 @@ tests = [
     [["a"], [["a"]]]
 ]
 
-run_functional_tests(Solution().groupAnagrams, tests, custom_check=compareOfSets)
+run_functional_tests(Solution().groupAnagrams, tests, custom_check=compareSetsOfSets)

@@ -23,6 +23,8 @@ Output: 0
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 80 ms, faster than 19.71% of Python3 online submissions for Search Insert Position.
 Memory Usage: 14.5 MB, less than 48.69% of Python3 online submissions for Search Insert Position.
@@ -43,7 +45,11 @@ class Solution:
         return l
 
 
-print(Solution().searchInsert([1,3,5,6], 5))  # 2
-print(Solution().searchInsert([1,3,5,6], 2))  # 1
-print(Solution().searchInsert([1,3,5,6], 7))  # 4
-print(Solution().searchInsert([1,3,5,6], 0))  # 0
+tests = [
+    [[1,3,5,6], 5, 2],
+    [[1,3,5,6], 2, 1],
+    [[1,3,5,6], 7, 4],
+    [[1,3,5,6], 0, 0]
+]
+
+run_functional_tests(Solution().searchInsert, tests)

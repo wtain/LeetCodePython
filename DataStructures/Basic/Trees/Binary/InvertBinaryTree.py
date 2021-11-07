@@ -27,6 +27,8 @@ Google: 90% of our engineers use the software you wrote (Homebrew), but you canâ
 from typing import List
 
 from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import convert_test_params, run_functional_tests
+from Common.TreeUtils import build_tree_from_list
 
 """
 Runtime: 20 ms, faster than 98.67% of Python3 online submissions for Invert Binary Tree.
@@ -51,30 +53,10 @@ class Solution:
         return root
 
 
-def printTree(root: TreeNode):
-    if not root:
-        return
-    toVisit: List[TreeNode] = [root]
-    while len(toVisit) > 0:
-        nextLevel: List[TreeNode] = []
-        for n in toVisit:
-            if n.left:
-                nextLevel.append(n.left)
-            if n.right:
-                nextLevel.append(n.right)
-            print(n.val, flush=True, sep=' ', end=' ')
-        print()
-        toVisit = nextLevel
+tests = [
+    [[4,2,7,1,3,6,9], [4,7,2,9,6,3,1]],
+    [[2,1,3], [2,3,1]],
+    [[],[]]
+]
 
-
-root = TreeNode(4)
-root.left = TreeNode(2)
-root.right = TreeNode(7)
-root.left.left = TreeNode(1)
-root.left.right = TreeNode(3)
-root.right.left = TreeNode(6)
-root.right.right = TreeNode(9)
-
-printTree(root)
-printTree(Solution().invertTree(root))
-printTree(Solution().invertTree(None))
+run_functional_tests(Solution().invertTree, convert_test_params(tests, build_tree_from_list))

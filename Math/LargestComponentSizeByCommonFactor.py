@@ -29,6 +29,8 @@ Note:
 1 <= A.length <= 20000
 1 <= A[i] <= 100000
 """
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 2844 ms, faster than 20.11% of Python3 online submissions for Largest Component Size by Common Factor.
 Memory Usage: 18.3 MB, less than 78.84% of Python3 online submissions for Largest Component Size by Common Factor.
@@ -74,6 +76,10 @@ class Solution:
         return maxSize
 
 
-print(Solution().largestComponentSize([4, 6, 15, 35]))  # 4
-print(Solution().largestComponentSize([20, 50, 9, 63]))  # 2
-print(Solution().largestComponentSize([2,3,6,7,4,12,21,39]))  # 8
+tests = [
+    [[4, 6, 15, 35], 4],
+    [[20, 50, 9, 63], 2],
+    [[2,3,6,7,4,12,21,39], 8]
+]
+
+run_functional_tests(Solution().largestComponentSize, tests)

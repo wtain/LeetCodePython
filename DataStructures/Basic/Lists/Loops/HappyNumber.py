@@ -18,6 +18,7 @@ Explanation:
 12 + 02 + 02 = 1
 
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 40 ms, faster than 43.48% of Python3 online submissions for Happy Number.
@@ -47,4 +48,9 @@ class Solution:
         return False
 
 
-print(Solution().isHappy(19))  # True
+tests = [
+    [19, True]
+]
+
+run_functional_tests(Solution().isHappy, tests)
+

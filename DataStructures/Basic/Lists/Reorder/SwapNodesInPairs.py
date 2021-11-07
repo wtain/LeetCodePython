@@ -3,6 +3,8 @@ https://leetcode.com/explore/challenge/card/december-leetcoding-challenge/572/we
 https://leetcode.com/problems/swap-nodes-in-pairs/
 """
 from Common.Leetcode import ListNode
+from Common.ListUtils import print_list_nl
+from Common.ObjectTestingUtils import convert_test_params_to_lists, run_functional_tests
 
 
 class Solution:
@@ -28,21 +30,9 @@ class Solution:
         return newHead
 
 
-def printList(l: ListNode):
-    while l:
-        print(l.val, flush=True, sep=' ', end=' ')
-        l = l.next
-    print()
+tests = [
+    [[1, 2, 3, 4, 5], [2, 1, 4, 3, 5]],
+    [[1, 2, 3, 4], [2, 1, 4, 3]]
+]
 
-list1 = ListNode(1)
-list1.next = ListNode(2)
-list1.next.next = ListNode(3)
-list1.next.next.next = ListNode(4)
-list1.next.next.next.next = ListNode(5)
-printList(Solution().swapPairs(list1))
-
-list2 = ListNode(1)
-list2.next = ListNode(2)
-list2.next.next = ListNode(3)
-list2.next.next.next = ListNode(4)
-printList(Solution().swapPairs(list2))
+run_functional_tests(Solution().swapPairs, convert_test_params_to_lists(tests))

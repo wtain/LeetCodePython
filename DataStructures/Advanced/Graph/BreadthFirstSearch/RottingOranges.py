@@ -38,11 +38,10 @@ grid[i][j] is only 0, 1, or 2.
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
-def printGrid(grid: List[List[int]]):
-    for row in grid:
-        print(row)
-    print()
+
+
 
 """
 Runtime: 64 ms, faster than 47.67% of Python3 online submissions for Rotting Oranges.
@@ -50,20 +49,13 @@ Memory Usage: 13.8 MB, less than 79.80% of Python3 online submissions for Rottin
 """
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        n = len(grid)
-        m = len(grid[0])
+        n, m = len(grid), len(grid[0])
         BigValue = n * m + 1
-        dist = [[BigValue for i in range(m)] for j in range(n)]
-        # rotten = []
-        # numFresh = 0
+        dist = [[BigValue] * m for _ in range(n)]
         for i in range(n):
             for j in range(m):
                 if grid[i][j] == 2:
-                    # rotten.append((i, j))
                     dist[i][j] = 0
-                # elif grid[i][j] == 1:
-                    # numFresh += 1
-        # changesMade = len(rotten) > 0
         changesMade = True
         while changesMade:
             changesMade = False
@@ -87,7 +79,6 @@ class Solution:
                         dist[i][j] = min(dist[i][j], dist[i][j+1] + 1)
                     if dist[i][j] != dij:
                         changesMade = True
-            # printGrid(dist)
         maxDist = 0
         for i in range(n):
             for j in range(m):
@@ -99,6 +90,10 @@ class Solution:
         return maxDist
 
 
-print(Solution().orangesRotting([[2,1,1],[1,1,0],[0,1,1]]))  # 4
-print(Solution().orangesRotting([[2,1,1],[0,1,1],[1,0,1]]))  # -1
-print(Solution().orangesRotting([[0,2]]))  # 0
+tests = [
+    [[[2,1,1],[1,1,0],[0,1,1]], 4],
+    [[[2,1,1],[0,1,1],[1,0,1]], -1],
+    [[[0,2]], 0]
+]
+
+run_functional_tests(Solution().orangesRotting, tests)

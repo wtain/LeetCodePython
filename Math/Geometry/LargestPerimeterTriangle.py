@@ -34,6 +34,8 @@ Memory Usage: 15.7 MB, less than 10.60% of Python3 online submissions for Larges
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def largestPerimeter(self, A: List[int]) -> int:
@@ -45,7 +47,11 @@ class Solution:
         return 0
 
 
-print(Solution().largestPerimeter([2,1,2]))  # 5
-print(Solution().largestPerimeter([1,2,1]))  # 0
-print(Solution().largestPerimeter([3,2,3,4]))  # 10
-print(Solution().largestPerimeter([3,6,2,3]))  # 8
+tests = [
+    [[2,1,2], 5],
+    [[1,2,1], 0],
+    [[3,2,3,4], 10],
+    [[3,6,2,3], 8]
+]
+
+run_functional_tests(Solution().largestPerimeter, tests)

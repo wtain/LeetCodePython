@@ -15,6 +15,7 @@ The length of input array is a positive integer and will not exceed 10,000
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 532 ms, faster than 23.19% of Python3 online submissions for Max Consecutive Ones.
@@ -35,4 +36,8 @@ class Solution:
         return result
 
 
-print(Solution().findMaxConsecutiveOnes([1,1,0,1,1,1]))  # 3
+tests = [
+    [[1,1,0,1,1,1], 3]
+]
+
+run_functional_tests(Solution().findMaxConsecutiveOnes, tests)

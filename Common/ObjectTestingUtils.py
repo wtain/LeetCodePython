@@ -5,10 +5,11 @@ import traceback
 from typing import List
 
 from Common.Leetcode import ListNode, TreeNode
+from Common.LeetcodeMultilevelList import is_multilevel_list, list_size, multilevel_list_to_string, multilevel_list_equal
 from Common.ListUtils import build_list, list_to_string, lists_equal, list_length
 from Common.NAryTree import Node
 from Common.NestedInteger import NestedInteger, nestedIntegerToString
-from Common.TreeUtils import compareTrees, printTree, build_tree_from_list, compareTreeLists
+from Common.TreeUtils import compareTrees, printTree, build_tree_from_list, compareTreeLists, compareTreeSets
 
 
 def call_method(o, name, *args, **kwargs):
@@ -29,6 +30,7 @@ def run_object_tests(tests, **kwargs):
         declare_class(kwargs["cls"])
     if "rndseed" in kwargs:
         random.seed(kwargs["rndseed"])
+    debug = "debug" in kwargs and kwargs["debug"]
     overall = True
     for j, test in enumerate(tests):
         methods = test[0]
@@ -39,6 +41,8 @@ def run_object_tests(tests, **kwargs):
         fail = False
         for i in range(1, n):
             args = arguments[i]
+            if debug:
+                print(f"{methods[i]}({','.join(map(str, args))})")
             if not args:
                 args = []
             output = call_method(obj, methods[i], *args)
@@ -48,7 +52,7 @@ def run_object_tests(tests, **kwargs):
                 print(str(j + 1) + ") FAIL: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
                 break
         if not fail:
-            print(str(j + 1) + ") PASS")
+            print(str(j + 1) + f") PASS ({n} steps)")
     if overall:
         print("Overall status: PASS")
     else:
@@ -60,6 +64,8 @@ def to_string(v) -> str:
         return list_to_string(v)
     elif type(v) is NestedInteger:
         return nestedIntegerToString(v)
+    elif is_multilevel_list(v):
+        return multilevel_list_to_string(v)
     else:
         return str(v)
 
@@ -78,11 +84,13 @@ def compare_values(v1, v2) -> bool:
     elif type(v1) is TreeNode:
         return compareTrees(v1, v2)
     elif type(v1) is list and v1 and type(v1[0]) is TreeNode:
-        return compareTreeLists(v1, v2)
+        return compareTreeSets(v1, v2)
     elif type(v1) is float:
         return compare_floats(v1, v2)
     elif type(v1) is bool or type(v2) is bool:
         return compare_bools(v1, v2)
+    elif is_multilevel_list(v1) or is_multilevel_list(v2):
+        return multilevel_list_equal(v1, v2)
     else:
         return v1 == v2
 
@@ -136,6 +144,8 @@ def run_functional_tests(function, tests, **kwargs):
             input_metric = lambda test: list_length(test[0])
         elif type(tests[0][0]) is int:
             input_metric = lambda test: test[0]
+        elif is_multilevel_list(tests[0][0]):
+            input_metric = lambda test: list_size(test[0])
         else:
             input_metric = lambda test: len(test[0])
     n, nfail, i = len(tests), 0, 0
@@ -170,10 +180,11 @@ def run_functional_tests(function, tests, **kwargs):
                     print("Got:")
                     printTree(result)
                 elif type(expected) is list and expected and type(expected[0]) is TreeNode or type(result) is list and result and type(result[0]) is TreeNode:
-                    for exp, res in zip(expected, result):
-                        print("Expected:")
+                    print("Expected:")
+                    for exp in expected:
                         printTree(exp)
-                        print("Got:")
+                    print("Got:")
+                    for res in result:
                         printTree(res)
                 else:
                     print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.6f}".format(duration) + ", params: " + str(parameters))

@@ -18,6 +18,7 @@ Output: 2
 Explanation: The square root of 8 is 2.82842..., and since
              the decimal part is truncated, 2 is returned.
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 60 ms, faster than 21.73% of Python3 online submissions for Sqrt(x).
@@ -43,8 +44,12 @@ class Solution:
         return l
 
 
-print(Solution().mySqrt(4))  # 2
-print(Solution().mySqrt(8))  # 2
-print(Solution().mySqrt(100))  # 10
-print(Solution().mySqrt(101))  # 10
-print(Solution().mySqrt(99))  # 9
+tests = [
+    [4, 2],
+    [8, 2],
+    [100, 10],
+    [101, 10],
+    [99, 9]
+]
+
+run_functional_tests(Solution().mySqrt, tests)

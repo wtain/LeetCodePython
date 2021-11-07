@@ -20,6 +20,7 @@ The web page's width and length you designed must be positive integers.
 from math import sqrt
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """WRONG"""
 """
@@ -52,12 +53,16 @@ class Solution:
             l = area // i
             if i * l == area:
                 return [l, i]
-        return None
 
 
-print(Solution().constructRectangle(9999990))  # [3330,3003]
-print(Solution().constructRectangle(12))  # 4, 3
-print(Solution().constructRectangle(4))  # 2, 2
-print(Solution().constructRectangle(10))  # 5, 2
-print(Solution().constructRectangle(9))  # 3 3
-print(Solution().constructRectangle(11))  # 11 1
+tests = [
+    [9999990, [3330,3003]],
+    [12, [4, 3]],
+    [4, [2, 2]],
+    [4, [2, 2]],
+    [10, [5, 2]],
+    [9, [3, 3]],
+    [11, [11, 1]]
+]
+
+run_functional_tests(Solution().constructRectangle, tests)

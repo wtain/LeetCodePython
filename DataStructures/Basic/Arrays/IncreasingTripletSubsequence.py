@@ -35,6 +35,8 @@ Memory Usage: 14.9 MB, less than 7.12% of Python3 online submissions for Increas
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
@@ -57,6 +59,10 @@ class Solution:
         return False
 
 
-print(Solution().increasingTriplet([1,2,3,4,5]))  # true
-print(Solution().increasingTriplet([5,4,3,2,1]))  # false
-print(Solution().increasingTriplet([2,1,5,0,4,6]))  # true
+tests = [
+    [[1,2,3,4,5], True],
+    [[5,4,3,2,1], False],
+    [[2,1,5,0,4,6], True]
+]
+
+run_functional_tests(Solution().increasingTriplet, tests)

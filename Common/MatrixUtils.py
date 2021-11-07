@@ -35,3 +35,9 @@ def printMatrix(board, **kwargs):
                 text = colored(0, 255, 0, text)
             print(text, flush=True, sep=' ', end=' ')
         print()
+
+
+def printGrid(grid: List[List[int]]):
+    for row in grid:
+        print(row)
+    print()

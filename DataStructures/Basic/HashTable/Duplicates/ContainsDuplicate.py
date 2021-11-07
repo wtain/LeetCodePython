@@ -19,6 +19,8 @@ Output: true
 """
 from typing import List, Set
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 164 ms, faster than 27.55% of Python3 online submissions for Contains Duplicate.
 Memory Usage: 19.1 MB, less than 63.78% of Python3 online submissions for Contains Duplicate.
@@ -33,6 +35,10 @@ class Solution:
         return False
 
 
-print(Solution().containsDuplicate([1,2,3,1]))  # True
-print(Solution().containsDuplicate([1,2,3,4]))  # False
-print(Solution().containsDuplicate([1,1,1,3,3,4,3,2,4,2]))  # True
+tests = [
+    [[1,2,3,1], True],
+    [[1,2,3,4], False],
+    [[1,1,1,3,3,4,3,2,4,2], True]
+]
+
+run_functional_tests(Solution().containsDuplicate, tests)

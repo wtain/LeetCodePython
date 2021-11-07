@@ -32,6 +32,8 @@ Constraints:
 
 Methods pop, top and getMin operations will always be called on non-empty stacks.
 """
+from Common.Constants import null
+from Common.ObjectTestingUtils import run_object_tests
 
 """
 Runtime: 56 ms, faster than 96.37% of Python3 online submissions for Min Stacks.
@@ -62,11 +64,12 @@ class MinStack:
         return self.data[len(self.data) - 1][1]
 
 
-minStack = MinStack()
-minStack.push(-2)
-minStack.push(0)
-minStack.push(-3)
-print(minStack.getMin())  # return -3
-minStack.pop()
-print(minStack.top())  # return 0
-print(minStack.getMin())  # return -2
+tests = [
+    [
+        ["MinStack","push","push","push","getMin","pop","top","getMin"],
+        [[],[-2],[0],[-3],[],[],[],[]],
+        [null,null,null,null,-3,null,0,-2]
+    ]
+]
+
+run_object_tests(tests, cls=MinStack)

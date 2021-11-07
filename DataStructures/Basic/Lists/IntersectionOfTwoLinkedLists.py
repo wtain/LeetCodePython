@@ -45,6 +45,8 @@ Each value on each linked list is in the range [1, 10^9].
 Your code should preferably run in O(n) time and use only O(1) memory.
 """
 from Common.Leetcode import ListNode
+from Common.ListUtils import build_list
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 184 ms, faster than 42.00% of Python3 online submissions for Intersection of Two Linked Lists.
@@ -92,8 +94,6 @@ l1b.next = ListNode(6)
 l1b.next.next = ListNode(1)
 l1b.next.next.next = l1a.next.next
 
-print(Solution().getIntersectionNode(l1a, l1b).val)  # 8
-
 l2a = ListNode(1)
 l2a.next = ListNode(9)
 l2a.next.next = ListNode(1)
@@ -102,8 +102,6 @@ l2a.next.next.next.next = ListNode(4)
 l2b = ListNode(3)
 l2b.next = l2a.next.next.next
 
-print(Solution().getIntersectionNode(l2a, l2b).val)  # 2
-
 l3a = ListNode(2)
 l3a.next = ListNode(6)
 l3a.next.next = ListNode(4)
@@ -111,4 +109,16 @@ l3a.next.next = ListNode(4)
 l3b = ListNode(1)
 l3b.next = ListNode(5)
 
-print(Solution().getIntersectionNode(l3a, l3b) is None)  # True
+
+tests = [
+    [l1a, l1b, 8],
+    [l2a, l2b, 2],
+    [l3a, l3b, None]
+]
+
+
+def customCheck(test, result):
+    return (result.val if result else None) == test[-1]
+
+
+run_functional_tests(Solution().getIntersectionNode, tests, custom_check=customCheck)

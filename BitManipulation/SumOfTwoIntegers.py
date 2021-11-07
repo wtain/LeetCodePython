@@ -11,8 +11,7 @@ Example 2:
 Input: a = -2, b = 3
 Output: 1
 """
-
-
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 class Solution:
@@ -58,8 +57,11 @@ class Solution:
         return result
 
 
-print(Solution().getSum(2147483647, -2147483648))  # -1
-print(Solution().getSum(-12, -8))  # -20
-print(Solution().getSum(1, 2))  # 3
-print(Solution().getSum(-2, 3))  # 1
+tests = [
+    [2147483647, -2147483648, -1],
+    [-12, -8, -20],
+    [1, 2, 3],
+    [-2, 3, 1]
+]
 
+run_functional_tests(Solution().getSum, tests)

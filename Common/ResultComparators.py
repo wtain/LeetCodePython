@@ -6,7 +6,7 @@ def compareSets(test, result) -> bool:
     return sorted(expected) == sorted(result)
 
 
-def compareOfSets(test, result) -> bool:
+def compareSetsOfSets(test, result) -> bool:
     expected = test[-1]
     if len(expected) != len(result):
         return False

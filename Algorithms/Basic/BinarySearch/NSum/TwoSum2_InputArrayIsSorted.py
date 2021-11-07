@@ -18,6 +18,7 @@ Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 from typing import List
 from bisect import bisect_left
 
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 100 ms, faster than 26.85% of Python3 online submissions for Two Sum II - Input array is sorted.
@@ -29,9 +30,12 @@ class Solution:
             t2 = target - numbers[i]
             j = bisect_left(numbers, t2, i+1)
             if j != len(numbers) and numbers[j] == t2:
-                return i+1, j+1
-        return None
+                return [i+1, j+1]
 
 
-print(Solution().twoSum([2,7,11,15], 9))  # 1, 2
+tests = [
+    [[2,7,11,15], 9, [1, 2]]
+]
+
+run_functional_tests(Solution().twoSum, tests)
 

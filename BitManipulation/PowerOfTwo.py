@@ -17,6 +17,7 @@ Example 3:
 Input: 218
 Output: false
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 32 ms, faster than 79.29% of Python3 online submissions for Power of Two.
@@ -27,7 +28,11 @@ class Solution:
         return n > 0 and n & (n-1) == 0
 
 
-print(Solution().isPowerOfTwo(0))  # False
-print(Solution().isPowerOfTwo(1))  # True
-print(Solution().isPowerOfTwo(16))  # True
-print(Solution().isPowerOfTwo(218))  # False
+tests = [
+    [0, False],
+    [1, True],
+    [16, True],
+    [218, False]
+]
+
+run_functional_tests(Solution().isPowerOfTwo, tests)
