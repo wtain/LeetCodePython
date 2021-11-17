@@ -16,7 +16,8 @@ Follow up:
 Could you do it in O(n) time and O(1) space?
 """
 from Common.Leetcode import ListNode
-
+from Common.ListUtils import build_list
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 80 ms, faster than 50.13% of Python3 online submissions for Palindrome Linked List.
@@ -62,12 +63,9 @@ class Solution:
         return True
 
 
-l1 = ListNode(1)
-l1.next = ListNode(2)
-print(Solution().isPalindrome(l1))  # False
+tests = [
+    [build_list([1, 2]), False],
+    [build_list([1, 2, 2, 1]), True],
+]
 
-l2 = ListNode(1)
-l2.next = ListNode(2)
-l2.next.next = ListNode(2)
-l2.next.next.next = ListNode(1)
-print(Solution().isPalindrome(l2))  # True
+run_functional_tests(Solution().isPalindrome, tests)

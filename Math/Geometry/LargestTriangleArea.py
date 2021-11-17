@@ -21,6 +21,8 @@ Memory Usage: 14.3 MB, less than 32.56% of Python3 online submissions for Larges
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def largestTriangleArea(self, points: List[List[int]]) -> float:
@@ -37,4 +39,8 @@ class Solution:
         return max_area
 
 
-print(Solution().largestTriangleArea([[0,0],[0,1],[1,0],[0,2],[2,0]]))  # 2
+tests = [
+    [[[0,0],[0,1],[1,0],[0,2],[2,0]], 2]
+]
+
+run_functional_tests(Solution().largestTriangleArea, tests)

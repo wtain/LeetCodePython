@@ -30,6 +30,7 @@ Example 5:
 Input: "{[]}"
 Output: true
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 48 ms, faster than 17.45% of Python3 online submissions for Valid Parentheses.
@@ -124,25 +125,14 @@ class Solution:
         return st.isEmpty()
 
 
-# print(Solution().isValid("["))  # false
-# print(Solution().isValid("()"))  # true
-# print(Solution().isValid("()[]{}"))  # true
-# print(Solution().isValid("(]"))  # false
-# print(Solution().isValid("([)]"))  # false
-# print(Solution().isValid("{[]}"))  # true
-
 
 tests = [
-    ("[", False),
-    ("()", True),
-    ("()[]{}", True),
-    ("(]", False),
-    ("([)]", False),
-    ("{[]}", True),
+    ["[", False],
+    ["()", True],
+    ["()[]{}", True],
+    ["(]", False],
+    ["([)]", False],
+    ["{[]}", True],
 ]
 
-for test in tests:
-    if test[1] == Solution().isValid(test[0]):
-        print("PASS")
-    else:
-        print("FAIL")
+run_functional_tests(Solution().isValid, tests)

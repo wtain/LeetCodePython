@@ -37,32 +37,38 @@ Constraints:
 1 <= nums.length <= 100
 -100 <= nums[i] <= 100
 """
+from functools import reduce
 from typing import List
 
 
 # Runtime: 32 ms, faster than 70.34% of Python3 online submissions for Minimum Value to Get Positive Step by Step Sum.
 # Memory Usage: 14.3 MB, less than 45.48% of Python3 online submissions for Minimum Value to Get Positive Step by Step Sum.
+# Runtime: 20 ms, faster than 99.55% of Python3 online submissions for Minimum Value to Get Positive Step by Step Sum.
+# Memory Usage: 14.1 MB, less than 75.22% of Python3 online submissions for Minimum Value to Get Positive Step by Step Sum.
+# class Solution:
+#     def minStartValue(self, nums: List[int]) -> int:
+#         s = 0
+#         mins = 0
+#         for a in nums:
+#             s += a
+#             mins = min(s, mins)
+#         # startV + mins >= 1
+#         # startV >= 1 - mins
+#         return max(1 - mins, 1)
+from Common.ObjectTestingUtils import run_functional_tests
+
+
+# Runtime: 32 ms, faster than 73.73% of Python3 online submissions for Minimum Value to Get Positive Step by Step Sum.
+# Memory Usage: 14.4 MB, less than 9.55% of Python3 online submissions for Minimum Value to Get Positive Step by Step Sum.
 class Solution:
     def minStartValue(self, nums: List[int]) -> int:
-        s = 0
-        mins = 0
-        for a in nums:
-            s += a
-            mins = min(s, mins)
-        # startV + mins >= 1
-        # startV >= 1 - mins
-        return max(1 - mins, 1)
+        return max(1 - reduce(lambda r, a: (r[0]+a, min(r[0]+a, r[1])), nums, (0, 0))[1], 1)
 
 
 tests = [
-    ([-3,2,-3,4,2], 5),
-    ([1,2], 1),
-    ([1,-2,-3], 5)
+    [[-3,2,-3,4,2], 5],
+    [[1,2], 1],
+    [[1,-2,-3], 5]
 ]
 
-for test in tests:
-    result = Solution().minStartValue(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().minStartValue, tests)

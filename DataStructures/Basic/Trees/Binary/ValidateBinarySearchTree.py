@@ -7,6 +7,7 @@ Memory Usage: 16.3 MB, less than 53.23% of Python3 online submissions for Valida
 
 
 from Common.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
 
 
 class Solution:
@@ -25,11 +26,16 @@ class Solution:
 root1 = TreeNode(2)
 root1.left = TreeNode(1)
 root1.right = TreeNode(3)
-print(Solution().isValidBST(root1))  # true
 
 root2 = TreeNode(5)
 root2.left = TreeNode(1)
 root2.right = TreeNode(4)
 root2.right.left = TreeNode(3)
 root2.right.right = TreeNode(6)
-print(Solution().isValidBST(root2))  # false
+
+tests = [
+    [root1, True],
+    [root2, False]
+]
+
+run_functional_tests(Solution().isValidBST, tests)

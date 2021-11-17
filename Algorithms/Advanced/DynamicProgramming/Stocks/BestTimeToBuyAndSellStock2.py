@@ -40,15 +40,25 @@ from Common.ObjectTestingUtils import run_functional_tests
 """
 Runtime: 128 ms, faster than 6.41% of Python3 online submissions for Best Time to Buy and Sell Stock II.
 Memory Usage: 15.1 MB, less than 56.17% of Python3 online submissions for Best Time to Buy and Sell Stock II.
+
+Runtime: 64 ms, faster than 60.71% of Python3 online submissions for Best Time to Buy and Sell Stock II.
+Memory Usage: 15.1 MB, less than 24.17% of Python3 online submissions for Best Time to Buy and Sell Stock II.
 """
+# class Solution:
+#     def maxProfit(self, prices: List[int]) -> int:
+#         if len(prices) <= 1:
+#             return 0
+#         result = 0
+#         for i in range(1, len(prices)):
+#             result += max(prices[i] - prices[i-1], 0)
+#         return result
+
+
+# Runtime: 52 ms, faster than 98.17% of Python3 online submissions for Best Time to Buy and Sell Stock II.
+# Memory Usage: 14.9 MB, less than 90.16% of Python3 online submissions for Best Time to Buy and Sell Stock II.
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if len(prices) <= 1:
-            return 0
-        result = 0
-        for i in range(1, len(prices)):
-            result += max(prices[i] - prices[i-1], 0)
-        return result
+        return sum(max(pi - pi1, 0) for pi, pi1 in zip(prices[1:], prices))
 
 
 tests = [

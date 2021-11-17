@@ -28,6 +28,7 @@ Constraints:
 Runtime: 76 ms, faster than 5.85% of Python3 online submissions for Subtract the Product and Sum of Digits of an Integer.
 Memory Usage: 14.3 MB, less than 5.15% of Python3 online submissions for Subtract the Product and Sum of Digits of an Integer.
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 
 class Solution:
@@ -42,5 +43,9 @@ class Solution:
         return prod - dsum
 
 
-print(Solution().subtractProductAndSum(234))  # 15
-print(Solution().subtractProductAndSum(4421))  # 21
+tests = [
+    [234, 15],
+    [4421, 21]
+]
+
+run_functional_tests(Solution().subtractProductAndSum, tests)

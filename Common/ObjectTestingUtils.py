@@ -4,6 +4,7 @@ import timeit
 import traceback
 from typing import List
 
+from Common.ConsoleUtils import colored, FAIL, PASS, FATAL, ERROR, SUCCESS, CRASH, FAILED
 from Common.Leetcode import ListNode, TreeNode
 from Common.LeetcodeMultilevelList import is_multilevel_list, list_size, multilevel_list_to_string, multilevel_list_equal
 from Common.ListUtils import build_list, list_to_string, lists_equal, list_length
@@ -49,14 +50,14 @@ def run_object_tests(tests, **kwargs):
             if not compare_values(output, expected[i]):
                 fail = True
                 overall = False
-                print(str(j + 1) + ") FAIL: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
+                print(str(j + 1) + f") {FAIL}: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
                 break
         if not fail:
-            print(str(j + 1) + f") PASS ({n} steps)")
+            print(str(j + 1) + f") {PASS} ({n} steps)")
     if overall:
-        print("Overall status: PASS")
+        print(f"Overall status: {PASS}")
     else:
-        print("Overall status: FAIL")
+        print(f"Overall status: {FAIL}")
 
 
 def to_string(v) -> str:
@@ -125,12 +126,17 @@ def make_inplace(function):
 
 
 def run_functional_tests(function, tests, **kwargs):
+    if not tests:
+        print(f"** {FATAL} {ERROR}: No found")
+        return
     if "custom_check" in kwargs:
         custom_check = kwargs["custom_check"]
     else:
         custom_check = None
     if "run_tests" in kwargs:
         run_tests = kwargs["run_tests"]
+        if type(run_tests) is int:
+            run_tests = [run_tests]
     else:
         run_tests = None
     if "input_metric" in kwargs:
@@ -148,6 +154,7 @@ def run_functional_tests(function, tests, **kwargs):
             input_metric = lambda test: list_size(test[0])
         else:
             input_metric = lambda test: len(test[0])
+
     n, nfail, i = len(tests), 0, 0
     for test in tests:
         i += 1
@@ -170,10 +177,10 @@ def run_functional_tests(function, tests, **kwargs):
                 comparison_result = compare_values(result, expected)
 
             if comparison_result:
-                print(str(i) + ") PASS, took: " + "{:.6f}".format(duration) + " on size=" + str(input_size))
+                print(str(i) + f") {PASS}, took: " + "{:.6f}".format(duration) + " on size=" + str(input_size))
             else:
                 if type(expected) is str and type(result) is str:
-                    print(str(i) + ") FAIL - expected '" + expected + "', got '" + result + "', params: " + str(parameters))
+                    print(str(i) + f") {FAIL} - expected '" + expected + "', got '" + result + "', params: " + str(parameters))
                 elif type(expected) is TreeNode or type(result) is TreeNode:
                     print("Expected:")
                     printTree(expected)
@@ -187,15 +194,15 @@ def run_functional_tests(function, tests, **kwargs):
                     for res in result:
                         printTree(res)
                 else:
-                    print(str(i) + ") FAIL - expected " + to_string(expected), ", got " + to_string(result), "; took {:.6f}".format(duration) + ", params: " + str(parameters))
+                    print(str(i) + f") {FAIL} - expected " + to_string(expected), ", got " + to_string(result), "; took {:.6f}".format(duration) + ", params: " + str(parameters))
                 nfail += 1
         except Exception as e:
-            print(str(i) + ") FAIL - CRASH, params: " + str(parameters))
+            print(str(i) + f") {FAIL} - {CRASH}, params: " + str(parameters))
             print(e)
             print(e, traceback.format_exc())
             nfail += 1
     is_success = nfail == 0
-    status = "OVERALL: " + ("SUCCESS" if is_success else "FAILED")
+    status = "OVERALL: " + (SUCCESS if is_success else FAILED)
     if is_success:
         print(status)
     else:

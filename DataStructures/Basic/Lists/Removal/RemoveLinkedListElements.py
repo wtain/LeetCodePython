@@ -10,6 +10,8 @@ Input:  1->2->6->3->4->5->6, val = 6
 Output: 1->2->3->4->5
 """
 from Common.Leetcode import ListNode
+from Common.ListUtils import build_list
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 60 ms, faster than 98.67% of Python3 online submissions for Remove Linked List Elements.
@@ -33,26 +35,11 @@ class Solution:
         return head
 
 
-def printList(l: ListNode):
-    while l:
-        print(l.val, flush=True, sep=' ', end=' ')
-        l = l.next
-    print()
+tests = [
+    [build_list([1, 2, 6, 3, 4, 5, 6]), 6, build_list([1, 2, 3, 4, 5])],
+    [build_list([1, 2, 3, 4, 5]), 6, build_list([1, 2, 3, 4, 5])],
+    [None, 6, None],
+    [build_list([1]), 1, None]
+]
 
-
-l1 = ListNode(1)
-l1.next = ListNode(2)
-l1.next.next = ListNode(6)
-l1.next.next.next = ListNode(3)
-l1.next.next.next.next = ListNode(4)
-l1.next.next.next.next.next = ListNode(5)
-l1.next.next.next.next.next.next = ListNode(6)
-
-l2 = Solution().removeElements(l1, 6)
-printList(l2)  # 1->2->3->4->5
-
-printList(Solution().removeElements(l2, 6))  # 1->2->3->4->5
-
-printList(Solution().removeElements(None, 6))  # []
-
-printList(Solution().removeElements(ListNode(1), 1))  # []
+run_functional_tests(Solution().removeElements, tests)
