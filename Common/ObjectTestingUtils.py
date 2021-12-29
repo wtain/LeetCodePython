@@ -31,9 +31,17 @@ def run_object_tests(tests, **kwargs):
         declare_class(kwargs["cls"])
     if "rndseed" in kwargs:
         random.seed(kwargs["rndseed"])
+    if "run_tests" in kwargs:
+        run_tests = kwargs["run_tests"]
+        if type(run_tests) is int:
+            run_tests = [run_tests]
+    else:
+        run_tests = None
     debug = "debug" in kwargs and kwargs["debug"]
     overall = True
     for j, test in enumerate(tests):
+        if run_tests and (j+1) not in run_tests:
+            continue
         methods = test[0]
         arguments = test[1]
         expected = test[2]
@@ -155,7 +163,7 @@ def run_functional_tests(function, tests, **kwargs):
         else:
             input_metric = lambda test: len(test[0])
 
-    n, nfail, i = len(tests), 0, 0
+    n, failed_tests, i = len(tests), [], 0
     for test in tests:
         i += 1
         if run_tests and i not in run_tests:
@@ -172,7 +180,8 @@ def run_functional_tests(function, tests, **kwargs):
             duration = stop - start
 
             if custom_check:
-                comparison_result = custom_check(test, result)
+                result_copy = copy.deepcopy(result)
+                comparison_result = custom_check(test, result_copy)
             else:
                 comparison_result = compare_values(result, expected)
 
@@ -182,7 +191,7 @@ def run_functional_tests(function, tests, **kwargs):
                 if type(expected) is str and type(result) is str:
                     print(str(i) + f") {FAIL} - expected '" + expected + "', got '" + result + "', params: " + str(parameters))
                 elif type(expected) is TreeNode or type(result) is TreeNode:
-                    print("Expected:")
+                    print(str(i) + f") {FAIL} - Expected:")
                     printTree(expected)
                     print("Got:")
                     printTree(result)
@@ -195,18 +204,20 @@ def run_functional_tests(function, tests, **kwargs):
                         printTree(res)
                 else:
                     print(str(i) + f") {FAIL} - expected " + to_string(expected), ", got " + to_string(result), "; took {:.6f}".format(duration) + ", params: " + str(parameters))
-                nfail += 1
+                failed_tests.append(i)
         except Exception as e:
             print(str(i) + f") {FAIL} - {CRASH}, params: " + str(parameters))
             print(e)
             print(e, traceback.format_exc())
-            nfail += 1
+            failed_tests.append(i)
+    nfail = len(failed_tests)
     is_success = nfail == 0
     status = "OVERALL: " + (SUCCESS if is_success else FAILED)
     if is_success:
         print(status)
     else:
         print(status + ", " + str(nfail) + " failed of " + str(n))
+        print("Failed tests: " + str(failed_tests))
 
 
 def convert_test_params(tests, function, **kwargs):

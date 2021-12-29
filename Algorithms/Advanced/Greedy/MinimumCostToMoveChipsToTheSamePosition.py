@@ -38,6 +38,8 @@ Constraints:
 from typing import List
 
 
+# Runtime: 28 ms, faster than 90.17% of Python3 online submissions for Minimum Cost to Move Chips to The Same Position.
+# Memory Usage: 14.1 MB, less than 94.66% of Python3 online submissions for Minimum Cost to Move Chips to The Same Position.
 # Runtime: 48 ms, faster than 10.29% of Python3 online submissions for Minimum Cost to Move Chips to The Same Position.
 # Memory Usage: 14.2 MB, less than 80.87% of Python3 online submissions for Minimum Cost to Move Chips to The Same Position.
 class Solution:

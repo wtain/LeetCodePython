@@ -40,6 +40,8 @@ from typing import List
 from Common.ObjectTestingUtils import run_functional_tests
 
 
+# Runtime: 284 ms, faster than 93.25% of Python3 online submissions for Jump Game III.
+# Memory Usage: 21 MB, less than 61.97% of Python3 online submissions for Jump Game III.
 # Runtime: 292 ms, faster than 82.30% of Python3 online submissions for Jump Game III.
 # Memory Usage: 21.2 MB, less than 54.48% of Python3 online submissions for Jump Game III.
 class Solution:

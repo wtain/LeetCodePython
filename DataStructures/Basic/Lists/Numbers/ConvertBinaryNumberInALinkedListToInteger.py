@@ -40,11 +40,15 @@ Each node's value is either 0 or 1.
 from typing import List
 
 
+from Common.Leetcode import ListNode
+from Common.ListUtils import build_list
+from Common.ObjectTestingUtils import run_functional_tests
+
+
+# Runtime: 63 ms, faster than 5.02% of Python3 online submissions for Convert Binary Number in a Linked List to Integer.
+# Memory Usage: 14.2 MB, less than 40.23% of Python3 online submissions for Convert Binary Number in a Linked List to Integer.
 # Runtime: 32 ms, faster than 64.91% of Python3 online submissions for Convert Binary Number in a Linked List to Integer.
 # Memory Usage: 14 MB, less than 89.96% of Python3 online submissions for Convert Binary Number in a Linked List to Integer.
-from Common.Leetcode import ListNode
-
-
 class Solution:
     def getDecimalValue(self, head: ListNode) -> int:
         result = 0
@@ -54,26 +58,12 @@ class Solution:
         return result
 
 
-def buildList(vals: List[int]) -> ListNode:
-    head = ListNode()
-    prev = head
-    for v in vals:
-        prev.next = ListNode(v)
-        prev = prev.next
-    return head.next
-
-
 tests = [
-    (buildList([1,0,1]), 5),
-    (buildList([0]), 0),
-    (buildList([1]), 1),
-    (buildList([1,0,0,1,0,0,1,1,1,0,0,0,0,0,0]), 18880),
-    (buildList([0,0]), 0)
+    [build_list([1,0,1]), 5],
+    [build_list([0]), 0],
+    [build_list([1]), 1],
+    [build_list([1,0,0,1,0,0,1,1,1,0,0,0,0,0,0]), 18880],
+    [build_list([0,0]), 0]
 ]
 
-for test in tests:
-    result = Solution().getDecimalValue(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().getDecimalValue, tests)

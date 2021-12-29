@@ -149,6 +149,8 @@ from Common.ResultComparators import compareSets
 #         return list(prev_level)
 
 
+# Runtime: 224 ms, faster than 94.96% of Python3 online submissions for Minimum Height Trees.
+# Memory Usage: 18.2 MB, less than 91.01% of Python3 online submissions for Minimum Height Trees.
 # Runtime: 236 ms, faster than 69.64% of Python3 online submissions for Minimum Height Trees.
 # Memory Usage: 18.5 MB, less than 76.05% of Python3 online submissions for Minimum Height Trees.
 class Solution:

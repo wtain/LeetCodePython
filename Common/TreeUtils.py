@@ -1,4 +1,4 @@
-from typing import List, Iterator
+from typing import List, Iterator, Set
 
 from Common.Constants import null
 from Common.Leetcode import TreeNode
@@ -48,14 +48,21 @@ def compareTreeSets(l1: List[TreeNode], l2: List[TreeNode]) -> bool:
 
 
 def printTree(root: TreeNode):
+    visited = set()
     def printTreeImpl(root: TreeNode):
+        nonlocal visited
         if root is None:
             return
+        if root in visited:
+            print("*** Loop detected -> Aborting")
+            return
+        visited.add(root)
         print(root.val, '(', end='')
         printTreeImpl(root.left)
         print(",", end='')
         printTreeImpl(root.right)
         print(')', end='')
+
     printTreeImpl(root)
     print()
 
@@ -104,3 +111,40 @@ def build_tree_from_list(values: List[int]) -> TreeNode:
 
 def build_tree_list_from_lists(values: List[List[int]]) -> List[TreeNode]:
     return list(map(build_tree_from_list, values))
+
+
+def is_bst(root: TreeNode) -> bool:
+    def impl(root: TreeNode, vmin, vmax):
+        if root is None:
+            return True
+        if vmin is not None and root.val <= vmin:
+            return False
+        if vmax is not None and root.val >= vmax:
+            return False
+        return impl(root.left, vmin, root.val) and impl(root.right, root.val, vmax)
+
+    return impl(root, None, None)
+
+
+def in_bst(root: TreeNode, v: int) -> bool:
+    if not root:
+        return False
+    if v < root.val:
+        return in_bst(root.left, v)
+    elif v > root.val:
+        return in_bst(root.right, v)
+    return True
+
+
+def bst_values(root: TreeNode) -> Set[int]:
+    result = set()
+
+    def impl(node: TreeNode):
+        if not node:
+            return
+        result.add(node.val)
+        impl(node.left)
+        impl(node.right)
+
+    impl(root)
+    return result
