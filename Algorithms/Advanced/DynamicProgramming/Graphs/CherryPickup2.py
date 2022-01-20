@@ -101,6 +101,8 @@ from typing import List
 from Common.ObjectTestingUtils import run_functional_tests
 
 
+# Runtime: 2128 ms, faster than 26.78% of Python3 online submissions for Cherry Pickup II.
+# Memory Usage: 14.8 MB, less than 91.53% of Python3 online submissions for Cherry Pickup II.
 class Solution:
     def cherryPickup(self, grid: List[List[int]]) -> int:
         n = len(grid)

@@ -39,8 +39,7 @@ def is_multilevel_list(v) -> bool:
 
 
 def list_size(v: Node) -> int:
-    cnt = 0
-    to_visit = [v]
+    cnt, to_visit = 0, [v]
     while to_visit:
         node = to_visit.pop()
         while node:

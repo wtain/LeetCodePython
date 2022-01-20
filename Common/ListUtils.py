@@ -12,6 +12,22 @@ def build_list(vals: List[int]) -> ListNode:
     return dummy.next
 
 
+def get_list_node(node: ListNode, pos: int) -> ListNode:
+    while pos and node:
+        node = node.next
+        pos -= 1
+    return node
+
+
+def build_list_with_loop(vals: List[int], pos: int) -> ListNode:
+    l = build_list(vals)
+    if pos == -1:
+        return l
+    node, last = get_list_node(l, pos), get_list_node(l, len(vals)-1)
+    last.next = node
+    return l
+
+
 def lists_equal(l1: ListNode, l2: ListNode) -> bool:
     while l1 and l2:
         if l1.val != l2.val:
@@ -25,11 +41,16 @@ def lists_equal(l1: ListNode, l2: ListNode) -> bool:
 
 def list_to_string(l: ListNode) -> str:
     result = ""
+    visited = set()
     while l:
         if result:
             result += ","
         result += str(l.val)
+        visited.add(id(l))
         l = l.next
+        if id(l) in visited:
+            result += "... (loop)"
+            break
     return "[" + result + "]"
 
 
@@ -39,6 +60,31 @@ def list_length(l: ListNode) -> int:
         result += 1
         l = l.next
     return result
+
+
+def list_length_loop_proof(head: ListNode) -> int:
+    slow, fast = head, head
+    if not slow:
+        return 0
+    slow, fast = slow.next, fast.next
+    if not fast:
+        return 1
+    result = 1
+    fast = fast.next
+    while fast and id(slow) != id(fast):
+        result += 1
+        slow, fast = slow.next, fast.next
+        if not fast:
+            return result+1
+        fast = fast.next
+    if id(slow) != id(fast):
+        return result
+    fast = head
+    steps = 1
+    while id(slow) != id(fast):
+        slow, fast = slow.next, fast.next
+        steps += 1
+    return result + steps // 2
 
 
 def compareLists(l1: ListNode, l2: ListNode) -> bool:

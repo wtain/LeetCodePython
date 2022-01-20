@@ -7,7 +7,7 @@ from typing import List
 from Common.ConsoleUtils import colored, FAIL, PASS, FATAL, ERROR, SUCCESS, CRASH, FAILED
 from Common.Leetcode import ListNode, TreeNode
 from Common.LeetcodeMultilevelList import is_multilevel_list, list_size, multilevel_list_to_string, multilevel_list_equal
-from Common.ListUtils import build_list, list_to_string, lists_equal, list_length
+from Common.ListUtils import build_list, list_to_string, lists_equal, list_length, list_length_loop_proof
 from Common.NAryTree import Node
 from Common.NestedInteger import NestedInteger, nestedIntegerToString
 from Common.TreeUtils import compareTrees, printTree, build_tree_from_list, compareTreeLists, compareTreeSets
@@ -133,6 +133,31 @@ def make_inplace(function):
     return inner
 
 
+def get_result_instance(tests):
+    result_instance = None
+    for test in tests:
+        result_instance = test[0]
+        if result_instance:
+            break
+    return result_instance
+
+
+def get_input_mertic(result_instance):
+    if type(result_instance) is TreeNode:
+        input_metric = lambda test: count_tree_nodes(test[0])
+    elif type(result_instance) is Node:
+        input_metric = lambda test: count_nary_tree_nodes(test[0])
+    elif type(result_instance) is ListNode:
+        input_metric = lambda test: list_length_loop_proof(test[0])
+    elif type(result_instance) is int:
+        input_metric = lambda test: test[0]
+    elif is_multilevel_list(result_instance):
+        input_metric = lambda test: list_size(test[0])
+    else:
+        input_metric = lambda test: len(test[0]) if test[0] else 0
+    return input_metric
+
+
 def run_functional_tests(function, tests, **kwargs):
     if not tests:
         print(f"** {FATAL} {ERROR}: No found")
@@ -141,6 +166,10 @@ def run_functional_tests(function, tests, **kwargs):
         custom_check = kwargs["custom_check"]
     else:
         custom_check = None
+    if "custom_tostring" in kwargs:
+        tostring_func = kwargs["custom_tostring"]
+    else:
+        tostring_func = to_string
     if "run_tests" in kwargs:
         run_tests = kwargs["run_tests"]
         if type(run_tests) is int:
@@ -150,18 +179,8 @@ def run_functional_tests(function, tests, **kwargs):
     if "input_metric" in kwargs:
         input_metric = kwargs["input_metric"]
     else:
-        if type(tests[0][0]) is TreeNode:
-            input_metric = lambda test: count_tree_nodes(test[0])
-        elif type(tests[0][0]) is Node:
-            input_metric = lambda test: count_nary_tree_nodes(test[0])
-        elif type(tests[0][0]) is ListNode:
-            input_metric = lambda test: list_length(test[0])
-        elif type(tests[0][0]) is int:
-            input_metric = lambda test: test[0]
-        elif is_multilevel_list(tests[0][0]):
-            input_metric = lambda test: list_size(test[0])
-        else:
-            input_metric = lambda test: len(test[0])
+        result_instance = get_result_instance(tests)
+        input_metric = get_input_mertic(result_instance)
 
     n, failed_tests, i = len(tests), [], 0
     for test in tests:
@@ -203,7 +222,7 @@ def run_functional_tests(function, tests, **kwargs):
                     for res in result:
                         printTree(res)
                 else:
-                    print(str(i) + f") {FAIL} - expected " + to_string(expected), ", got " + to_string(result), "; took {:.6f}".format(duration) + ", params: " + str(parameters))
+                    print(str(i) + f") {FAIL} - expected " + tostring_func(expected), ", got " + tostring_func(result), "; took {:.6f}".format(duration) + ", params: " + str(parameters))
                 failed_tests.append(i)
         except Exception as e:
             print(str(i) + f") {FAIL} - {CRASH}, params: " + str(parameters))
