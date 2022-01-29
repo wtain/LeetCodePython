@@ -33,7 +33,6 @@ Constraints:
 
 0 <= c <= 231 - 1
 """
-import math
 
 from Common.ObjectTestingUtils import run_functional_tests
 

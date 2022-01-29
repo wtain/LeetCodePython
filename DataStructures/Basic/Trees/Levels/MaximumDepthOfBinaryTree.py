@@ -17,7 +17,7 @@ Given binary tree [3,9,20,null,null,15,7],
    15   7
 return its depth = 3.
 """
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 """

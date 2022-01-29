@@ -40,7 +40,6 @@ The number of nodes in the list is n.
 
 
 # Definition for singly-linked list.
-from typing import List
 
 
 # class ListNode:
@@ -51,8 +50,7 @@ from typing import List
 
 # Runtime: 1128 ms, faster than 57.65% of Python3 online submissions for Swapping Nodes in a Linked List.
 # Memory Usage: 48.8 MB, less than 62.89% of Python3 online submissions for Swapping Nodes in a Linked List.
-from Common.Leetcode import ListNode
-from Common.ListUtils import build_list, lists_equal, list_to_string
+from Common.DataTypes.Leetcode import ListNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 

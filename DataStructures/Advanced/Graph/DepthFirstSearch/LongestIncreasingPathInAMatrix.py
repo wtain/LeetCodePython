@@ -33,12 +33,11 @@ n == matrix[i].length
 1 <= m, n <= 200
 0 <= matrix[i][j] <= 231 - 1
 """
-import heapq
 from functools import lru_cache
 from itertools import product
 from typing import List
 
-from Common.MatrixUtils import matrix_size
+from Common.Helpers.MatrixUtils import matrix_size
 from Common.ObjectTestingUtils import run_functional_tests
 
 

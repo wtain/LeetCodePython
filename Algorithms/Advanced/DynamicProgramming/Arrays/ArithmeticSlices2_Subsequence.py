@@ -40,7 +40,7 @@ Constraints:
 -231 <= nums[i] <= 231 - 1
 """
 from collections import defaultdict
-from typing import List, Dict
+from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
 

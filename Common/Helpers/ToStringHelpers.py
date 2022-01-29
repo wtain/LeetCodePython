@@ -1,7 +1,7 @@
-from Common.Leetcode import ListNode
-from Common.LeetcodeMultilevelList import is_multilevel_list, multilevel_list_to_string
+from Common.DataTypes.Leetcode import ListNode
+from Common.DataTypes.LeetcodeMultilevelList import is_multilevel_list, multilevel_list_to_string
 from Common.ListUtils import list_to_string
-from Common.NestedInteger import NestedInteger, nestedIntegerToString
+from Common.DataTypes.NestedInteger import NestedInteger, nestedIntegerToString
 
 
 def to_string(v) -> str:

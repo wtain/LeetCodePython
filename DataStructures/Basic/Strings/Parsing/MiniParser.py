@@ -74,7 +74,7 @@ s is the serialization of valid NestedInteger.
 #        Return None if this NestedInteger holds a single integer
 #        :rtype List[NestedInteger]
 #        """
-from Common.NestedInteger import NestedInteger, CreateNestedInteger, compareNestedIntegers
+from Common.DataTypes.NestedInteger import NestedInteger, CreateNestedInteger, compareNestedIntegers
 from Common.ObjectTestingUtils import run_functional_tests
 
 

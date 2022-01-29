@@ -34,7 +34,7 @@ Note:
 
 1 <= N <= 10^9
 """
-from typing import Set, Dict
+from typing import Dict
 
 from Common.ObjectTestingUtils import run_functional_tests
 

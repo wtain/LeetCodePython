@@ -37,7 +37,6 @@ Constraints:
 1 <= s.length, t.length <= 1000
 s and t consist of English letters.
 """
-from functools import lru_cache
 
 from Common.ObjectTestingUtils import run_functional_tests
 

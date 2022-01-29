@@ -40,11 +40,8 @@ Constraints:
 arr.length is even.
 1 <= arr[i] <= 10^5
 """
-import bisect
 from collections import Counter
 from typing import List
-
-from numpy.core import cumsum
 
 from Common.ObjectTestingUtils import run_functional_tests
 

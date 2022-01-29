@@ -33,10 +33,10 @@ from functools import lru_cache
 from typing import List, Optional
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params
-from Common.TreeUtils import build_tree_from_list, build_tree_list_from_lists
+from Common.TreeUtils import build_tree_list_from_lists
 
 
 # Runtime: 109 ms, faster than 5.04% of Python3 online submissions for Unique Binary Search Trees II.

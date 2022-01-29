@@ -37,7 +37,6 @@ Constraints:
 
 """
 import heapq
-from functools import lru_cache
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

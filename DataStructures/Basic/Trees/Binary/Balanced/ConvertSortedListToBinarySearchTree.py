@@ -46,7 +46,7 @@ The number of nodes in head is in the range [0, 2 * 104].
 #         self.val = val
 #         self.left = left
 #         self.right = right
-from Common.Leetcode import ListNode, TreeNode
+from Common.DataTypes.Leetcode import ListNode, TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 

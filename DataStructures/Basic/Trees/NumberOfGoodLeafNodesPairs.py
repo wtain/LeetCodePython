@@ -43,10 +43,6 @@ Each node's value is between [1, 100].
 
 from typing import List
 
-from sortedcontainers import SortedDict
-
-
-
 # WRONG
 # class Solution:
 #     def countPairs(self, root: TreeNode, distance: int) -> int:
@@ -79,7 +75,7 @@ from sortedcontainers import SortedDict
 
 # Runtime: 536 ms, faster than 10.66% of Python3 online submissions for Number of Good Leaf Nodes Pairs.
 # Memory Usage: 16.8 MB, less than 5.48% of Python3 online submissions for Number of Good Leaf Nodes Pairs.
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

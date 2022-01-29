@@ -26,7 +26,7 @@ The list is guaranteed to be sorted in ascending order.
 Runtime: 44 ms, faster than 41.95% of Python3 online submissions for Remove Duplicates from Sorted List II.
 Memory Usage: 14.3 MB, less than 22.81% of Python3 online submissions for Remove Duplicates from Sorted List II.
 """
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 
 
 class Solution:

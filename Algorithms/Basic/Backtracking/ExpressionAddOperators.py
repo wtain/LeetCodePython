@@ -73,7 +73,7 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 
 # WRONG
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # Runtime: 946 ms, faster than 35.75% of Python3 online submissions for Expression Add Operators.

@@ -37,10 +37,9 @@ Note:
 grid[i][j] is a permutation of [0, ..., N*N - 1].
 """
 import heapq
-from itertools import product
 from typing import List
 
-from Common.MatrixUtils import matrix_size, matrix_test_metric
+from Common.Helpers.MatrixUtils import matrix_test_metric
 from Common.ObjectTestingUtils import run_functional_tests
 
 

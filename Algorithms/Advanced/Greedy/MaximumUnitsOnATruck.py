@@ -35,7 +35,6 @@ Constraints:
 1 <= truckSize <= 106
 """
 from functools import reduce
-from itertools import accumulate
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

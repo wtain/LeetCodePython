@@ -21,7 +21,7 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
 
 from typing import List
 
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.TreeUtils import printTree
 
 """

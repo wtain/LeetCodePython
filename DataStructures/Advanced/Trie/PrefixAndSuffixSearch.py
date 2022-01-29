@@ -32,7 +32,6 @@ words[i], prefix and suffix consist of lower-case English letters only.
 At most 15000 calls will be made to the function f.
 """
 import collections
-from functools import reduce
 from typing import List
 
 from Common.Constants import null

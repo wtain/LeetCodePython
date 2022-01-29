@@ -35,7 +35,6 @@ Constraints:
 word and prefix consist only of lowercase English letters.
 At most 3 * 104 calls in total will be made to insert, search, and startsWith.
 """
-from collections import defaultdict
 
 from Common.Constants import null, true, false
 from Common.ObjectTestingUtils import run_object_tests

@@ -34,7 +34,7 @@ Follow up:
 
 Can you solve it using O(1) (i.e. constant) memory?
 """
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 
 """
 Runtime: 56 ms, faster than 43.88% of Python3 online submissions for Linked List Cycle.

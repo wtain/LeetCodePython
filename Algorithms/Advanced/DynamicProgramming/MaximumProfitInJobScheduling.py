@@ -40,8 +40,6 @@ Constraints:
 1 <= startTime[i] < endTime[i] <= 109
 1 <= profit[i] <= 104
 """
-import math
-from functools import lru_cache
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

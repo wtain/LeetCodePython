@@ -45,7 +45,7 @@ from typing import List
 
 # Runtime: 88 ms, faster than 5.30% of Python3 online submissions for Trim a Binary Search Tree.
 # Memory Usage: 18.4 MB, less than 18.20% of Python3 online submissions for Trim a Binary Search Tree.
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 
 
 class Solution:

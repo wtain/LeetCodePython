@@ -31,7 +31,7 @@ Each element in nums appears once or twice.
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # Runtime: 404 ms, faster than 38.51% of Python3 online submissions for Find All Duplicates in an Array.

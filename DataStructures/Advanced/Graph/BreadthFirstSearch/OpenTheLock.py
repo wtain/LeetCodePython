@@ -46,7 +46,6 @@ target.length == 4
 target will not be in the list deadends.
 target and deadends[i] consist of digits only.
 """
-import heapq
 from collections import deque
 from typing import List
 

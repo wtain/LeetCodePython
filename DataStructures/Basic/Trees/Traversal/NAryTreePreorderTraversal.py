@@ -33,7 +33,7 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
 """
 from typing import List
 
-from Common.NAryTree import Node
+from Common.DataTypes.NAryTree import Node
 from Common.ObjectTestingUtils import run_functional_tests
 
 """

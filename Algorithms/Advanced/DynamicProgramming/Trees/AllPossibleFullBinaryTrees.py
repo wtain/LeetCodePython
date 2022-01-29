@@ -37,10 +37,10 @@ from itertools import product
 from typing import List
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params
-from Common.TreeUtils import build_tree_from_list, build_tree_list_from_lists
+from Common.TreeUtils import build_tree_list_from_lists
 
 
 # Runtime: 196 ms, faster than 69.65% of Python3 online submissions for All Possible Full Binary Trees.

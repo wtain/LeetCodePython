@@ -53,7 +53,7 @@ Memory Usage: 20.8 MB, less than 61.18% of Python3 online submissions for Binary
 from typing import List
 
 from Common.Constants import null, true, false
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_object_tests
 
 

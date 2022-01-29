@@ -32,7 +32,6 @@ rectangles[i].length == 2
 1 <= li, wi <= 109
 li != wi
 """
-from itertools import count
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

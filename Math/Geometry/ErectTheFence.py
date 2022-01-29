@@ -29,11 +29,10 @@ points[i].length == 2
 0 <= xi, yi <= 100
 All the given points are unique.
 """
-import functools
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # https://leetcode.com/problems/erect-the-fence/solution/

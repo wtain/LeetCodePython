@@ -14,7 +14,7 @@ Note: This question is the same as 1038: https://leetcode.com/problems/binary-se
 
 # Runtime: 92 ms, faster than 24.06% of Python3 online submissions for Convert BST to Greater Tree.
 # Memory Usage: 18.8 MB, less than 5.07% of Python3 online submissions for Convert BST to Greater Tree.
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.TreeUtils import printTree
 
 

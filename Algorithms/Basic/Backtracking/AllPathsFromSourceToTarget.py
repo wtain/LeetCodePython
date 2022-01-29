@@ -39,11 +39,10 @@ graph[i][j] != i (i.e., there will be no self-loops).
 All the elements of graph[i] are unique.
 The input graph is guaranteed to be a DAG.
 """
-import copy
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # Runtime: 116 ms, faster than 31.29% of Python3 online submissions for All Paths From Source to Target.

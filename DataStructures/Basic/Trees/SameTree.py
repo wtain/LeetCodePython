@@ -32,7 +32,7 @@ Input:     1         1
 
 Output: false
 """
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 
 """
 Runtime: 40 ms, faster than 23.85% of Python3 online submissions for Same Tree.

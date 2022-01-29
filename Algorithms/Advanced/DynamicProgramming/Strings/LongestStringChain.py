@@ -30,8 +30,7 @@ Constraints:
 words[i] only consists of English lowercase letters.
 """
 from collections import defaultdict
-from functools import lru_cache
-from typing import List, Dict
+from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
 

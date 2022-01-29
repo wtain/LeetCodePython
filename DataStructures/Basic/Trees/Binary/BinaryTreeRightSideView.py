@@ -22,7 +22,7 @@ from typing import List
 
 # Runtime: 24 ms, faster than 97.59% of Python3 online submissions for Binary Tree Right Side View.
 # Memory Usage: 14.4 MB, less than 21.59% of Python3 online submissions for Binary Tree Right Side View.
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

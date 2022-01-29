@@ -42,7 +42,6 @@ Given that the sum is strictly increasing, the largest element in the target mus
 Subtract the largest with the rest of the array, and put the new element into the array. Repeat until all elements become one
 """
 import heapq
-import operator
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

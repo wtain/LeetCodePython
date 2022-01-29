@@ -28,7 +28,6 @@ Constraints:
 0 <= t.length <= 10^4
 Both strings consists only of lowercase characters.
 """
-from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
 

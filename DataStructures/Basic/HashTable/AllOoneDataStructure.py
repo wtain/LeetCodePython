@@ -38,7 +38,6 @@ key consists of lowercase English letters.
 It is guaranteed that for each call to dec, key is existing in the data structure.
 At most 5 * 104 calls will be made to inc, dec, getMaxKey, and getMinKey.
 """
-from collections import defaultdict
 
 from Common.Constants import null
 from Common.ObjectTestingUtils import run_object_tests

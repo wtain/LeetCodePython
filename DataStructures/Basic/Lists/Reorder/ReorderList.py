@@ -37,8 +37,8 @@ The number of nodes in the list is in the range [1, 5 * 104].
 #         self.next = next
 from typing import Optional
 
-from Common.FunctionalUtils import in_place_to_function
-from Common.Leetcode import ListNode
+from Common.Helpers.FunctionalHelpers import make_inplace
+from Common.DataTypes.Leetcode import ListNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
@@ -92,4 +92,4 @@ tests = [
     [[1,2,3,4,5], [1,5,2,4,3]]
 ]
 
-run_functional_tests(in_place_to_function(Solution().reorderList), convert_test_params_to_lists(tests))
+run_functional_tests(make_inplace(Solution().reorderList), convert_test_params_to_lists(tests))

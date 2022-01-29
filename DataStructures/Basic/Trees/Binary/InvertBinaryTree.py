@@ -26,7 +26,7 @@ Google: 90% of our engineers use the software you wrote (Homebrew), but you canâ
 
 from typing import List
 
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params
 from Common.TreeUtils import build_tree_from_list

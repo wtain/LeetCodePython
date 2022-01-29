@@ -57,9 +57,8 @@ The given binary tree has at least one tree node.
 
 # Runtime: 52 ms, faster than 82.23% of Python3 online submissions for Add One Row to Tree.
 # Memory Usage: 16.2 MB, less than 89.12% of Python3 online submissions for Add One Row to Tree.
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.TreeUtils import compareTrees, printTree
 
 
 class Solution:

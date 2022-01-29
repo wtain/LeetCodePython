@@ -44,7 +44,7 @@ The sum of lists[i].length won't exceed 10^4.
 import heapq
 from typing import List
 
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 
 
 # Runtime: 128 ms, faster than 36.99% of Python3 online submissions for Merge k Sorted Lists.

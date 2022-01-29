@@ -23,7 +23,6 @@ Constraints:
 
 0 <= left <= right <= 231 - 1
 """
-import math
 
 from Common.ObjectTestingUtils import run_functional_tests
 

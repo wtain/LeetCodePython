@@ -36,7 +36,7 @@ Could you devise a constant space solution?
 """
 from typing import List
 
-from Common.FunctionalUtils import in_place_to_function
+from Common.Helpers.FunctionalHelpers import make_inplace
 from Common.ObjectTestingUtils import run_functional_tests
 
 
@@ -75,4 +75,4 @@ tests = [
     [[[0,1,2,0],[3,4,5,2],[1,3,1,5]], [[0,0,0,0],[0,4,5,0],[0,3,1,0]]]
 ]
 
-run_functional_tests(in_place_to_function(Solution().setZeroes), tests)
+run_functional_tests(make_inplace(Solution().setZeroes), tests)

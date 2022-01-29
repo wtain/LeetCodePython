@@ -36,12 +36,10 @@ beginWord != endWord
 All the words in wordList are unique.
 """
 import collections
-import math
-from functools import lru_cache
 from typing import List, Set
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # WRONG

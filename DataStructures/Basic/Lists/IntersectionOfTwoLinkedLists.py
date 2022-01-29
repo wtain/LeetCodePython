@@ -44,8 +44,7 @@ You may assume there are no cycles anywhere in the entire linked structure.
 Each value on each linked list is in the range [1, 10^9].
 Your code should preferably run in O(n) time and use only O(1) memory.
 """
-from Common.Leetcode import ListNode
-from Common.ListUtils import build_list
+from Common.DataTypes.Leetcode import ListNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 """

@@ -31,8 +31,7 @@ The values of the integers in the nested list is in the range [-106, 106].
 """
 from collections import deque
 
-from Common.ListUtils import lists_equal
-from Common.NestedInteger import NestedInteger, ConvertToList, CreateNestedList
+from Common.DataTypes.NestedInteger import NestedInteger, ConvertToList, CreateNestedList
 from Common.ObjectTestingUtils import run_functional_tests
 
 """

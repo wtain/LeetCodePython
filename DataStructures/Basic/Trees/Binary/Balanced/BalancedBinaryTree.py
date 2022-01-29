@@ -34,7 +34,7 @@ Given the following tree [1,2,2,3,3,null,null,4,4]:
  4   4
 Return false.
 """
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 """

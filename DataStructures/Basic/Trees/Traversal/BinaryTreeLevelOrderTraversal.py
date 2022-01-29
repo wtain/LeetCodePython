@@ -37,7 +37,7 @@ The number of nodes in the tree is in the range [0, 2000].
 from typing import List
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

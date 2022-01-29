@@ -22,7 +22,6 @@ For example, all the following are valid numbers: ["2", "0089", "-0.1", "+3.14",
 Given a string s, return true if s is a valid number.
 """
 import re
-from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
 

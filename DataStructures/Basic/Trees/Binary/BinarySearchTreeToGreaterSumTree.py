@@ -42,9 +42,8 @@ root is guaranteed to be a valid binary search tree.
 
 # Runtime: 32 ms, faster than 67.28% of Python3 online submissions for Binary Search Tree to Greater Sum Tree.
 # Memory Usage: 14.2 MB, less than 65.37% of Python3 online submissions for Binary Search Tree to Greater Sum Tree.
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.TreeUtils import printTree
 
 
 class Solution:

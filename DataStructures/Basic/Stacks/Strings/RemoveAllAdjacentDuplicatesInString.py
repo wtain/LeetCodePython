@@ -23,7 +23,6 @@ Note:
 1 <= S.length <= 20000
 S consists only of English lowercase letters.
 """
-from functools import reduce
 
 from Common.ObjectTestingUtils import run_functional_tests
 

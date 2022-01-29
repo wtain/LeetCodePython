@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 from Common.ListUtils import list_length_loop_proof, build_list, build_list_with_loop
 
 

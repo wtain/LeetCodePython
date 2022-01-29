@@ -40,7 +40,7 @@ The number of nodes in the tree will be in the range [1, 1000].
 0 <= Node.val <= 1000
 The values of the nodes in the tree are unique.
 """
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 
 
 class Solution:

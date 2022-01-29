@@ -12,7 +12,7 @@ Example:
 
 There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
 """
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 
 """
 Runtime: 24 ms, faster than 98.02% of Python3 online submissions for Sum of Left Leaves.

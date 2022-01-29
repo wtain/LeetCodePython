@@ -26,7 +26,7 @@ Constraints:
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # Runtime: 44 ms, faster than 30.36% of Python3 online submissions for Subsets II.

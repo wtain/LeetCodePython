@@ -34,11 +34,10 @@ The number of nodes in the tree is in the range [2, 1000].
 #         self.val = val
 #         self.left = left
 #         self.right = right
-from typing import List
 
 from Common.Constants import null
-from Common.FunctionalUtils import in_place_to_function
-from Common.Leetcode import TreeNode
+from Common.Helpers.FunctionalHelpers import make_inplace
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 
@@ -112,4 +111,4 @@ tests = [
     ]
 ]
 
-run_functional_tests(in_place_to_function(Solution().recoverTree), tests)
+run_functional_tests(make_inplace(Solution().recoverTree), tests)

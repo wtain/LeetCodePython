@@ -45,10 +45,9 @@ root is guaranteed to be a valid binary search tree.
 #         self.val = val
 #         self.left = left
 #         self.right = right
-from typing import Optional
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_trees
 

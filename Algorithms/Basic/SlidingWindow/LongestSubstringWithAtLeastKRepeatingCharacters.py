@@ -23,9 +23,7 @@ Constraints:
 s consists of only lowercase English letters.
 1 <= k <= 105
 """
-import heapq
-import tokenize
-from collections import Counter, defaultdict
+from collections import Counter
 
 from Common.ObjectTestingUtils import run_functional_tests
 

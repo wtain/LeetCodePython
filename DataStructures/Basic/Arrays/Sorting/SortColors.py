@@ -38,7 +38,7 @@ Follow up: Could you come up with a one-pass algorithm using only constant extra
 """
 from typing import List
 
-from Common.FunctionalUtils import in_place_to_function
+from Common.Helpers.FunctionalHelpers import make_inplace
 from Common.ObjectTestingUtils import run_functional_tests
 
 
@@ -67,4 +67,4 @@ tests = [
     [[1], [1]]
 ]
 
-run_functional_tests(in_place_to_function(Solution().sortColors), tests)
+run_functional_tests(make_inplace(Solution().sortColors), tests)

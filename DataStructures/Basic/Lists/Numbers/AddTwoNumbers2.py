@@ -38,9 +38,8 @@ Follow up: Could you solve it without reversing the input lists?
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-from typing import List
 
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 from Common.ListUtils import buildNumberAsList
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params

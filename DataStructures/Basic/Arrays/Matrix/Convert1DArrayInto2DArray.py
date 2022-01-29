@@ -49,9 +49,6 @@ Constraints:
 """
 from typing import List
 
-
-from numpy.core import reshape
-
 from Common.ObjectTestingUtils import run_functional_tests
 
 

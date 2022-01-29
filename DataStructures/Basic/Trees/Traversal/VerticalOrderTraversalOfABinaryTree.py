@@ -45,7 +45,7 @@ from sortedcontainers import SortedDict
 
 # Runtime: 36 ms, faster than 54.10% of Python3 online submissions for Vertical Order Traversal of a Binary Tree.
 # Memory Usage: 14.5 MB, less than 65.37% of Python3 online submissions for Vertical Order Traversal of a Binary Tree.
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

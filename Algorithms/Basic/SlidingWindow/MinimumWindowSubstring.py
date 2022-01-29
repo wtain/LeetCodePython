@@ -39,7 +39,6 @@ s and t consist of uppercase and lowercase English letters.
 Follow up: Could you find an algorithm that runs in O(m + n) time?
 """
 from collections import Counter, defaultdict
-from functools import reduce
 
 from Common.ObjectTestingUtils import run_functional_tests
 

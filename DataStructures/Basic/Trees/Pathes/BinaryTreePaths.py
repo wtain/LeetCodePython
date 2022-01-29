@@ -23,7 +23,7 @@ Explanation: All root-to-leaf paths are: 1->2->5, 1->3
 # Definition for a binary tree node.
 from typing import List
 
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 """

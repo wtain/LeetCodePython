@@ -33,7 +33,6 @@ Constraints:
 1 <= n <= 10^4
 """
 from collections import defaultdict
-from typing import Dict
 
 from Common.ObjectTestingUtils import run_functional_tests
 

@@ -30,7 +30,6 @@ Constraints:
 1 <= word.length <= 100
 sequence and word contains only lowercase English letters.
 """
-from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
 

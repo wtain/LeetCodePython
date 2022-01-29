@@ -1,5 +1,7 @@
-from Common.Leetcode import ListNode, TreeNode
-from Common.LeetcodeMultilevelList import is_multilevel_list, multilevel_list_equal
+import copy
+
+from Common.DataTypes.Leetcode import ListNode, TreeNode
+from Common.DataTypes.LeetcodeMultilevelList import is_multilevel_list, multilevel_list_equal
 from Common.ListUtils import lists_equal
 from Common.TreeUtils import compareTrees, compareTreeSets
 
@@ -27,3 +29,12 @@ def compare_values(v1, v2) -> bool:
         return multilevel_list_equal(v1, v2)
     else:
         return v1 == v2
+
+
+def compare_result_and_expected(custom_check, expected, result, test):
+    if custom_check:
+        result_copy = copy.deepcopy(result)
+        comparison_result = custom_check(test, result_copy)
+    else:
+        comparison_result = compare_values(result, expected)
+    return comparison_result

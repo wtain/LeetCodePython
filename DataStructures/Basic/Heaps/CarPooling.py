@@ -27,7 +27,6 @@ trips[i].length == 3
 0 <= fromi < toi <= 1000
 1 <= capacity <= 105
 """
-import heapq
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

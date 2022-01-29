@@ -36,7 +36,6 @@ Constraints:
 1 <= s.length <= 100
 s consists of uppercase and lowercase English letters.
 """
-from collections import defaultdict
 
 from Common.ObjectTestingUtils import run_functional_tests
 

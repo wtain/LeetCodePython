@@ -29,7 +29,7 @@ The total number of nodes is between [0, 104]
 """
 from typing import List
 
-from Common.NAryTree import Node
+from Common.DataTypes.NAryTree import Node
 from Common.ObjectTestingUtils import run_functional_tests
 
 """

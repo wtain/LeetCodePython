@@ -26,11 +26,10 @@ Constraints:
 1 <= nums[i] <= 2 * 109
 All the integers in nums are unique.
 """
-from functools import reduce
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # Runtime: 376 ms, faster than 77.84% of Python3 online submissions for Largest Divisible Subset.

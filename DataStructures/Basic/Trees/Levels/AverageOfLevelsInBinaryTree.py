@@ -24,7 +24,7 @@ from typing import List
 
 # Runtime: 56 ms, faster than 32.08% of Python3 online submissions for Average of Levels in Binary Tree.
 # Memory Usage: 17.1 MB, less than 15.83% of Python3 online submissions for Average of Levels in Binary Tree.
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

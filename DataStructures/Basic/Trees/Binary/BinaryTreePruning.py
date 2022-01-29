@@ -42,7 +42,7 @@ Node.val is either 0 or 1.
 #         self.left = left
 #         self.right = right
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

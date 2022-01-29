@@ -35,10 +35,9 @@ inorder is guaranteed to be the inorder traversal of the tree.
 #         self.val = val
 #         self.left = left
 #         self.right = right
-import bisect
 from typing import List
 
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

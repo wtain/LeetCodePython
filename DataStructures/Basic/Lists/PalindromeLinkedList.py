@@ -15,7 +15,7 @@ Output: true
 Follow up:
 Could you do it in O(n) time and O(1) space?
 """
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 from Common.ListUtils import build_list
 from Common.ObjectTestingUtils import run_functional_tests
 

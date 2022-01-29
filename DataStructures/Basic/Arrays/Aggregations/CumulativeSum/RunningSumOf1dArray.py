@@ -35,7 +35,6 @@ from typing import List
 
 
 from Common.ObjectTestingUtils import run_functional_tests
-import numpy
 
 
 # Runtime: 96 ms, faster than 5.06% of Python3 online submissions for Running Sum of 1d Array.

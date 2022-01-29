@@ -29,7 +29,6 @@ Constraints:
 4 <= nums.length <= 104
 1 <= nums[i] <= 104
 """
-import heapq
 import math
 from typing import List
 

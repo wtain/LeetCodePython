@@ -27,7 +27,7 @@ Follow up: Solve it both recursively and iteratively.
 
 from typing import List
 
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 
 """
 Runtime: 32 ms, faster than 81.75% of Python3 online submissions for Symmetric Tree.

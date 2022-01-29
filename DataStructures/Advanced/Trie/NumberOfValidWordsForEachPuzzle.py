@@ -35,7 +35,7 @@ puzzles[i].length == 7
 words[i] and puzzles[i] consist of lowercase English letters.
 Each puzzles[i] does not contain repeated characters.
 """
-from collections import defaultdict, Counter
+from collections import defaultdict
 from functools import reduce
 from typing import List
 

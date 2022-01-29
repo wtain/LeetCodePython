@@ -37,7 +37,7 @@ The number of nodes in the list is sz.
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 

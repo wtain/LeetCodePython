@@ -15,12 +15,8 @@ Accepted
 
 """
 
-
-
-from typing import List
-
-from Common.Leetcode import ListNode
-from Common.ListUtils import build_list, printList
+from Common.DataTypes.Leetcode import ListNode
+from Common.ListUtils import build_list
 from Common.ObjectTestingUtils import run_functional_tests
 
 """

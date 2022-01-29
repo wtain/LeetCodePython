@@ -6,7 +6,7 @@ Memory Usage: 16.3 MB, less than 53.23% of Python3 online submissions for Valida
 """
 
 
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

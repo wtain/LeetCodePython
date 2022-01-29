@@ -47,7 +47,7 @@ The depth of the tree will be in the range [1, 10].
 from typing import Optional, List
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.TreeUtils import build_tree_from_list
 

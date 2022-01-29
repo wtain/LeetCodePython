@@ -33,7 +33,6 @@ Constraints:
 0 <= nums[i] < nums.length
 All the values of nums are unique.
 """
-from functools import lru_cache
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

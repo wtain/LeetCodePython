@@ -45,7 +45,6 @@ target.length == arr.length
 1 <= target[i] <= 1000
 1 <= arr[i] <= 1000
 """
-from collections import Counter
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

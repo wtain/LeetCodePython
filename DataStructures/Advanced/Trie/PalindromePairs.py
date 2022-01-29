@@ -76,7 +76,7 @@ from Common.ObjectTestingUtils import run_functional_tests
 #                     result.append([j, i])
 #
 #         return result
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 # Runtime: 876 ms, faster than 39.23% of Python3 online submissions for Palindrome Pairs.
 # Memory Usage: 21.4 MB, less than 7.29% of Python3 online submissions for Palindrome Pairs.

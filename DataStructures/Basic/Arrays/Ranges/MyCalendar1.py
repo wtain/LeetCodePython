@@ -27,8 +27,6 @@ Note:
 The number of calls to MyCalendar.book per test case will be at most 1000.
 In calls to MyCalendar.book(start, end), start and end are integers in the range [0, 10^9].
 """
-import bisect
-from typing import List
 
 from Common.Constants import true, false, null
 from Common.ObjectTestingUtils import run_object_tests

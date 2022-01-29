@@ -33,7 +33,6 @@ Constraints:
 1 <= nums[i][j] <= 10^9
 There at most 10^5 elements in nums.
 """
-import heapq
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

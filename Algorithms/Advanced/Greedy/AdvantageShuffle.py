@@ -24,7 +24,6 @@ Note:
 0 <= A[i] <= 10^9
 0 <= B[i] <= 10^9
 """
-import bisect
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

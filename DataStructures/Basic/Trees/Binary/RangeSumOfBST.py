@@ -37,7 +37,7 @@ All Node.val are unique.
 from typing import Optional
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.TreeUtils import build_tree_from_list
 

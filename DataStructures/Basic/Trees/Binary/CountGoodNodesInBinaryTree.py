@@ -46,7 +46,7 @@ Each node's value is between [-10^4, 10^4].
 #         self.val = val
 #         self.left = left
 #         self.right = right
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

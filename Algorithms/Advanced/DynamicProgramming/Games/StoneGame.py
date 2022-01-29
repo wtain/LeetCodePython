@@ -31,7 +31,6 @@ piles.length is even.
 1 <= piles[i] <= 500
 sum(piles) is odd.
 """
-from functools import lru_cache
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

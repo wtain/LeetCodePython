@@ -27,8 +27,6 @@ Constraints:
 arr is sorted in ascending order.
 -104 <= arr[i], x <= 104
 """
-import bisect
-import math
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

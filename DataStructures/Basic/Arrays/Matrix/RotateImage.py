@@ -35,11 +35,10 @@ matrix[i].length == n
 1 <= n <= 20
 -1000 <= matrix[i][j] <= 1000
 """
-import copy
 from typing import List
 
-from Common.FunctionalUtils import in_place_to_function
-from Common.MatrixUtils import matrix_size, matrix_test_metric
+from Common.Helpers.FunctionalHelpers import make_inplace
+from Common.Helpers.MatrixUtils import matrix_test_metric
 from Common.ObjectTestingUtils import run_functional_tests
 
 
@@ -94,4 +93,4 @@ tests = [
 ]
 
 
-run_functional_tests(in_place_to_function(Solution().rotate), tests, input_metric=matrix_test_metric)
+run_functional_tests(make_inplace(Solution().rotate), tests, input_metric=matrix_test_metric)

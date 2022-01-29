@@ -1,6 +1,6 @@
 from typing import List
 
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 
 
 def build_list(vals: List[int]) -> ListNode:

@@ -33,7 +33,6 @@ Constraints:
 0 <= start < nums.length
 target is in nums.
 """
-import math
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

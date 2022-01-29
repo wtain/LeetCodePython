@@ -41,7 +41,7 @@ The recursive approach is fine. You may assume implicit stack space does not cou
 from typing import Optional
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.Special import Node, build_special_tree_from_string
+from Common.DataTypes.Special import Node, build_special_tree_from_string
 from Common.TreeUtils import build_tree_from_list
 
 """

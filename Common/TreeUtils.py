@@ -1,7 +1,7 @@
 from typing import List, Iterator, Set
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 
 
 def cloneTree(root: TreeNode) -> TreeNode:

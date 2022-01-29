@@ -33,8 +33,6 @@ Constraints:
  1 <= nums.length, k <= 105
 -104 <= nums[i] <= 104
 """
-import heapq
-import math
 from collections import deque
 from typing import List
 

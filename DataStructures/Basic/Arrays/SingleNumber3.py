@@ -29,11 +29,10 @@ Constraints:
 Each integer in nums will appear twice, only two integers will appear once.
 """
 from functools import reduce
-from itertools import accumulate
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # Runtime: 64 ms, faster than 57.17% of Python3 online submissions for Single Number III.

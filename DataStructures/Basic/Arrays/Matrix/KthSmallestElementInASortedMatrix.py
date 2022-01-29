@@ -28,7 +28,6 @@ n == matrix[i].length
 All the rows and columns of matrix are guaranteed to be sorted in non-decreasing order.
 1 <= k <= n2
 """
-import heapq
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

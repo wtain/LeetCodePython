@@ -42,7 +42,6 @@ Constraints:
 At most 4 * 104 calls will be made to add and getProduct.
 The product of the stream at any point in time will fit in a 32-bit integer.
 """
-from collections import deque
 
 from Common.Constants import null
 from Common.ObjectTestingUtils import run_object_tests

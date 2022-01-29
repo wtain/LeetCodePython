@@ -2,8 +2,7 @@
 https://leetcode.com/explore/challenge/card/december-leetcoding-challenge/572/week-4-december-22nd-december-28th/3579/
 https://leetcode.com/problems/swap-nodes-in-pairs/
 """
-from Common.Leetcode import ListNode
-from Common.ListUtils import print_list_nl
+from Common.DataTypes.Leetcode import ListNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 

@@ -46,7 +46,6 @@ sentence only contains lowercase English letters, digits, ' ', '-', '!', '.', an
 There will be at least 1 token.
 """
 import re
-from collections import Counter
 from functools import reduce
 
 from Common.ObjectTestingUtils import run_functional_tests

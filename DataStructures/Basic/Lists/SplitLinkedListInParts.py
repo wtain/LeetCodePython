@@ -44,7 +44,7 @@ The number of nodes in the list is in the range [0, 1000].
 #         self.next = next
 from typing import Optional, List
 
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 from Common.ListUtils import compareLists, build_list
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists

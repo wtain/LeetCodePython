@@ -24,7 +24,6 @@ Constraints:
 1 <= n <= 100
 2 <= k <= 10
 """
-from functools import reduce
 
 from Common.ObjectTestingUtils import run_functional_tests
 

@@ -30,10 +30,8 @@ Constraints:
 1 <= nums.length <= 105
 -104 <= nums[i] <= 104
 """
-from collections import Counter, defaultdict
-from typing import List
 
-from sortedcontainers import SortedSet, SortedList
+from sortedcontainers import SortedList
 
 from Common.ObjectTestingUtils import run_functional_tests
 

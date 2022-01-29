@@ -46,7 +46,7 @@ Runtime: 60 ms, faster than 5.45% of Python3 online submissions for Smallest Sub
 Memory Usage: 14.6 MB, less than 8.28% of Python3 online submissions for Smallest Subtree with all the Deepest Nodes.
 
 """
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

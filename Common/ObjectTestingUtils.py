@@ -3,15 +3,12 @@ import random
 import timeit
 import traceback
 
-from Common.ConsoleUtils import FAIL, PASS, FATAL, ERROR, SUCCESS, CRASH, FAILED
-from Common.Helpers.CompareHelpers import compare_values
-from Common.Helpers.MetricsHelpers import count_tree_nodes, count_nary_tree_nodes
+from Common.Helpers.ConsoleHelpers import FAIL, PASS, FATAL, ERROR, SUCCESS, CRASH, FAILED
+from Common.Helpers.CompareHelpers import compare_values, compare_result_and_expected
+from Common.Helpers.MetricsHelpers import get_input_mertic
 from Common.Helpers.ObjectHelpers import declare_class, create_object, call_method
 from Common.Helpers.ToStringHelpers import to_string
-from Common.Leetcode import ListNode, TreeNode
-from Common.LeetcodeMultilevelList import is_multilevel_list, list_size
-from Common.ListUtils import list_length_loop_proof
-from Common.NAryTree import Node
+from Common.DataTypes.Leetcode import TreeNode
 from Common.TreeUtils import printTree
 
 
@@ -37,29 +34,18 @@ def run_object_tests(tests, **kwargs):
         fail = False
         for i in range(1, n):
             args = arguments[i]
-            if debug:
-                print(f"{methods[i]}({','.join(map(str, args))})")
             if not args:
                 args = []
+            if debug:
+                print(f"{methods[i]}({','.join(map(str, args))})")
             output = call_method(obj, methods[i], *args)
             if not compare_values(output, expected[i]):
-                fail = True
-                overall = False
+                fail, overall = True, False
                 print(str(j + 1) + f") {FAIL}: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i) + ', arguments: ' + str(args))
                 break
         if not fail:
             print(str(j + 1) + f") {PASS} ({n} steps)")
     print(f"Overall status: {PASS if overall else FAIL}")
-
-
-def make_inplace(function):
-    def inner(args):
-        arg0 = args
-        arg0 = copy.deepcopy(arg0)
-        function(arg0)
-        return arg0
-
-    return inner
 
 
 def get_result_instance(tests):
@@ -69,22 +55,6 @@ def get_result_instance(tests):
         if result_instance:
             break
     return result_instance
-
-
-def get_input_mertic(result_instance):
-    if type(result_instance) is TreeNode:
-        input_metric = lambda test: count_tree_nodes(test[0])
-    elif type(result_instance) is Node:
-        input_metric = lambda test: count_nary_tree_nodes(test[0])
-    elif type(result_instance) is ListNode:
-        input_metric = lambda test: list_length_loop_proof(test[0])
-    elif type(result_instance) is int:
-        input_metric = lambda test: test[0]
-    elif is_multilevel_list(result_instance):
-        input_metric = lambda test: list_size(test[0])
-    else:
-        input_metric = lambda test: len(test[0]) if test[0] else 0
-    return input_metric
 
 
 def run_functional_tests(function, tests, **kwargs):
@@ -133,7 +103,6 @@ def run_functional_tests(function, tests, **kwargs):
                 failed_tests.append(i)
         except Exception as e:
             print(str(i) + f") {FAIL} - {CRASH}, params: " + str(parameters))
-            print(e)
             print(e, traceback.format_exc())
             failed_tests.append(i)
     nfail = len(failed_tests)
@@ -144,15 +113,6 @@ def run_functional_tests(function, tests, **kwargs):
     else:
         print(status + ", " + str(nfail) + " failed of " + str(n))
         print("Failed tests: " + str(failed_tests))
-
-
-def compare_result_and_expected(custom_check, expected, result, test):
-    if custom_check:
-        result_copy = copy.deepcopy(result)
-        comparison_result = custom_check(test, result_copy)
-    else:
-        comparison_result = compare_values(result, expected)
-    return comparison_result
 
 
 def parse_params(kwargs, tests):
@@ -176,5 +136,3 @@ def parse_params(kwargs, tests):
         result_instance = get_result_instance(tests)
         input_metric = get_input_mertic(result_instance)
     return custom_check, input_metric, run_tests, tostring_func
-
-

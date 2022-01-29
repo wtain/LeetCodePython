@@ -58,7 +58,7 @@ Handle the equal cells by treating them as components using a union-find data st
 import itertools
 from collections import defaultdict
 from itertools import product
-from typing import List, Tuple
+from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
 

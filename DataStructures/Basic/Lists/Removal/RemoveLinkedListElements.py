@@ -9,7 +9,7 @@ Example:
 Input:  1->2->6->3->4->5->6, val = 6
 Output: 1->2->3->4->5
 """
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 from Common.ListUtils import build_list
 from Common.ObjectTestingUtils import run_functional_tests
 

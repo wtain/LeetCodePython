@@ -11,10 +11,8 @@ Output: 1->1->2->3->4->4
 Runtime: 32 ms, faster than 91.61% of Python3 online submissions for Merge Two Sorted Lists.
 Memory Usage: 14.2 MB, less than 49.62% of Python3 online submissions for Merge Two Sorted Lists.
 """
-from typing import List
 
-from Common.Leetcode import ListNode
-from Common.ListUtils import printList, build_list
+from Common.DataTypes.Leetcode import ListNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 

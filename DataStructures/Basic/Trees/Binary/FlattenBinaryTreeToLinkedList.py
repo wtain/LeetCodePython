@@ -40,8 +40,9 @@ Follow up: Can you flatten the tree in-place (with O(1) extra space)?
 #         self.left = left
 #         self.right = right
 from Common.Constants import null
-from Common.Leetcode import TreeNode
-from Common.ObjectTestingUtils import run_functional_tests, make_inplace
+from Common.DataTypes.Leetcode import TreeNode
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.FunctionalHelpers import make_inplace
 
 
 # Runtime: 32 ms, faster than 91.72% of Python3 online submissions for Flatten Binary Tree to Linked List.

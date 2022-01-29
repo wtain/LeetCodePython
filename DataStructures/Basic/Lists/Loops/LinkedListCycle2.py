@@ -47,7 +47,7 @@ Follow up: Can you solve it using O(1) (i.e. constant) memory?
 #         self.next = None
 from typing import Optional
 
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 from Common.ListUtils import build_list, build_list_with_loop
 from Common.ObjectTestingUtils import run_functional_tests
 

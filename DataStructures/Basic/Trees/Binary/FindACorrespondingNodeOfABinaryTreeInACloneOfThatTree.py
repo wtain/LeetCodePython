@@ -52,7 +52,7 @@ target node is a node from the original tree and is not null.
 Runtime: 608 ms, faster than 88.54% of Python3 online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
 Memory Usage: 24 MB, less than 66.17% of Python3 online submissions for Find a Corresponding Node of a Binary Tree in a Clone of That Tree.
 """
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.TreeUtils import cloneTree
 
 

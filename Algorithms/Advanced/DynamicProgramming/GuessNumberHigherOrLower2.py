@@ -55,7 +55,6 @@ Constraints:
 1 <= n <= 200
 """
 import math
-from functools import lru_cache
 
 from Common.ObjectTestingUtils import run_functional_tests
 

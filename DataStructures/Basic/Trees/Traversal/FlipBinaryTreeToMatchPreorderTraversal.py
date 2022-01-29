@@ -52,7 +52,7 @@ All the values in voyage are unique.
 #         self.right = right
 from typing import List
 
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

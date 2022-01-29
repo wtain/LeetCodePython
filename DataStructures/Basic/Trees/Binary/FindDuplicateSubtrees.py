@@ -39,13 +39,11 @@ The number of the nodes in the tree will be in the range [1, 10^4]
 #         self.val = val
 #         self.left = left
 #         self.right = right
-from collections import defaultdict
 from typing import List
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
 from Common.TreeUtils import build_tree_from_list
 
 

@@ -30,7 +30,6 @@ n == nums.length
 1 <= n <= 2 * 105
 -109 <= nums[i] <= 109
 """
-import bisect
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

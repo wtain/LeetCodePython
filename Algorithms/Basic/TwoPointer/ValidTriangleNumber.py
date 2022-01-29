@@ -25,8 +25,6 @@ Constraints:
 1 <= nums.length <= 1000
 0 <= nums[i] <= 1000
 """
-import bisect
-import random
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

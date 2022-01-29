@@ -30,9 +30,8 @@ p and q are different and both values will exist in the BST.
 
 
 # Definition for a binary tree node.
-from typing import List
 
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 
 """
 Runtime: 164 ms, faster than 5.25% of Python3 online submissions for Lowest Common Ancestor of a Binary Search Tree.

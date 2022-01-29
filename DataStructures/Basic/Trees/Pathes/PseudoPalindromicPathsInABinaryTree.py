@@ -35,7 +35,7 @@ Node values are digits from 1 to 9.
 Runtime: 376 ms, faster than 82.11% of Python3 online submissions for Pseudo-Palindromic Paths in a Binary Tree.
 Memory Usage: 49.8 MB, less than 58.42% of Python3 online submissions for Pseudo-Palindromic Paths in a Binary Tree.
 """
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

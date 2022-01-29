@@ -37,7 +37,7 @@ obstacleGrid[i][j] is 0 or 1.
 """
 from typing import List
 
-from Common.MatrixUtils import matrix_size
+from Common.Helpers.MatrixUtils import matrix_size
 from Common.ObjectTestingUtils import run_functional_tests
 
 

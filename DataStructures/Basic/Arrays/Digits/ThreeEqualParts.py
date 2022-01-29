@@ -35,8 +35,6 @@ Constraints:
 3 <= arr.length <= 3 * 104
 arr[i] is 0 or 1
 """
-import bisect
-from collections import defaultdict
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

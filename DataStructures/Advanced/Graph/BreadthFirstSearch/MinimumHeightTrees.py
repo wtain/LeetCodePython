@@ -41,7 +41,7 @@ ai != bi
 All the pairs (ai, bi) are distinct.
 The given input is guaranteed to be a tree and there will be no repeated edges.
 """
-from collections import defaultdict, deque
+from collections import defaultdict
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
@@ -115,7 +115,7 @@ from Common.ObjectTestingUtils import run_functional_tests
 #
 #         mh = min(depths)
 #         return [i for i, h in enumerate(depths) if mh == h]
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # WRONG

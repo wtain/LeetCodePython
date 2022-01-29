@@ -37,7 +37,7 @@ Node.val is 0 or 1.
 #         self.right = right
 from typing import Optional
 
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.TreeUtils import build_tree_from_list
 

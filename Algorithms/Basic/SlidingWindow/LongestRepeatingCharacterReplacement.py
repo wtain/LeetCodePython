@@ -26,7 +26,7 @@ Constraints:
 s consists of only uppercase English letters.
 0 <= k <= s.length
 """
-from collections import Counter, defaultdict
+from collections import defaultdict
 
 from Common.ObjectTestingUtils import run_functional_tests
 

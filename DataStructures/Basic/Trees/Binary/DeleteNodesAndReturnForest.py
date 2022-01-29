@@ -38,7 +38,7 @@ to_delete contains distinct values between 1 and 1000.
 from typing import List
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.TreeUtils import build_tree_from_list, build_tree_list_from_lists
 

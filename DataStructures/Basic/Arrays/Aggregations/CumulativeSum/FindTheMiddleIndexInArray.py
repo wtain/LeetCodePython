@@ -50,8 +50,6 @@ Note: This question is the same as 724: https://leetcode.com/problems/find-pivot
 """
 from typing import List
 
-from numpy.ma import cumsum
-
 from Common.ObjectTestingUtils import run_functional_tests
 
 

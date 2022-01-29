@@ -26,7 +26,6 @@ n-1 <= connections.length <= 10^5
 connections[i][0] != connections[i][1]
 There are no repeated connections.
 """
-from collections import defaultdict
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

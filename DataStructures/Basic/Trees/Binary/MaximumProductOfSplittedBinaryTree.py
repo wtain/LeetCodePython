@@ -46,7 +46,7 @@ The number of nodes in the tree is in the range [2, 5 * 104].
 #         self.left = left
 #         self.right = right
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 
 

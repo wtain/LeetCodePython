@@ -35,7 +35,7 @@ accounts[i][j] (for j > 0) is a valid email.
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # WRONG

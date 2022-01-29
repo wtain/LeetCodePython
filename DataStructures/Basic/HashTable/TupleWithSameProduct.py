@@ -40,7 +40,6 @@ All elements in nums are distinct.
 Note that all of the integers are distinct. This means that each time a product is formed it must be formed by two unique integers.
 Count the frequency of each product of 2 distinct numbers. Then calculate the permutations formed.
 """
-from collections import defaultdict
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests

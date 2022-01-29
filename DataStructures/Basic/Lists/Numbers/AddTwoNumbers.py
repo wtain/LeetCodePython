@@ -30,14 +30,10 @@ The number of nodes in each linked list is in the range [1, 100].
 It is guaranteed that the list represents a number that does not have leading zeros.
 """
 
-
-from typing import List
-
-
 # Runtime: 72 ms, faster than 51.91% of Python3 online submissions for Add Two Numbers.
 # Memory Usage: 14.2 MB, less than 66.48% of Python3 online submissions for Add Two Numbers.
-from Common.Leetcode import ListNode
-from Common.ListUtils import compareLists, build_list, buildNumberAsList
+from Common.DataTypes.Leetcode import ListNode
+from Common.ListUtils import buildNumberAsList
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params
 

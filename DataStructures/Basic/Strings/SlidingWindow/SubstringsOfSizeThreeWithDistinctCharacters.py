@@ -30,7 +30,7 @@ Constraints:
 1 <= s.length <= 100
 s​​​​​​ consists of lowercase English letters.
 """
-from collections import Counter, defaultdict
+from collections import defaultdict
 
 from Common.ObjectTestingUtils import run_functional_tests
 

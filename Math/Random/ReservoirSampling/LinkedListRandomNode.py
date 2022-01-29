@@ -37,11 +37,7 @@ Could you solve this efficiently without using extra space?
 
 
 # Definition for singly-linked list.
-from math import exp, log
-from random import random, randint
-from typing import List
-
-
+from random import random
 
 # WRONG
 # class Solution:
@@ -83,7 +79,7 @@ from typing import List
 
 # Runtime: 88 ms, faster than 54.69% of Python3 online submissions for Linked List Random Node.
 # Memory Usage: 17.2 MB, less than 89.26% of Python3 online submissions for Linked List Random Node.
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 from Common.ListUtils import build_list
 
 

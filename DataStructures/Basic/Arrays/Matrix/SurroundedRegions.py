@@ -28,7 +28,8 @@ board[i][j] is 'X' or 'O'.
 """
 from typing import List
 
-from Common.ObjectTestingUtils import run_functional_tests, make_inplace
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.FunctionalHelpers import make_inplace
 
 
 # Runtime: 140 ms, faster than 71.97% of Python3 online submissions for Surrounded Regions.

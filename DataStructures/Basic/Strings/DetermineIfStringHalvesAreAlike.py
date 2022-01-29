@@ -37,7 +37,6 @@ Constraints:
 s.length is even.
 s consists of uppercase and lowercase letters.
 """
-from collections import Counter
 
 from Common.ObjectTestingUtils import run_functional_tests
 

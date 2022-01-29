@@ -46,7 +46,7 @@ The number of nodes in the tree will be in the range [0, 104].
 from typing import Optional, List
 
 from Common.Constants import null
-from Common.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode
 from Common.ObjectTestingUtils import run_functional_tests
 from Common.TreeUtils import build_tree_from_list
 

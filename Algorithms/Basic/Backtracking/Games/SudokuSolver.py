@@ -32,8 +32,9 @@ It is guaranteed that the input board has only one solution.
 """
 from typing import List
 
-from Common.MatrixUtils import printMatrix, matrix_values_test_metric, make_matrix_values_test_metric
-from Common.ObjectTestingUtils import run_functional_tests, make_inplace
+from Common.Helpers.MatrixUtils import make_matrix_values_test_metric
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.FunctionalHelpers import make_inplace
 
 
 # Runtime: 118 ms, faster than 84.12% of Python3 online submissions for Sudoku Solver.

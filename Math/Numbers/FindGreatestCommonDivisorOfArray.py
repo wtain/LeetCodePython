@@ -36,7 +36,6 @@ Constraints:
 2 <= nums.length <= 1000
 1 <= nums[i] <= 1000
 """
-from functools import reduce
 from math import gcd
 from typing import List
 

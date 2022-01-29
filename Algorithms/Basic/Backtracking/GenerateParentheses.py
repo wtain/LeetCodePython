@@ -23,7 +23,7 @@ Constraints:
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 # Runtime: 28 ms, faster than 95.71% of Python3 online submissions for Generate Parentheses.

@@ -38,11 +38,7 @@ Note:
 1 <= queries[i].length <= 7
 All strings in wordlist and queries consist only of english letters.
 """
-import collections
-import functools
-import itertools
-from functools import reduce
-from typing import List, Tuple
+from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
 

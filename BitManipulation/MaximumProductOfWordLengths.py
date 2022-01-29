@@ -31,7 +31,7 @@ words[i] consists only of lowercase English letters.
 """
 from collections import defaultdict
 from itertools import combinations
-from typing import List, Set
+from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
 

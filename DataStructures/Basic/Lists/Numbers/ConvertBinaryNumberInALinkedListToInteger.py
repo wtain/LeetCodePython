@@ -37,10 +37,7 @@ Number of nodes will not exceed 30.
 Each node's value is either 0 or 1.
 """
 
-from typing import List
-
-
-from Common.Leetcode import ListNode
+from Common.DataTypes.Leetcode import ListNode
 from Common.ListUtils import build_list
 from Common.ObjectTestingUtils import run_functional_tests
 

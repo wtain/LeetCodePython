@@ -28,11 +28,11 @@ Constraints:
 0 <= strs[i].length <= 100
 strs[i] consists of lower-case English letters.
 """
-from collections import Counter, defaultdict
+from collections import defaultdict
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
-from Common.ResultComparators import compareSets, compareSetsOfSets
+from Common.Helpers.ResultComparators import compareSetsOfSets
 
 
 # Runtime: 251 ms, faster than 5.01% of Python3 online submissions for Group Anagrams.

@@ -14,8 +14,6 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 """
 
-from bisect import bisect_left
-
 # Runtime: 36 ms, faster than 85.07% of Python online submissions for Two Sum.
 # Memory Usage: 15 MB, less than 5.04% of Python online submissions for Two Sum.
 # class Solution(object):

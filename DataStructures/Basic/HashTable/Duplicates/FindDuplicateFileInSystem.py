@@ -51,7 +51,7 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 # Runtime: 88 ms, faster than 61.86% of Python3 online submissions for Find Duplicate File in System.
 # Memory Usage: 24 MB, less than 77.03% of Python3 online submissions for Find Duplicate File in System.
-from Common.ResultComparators import compareSets
+from Common.Helpers.ResultComparators import compareSets
 
 
 class Solution:
