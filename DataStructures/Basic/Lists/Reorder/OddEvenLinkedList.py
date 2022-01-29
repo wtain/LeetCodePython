@@ -38,7 +38,8 @@ n == number of nodes in the linked list
 from typing import Optional
 
 from Common.Leetcode import ListNode
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params_to_lists
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
 # Runtime: 36 ms, faster than 96.20% of Python3 online submissions for Odd Even Linked List.

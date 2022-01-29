@@ -53,7 +53,8 @@ from typing import List
 # Memory Usage: 48.8 MB, less than 62.89% of Python3 online submissions for Swapping Nodes in a Linked List.
 from Common.Leetcode import ListNode
 from Common.ListUtils import build_list, lists_equal, list_to_string
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params_to_lists
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
 class Solution:

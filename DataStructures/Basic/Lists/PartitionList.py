@@ -27,7 +27,8 @@ The number of nodes in the list is in the range [0, 200].
 """
 from Common.Leetcode import ListNode
 from Common.ListUtils import list_length, build_list
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params, convert_test_params_to_lists
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params, convert_test_params_to_lists
 
 
 # Runtime: 32 ms, faster than 80.18% of Python3 online submissions for Partition List.

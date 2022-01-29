@@ -39,7 +39,8 @@ from typing import Optional
 
 from Common.FunctionalUtils import in_place_to_function
 from Common.Leetcode import ListNode
-from Common.ObjectTestingUtils import convert_test_params_to_lists, run_functional_tests
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
 # Runtime: 88 ms, faster than 85.55% of Python3 online submissions for Reorder List.

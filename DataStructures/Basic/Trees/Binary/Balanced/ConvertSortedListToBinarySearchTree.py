@@ -47,7 +47,8 @@ The number of nodes in head is in the range [0, 2 * 104].
 #         self.left = left
 #         self.right = right
 from Common.Leetcode import ListNode, TreeNode
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params_to_lists
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
 # Runtime: 144 ms, faster than 15.99% of Python3 online submissions for Convert Sorted List to Binary Search Tree.

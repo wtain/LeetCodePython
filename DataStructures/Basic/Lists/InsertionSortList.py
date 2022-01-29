@@ -40,7 +40,8 @@ The number of nodes in the list is in the range [1, 5000].
 from typing import Optional
 
 from Common.Leetcode import ListNode
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params_to_lists
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
 # Runtime: 1914 ms, faster than 41.76% of Python3 online submissions for Insertion Sort List.

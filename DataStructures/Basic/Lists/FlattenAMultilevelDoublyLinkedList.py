@@ -69,7 +69,8 @@ The number of Nodes will not exceed 1000.
 from Common.Constants import null
 from Common.LeetcodeMultilevelList import Node, build_multilevel_list
 from Common.ListUtils import build_list
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params
 
 """
 # Definition for a Node.

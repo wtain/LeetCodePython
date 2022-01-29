@@ -49,7 +49,8 @@ from typing import Optional
 
 from Common.Constants import null
 from Common.Leetcode import TreeNode
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params_to_trees
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_trees
 
 
 # Runtime: 76 ms, faster than 82.55% of Python3 online submissions for Two Sum IV - Input is a BST.

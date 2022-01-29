@@ -15,7 +15,8 @@ from typing import List
 
 from Common.Leetcode import ListNode
 from Common.ListUtils import printList, build_list
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params_to_lists
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 """
 Runtime: 48 ms, faster than 26.85% of Python3 online submissions for Merge Two Sorted Lists.

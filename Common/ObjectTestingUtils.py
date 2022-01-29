@@ -2,28 +2,17 @@ import copy
 import random
 import timeit
 import traceback
-from typing import List
 
-from Common.ConsoleUtils import colored, FAIL, PASS, FATAL, ERROR, SUCCESS, CRASH, FAILED
+from Common.ConsoleUtils import FAIL, PASS, FATAL, ERROR, SUCCESS, CRASH, FAILED
+from Common.Helpers.CompareHelpers import compare_values
+from Common.Helpers.MetricsHelpers import count_tree_nodes, count_nary_tree_nodes
+from Common.Helpers.ObjectHelpers import declare_class, create_object, call_method
+from Common.Helpers.ToStringHelpers import to_string
 from Common.Leetcode import ListNode, TreeNode
-from Common.LeetcodeMultilevelList import is_multilevel_list, list_size, multilevel_list_to_string, multilevel_list_equal
-from Common.ListUtils import build_list, list_to_string, lists_equal, list_length, list_length_loop_proof
+from Common.LeetcodeMultilevelList import is_multilevel_list, list_size
+from Common.ListUtils import list_length_loop_proof
 from Common.NAryTree import Node
-from Common.NestedInteger import NestedInteger, nestedIntegerToString
-from Common.TreeUtils import compareTrees, printTree, build_tree_from_list, compareTreeLists, compareTreeSets
-
-
-def call_method(o, name, *args, **kwargs):
-    # print("*** Calling " + name + " with " + str(args) + " and " + str(kwargs))
-    return getattr(o, name)(*args, **kwargs)
-
-
-def create_object(class_name, *args, **kwargs):
-    return globals()[class_name](*args, **kwargs)
-
-
-def declare_class(CLASS):
-    globals()[CLASS.__name__] = CLASS
+from Common.TreeUtils import printTree
 
 
 def run_object_tests(tests, **kwargs):
@@ -42,9 +31,7 @@ def run_object_tests(tests, **kwargs):
     for j, test in enumerate(tests):
         if run_tests and (j+1) not in run_tests:
             continue
-        methods = test[0]
-        arguments = test[1]
-        expected = test[2]
+        methods, arguments, expected = test[0:3]
         n = len(methods)
         obj = create_object(methods[0], *arguments[0])
         fail = False
@@ -62,66 +49,8 @@ def run_object_tests(tests, **kwargs):
                 break
         if not fail:
             print(str(j + 1) + f") {PASS} ({n} steps)")
-    if overall:
-        print(f"Overall status: {PASS}")
-    else:
-        print(f"Overall status: {FAIL}")
+    print(f"Overall status: {PASS if overall else FAIL}")
 
-
-def to_string(v) -> str:
-    if type(v) is ListNode:
-        return list_to_string(v)
-    elif type(v) is NestedInteger:
-        return nestedIntegerToString(v)
-    elif is_multilevel_list(v):
-        return multilevel_list_to_string(v)
-    else:
-        return str(v)
-
-
-def compare_floats(v1, v2, eps=1e-5):
-    return abs(v1 - v2) < eps
-
-
-def compare_bools(v1: bool, v2: bool) -> bool:
-    return v1 and v2 or not v1 and not v2  # Deal with None's
-
-
-def compare_values(v1, v2) -> bool:
-    if type(v1) is ListNode:
-        return lists_equal(v1, v2)
-    elif type(v1) is TreeNode:
-        return compareTrees(v1, v2)
-    elif type(v1) is list and v1 and type(v1[0]) is TreeNode:
-        return compareTreeSets(v1, v2)
-    elif type(v1) is float:
-        return compare_floats(v1, v2)
-    elif type(v1) is bool or type(v2) is bool:
-        return compare_bools(v1, v2)
-    elif is_multilevel_list(v1) or is_multilevel_list(v2):
-        return multilevel_list_equal(v1, v2)
-    else:
-        return v1 == v2
-
-
-def count_tree_nodes(root: TreeNode) -> int:
-    if not root:
-        return 0
-    return 1 + count_tree_nodes(root.left) + count_tree_nodes(root.right)
-
-
-def count_nary_tree_nodes(root: Node) -> int:
-    if not root:
-        return 0
-    result = 1
-    if root.children:
-        for child in root.children:
-            result += count_nary_tree_nodes(child)
-    return result
-
-
-# todo: recursive calc_size, e.g. List of Lists
-# def calc_size(obj) -> int:
 
 def make_inplace(function):
     def inner(args):
@@ -162,25 +91,7 @@ def run_functional_tests(function, tests, **kwargs):
     if not tests:
         print(f"** {FATAL} {ERROR}: No found")
         return
-    if "custom_check" in kwargs:
-        custom_check = kwargs["custom_check"]
-    else:
-        custom_check = None
-    if "custom_tostring" in kwargs:
-        tostring_func = kwargs["custom_tostring"]
-    else:
-        tostring_func = to_string
-    if "run_tests" in kwargs:
-        run_tests = kwargs["run_tests"]
-        if type(run_tests) is int:
-            run_tests = [run_tests]
-    else:
-        run_tests = None
-    if "input_metric" in kwargs:
-        input_metric = kwargs["input_metric"]
-    else:
-        result_instance = get_result_instance(tests)
-        input_metric = get_input_mertic(result_instance)
+    custom_check, input_metric, run_tests, tostring_func = parse_params(kwargs, tests)
 
     n, failed_tests, i = len(tests), [], 0
     for test in tests:
@@ -198,11 +109,7 @@ def run_functional_tests(function, tests, **kwargs):
 
             duration = stop - start
 
-            if custom_check:
-                result_copy = copy.deepcopy(result)
-                comparison_result = custom_check(test, result_copy)
-            else:
-                comparison_result = compare_values(result, expected)
+            comparison_result = compare_result_and_expected(custom_check, expected, result, test)
 
             if comparison_result:
                 print(str(i) + f") {PASS}, took: " + "{:.6f}".format(duration) + " on size=" + str(input_size))
@@ -239,20 +146,35 @@ def run_functional_tests(function, tests, **kwargs):
         print("Failed tests: " + str(failed_tests))
 
 
-def convert_test_params(tests, function, **kwargs):
-    if "indexes" in kwargs and kwargs["indexes"]:
-        indexes = kwargs["indexes"]
+def compare_result_and_expected(custom_check, expected, result, test):
+    if custom_check:
+        result_copy = copy.deepcopy(result)
+        comparison_result = custom_check(test, result_copy)
     else:
-        indexes = range(len(tests[0]))
-    for test in tests:
-        for i in indexes:
-            test[i] = function(test[i])
-    return tests
+        comparison_result = compare_values(result, expected)
+    return comparison_result
 
 
-def convert_test_params_to_lists(tests, indexes=None):
-    return convert_test_params(tests, build_list, indexes=indexes)
+def parse_params(kwargs, tests):
+    if "custom_check" in kwargs:
+        custom_check = kwargs["custom_check"]
+    else:
+        custom_check = None
+    if "custom_tostring" in kwargs:
+        tostring_func = kwargs["custom_tostring"]
+    else:
+        tostring_func = to_string
+    if "run_tests" in kwargs:
+        run_tests = kwargs["run_tests"]
+        if type(run_tests) is int:
+            run_tests = [run_tests]
+    else:
+        run_tests = None
+    if "input_metric" in kwargs:
+        input_metric = kwargs["input_metric"]
+    else:
+        result_instance = get_result_instance(tests)
+        input_metric = get_input_mertic(result_instance)
+    return custom_check, input_metric, run_tests, tostring_func
 
 
-def convert_test_params_to_trees(tests, indexes):
-    return convert_test_params(tests, build_tree_from_list, indexes=indexes)

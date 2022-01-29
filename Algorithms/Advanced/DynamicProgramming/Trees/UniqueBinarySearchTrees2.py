@@ -34,7 +34,8 @@ from typing import List, Optional
 
 from Common.Constants import null
 from Common.Leetcode import TreeNode
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params
 from Common.TreeUtils import build_tree_from_list, build_tree_list_from_lists
 
 

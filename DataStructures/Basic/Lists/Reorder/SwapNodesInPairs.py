@@ -4,7 +4,8 @@ https://leetcode.com/problems/swap-nodes-in-pairs/
 """
 from Common.Leetcode import ListNode
 from Common.ListUtils import print_list_nl
-from Common.ObjectTestingUtils import convert_test_params_to_lists, run_functional_tests
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
 class Solution:

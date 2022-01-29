@@ -46,7 +46,8 @@ from typing import Optional, List
 
 from Common.Leetcode import ListNode
 from Common.ListUtils import compareLists, build_list
-from Common.ObjectTestingUtils import convert_test_params_to_lists, run_functional_tests
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
 # Runtime: 40 ms, faster than 65.79% of Python3 online submissions for Split Linked List in Parts.

@@ -48,7 +48,8 @@ from typing import List
 
 from Common.Leetcode import ListNode
 from Common.ListUtils import printList
-from Common.ObjectTestingUtils import run_functional_tests, convert_test_params_to_lists
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
 # Runtime: 40 ms, faster than 98.03% of Python3 online submissions for Reverse Nodes in k-Group.

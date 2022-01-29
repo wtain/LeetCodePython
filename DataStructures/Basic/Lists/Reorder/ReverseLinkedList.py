@@ -12,7 +12,8 @@ Follow up:
 A linked list can be reversed either iteratively or recursively. Could you implement both?
 """
 from Common.Leetcode import ListNode
-from Common.ObjectTestingUtils import convert_test_params_to_lists, run_functional_tests
+from Common.ObjectTestingUtils import run_functional_tests
+from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
 # Runtime: 52 ms, faster than 24.51% of Python3 online submissions for Reverse Linked List.
