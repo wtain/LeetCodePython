@@ -58,7 +58,7 @@ def run_object_tests(tests, **kwargs):
             if not compare_values(output, expected[i]):
                 fail = True
                 overall = False
-                print(str(j + 1) + f") {FAIL}: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i))
+                print(str(j + 1) + f") {FAIL}: " + str(output) + " != " + str(expected[i]) + ": Test " + str(j) + ", step " + str(i) + ', arguments: ' + str(args))
                 break
         if not fail:
             print(str(j + 1) + f") {PASS} ({n} steps)")
