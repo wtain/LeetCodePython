@@ -52,20 +52,18 @@ from typing import List
 
 # Runtime: 828 ms, faster than 39.00% of Python3 online submissions for Distribute Candies.
 # Memory Usage: 16.1 MB, less than 90.82% of Python3 online submissions for Distribute Candies.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def distributeCandies(self, candyType: List[int]) -> int:
         return min(len(Counter(candyType).keys()), len(candyType) >> 1)
 
 
 tests = [
-    ([1,1,2,2,3,3], 3),
-    ([1,1,2,3], 2),
-    ([6,6,6,6], 1)
+    [[1,1,2,2,3,3], 3],
+    [[1,1,2,3], 2],
+    [[6,6,6,6], 1]
 ]
 
-for test in tests:
-    result = Solution().distributeCandies(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().distributeCandies, tests)

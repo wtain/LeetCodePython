@@ -16,6 +16,9 @@ There are many calls to sumRange function.
 """
 from typing import List
 
+from Common.Constants import null
+from Common.ObjectTestingUtils import run_object_tests
+
 """
 Runtime: 160 ms, faster than 35.24% of Python3 online submissions for Range Sum Query - Immutable.
 Memory Usage: 17.5 MB, less than 24.00% of Python3 online submissions for Range Sum Query - Immutable.
@@ -44,10 +47,17 @@ class NumArray:
 # obj = NumArray(nums)
 # param_1 = obj.sumRange(i,j)
 
-narr = NumArray([-2, 0, 3, -5, 2, -1])
+tests = [
+    [
+        ["NumArray", "sumRange", "sumRange", "sumRange"],
+        [[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]],
+        [null, 1, -1, -3]
+    ],
+    [
+        ["NumArray"],
+        [[[]]],
+        [null]
+    ]
+]
 
-print(narr.sumRange(0, 2))  #  1
-print(narr.sumRange(2, 5))  # -1
-print(narr.sumRange(0, 5))  # -3
-
-narr = NumArray([])
+run_object_tests(tests, cls=NumArray)

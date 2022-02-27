@@ -28,6 +28,9 @@ from math import sqrt
 
 # Runtime: 40 ms, faster than 17.97% of Python3 online submissions for Prime Arrangements.
 # Memory Usage: 14.2 MB, less than 83.98% of Python3 online submissions for Prime Arrangements.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def numPrimeArrangements(self, n: int) -> int:
         mod = 10**9 + 7
@@ -57,13 +60,8 @@ class Solution:
 
 
 tests = [
-    (5, 12),
-    (100, 682289015)
+    [5, 12],
+    [100, 682289015]
 ]
 
-for test in tests:
-    result = Solution().numPrimeArrangements(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().numPrimeArrangements, tests)

@@ -41,6 +41,7 @@ A and B consist of lowercase letters.
 Runtime: 32 ms, faster than 72.14% of Python3 online submissions for Buddy Strings.
 Memory Usage: 14.5 MB, less than 24.09% of Python3 online submissions for Buddy Strings.
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 
 class Solution:
@@ -70,15 +71,12 @@ class Solution:
         return found
 
 
-tests = [("ab", "ba", True),
-         ("ab", "ab", False),
-         ("aa", "aa", True),
-         ("aaaaaaabc", "aaaaaaacb", True),
-         ("ab", "aa", False)]
+tests = [
+    ["ab", "ba", True],
+    ["ab", "ab", False],
+    ["aa", "aa", True],
+    ["aaaaaaabc", "aaaaaaacb", True],
+    ["ab", "aa", False]
+]
 
-for test in tests:
-    result = Solution().buddyStrings(test[0], test[1])
-    if result == test[2]:
-        print("PASS")
-    else:
-        print("FAIL")
+run_functional_tests(Solution().buddyStrings, tests)

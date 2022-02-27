@@ -24,8 +24,15 @@ Constraints:
 from typing import List
 
 
+# Runtime: 268 ms
+# Memory Usage: 16.6 MB
+# Runtime: 276 ms, faster than 63.16% of Python3 online submissions for Subarray Sum Equals K.
+# Memory Usage: 16.6 MB, less than 93.61% of Python3 online submissions for Subarray Sum Equals K.
 # Runtime: 264 ms, faster than 47.76% of Python3 online submissions for Subarray Sum Equals K.
 # Memory Usage: 16.9 MB, less than 28.60% of Python3 online submissions for Subarray Sum Equals K.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
         cnt = 0
@@ -42,13 +49,8 @@ class Solution:
 
 
 tests = [
-    ([1,1,1], 2, 2),
-    ([1,2,3], 3, 2)
+    [[1,1,1], 2, 2],
+    [[1,2,3], 3, 2]
 ]
 
-for test in tests:
-    result = Solution().subarraySum(test[0], test[1])
-    if result == test[2]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().subarraySum, tests)

@@ -1,5 +1,6 @@
 import copy
 
+from Common.DataTypes.Graph import is_graph_node, graphs_equal
 from Common.DataTypes.Leetcode import ListNode, TreeNode
 from Common.DataTypes.LeetcodeMultilevelList import is_multilevel_list, multilevel_list_equal
 from Common.ListUtils import lists_equal
@@ -27,6 +28,8 @@ def compare_values(v1, v2) -> bool:
         return compare_bools(v1, v2)
     elif is_multilevel_list(v1) or is_multilevel_list(v2):
         return multilevel_list_equal(v1, v2)
+    elif is_graph_node(v1) or is_multilevel_list(v2):
+        return graphs_equal(v1, v2)
     else:
         return v1 == v2
 

@@ -29,6 +29,8 @@ from typing import List, Dict
 from Common.ObjectTestingUtils import run_functional_tests
 
 
+# Runtime: 1160 ms, faster than 31.61% of Python3 online submissions for 4Sum II.
+# Memory Usage: 14.3 MB, less than 90.85% of Python3 online submissions for 4Sum II.
 class Solution:
     def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
         counts: Dict[int, int] = {}

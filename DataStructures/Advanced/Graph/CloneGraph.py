@@ -69,12 +69,6 @@ Memory Usage: 14.6 MB, less than 48.96% of Python3 online submissions for Clone 
 from typing import List, Dict
 
 
-class Node:
-    def __init__(self, val = 0, neighbors = None):
-        self.val = val
-        self.neighbors = neighbors if neighbors is not None else []
-
-
 # class Solution:
 #     def cloneGraph(self, node: 'Node') -> 'Node':
 #         if not node:
@@ -93,6 +87,14 @@ class Node:
 #                     cloned[a] = Node(a.val, [])
 #                 cloned[n].neighbors.append(cloned[a])
 #         return cloned[node]
+
+
+# Runtime: 40 ms, faster than 83.75% of Python3 online submissions for Clone Graph.
+# Memory Usage: 14.3 MB, less than 91.72% of Python3 online submissions for Clone Graph.
+from Common.DataTypes.Graph import Node, buildGraph, getGraphAdj
+from Common.Helpers.TestParamsHelpers import convert_test_params
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
@@ -113,38 +115,13 @@ class Solution:
         return clone(node)
 
 
-
-def buildGraph(adj: List[List[int]]) -> Node:
-    n = len(adj)
-    nodes: List[Node] = []
-    for i in range(n):
-        nodes.append(Node(i+1, []))
-    for i, ai in enumerate(adj):
-        for j in ai:
-            nodes[i].neighbors.append(nodes[j-1])
-    return nodes[0] if len(nodes) > 0 else None
+tests = [
+    [[[2,4],[1,3],[2,4],[1,3]], [[2, 4], [1, 3], [2, 4], [1, 3]]],
+    [[[]], [[]]],
+    [[], []],
+    [[[2],[1]], [[2], [1]]]
+]
 
 
-def getGraphAdj(n: Node) -> List[List[int]]:
-    adj: List[List[int]] = []
-    toVisit = []
-    visited = []
-    if n:
-        toVisit.append(n)
-    while len(toVisit) > 0:
-        n = toVisit.pop()
-        visited.append(n.val)
-        while len(adj) < n.val:
-            adj.append([])
-        for a in n.neighbors:
-            adj[n.val - 1].append(a.val)
-            if a.val in visited or a in toVisit:
-                continue
-            toVisit.append(a)
-    return adj
+run_functional_tests(Solution().cloneGraph, convert_test_params(tests, buildGraph))
 
-
-print(getGraphAdj(Solution().cloneGraph(buildGraph([[2,4],[1,3],[2,4],[1,3]]))))
-print(getGraphAdj(Solution().cloneGraph(buildGraph([[]]))))
-print(getGraphAdj(Solution().cloneGraph(buildGraph([]))))
-print(getGraphAdj(Solution().cloneGraph(buildGraph([[2],[1]]))))

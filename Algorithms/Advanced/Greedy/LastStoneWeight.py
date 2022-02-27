@@ -33,6 +33,9 @@ from typing import List
 
 # Runtime: 24 ms, faster than 95.91% of Python3 online submissions for Last Stone Weight.
 # Memory Usage: 14.3 MB, less than 53.00% of Python3 online submissions for Last Stone Weight.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         stones = [-x for x in stones]
@@ -46,14 +49,8 @@ class Solution:
 
 
 tests = [
-    ([2,7,4,1,8,1], 1),
-
-    ([1, 1], 0)
+    [[2,7,4,1,8,1], 1],
+    [[1, 1], 0]
 ]
 
-for test in tests:
-    result = Solution().lastStoneWeight(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().lastStoneWeight, tests)

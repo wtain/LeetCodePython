@@ -38,6 +38,9 @@ from typing import List
 
 # Runtime: 24 ms, faster than 99.31% of Python3 online submissions for Height Checker.
 # Memory Usage: 14.4 MB, less than 11.29% of Python3 online submissions for Height Checker.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def heightChecker(self, heights: List[int]) -> int:
         hs = sorted(heights)
@@ -46,14 +49,9 @@ class Solution:
 
 
 tests = [
-    ([1,1,4,2,1,3], 3),
-    ([5,1,2,3,4], 5),
-    ([1,2,3,4,5], 0)
+    [[1,1,4,2,1,3], 3],
+    [[5,1,2,3,4], 5],
+    [[1,2,3,4,5], 0]
 ]
 
-for test in tests:
-    result = Solution().heightChecker(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().heightChecker, tests)

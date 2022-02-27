@@ -50,6 +50,7 @@ from Common.DataTypes.Leetcode import ListNode
 # Runtime: 128 ms, faster than 36.99% of Python3 online submissions for Merge k Sorted Lists.
 # Memory Usage: 18.6 MB, less than 15.14% of Python3 online submissions for Merge k Sorted Lists.
 from Common.ListUtils import build_list, compareLists, printList
+from Common.ObjectTestingUtils import run_functional_tests
 
 
 class Solution:
@@ -77,29 +78,22 @@ class Solution:
 
 
 tests = [
-    (
-        [[]],
-        []
-    ),
+    [
+        [None],
+        None
+    ],
 
-    (
+    [
         [],
-        []
-    ),
+        None
+    ],
 
-    (
+    [
         [build_list([1,4,5]),
         build_list([1,3,4]),
         build_list([2,6])],
         build_list([1,1,2,3,4,4,5,6])
-    )
+    ]
 ]
 
-for test in tests:
-    result = Solution().mergeKLists(test[0])
-    if compareLists(result, test[1]):
-        print("PASS")
-    else:
-        print("FAIL - [", flush=True, sep=' ', end=' ')
-        printList(result)
-        print("]")
+run_functional_tests(Solution().mergeKLists, tests)

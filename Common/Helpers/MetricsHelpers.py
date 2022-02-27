@@ -1,3 +1,4 @@
+from Common.DataTypes.Graph import is_graph_node, graph_size
 from Common.DataTypes.Leetcode import TreeNode, ListNode
 from Common.DataTypes.LeetcodeMultilevelList import is_multilevel_list, list_size
 from Common.ListUtils import list_length_loop_proof
@@ -34,6 +35,8 @@ def get_input_mertic(result_instance):
         input_metric = lambda test: test[0]
     elif is_multilevel_list(result_instance):
         input_metric = lambda test: list_size(test[0])
+    elif is_graph_node(result_instance):
+        input_metric = lambda test: graph_size(test[0])
     else:
         input_metric = lambda test: len(test[0]) if test[0] else 0
     return input_metric

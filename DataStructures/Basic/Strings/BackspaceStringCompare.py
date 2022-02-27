@@ -37,6 +37,7 @@ Can you solve it in O(N) time and O(1) space?
 Runtime: 28 ms, faster than 82.54% of Python3 online submissions for Backspace Strings Compare.
 Memory Usage: 14.3 MB, less than 27.62% of Python3 online submissions for Backspace Strings Compare.
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 
 class Solution:
@@ -74,15 +75,12 @@ class Solution:
         return i < 0 and j < 0
 
 
-tests = [("nzp#o#g", "b#nzp#o#g", True),
+tests = [
+    ["nzp#o#g", "b#nzp#o#g", True],
+    ["ab#c", "ad#c", True],
+    ["ab##", "c#d#", True],
+    ["a##c", "#a#c", True],
+    ["a#c", "b", False]
+]
 
-         ("ab#c", "ad#c", True),
-         ("ab##", "c#d#", True),
-         ("a##c", "#a#c", True),
-         ("a#c", "b", False)]
-
-for test in tests:
-    if Solution().backspaceCompare(test[0], test[1]) != test[2]:
-        print("FAIL")
-    else:
-        print("PASS")
+run_functional_tests(Solution().backspaceCompare, tests)

@@ -13,17 +13,7 @@ from Common.TreeUtils import printTree
 
 
 def run_object_tests(tests, **kwargs):
-    if "cls" in kwargs:
-        declare_class(kwargs["cls"])
-    if "rndseed" in kwargs:
-        random.seed(kwargs["rndseed"])
-    if "run_tests" in kwargs:
-        run_tests = kwargs["run_tests"]
-        if type(run_tests) is int:
-            run_tests = [run_tests]
-    else:
-        run_tests = None
-    debug = "debug" in kwargs and kwargs["debug"]
+    debug, run_tests = parse_object_params(kwargs)
     overall = True
     for j, test in enumerate(tests):
         if run_tests and (j+1) not in run_tests:
@@ -46,6 +36,21 @@ def run_object_tests(tests, **kwargs):
         if not fail:
             print(str(j + 1) + f") {PASS} ({n} steps)")
     print(f"Overall status: {PASS if overall else FAIL}")
+
+
+def parse_object_params(kwargs):
+    if "cls" in kwargs:
+        declare_class(kwargs["cls"])
+    if "rndseed" in kwargs:
+        random.seed(kwargs["rndseed"])
+    if "run_tests" in kwargs:
+        run_tests = kwargs["run_tests"]
+        if type(run_tests) is int:
+            run_tests = [run_tests]
+    else:
+        run_tests = None
+    debug = "debug" in kwargs and kwargs["debug"]
+    return debug, run_tests
 
 
 def get_result_instance(tests):

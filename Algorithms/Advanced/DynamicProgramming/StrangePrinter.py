@@ -121,6 +121,9 @@ Hint: Length of the given string will not exceed 100.
 
 # Runtime: 1212 ms, faster than 18.13% of Python3 online submissions for Strange Printer.
 # Memory Usage: 14.5 MB, less than 81.29% of Python3 online submissions for Strange Printer.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def strangePrinter(self, s: str) -> int:
 
@@ -160,23 +163,16 @@ class Solution:
         return dp[0][m-1]
 
 
-
-
 tests = [
 
-    ("aaabbb", 2),
-    ("aba", 2),
+    ["aaabbb", 2],
+    ["aba", 2],
 
-    ("", 0),
-    ("aaabaaabaaaa", 3),
-    ("abab", 3),
+    ["", 0],
+    ["aaabaaabaaaa", 3],
+    ["abab", 3],
 
-    ("ababcabab", 6)
+    ["ababcabab", 6]
 ]
 
-for test in tests:
-    result = Solution().strangePrinter(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().strangePrinter, tests)

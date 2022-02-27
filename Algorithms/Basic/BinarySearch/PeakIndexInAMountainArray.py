@@ -44,6 +44,8 @@ Memory Usage: 15.3 MB, less than 26.91% of Python3 online submissions for Peak I
 """
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 class Solution:
     def peakIndexInMountainArray(self, arr: List[int]) -> int:
@@ -64,16 +66,11 @@ class Solution:
 
 
 tests = [
-    ([0, 1, 0], 1),
-    ([0, 2, 1, 0], 1),
-    ([0, 10, 5, 2], 1),
-    ([3, 4, 5, 1], 2),
-    ([24, 69, 100, 99, 79, 78, 67, 36, 26, 19], 2)
+    [[0, 1, 0], 1],
+    [[0, 2, 1, 0], 1],
+    [[0, 10, 5, 2], 1],
+    [[3, 4, 5, 1], 2],
+    [[24, 69, 100, 99, 79, 78, 67, 36, 26, 19], 2]
 ]
 
-for test in tests:
-    result = Solution().peakIndexInMountainArray(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL")
+run_functional_tests(Solution().peakIndexInMountainArray, tests)

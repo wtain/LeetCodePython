@@ -24,6 +24,7 @@ Note:
 1 is typically treated as an ugly number.
 Input is within the 32-bit signed integer range: [−231,  231 − 1].
 """
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 28 ms, faster than 91.79% of Python3 online submissions for Ugly Number.
@@ -44,8 +45,12 @@ class Solution:
         return 1 == num
 
 
-print(Solution().isUgly(0))  # False
-print(Solution().isUgly(6))  # True
-print(Solution().isUgly(8))  # True
-print(Solution().isUgly(14))  # False
-print(Solution().isUgly(-2147483648))  # False
+tests = [
+    [0, False],
+    [6, True],
+    [8, True],
+    [14, False],
+    [-2147483648, False]
+]
+
+run_functional_tests(Solution().isUgly, tests)

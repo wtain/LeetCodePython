@@ -80,6 +80,9 @@ from typing import List
 # Memory Usage: 28.8 MB, less than 34.62% of Python3 online submissions for Divide Array in Sets of K Consecutive Numbers.
 # Runtime: 400 ms, faster than 89.80% of Python3 online submissions for Divide Array in Sets of K Consecutive Numbers.
 # Memory Usage: 28.9 MB, less than 34.62% of Python3 online submissions for Divide Array in Sets of K Consecutive Numbers.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def isPossibleDivide(self, nums: List[int], k: int) -> bool:
         n = len(nums)
@@ -111,17 +114,11 @@ class Solution:
         return True
 
 
-
 tests = [
-    ([1,2,3,3,4,4,5,6], 4, True),
-    ([3,2,1,2,3,4,3,4,5,9,10,11], 3, True),
-    ([3,3,2,2,1,1], 3, True),
-    ([1,2,3,4], 3, False)
+    [[1,2,3,3,4,4,5,6], 4, True],
+    [[3,2,1,2,3,4,3,4,5,9,10,11], 3, True],
+    [[3,3,2,2,1,1], 3, True],
+    [[1,2,3,4], 3, False]
 ]
 
-for test in tests:
-    result = Solution().isPossibleDivide(test[0], test[1])
-    if result == test[2]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().isPossibleDivide, tests)

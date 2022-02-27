@@ -11,7 +11,7 @@ Explanation: The process is like: 3 + 8 = 11, 1 + 1 = 2.
 Follow up:
 Could you do it without any loop/recursion in O(1) runtime?
 """
-
+from Common.ObjectTestingUtils import run_functional_tests
 
 """
 Runtime: 40 ms, faster than 30.28% of Python3 online submissions for Add Digits.
@@ -43,5 +43,9 @@ class Solution:
         return num
 
 
-print(Solution().addDigits(0))  # 0
-print(Solution().addDigits(38))  # 2
+tests = [
+    [0, 0],
+    [38, 2]
+]
+
+run_functional_tests(Solution().addDigits, tests)

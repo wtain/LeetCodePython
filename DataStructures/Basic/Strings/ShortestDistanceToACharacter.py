@@ -49,6 +49,9 @@ from typing import List
 
 # Runtime: 36 ms, faster than 93.15% of Python3 online submissions for Shortest Distance to a Character.
 # Memory Usage: 14.4 MB, less than 32.19% of Python3 online submissions for Shortest Distance to a Character.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def shortestToChar(self, S: str, C: str) -> List[int]:
         c: chr = C[0]
@@ -73,5 +76,9 @@ class Solution:
         return result
 
 
-print(Solution().shortestToChar("abaa", 'b'))  # [1,0,1,2]
-print(Solution().shortestToChar("loveleetcode", 'e'))  # [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]
+tests = [
+    ["abaa", 'b', [1,0,1,2]],
+    ["loveleetcode", 'e', [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]]
+]
+
+run_functional_tests(Solution().shortestToChar, tests)

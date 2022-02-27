@@ -19,6 +19,8 @@ What if the inputs contain unicode characters? How would you adapt your solution
 """
 from typing import Dict
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 """
 Runtime: 64 ms, faster than 32.90% of Python3 online submissions for Valid Anagram.
 Memory Usage: 14.2 MB, less than 40.11% of Python3 online submissions for Valid Anagram.
@@ -37,14 +39,12 @@ class Solution:
                 result[c] = 1
         return result
 
-
     @staticmethod
     def compareHists(h1: Dict[chr, int], h2: Dict[chr, int]) -> bool:
         for k, v in h1.items():
             if not h2.get(k) or h2[k] != v:
                 return False
         return True
-
 
     def isAnagram(self, s: str, t: str) -> bool:
         h1 = Solution.getHist(s)
@@ -54,5 +54,9 @@ class Solution:
         return Solution.compareHists(h1, h2)
 
 
-print(Solution().isAnagram("anagram", "nagaram"))  # True
-print(Solution().isAnagram("rat", "car"))  # False
+tests = [
+    ["anagram", "nagaram", True],
+    ["rat", "car", False]
+]
+
+run_functional_tests(Solution().isAnagram, tests)
