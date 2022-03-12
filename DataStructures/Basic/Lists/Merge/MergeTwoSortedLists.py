@@ -17,6 +17,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 """
+Runtime: 40 ms, faster than 83.90% of Python3 online submissions for Merge Two Sorted Lists.
+Memory Usage: 13.7 MB, less than 99.34% of Python3 online submissions for Merge Two Sorted Lists.
 Runtime: 48 ms, faster than 26.85% of Python3 online submissions for Merge Two Sorted Lists.
 Memory Usage: 13.6 MB, less than 95.56% of Python3 online submissions for Merge Two Sorted Lists.
 """

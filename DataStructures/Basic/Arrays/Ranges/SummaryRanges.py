@@ -57,6 +57,8 @@ from typing import List
 from Common.ObjectTestingUtils import run_functional_tests
 
 
+# Runtime: 29 ms, faster than 87.42% of Python3 online submissions for Summary Ranges.
+# Memory Usage: 13.9 MB, less than 88.25% of Python3 online submissions for Summary Ranges.
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
         result: List[str] = []

@@ -57,7 +57,8 @@ from typing import List
 # Memory Usage: 14.4 MB, less than 76.96% of Python3 online submissions for Arithmetic Slices.
 from Common.ObjectTestingUtils import run_functional_tests
 
-
+# Runtime: 59 ms, faster than 41.02% of Python3 online submissions for Arithmetic Slices.
+# Memory Usage: 14.1 MB, less than 75.02% of Python3 online submissions for Arithmetic Slices.
 class Solution:
     def numberOfArithmeticSlices(self, A: List[int]) -> int:
         n = len(A)

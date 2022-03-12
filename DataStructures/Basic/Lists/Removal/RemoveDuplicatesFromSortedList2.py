@@ -29,6 +29,8 @@ Memory Usage: 14.3 MB, less than 22.81% of Python3 online submissions for Remove
 from Common.DataTypes.Leetcode import ListNode
 
 
+# Runtime: 58 ms, faster than 51.02% of Python3 online submissions for Remove Duplicates from Sorted List II.
+# Memory Usage: 13.8 MB, less than 85.61% of Python3 online submissions for Remove Duplicates from Sorted List II.
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         current = head

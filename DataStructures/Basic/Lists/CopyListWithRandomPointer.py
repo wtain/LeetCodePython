@@ -141,6 +141,8 @@ from typing import List
 from Common.DataTypes.Leetcode import Node
 
 
+# Runtime: 57 ms, faster than 40.29% of Python3 online submissions for Copy List with Random Pointer.
+# Memory Usage: 15 MB, less than 29.48% of Python3 online submissions for Copy List with Random Pointer.
 class Solution:
     def copyRandomList(self, head: 'Node') -> 'Node':
         curr = head
