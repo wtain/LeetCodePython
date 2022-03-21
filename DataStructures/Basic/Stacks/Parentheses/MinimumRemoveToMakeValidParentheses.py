@@ -42,6 +42,9 @@ s[i] is one of  '(' , ')' and lowercase English letters.
 
 # Runtime: 452 ms, faster than 13.86% of Python3 online submissions for Minimum Remove to Make Valid Parentheses.
 # Memory Usage: 16 MB, less than 55.49% of Python3 online submissions for Minimum Remove to Make Valid Parentheses.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         result = ""
@@ -70,15 +73,10 @@ class Solution:
 
 
 tests = [
-    ("lee(t(c)o)de)", "lee(t(c)o)de"),
-    ("a)b(c)d", "ab(c)d"),
-    ("))((", ""),
-    ("(a(b(c)d)", "a(b(c)d)")
+    ["lee(t(c)o)de)", "lee(t(c)o)de"],
+    ["a)b(c)d", "ab(c)d"],
+    ["))((", ""],
+    ["(a(b(c)d)", "a(b(c)d)"]
 ]
 
-for test in tests:
-    result = Solution().minRemoveToMakeValid(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + result)
+run_functional_tests(Solution().minRemoveToMakeValid, tests)

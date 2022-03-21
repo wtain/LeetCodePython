@@ -125,7 +125,6 @@ class Solution:
         return st.isEmpty()
 
 
-
 tests = [
     ["[", False],
     ["()", True],

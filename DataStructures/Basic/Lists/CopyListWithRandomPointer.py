@@ -138,11 +138,17 @@ from typing import List
 
 # Runtime: 40 ms, faster than 26.60% of Python3 online submissions for Copy List with Random Pointer.
 # Memory Usage: 14.8 MB, less than 88.50% of Python3 online submissions for Copy List with Random Pointer.
+from Common.Constants import null
 from Common.DataTypes.Leetcode import Node
 
 
 # Runtime: 57 ms, faster than 40.29% of Python3 online submissions for Copy List with Random Pointer.
 # Memory Usage: 15 MB, less than 29.48% of Python3 online submissions for Copy List with Random Pointer.
+from Common.Helpers.TestParamsHelpers import convert_test_params, convert_test_params_clone
+from Common.ListUtils import list_length
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def copyRandomList(self, head: 'Node') -> 'Node':
         curr = head
@@ -225,19 +231,30 @@ def renderList(head: Node) -> List[List[int]]:
     return result
 
 
-null = None
-
 tests = [
-    [[7,null],[13,0],[11,4],[10,2],[1,0]],
-    [[1,1],[2,1]],
-    [[3,null],[3,0],[3,null]],
-    []
+    [
+        [[7,null],[13,0],[11,4],[10,2],[1,0]]
+    ],
+    [
+        [[1,1],[2,1]]
+    ],
+    [
+        [[3,null],[3,0],[3,null]]
+    ],
+    [
+        []
+    ]
 ]
 
-for test in tests:
-    list = buildList(test)
-    result = Solution().copyRandomList(list)
-    if listsEqual(list, result):
-        print("PASS")
-    else:
-        print("FAIL - " + str(renderList(result)))
+run_functional_tests(Solution().copyRandomList,
+                     convert_test_params_clone(convert_test_params(tests, buildList)),
+                     input_metric=lambda test: list_length(test[0]),
+                     custom_check=lambda test, result: listsEqual(test[-1], result))
+
+# for test in tests:
+#     list = buildList(test[0])
+#     result = Solution().copyRandomList(list)
+#     if listsEqual(list, result):
+#         print("PASS")
+#     else:
+#         print("FAIL - " + str(renderList(result)))

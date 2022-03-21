@@ -19,3 +19,7 @@ def convert_test_params_to_lists(tests, indexes=None):
 
 def convert_test_params_to_trees(tests, indexes):
     return convert_test_params(tests, build_tree_from_list, indexes=indexes)
+
+
+def convert_test_params_clone(tests):
+    return [test + [test[0]] for test in tests]

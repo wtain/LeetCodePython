@@ -32,6 +32,9 @@ from typing import List
 
 # Runtime: 72 ms, faster than 63.35% of Python3 online submissions for Validate Stack Sequences.
 # Memory Usage: 14.2 MB, less than 95.41% of Python3 online submissions for Validate Stack Sequences.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
         st = []
@@ -46,13 +49,8 @@ class Solution:
 
 
 tests = [
-    ([1,2,3,4,5], [4,5,3,2,1], True),
-    ([1,2,3,4,5], [4,3,5,1,2], False)
+    [[1,2,3,4,5], [4,5,3,2,1], True],
+    [[1,2,3,4,5], [4,3,5,1,2], False]
 ]
 
-for test in tests:
-    result = Solution().validateStackSequences(test[0], test[1])
-    if result == test[2]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().validateStackSequences, tests)

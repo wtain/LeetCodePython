@@ -67,6 +67,10 @@ import heapq
 
 # Runtime: 316 ms, faster than 60.67% of Python3 online submissions for Maximum Frequency Stack.
 # Memory Usage: 22.4 MB, less than 64.04% of Python3 online submissions for Maximum Frequency Stack.
+from Common.Constants import null
+from Common.ObjectTestingUtils import run_object_tests
+
+
 class FreqStack:
 
     def __init__(self):
@@ -91,37 +95,18 @@ class FreqStack:
 # obj.push(x)
 # param_2 = obj.pop()
 
-def call_method(o, name, *args, **kwargs):
-    # print("*** Calling " + name + " with " + str(args) + " and " + str(kwargs))
-    return getattr(o, name)(*args, **kwargs)
-
-null = None
 
 tests = [
-    (
+    [
         ["FreqStack","push","push","push","push","push","push","pop","push","pop","push","pop","push","pop","push","pop","pop","pop","pop","pop","pop"],
         [[],[4],[0],[9],[3],[4],[2],[],[6],[],[1],[],[1],[],[4],[],[],[],[],[],[]],
         [null,null,null,null,null,null,null,4,null,6,null,1,null,1,null,4,2,3,9,0,4]
-    ),
-    (
+    ],
+    [
         ["FreqStack","push","push","push","push","push","push","pop","pop","pop","pop"],
         [[],[5],[7],[5],[7],[4],[5],[],[],[],[]],
         [null,null,null,null,null,null,null,5,7,5,4]
-    )
+    ]
 ]
 
-for test in tests:
-    methods = test[0]
-    arguments = test[1]
-    expected = test[2]
-    n = len(methods)
-    object = FreqStack()
-    fail = False
-    for i in range(1, n):
-        output = call_method(object, methods[i], *arguments[i])
-        if output != expected[i]:
-            fail = True
-            print("FAIL: " + str(output) + " != " + str(expected[i]))
-            break
-    if not fail:
-        print("PASS")
+run_object_tests(tests, cls=FreqStack)

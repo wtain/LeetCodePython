@@ -64,7 +64,7 @@ def get_result_instance(tests):
 
 def run_functional_tests(function, tests, **kwargs):
     if not tests:
-        print(f"** {FATAL} {ERROR}: No found")
+        print(f"*** {FATAL} {ERROR}: No found")
         return
     custom_check, input_metric, run_tests, tostring_func = parse_params(kwargs, tests)
 

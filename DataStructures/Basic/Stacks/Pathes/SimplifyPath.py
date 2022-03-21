@@ -46,6 +46,9 @@ path is a valid absolute Unix path.
 
 # Runtime: 32 ms, faster than 73.53% of Python3 online submissions for Simplify Path.
 # Memory Usage: 14.2 MB, less than 92.13% of Python3 online submissions for Simplify Path.
+from Common.ObjectTestingUtils import run_functional_tests
+
+
 class Solution:
     def simplifyPath(self, path: str) -> str:
         new_components = []
@@ -62,15 +65,10 @@ class Solution:
 
 
 tests = [
-    ("/home/", "/home"),
-    ("/../", "/"),
-    ("/home//foo/", "/home/foo"),
-    ("/a/./b/../../c/", "/c")
+    ["/home/", "/home"],
+    ["/../", "/"],
+    ["/home//foo/", "/home/foo"],
+    ["/a/./b/../../c/", "/c"]
 ]
 
-for test in tests:
-    result = Solution().simplifyPath(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().simplifyPath, tests)

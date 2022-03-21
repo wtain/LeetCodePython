@@ -9,3 +9,4 @@ def make_inplace(function):
         return arg0
 
     return inner
+
