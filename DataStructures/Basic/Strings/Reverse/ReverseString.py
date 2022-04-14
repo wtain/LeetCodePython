@@ -21,6 +21,8 @@ from typing import List
 
 
 """
+Runtime: 275 ms, faster than 48.59% of Python3 online submissions for Reverse String.
+Memory Usage: 18.5 MB, less than 21.46% of Python3 online submissions for Reverse String.
 Runtime: 308 ms, faster than 11.99% of Python3 online submissions for Reverse Strings.
 Memory Usage: 18.3 MB, less than 52.77% of Python3 online submissions for Reverse Strings.
 """

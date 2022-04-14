@@ -55,6 +55,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 from Common.Helpers.TestParamsHelpers import convert_test_params_to_lists
 
 
+# Runtime: 1172 ms, faster than 74.86% of Python3 online submissions for Swapping Nodes in a Linked List.
+# Memory Usage: 48.5 MB, less than 53.33% of Python3 online submissions for Swapping Nodes in a Linked List.
 class Solution:
     def swapNodes(self, head: ListNode, k: int) -> ListNode:
 

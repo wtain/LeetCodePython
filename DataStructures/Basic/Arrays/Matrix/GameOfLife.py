@@ -44,6 +44,8 @@ Memory Usage: 14.4 MB, less than 27.97% of Python3 online submissions for Game o
 from typing import List
 
 
+# Runtime: 61 ms, faster than 20.36% of Python3 online submissions for Game of Life.
+# Memory Usage: 14 MB, less than 51.25% of Python3 online submissions for Game of Life.
 class Solution:
     def gameOfLife(self, board: List[List[int]]) -> None:
         """

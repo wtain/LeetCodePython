@@ -41,6 +41,8 @@ Note:
 """
 
 
+# Runtime: 25 ms, faster than 95.89% of Python3 online submissions for Broken Calculator.
+# Memory Usage: 14 MB, less than 25.11% of Python3 online submissions for Broken Calculator.
 # Runtime: 28 ms, faster than 86.05% of Python3 online submissions for Broken Calculator.
 # Memory Usage: 14.4 MB, less than 14.95% of Python3 online submissions for Broken Calculator.
 class Solution:

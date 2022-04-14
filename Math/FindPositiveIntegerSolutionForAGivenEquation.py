@@ -41,6 +41,8 @@ It's also guaranteed that f(x, y) will fit in 32 bit signed integer if 1 <= x, y
 from bisect import bisect_left, bisect
 from typing import List, Callable
 
+from Common.Helpers.ResultComparators import compareSets
+
 """
    This is the custom function interface.
    You should not implement it, or speculate about its implementation
@@ -161,20 +163,15 @@ class Solution:
 #         return results
 
 
-
 tests = [
     (CustomFunction(lambda x, y: x+y), 5, [[1,4],[2,3],[3,2],[4,1]]),
     (CustomFunction(lambda x, y: x*y), 5, [[1,5],[5,1]])
 ]
 
 
-def compareSets(s1, s2) -> bool:
-    return sorted(s1) == sorted(s2)
-
-
 for test in tests:
     result = Solution().findSolution(test[0], test[1])
-    if compareSets(result, test[2]):
+    if compareSets(test, result):
         print("PASS")
     else:
         print("FAIL - " + str(result))
