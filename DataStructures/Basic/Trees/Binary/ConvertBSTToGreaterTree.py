@@ -18,6 +18,8 @@ from Common.DataTypes.Leetcode import TreeNode
 from Common.TreeUtils import printTree
 
 
+# Runtime: 190 ms, faster than 5.38% of Python3 online submissions for Convert BST to Greater Tree.
+# Memory Usage: 18.9 MB, less than 5.51% of Python3 online submissions for Convert BST to Greater Tree.
 class Solution:
     def convertBST(self, root: TreeNode) -> TreeNode:
 

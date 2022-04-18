@@ -48,6 +48,8 @@ from typing import List
 from Common.DataTypes.Leetcode import TreeNode
 
 
+# Runtime: 51 ms, faster than 88.82% of Python3 online submissions for Trim a Binary Search Tree.
+# Memory Usage: 18 MB, less than 48.91% of Python3 online submissions for Trim a Binary Search Tree.
 class Solution:
     def trimBST(self, root: TreeNode, low: int, high: int) -> TreeNode:
         if not root:
