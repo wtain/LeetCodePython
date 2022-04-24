@@ -74,6 +74,8 @@ from Common.Constants import null
 from Common.ObjectTestingUtils import run_object_tests
 
 
+# Runtime: 224 ms, faster than 99.80% of Python3 online submissions for Design Underground System.
+# Memory Usage: 23.5 MB, less than 98.53% of Python3 online submissions for Design Underground System.
 # Runtime: 244 ms, faster than 54.70% of Python3 online submissions for Design Underground System.
 # Memory Usage: 23 MB, less than 98.48% of Python3 online submissions for Design Underground System.
 class UndergroundSystem:
