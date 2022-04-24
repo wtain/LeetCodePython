@@ -148,3 +148,17 @@ def bst_values(root: TreeNode) -> Set[int]:
 
     impl(root)
     return result
+
+
+def is_balanced(root: TreeNode) -> bool:
+    def is_balanced_impl(root: TreeNode) -> (bool, int):
+        if root is None:
+            return True, 0
+        lb, ll = is_balanced_impl(root.left)
+        if not lb:
+            return False, ll+1
+        rb, rl = is_balanced_impl(root.right)
+        if not rb:
+            return False, rl + 1
+        return abs(rl - ll) <= 1, max(ll, rl) + 1
+    return is_balanced_impl(root)[0]
