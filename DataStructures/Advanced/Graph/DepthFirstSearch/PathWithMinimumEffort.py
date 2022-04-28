@@ -189,6 +189,9 @@ from typing import List, Dict, DefaultDict
 #
 #         return r
 
+
+# Runtime: 842 ms, faster than 82.34% of Python3 online submissions for Path With Minimum Effort.
+# Memory Usage: 17.6 MB, less than 20.07% of Python3 online submissions for Path With Minimum Effort.
 # Runtime: 916 ms, faster than 48.18% of Python3 online submissions for Path With Minimum Effort.
 # Memory Usage: 17.8 MB, less than 16.74% of Python3 online submissions for Path With Minimum Effort.
 class Solution:
@@ -235,7 +238,6 @@ class Solution:
                 id2 = i * w + j - 1
                 edges.append((cost, id, id2))
         return edges
-
 
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
         h = len(heights)
