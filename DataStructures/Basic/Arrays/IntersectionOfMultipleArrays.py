@@ -25,6 +25,9 @@ Constraints:
 1 <= nums[i][j] <= 1000
 All the values of nums[i] are unique.
 """
+from collections import Counter
+from functools import reduce
+from itertools import accumulate
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
@@ -55,32 +58,42 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 # Runtime: 105 ms, faster than 33.73% of Python3 online submissions for Intersection of Multiple Arrays.
 # Memory Usage: 14.3 MB, less than 31.71% of Python3 online submissions for Intersection of Multiple Arrays.
+# class Solution:
+#     def intersection(self, nums: List[List[int]]) -> List[int]:
+#         nums = [sorted(arr) for arr in nums]
+#         n = len(nums)
+#         counters = [0] * n
+#         result = []
+#         while all(counters[i] < len(nums[i]) for i in range(n)):
+#             mv = max(nums[i][counters[i]] for i in range(n))
+#             end_reached = False
+#             not_found = False
+#             for i in range(n):
+#                 while counters[i] < len(nums[i]) and nums[i][counters[i]] < mv:
+#                     counters[i] += 1
+#                 if counters[i] == len(nums[i]):
+#                     end_reached = True
+#                     break
+#                 if nums[i][counters[i]] > mv:
+#                     not_found = True
+#             if end_reached:
+#                 break
+#             if not_found:
+#                 continue
+#             result.append(mv)
+#             for i in range(n):
+#                 counters[i] += 1
+#         return result
+
+
+# Runtime: 115 ms, faster than 24.67% of Python3 online submissions for Intersection of Multiple Arrays.
+# Memory Usage: 14.2 MB, less than 65.58% of Python3 online submissions for Intersection of Multiple Arrays.
 class Solution:
     def intersection(self, nums: List[List[int]]) -> List[int]:
-        nums = [sorted(arr) for arr in nums]
         n = len(nums)
-        counters = [0] * n
-        result = []
-        while all(counters[i] < len(nums[i]) for i in range(n)):
-            mv = max(nums[i][counters[i]] for i in range(n))
-            end_reached = False
-            not_found = False
-            for i in range(n):
-                while counters[i] < len(nums[i]) and nums[i][counters[i]] < mv:
-                    counters[i] += 1
-                if counters[i] == len(nums[i]):
-                    end_reached = True
-                    break
-                if nums[i][counters[i]] > mv:
-                    not_found = True
-            if end_reached:
-                break
-            if not_found:
-                continue
-            result.append(mv)
-            for i in range(n):
-                counters[i] += 1
-        return result
+        values = sorted(reduce(lambda res, a: res + a, nums, []))
+        cnt = Counter(values)
+        return [k for k in sorted(cnt.keys()) if cnt[k] == n]
 
 
 tests = [
