@@ -204,6 +204,9 @@ from Common.ObjectTestingUtils import run_functional_tests
 #
 #         return max_len
 
+
+# Runtime: 451 ms, faster than 88.26% of Python3 online submissions for Longest Increasing Path in a Matrix.
+# Memory Usage: 19.6 MB, less than 15.98% of Python3 online submissions for Longest Increasing Path in a Matrix.
 # Runtime: 540 ms, faster than 36.23% of Python3 online submissions for Longest Increasing Path in a Matrix.
 # Memory Usage: 18.7 MB, less than 19.63% of Python3 online submissions for Longest Increasing Path in a Matrix.
 class Solution:
