@@ -106,23 +106,46 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 # Runtime: 252 ms, faster than 74.45% of Python3 online submissions for Construct Target Array With Multiple Sums.
 # Memory Usage: 20.2 MB, less than 26.28% of Python3 online submissions for Construct Target Array With Multiple Sums.
+# WRONG
+# class Solution:
+#     def isPossible(self, target: List[int]) -> bool:
+#         h = [-x for x in target]
+#         s = sum(target)
+#         heapq.heapify(h)
+#         while h[0] != -1:
+#             x = - heapq.heappop(h)
+#             s -= x
+#             if x <= s or s < 1:
+#                 return False
+#             x %= s
+#             s += x
+#             heapq.heappush(h, -x)
+#         return True
+
+
+# Runtime: 439 ms, faster than 41.18% of Python3 online submissions for Construct Target Array With Multiple Sums.
+# Memory Usage: 20 MB, less than 25.88% of Python3 online submissions for Construct Target Array With Multiple Sums.
+# https://leetcode.com/problems/construct-target-array-with-multiple-sums/discuss/2191141/Detailed-thought-process-explanation-with-Simple-Code
 class Solution:
     def isPossible(self, target: List[int]) -> bool:
         h = [-x for x in target]
         s = sum(target)
         heapq.heapify(h)
-        while h[0] != -1:
+        while h:
             x = - heapq.heappop(h)
+            rem = s - x
             s -= x
-            if x <= s or s < 1:
+            if rem == 1 or x == 1:
+                return True
+            if rem > x or rem == 0 or x % rem == 0:
                 return False
-            x %= s
-            s += x
-            heapq.heappush(h, -x)
+            heapq.heappush(h, -(x % rem))
+            s += x % rem
         return True
 
 
 tests = [
+    [[1,1,10], False],
     [[2], False],
 
     [[1,1000000000], True],
