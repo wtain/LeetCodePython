@@ -46,16 +46,31 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 # Runtime: 63 ms, faster than 33.07% of Python3 online submissions for Unique Morse Code Words.
 # Memory Usage: 13.8 MB, less than 75.48% of Python3 online submissions for Unique Morse Code Words.
+# class Solution:
+#     def uniqueMorseRepresentations(self, words: List[str]) -> int:
+#         codes = [".-","-...","-.-.","-..",".","..-.","--.","....","..",
+#                  ".---","-.-",".-..","--","-.","---",".--.","--.-",".-.",
+#                  "...","-","..-","...-",".--","-..-","-.--","--.."]
+#
+#         def map_string(s: str) -> str:
+#             return "".join([codes[ord(c)-ord('a')] for c in s])
+#
+#         return len(reduce(lambda res, w: res.union({map_string(w)}), words, set()))
+
+
+# Runtime: 38 ms, faster than 91.95% of Python3 online submissions for Unique Morse Code Words.
+# Memory Usage: 13.9 MB, less than 24.27% of Python3 online submissions for Unique Morse Code Words.
+# Simpler & faster
+# https://leetcode.com/problems/unique-morse-code-words/solution/
 class Solution:
     def uniqueMorseRepresentations(self, words: List[str]) -> int:
         codes = [".-","-...","-.-.","-..",".","..-.","--.","....","..",
                  ".---","-.-",".-..","--","-.","---",".--.","--.-",".-.",
                  "...","-","..-","...-",".--","-..-","-.--","--.."]
 
-        def map_string(s: str) -> str:
-            return "".join([codes[ord(c)-ord('a')] for c in s])
+        seen = {"".join([codes[ord(c)-ord('a')] for c in word]) for word in words}
 
-        return len(reduce(lambda res, w: res.union({map_string(w)}), words, set()))
+        return len(seen)
 
 
 tests = [
