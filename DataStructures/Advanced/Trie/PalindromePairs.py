@@ -78,55 +78,121 @@ from Common.ObjectTestingUtils import run_functional_tests
 #         return result
 from Common.Helpers.ResultComparators import compareSets
 
+
+# TLE in 2022
 # Runtime: 876 ms, faster than 39.23% of Python3 online submissions for Palindrome Pairs.
 # Memory Usage: 21.4 MB, less than 7.29% of Python3 online submissions for Palindrome Pairs.
+# class TrieNode:
+#     def __init__(self):
+#         self.nodes = defaultdict(TrieNode)
+#         self.index = -1
+#         self.list = []
+#
+# class Solution:
+#
+#     def palindromePairs(self, words: List[str]) -> List[List[int]]:
+#         root = TrieNode()
+#         result = []
+#         for i, w in enumerate(words):
+#             self.add_word(root, w, i)
+#         for i, w in enumerate(words):
+#             self.search(words, i, root, result)
+#         return result
+#
+#     def add_word(self, root: TrieNode, w: str, i: int):
+#         m = len(w)
+#         for j in range(m-1, -1, -1):
+#             if self.is_palindrome(w, 0, j):
+#                 root.list.append(i)
+#             root = root.nodes[w[j]]
+#         root.list.append(i)
+#         root.index = i
+#
+#     def search(self, words: List[str], i: int, root: TrieNode, result: List[List[int]]):
+#         n = len(words[i])
+#         for j in range(n):
+#             if root.index >= 0 and root.index != i and self.is_palindrome(words[i], j, len(words[i])-1):
+#                 result.append([i, root.index])
+#             root = root.nodes.get(words[i][j], None)
+#             if not root:
+#                 return
+#
+#         for j in root.list:
+#             if i == j:
+#                 continue
+#             result.append([i, j])
+#
+#     def is_palindrome(self, w, i, j):
+#         while i < j:
+#             if w[i] != w[j]:
+#                 return False
+#             i += 1
+#             j -= 1
+#         return True
+
+
+# Runtime: 6042 ms, faster than 28.83% of Python3 online submissions for Palindrome Pairs.
+# Memory Usage: 390.9 MB, less than 18.80% of Python3 online submissions for Palindrome Pairs.
+# https://leetcode.com/problems/palindrome-pairs/discuss/2585333/Solved-it-over-an-year-ago-and-all-was-fine-now-times-out.-Trie-saves-the-day
 class TrieNode:
     def __init__(self):
-        self.nodes = defaultdict(TrieNode)
-        self.index = -1
-        self.list = []
+        self.nodes = {}
+        self.end_index = None
+        self.idx = []
+
+    @staticmethod
+    def is_palindrome(word):
+        return word == word[::-1]
+
+    def insert(self, word, index):
+        trie_node = self
+        for i, c in enumerate(word):
+            if c not in trie_node.nodes:
+                trie_node.nodes[c] = TrieNode()
+            tail = word[i+1:]
+            if len(tail) > 0 and TrieNode.is_palindrome(tail):
+                trie_node.nodes[c].idx.append(index)
+            trie_node = trie_node.nodes[c]
+        trie_node.nodes['#'] = TrieNode()
+        trie_node.nodes['#'].end_index = index
+
 
 class Solution:
 
     def palindromePairs(self, words: List[str]) -> List[List[int]]:
         root = TrieNode()
+        word_indexes = {}
+        for word_index, word in enumerate(words):
+            rev_word = word[::-1]
+            root.insert(rev_word, word_index)
+            word_indexes[word] = word_index
+
         result = []
-        for i, w in enumerate(words):
-            self.add_word(root, w, i)
-        for i, w in enumerate(words):
-            self.search(words, i, root, result)
-        return result
-
-    def add_word(self, root: TrieNode, w: str, i: int):
-        m = len(w)
-        for j in range(m-1, -1, -1):
-            if self.is_palindrome(w, 0, j):
-                root.list.append(i)
-            root = root.nodes[w[j]]
-        root.list.append(i)
-        root.index = i
-
-    def search(self, words: List[str], i: int, root: TrieNode, result: List[List[int]]):
-        n = len(words[i])
-        for j in range(n):
-            if root.index >= 0 and root.index != i and self.is_palindrome(words[i], j, len(words[i])-1):
-                result.append([i, root.index])
-            root = root.nodes.get(words[i][j], None)
-            if not root:
-                return
-
-        for j in root.list:
-            if i == j:
+        for word_index, word in enumerate(words):
+            if word == '':
                 continue
-            result.append([i, j])
+            trie_node = root
+            for ci, c in enumerate(word):
+                tail = word[ci:]
+                if TrieNode.is_palindrome(tail) and '#' in trie_node.nodes:
+                    result.append([word_index, trie_node.nodes['#'].end_index])
 
-    def is_palindrome(self, w, i, j):
-        while i < j:
-            if w[i] != w[j]:
-                return False
-            i += 1
-            j -= 1
-        return True
+                if c not in trie_node.nodes:
+                    break
+
+                if ci == len(word) - 1 and '#' in trie_node.nodes[c].nodes:
+                    if trie_node.nodes[c].nodes['#'].end_index != word_index:
+                        result.append([word_index, trie_node.nodes[c].nodes['#'].end_index])
+
+                trie_node = trie_node.nodes[c]
+
+                if ci == len(word) - 1:
+                    for pi in trie_node.idx:
+                        result.append([word_index, pi])
+
+            if TrieNode.is_palindrome(word) and '' in word_indexes:
+                result.append([word_indexes[''], word_index])
+        return result
 
 
 tests = [
