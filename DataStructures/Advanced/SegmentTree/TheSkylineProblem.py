@@ -42,7 +42,14 @@ from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
 
-
+# Runtime
+# 120 ms
+# Beats
+# 96.86%
+# Memory
+# 20.2 MB
+# Beats
+# 21.63%
 # https://leetcode.com/problems/the-skyline-problem/solutions/
 class Solution:
     def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
