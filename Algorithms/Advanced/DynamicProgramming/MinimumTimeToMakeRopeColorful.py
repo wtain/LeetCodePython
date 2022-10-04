@@ -70,9 +70,6 @@ class Solution:
         return result
 
 
-        return 0
-
-
 tests = [
     ["abaac", [1,2,3,4,5], 3],
     ["abc", [1,2,3], 0],
