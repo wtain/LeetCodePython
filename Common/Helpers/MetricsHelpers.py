@@ -33,6 +33,8 @@ def get_input_mertic(result_instance):
         input_metric = lambda test: list_length_loop_proof(test[0])
     elif type(result_instance) is int:
         input_metric = lambda test: test[0]
+    elif type(result_instance) is float:
+        input_metric = lambda test: 1
     elif is_multilevel_list(result_instance):
         input_metric = lambda test: list_size(test[0])
     elif is_graph_node(result_instance):
