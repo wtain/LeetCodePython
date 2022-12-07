@@ -80,15 +80,37 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 18 MB
 # Beats
 # 6.6%
+# class Solution:
+#     def findSubstringInWraproundString(self, p: str) -> int:
+#         n = len(p)
+#         dp = [1] * n
+#         starts = [0] * 26
+#         for i in range(n-1, -1, -1):
+#             if i < n-1 and ord(p[i+1])-ord('a') == (ord(p[i])-ord('a') + 1) % 26:
+#                 dp[i] = dp[i+1] + 1
+#             starts[ord(p[i]) - ord('a')] = max(starts[ord(p[i]) - ord('a')], dp[i])
+#         return sum(starts)
+
+
+# Runtime
+# 634 ms
+# Beats
+# 6.6%
+# Memory
+# 14.7 MB
+# Beats
+# 10.30%
 class Solution:
     def findSubstringInWraproundString(self, p: str) -> int:
         n = len(p)
-        dp = [1] * n
         starts = [0] * 26
+        dp = 1
         for i in range(n-1, -1, -1):
             if i < n-1 and ord(p[i+1])-ord('a') == (ord(p[i])-ord('a') + 1) % 26:
-                dp[i] = dp[i+1] + 1
-            starts[ord(p[i]) - ord('a')] = max(starts[ord(p[i]) - ord('a')], dp[i])
+                dp += 1
+            else:
+                dp = 1
+            starts[ord(p[i]) - ord('a')] = max(starts[ord(p[i]) - ord('a')], dp)
         return sum(starts)
 
 
