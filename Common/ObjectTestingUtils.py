@@ -9,7 +9,9 @@ from Common.Helpers.MetricsHelpers import get_input_mertic
 from Common.Helpers.ObjectHelpers import declare_class, create_object, call_method
 from Common.Helpers.ToStringHelpers import to_string
 from Common.DataTypes.Leetcode import TreeNode
+from Common.QuadTreeUtils import printQuadTree
 from Common.TreeUtils import printTree
+from Common.DataTypes.QuadTree import Node as QuadTreeNode
 
 
 def run_object_tests(tests, **kwargs):
@@ -96,6 +98,11 @@ def run_functional_tests(function, tests, **kwargs):
                     printTree(expected)
                     print("Got:")
                     printTree(result)
+                elif type(expected) is QuadTreeNode or type(result) is QuadTreeNode:
+                    print(str(i) + f") {FAIL} - Expected:")
+                    printQuadTree(expected)
+                    print("Got:")
+                    printQuadTree(result)
                 elif type(expected) is list and expected and type(expected[0]) is TreeNode or type(result) is list and result and type(result[0]) is TreeNode:
                     print("Expected:")
                     for exp in expected:

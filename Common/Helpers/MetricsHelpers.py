@@ -3,6 +3,7 @@ from Common.DataTypes.Leetcode import TreeNode, ListNode
 from Common.DataTypes.LeetcodeMultilevelList import is_multilevel_list, list_size
 from Common.ListUtils import list_length_loop_proof
 from Common.DataTypes.NAryTree import Node
+from Common.DataTypes.QuadTree import Node as QuadTreeNode
 
 # todo: recursive calc_size, e.g. List of Lists
 # def calc_size(obj) -> int:
@@ -24,11 +25,23 @@ def count_nary_tree_nodes(root: Node) -> int:
     return result
 
 
+def count_quad_tree_nodes(root: QuadTreeNode) -> int:
+    if not root:
+        return 0
+    result = 1
+    for child in [root.topLeft, root.topRight, root.bottomLeft, root.bottomRight]:
+        if child:
+            result += count_quad_tree_nodes(child)
+    return result
+
+
 def get_input_mertic(result_instance):
     if type(result_instance) is TreeNode:
         input_metric = lambda test: count_tree_nodes(test[0])
     elif type(result_instance) is Node:
         input_metric = lambda test: count_nary_tree_nodes(test[0])
+    elif type(result_instance) is QuadTreeNode:
+        input_metric = lambda test: count_quad_tree_nodes(test[0])
     elif type(result_instance) is ListNode:
         input_metric = lambda test: list_length_loop_proof(test[0])
     elif type(result_instance) is int:

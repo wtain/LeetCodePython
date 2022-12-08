@@ -4,7 +4,9 @@ from Common.DataTypes.Graph import is_graph_node, graphs_equal
 from Common.DataTypes.Leetcode import ListNode, TreeNode
 from Common.DataTypes.LeetcodeMultilevelList import is_multilevel_list, multilevel_list_equal
 from Common.ListUtils import lists_equal
+from Common.QuadTreeUtils import compareQuadTrees
 from Common.TreeUtils import compareTrees, compareTreeSets
+from Common.DataTypes.QuadTree import Node as QuadTreeNode
 
 
 def compare_floats(v1, v2, eps=1e-5):
@@ -20,6 +22,8 @@ def compare_values(v1, v2) -> bool:
         return lists_equal(v1, v2)
     elif type(v1) is TreeNode:
         return compareTrees(v1, v2)
+    elif type(v1) is QuadTreeNode:
+        return compareQuadTrees(v1, v2)
     elif type(v1) is list and v1 and type(v1[0]) is TreeNode:
         return compareTreeSets(v1, v2)
     elif type(v1) is float:

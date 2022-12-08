@@ -49,6 +49,7 @@ def compareTreeSets(l1: List[TreeNode], l2: List[TreeNode]) -> bool:
 
 def printTree(root: TreeNode):
     visited = set()
+
     def printTreeImpl(root: TreeNode):
         nonlocal visited
         if root is None:
