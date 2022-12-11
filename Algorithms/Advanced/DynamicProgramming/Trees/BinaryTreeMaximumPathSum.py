@@ -43,43 +43,50 @@ from Common.TreeUtils import build_tree_from_list
 #         self.left = left
 #         self.right = right
 
-# WRONG
-# class Solution:
-#     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-#         if not root:
-#             return 0
-#         maxSum = root.val
-#
-#         def impl(root, sumFromRoot, maxSumParents, path):
-#             nonlocal maxSum
-#             sumFromRoot += root.val
-#             maxSumParents = max(maxSumParents, sumFromRoot)
-#             maxSumInternal, sumInternal = sumFromRoot, sumFromRoot
-#             for v in path:
-#                 sumInternal -= v
-#                 maxSumInternal = max(maxSumInternal, sumInternal)
-#             maxSum = max(maxSum, maxSumInternal)
-#             maxSum = max(maxSum, maxSumParents)
-#
-#             maxSumRootLeft, maxSumRootRight = sumFromRoot, sumFromRoot
-#
-#             if root.left:
-#                 maxSumRootLeft = impl(root.left, sumFromRoot, maxSumRootLeft, path + [root.val])
-#
-#             if root.right:
-#                 maxSumRootRight = impl(root.right, sumFromRoot, maxSumRootRight, path + [root.val])
-#
-#             maxSumParents = max(max(maxSumRootLeft, maxSumRootRight), maxSumParents)
-#             maxSum = max(maxSum, maxSumParents)
-#
-#             sumCross = maxSumRootLeft - sumFromRoot + maxSumRootRight - sumFromRoot + root.val
-#             maxSum = max(sumCross, sumCross)
-#
-#             return maxSumParents
-#
-#         impl(root, 0, maxSum, [])
-#
-#         return maxSum
+# Runtime
+# 9115 ms
+# Beats
+# 5.1%
+# Memory
+# 59.3 MB
+# Beats
+# 5.77%
+class Solution:
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        maxSum = root.val
+
+        def impl(root, sumFromRoot, maxSumParents, path):
+            nonlocal maxSum
+            sumFromRoot += root.val
+            maxSumParents = max(maxSumParents, sumFromRoot)
+            maxSumInternal, sumInternal = sumFromRoot, sumFromRoot
+            for v in path:
+                sumInternal -= v
+                maxSumInternal = max(maxSumInternal, sumInternal)
+            maxSum = max(maxSum, maxSumInternal)
+            maxSum = max(maxSum, maxSumParents)
+
+            maxSumRootLeft, maxSumRootRight = sumFromRoot, sumFromRoot
+
+            if root.left:
+                maxSumRootLeft = impl(root.left, sumFromRoot, maxSumRootLeft, path + [root.val])
+
+            if root.right:
+                maxSumRootRight = impl(root.right, sumFromRoot, maxSumRootRight, path + [root.val])
+
+            maxSumParents = max(max(maxSumRootLeft, maxSumRootRight), maxSumParents)
+            maxSum = max(maxSum, maxSumParents)
+
+            sumCross = maxSumRootLeft - sumFromRoot + maxSumRootRight - sumFromRoot + root.val
+            maxSum = max(maxSum, sumCross)
+
+            return maxSumParents
+
+        impl(root, 0, maxSum, [])
+
+        return maxSum
 
 
 # Runtime
@@ -91,21 +98,21 @@ from Common.TreeUtils import build_tree_from_list
 # Beats
 # 63.68%
 # https://leetcode.com/problems/binary-tree-maximum-path-sum/solutions/2827786/binary-tree-maximum-path-sum/
-class Solution:
-    def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        max_path = -float('inf')
-
-        def impl(node):
-            nonlocal max_path
-            if not node:
-                return 0
-            left = max(impl(node.left), 0)
-            right = max(impl(node.right), 0)
-            max_path = max(max_path, left + right + node.val)
-            return max(left + node.val, right + node.val)
-
-        impl(root)
-        return max_path
+# class Solution:
+#     def maxPathSum(self, root: Optional[TreeNode]) -> int:
+#         max_path = -float('inf')
+#
+#         def impl(node):
+#             nonlocal max_path
+#             if not node:
+#                 return 0
+#             left = max(impl(node.left), 0)
+#             right = max(impl(node.right), 0)
+#             max_path = max(max_path, left + right + node.val)
+#             return max(left + node.val, right + node.val)
+#
+#         impl(root)
+#         return max_path
 
 
 tests = [
