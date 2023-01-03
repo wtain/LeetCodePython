@@ -34,9 +34,8 @@ Constraints:
 0 <= start < end <= 109
 At most 400 calls will be made to book.
 """
-from collections import Counter
 
-from sortedcontainers import SortedDict, SortedList
+from sortedcontainers import SortedList
 
 from Common.Constants import null
 from Common.ObjectTestingUtils import run_object_tests
@@ -131,6 +130,7 @@ class MyCalendarThree:
 # Your MyCalendarThree object will be instantiated and called as such:
 # obj = MyCalendarThree()
 # param_1 = obj.book(start,end)
+
 
 tests = [
     [
