@@ -41,8 +41,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #   if high == 0:
 #     break
 #   if low < high:
-#     decrement low
-#     high = 9
+#     decrement high
+#     set_all_lower_to_nine()
 #
 # return build_number(digits)
 
@@ -57,8 +57,7 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 69.72%
 class Solution:
     def monotoneIncreasingDigits(self, n: int) -> int:
-        # Initialize result with 0, nines up to current digit with 9 and current power of ten to 1
-        result, nines, power = 0, 9, 1
+        result, nines, power = 0, 9, 1       # Initialize result with 0, nines up to current digit with 9 and current power of ten to 1
         while n:                             # Iterating the number from low digits, checking pairs
             digit_low = n % 10               # Lowest digit is modulo of 10
             n //= 10                         # Shift the number
