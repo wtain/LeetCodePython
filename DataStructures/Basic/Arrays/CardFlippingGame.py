@@ -57,22 +57,49 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Beats
 # 26.55%
 # https://leetcode.com/problems/card-flipping-game/solutions/2479800/c-simple-c-code/
+# class Solution:
+#     def flipgame(self, fronts: List[int], backs: List[int]) -> int:
+#         n = len(fronts)
+#         INT_MAX = 1 << 32
+#         result = INT_MAX
+#         hash = defaultdict(int)
+#         for i in range(n):
+#             if fronts[i] == backs[i]:
+#                 hash[fronts[i]] += 1
+#         for i in range(n):
+#             if fronts[i] not in hash:
+#                 result = min(result, fronts[i])
+#                 hash[fronts[i]] += 1
+#             if backs[i] not in hash:
+#                 result = min(result, backs[i])
+#                 hash[backs[i]] += 1
+#         return result if result < INT_MAX else 0
+
+
+# Runtime
+# 108 ms
+# Beats
+# 84.96%
+# Memory
+# 14.1 MB
+# Beats
+# 95.58%
 class Solution:
     def flipgame(self, fronts: List[int], backs: List[int]) -> int:
         n = len(fronts)
         INT_MAX = 1 << 32
         result = INT_MAX
-        hash = defaultdict(int)
+        hash = set()
         for i in range(n):
             if fronts[i] == backs[i]:
-                hash[fronts[i]] += 1
+                hash.add(fronts[i])
         for i in range(n):
             if fronts[i] not in hash:
                 result = min(result, fronts[i])
-                hash[fronts[i]] += 1
+                hash.add(fronts[i])
             if backs[i] not in hash:
                 result = min(result, backs[i])
-                hash[backs[i]] += 1
+                hash.add(backs[i])
         return result if result < INT_MAX else 0
 
 
