@@ -122,6 +122,23 @@ class Solution:
         return dfs(0, -1)
 
 
+# class Solution:
+#     def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
+#         nodes = [[] for _ in range(n)]
+#         for edge in edges:
+#             nodes[edge[0]].append(edge[1])
+#             nodes[edge[1]].append(edge[0])
+#
+#         to_visit = [(0, -1, 0)]
+#         while to_visit:
+#             node, parent, distance = to_visit.pop()
+#             for child in nodes[node]:
+#                 if child != parent:
+#                     to_visit.append((child, node, distance))
+#
+#         return dfs(0, -1)
+
+
 tests = [
     [4, [[0,2],[0,3],[1,2]], [false,true,false,false], 4],
     [7, [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]], [false,false,true,false,true,true,false], 8],
