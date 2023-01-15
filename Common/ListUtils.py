@@ -126,3 +126,10 @@ def print_list_n(nums: List[int], cnt: int):
 
 def list_copy_n(nums: List[int], cnt: int):
     return nums[:cnt]
+
+
+def print_list_range(current: ListNode, afterEnd: ListNode):
+    while current and current != afterEnd:
+        print(current.val, flush=True, sep=' ', end=' ')
+        current = current.next
+    print()
