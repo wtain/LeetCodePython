@@ -46,22 +46,43 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 19.8 MB
 # Beats
 # 5.49%
+# class Solution:
+#     def maxSubarraySumCircular(self, nums: List[int]) -> int:
+#         n = len(nums)
+#         result = nums[0]
+#         P = [0] * (2*n+1)
+#         for i in range(2*n):
+#             P[i+1] = P[i] + nums[i % n]
+#         ind = deque([0])
+#         for j in range(1, 2*n+1):
+#             while ind[0] < j - n:
+#                 ind.popleft()
+#             result = max(result, P[j] - P[ind[0]])
+#             while ind and P[j] <= P[ind[-1]]:
+#                 ind.pop()
+#             ind.append(j)
+#         return result
+
+
+# Runtime
+# 576 ms
+# Beats
+# 63.81%
+# Memory
+# 19.1 MB
+# Beats
+# 43.34%
+# https://leetcode.com/problems/maximum-sum-circular-subarray/solutions/2868539/maximum-sum-circular-subarray/
 class Solution:
     def maxSubarraySumCircular(self, nums: List[int]) -> int:
-        n = len(nums)
-        result = nums[0]
-        P = [0] * (2*n+1)
-        for i in range(2*n):
-            P[i+1] = P[i] + nums[i % n]
-        ind = deque([0])
-        for j in range(1, 2*n+1):
-            while ind[0] < j - n:
-                ind.popleft()
-            result = max(result, P[j] - P[ind[0]])
-            while ind and P[j] <= P[ind[-1]]:
-                ind.pop()
-            ind.append(j)
-        return result
+        cur_max, cur_min, sum, max_sum, min_sum = 0, 0, 0, nums[0], nums[0]
+        for num in nums:
+            cur_max = max(cur_max, 0) + num
+            max_sum = max(max_sum, cur_max)
+            cur_min = min(cur_min, 0) + num
+            min_sum = min(min_sum, cur_min)
+            sum += num
+        return max_sum if sum == min_sum else max(max_sum, sum - min_sum)
 
 
 tests = [
