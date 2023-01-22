@@ -32,12 +32,52 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 # Runtime: 919 ms, faster than 9.97% of Python3 online submissions for Palindrome Partitioning.
 # Memory Usage: 32.4 MB, less than 8.53% of Python3 online submissions for Palindrome Partitioning.
+# class Solution:
+#     def partition(self, s: str) -> List[List[str]]:
+#         result = []
+#
+#         n = len(s)
+#         p: List[List[bool]] = [[False] * n for i in range(n)]
+#         for i in range(n):
+#             p[i][i] = True
+#             if i+1 < n and s[i] == s[i+1]:
+#                 p[i][i+1] = True
+#
+#         for l in range(3, n+1):
+#             for i in range(n-l+1):
+#                 j = i + l - 1
+#                 if p[i+1][j-1] and s[i] == s[j]:
+#                     p[i][j] = True
+#
+#         def dfs(i: int, current: List[str]):
+#             if i == n:
+#                 result.append(current)
+#             else:
+#                 for j in range(i, n):
+#                     if p[i][j]:
+#                         new = current[:]
+#                         new.append(s[i:j+1])
+#                         dfs(j+1, new)
+#
+#         dfs(0, [])
+#
+#         return result
+
+
+# Runtime
+# 638 ms
+# Beats
+# 95.26%
+# Memory
+# 30.4 MB
+# Beats
+# 46.86%
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         result = []
 
         n = len(s)
-        p: List[List[bool]] = [[False] * n for i in range(n)]
+        p = [[False] * n for i in range(n)]
         for i in range(n):
             p[i][i] = True
             if i+1 < n and s[i] == s[i+1]:
@@ -49,17 +89,20 @@ class Solution:
                 if p[i+1][j-1] and s[i] == s[j]:
                     p[i][j] = True
 
-        def dfs(i: int, current: List[str]):
+        current = []
+
+        def dfs(i: int):
+            nonlocal current
             if i == n:
-                result.append(current)
+                result.append(current.copy())
             else:
                 for j in range(i, n):
                     if p[i][j]:
-                        new = current[:]
-                        new.append(s[i:j+1])
-                        dfs(j+1, new)
+                        current.append(s[i:j+1])
+                        dfs(j+1)
+                        current.pop()
 
-        dfs(0, [])
+        dfs(0)
 
         return result
 
