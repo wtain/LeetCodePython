@@ -57,25 +57,76 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 13.9 MB
 # Beats
 # 93.18%
+# class Solution:
+#     def snakesAndLadders(self, board: List[List[int]]) -> int:
+#
+#         # get_index(number) -> (i, j)
+#         # move()
+#
+#         n, m = len(board), len(board[0])
+#         k = n * m
+#         line = [0] * k
+#         i, j = n-1, 0
+#         dj = 1
+#         for c in range(k):
+#             line[c] = board[i][j]-1 if board[i][j] != -1 else -1
+#             j1 = j + dj
+#             if j1 == m or j1 == -1:
+#                 dj = -dj
+#                 i -= 1
+#             else:
+#                 j += dj
+#
+#         level = [0]
+#         moves = 0
+#         visited = set()
+#         while level:
+#             next_level = []
+#             for i in level:
+#                 if i == k-1:
+#                     return moves
+#                 for next_i in range(i+1, min(k-1, i+6)+1):
+#                     if next_i >= k:
+#                         break
+#                     if next_i in visited:
+#                         continue
+#                     visited.add(next_i)
+#                     if line[next_i] != -1 and next_i != 0 and next_i != k-1:
+#                         next_i = line[next_i]
+#                     next_level.append(next_i)
+#             moves += 1
+#             level = next_level
+#         return -1
+
+
+# Runtime
+# 114 ms
+# Beats
+# 89.21%
+# Memory
+# 13.8 MB
+# Beats
+# 99.79%
 class Solution:
     def snakesAndLadders(self, board: List[List[int]]) -> int:
 
-        # get_index(number) -> (i, j)
-        # move()
-
-        n, m = len(board), len(board[0])
-        k = n * m
-        line = [0] * k
-        i, j = n-1, 0
-        dj = 1
-        for c in range(k):
-            line[c] = board[i][j]-1 if board[i][j] != -1 else -1
-            j1 = j + dj
-            if j1 == m or j1 == -1:
-                dj = -dj
-                i -= 1
+        def get_indexes(index: int, n: int) -> (int, int):
+            i1 = index // n
+            i = n-1 - i1
+            if i1 % 2 == 0:
+                j = index % n
             else:
-                j += dj
+                j = n-1 - index % n
+            return i, j
+
+        n = len(board)
+        k = n ** 2
+
+        def get_value(index: int) -> int:
+            nonlocal board, n
+            i, j = get_indexes(index, n)
+            value = board[i][j]
+            return value-1 if value != -1 else -1
 
         level = [0]
         moves = 0
@@ -91,8 +142,9 @@ class Solution:
                     if next_i in visited:
                         continue
                     visited.add(next_i)
-                    if line[next_i] != -1 and next_i != 0 and next_i != k-1:
-                        next_i = line[next_i]
+                    next_value = get_value(next_i)
+                    if next_value != -1 and next_i != 0 and next_i != k-1:
+                        next_i = next_value
                     next_level.append(next_i)
             moves += 1
             level = next_level
