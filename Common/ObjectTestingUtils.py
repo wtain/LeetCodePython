@@ -1,5 +1,6 @@
 import copy
 import random
+import sys
 import timeit
 import traceback
 
@@ -69,6 +70,8 @@ def run_functional_tests(function, tests, **kwargs):
         print(f"*** {FATAL} {ERROR}: No found")
         return
     custom_check, input_metric, run_tests, tostring_func = parse_params(kwargs, tests)
+
+    sys.setrecursionlimit(10000)
 
     n, failed_tests, i = len(tests), [], 0
     for test in tests:
