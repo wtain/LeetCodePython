@@ -17,7 +17,7 @@ def convert_test_params_to_lists(tests, indexes=None):
     return convert_test_params(tests, build_list, indexes=indexes)
 
 
-def convert_test_params_to_trees(tests, indexes):
+def convert_test_params_to_trees(tests, indexes=None):
     return convert_test_params(tests, build_tree_from_list, indexes=indexes)
 
 
