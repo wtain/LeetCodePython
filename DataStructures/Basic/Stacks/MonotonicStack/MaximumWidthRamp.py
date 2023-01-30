@@ -48,17 +48,47 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Beats
 # 64.16%
 # https://leetcode.com/problems/maximum-width-ramp/solutions/208348/java-c-python-o-n-using-stack/
+# class Solution:
+#     def maxWidthRamp(self, nums: List[int]) -> int:
+#         stack = []
+#         max_ramp = 0
+#         for i, v in enumerate(nums):
+#             if not stack or nums[stack[-1]] > v:
+#                 stack.append(i)
+#         for j in reversed(range(len(nums))):
+#             while stack and nums[stack[-1]] <= nums[j]:
+#                 max_ramp = max(max_ramp, j - stack.pop())
+#         return max_ramp
+
+
+# Runtime
+# 409 ms
+# Beats
+# 50%
+# Memory
+# 21 MB
+# Beats
+# 46.46%
+# https://leetcode.com/problems/maximum-width-ramp/solutions/209582/o-n-time-o-n-space-using-two-array/
 class Solution:
     def maxWidthRamp(self, nums: List[int]) -> int:
-        stack = []
-        max_ramp = 0
-        for i, v in enumerate(nums):
-            if not stack or nums[stack[-1]] > v:
-                stack.append(i)
-        for j in reversed(range(len(nums))):
-            while stack and nums[stack[-1]] <= nums[j]:
-                max_ramp = max(max_ramp, j - stack.pop())
-        return max_ramp
+        n = len(nums)
+        mins, maxes = [0] * n, [0] * n
+        mins[0] = nums[0]
+        for i in range(1, n):
+            mins[i] = min(mins[i-1], nums[i])
+        maxes[n-1] = nums[n-1]
+        for i in range(n-2, -1, -1):
+            maxes[i] = max(maxes[i+1], nums[i])
+        left, right = 0, 0
+        result = 0
+        while right < n:
+            if mins[left] <= maxes[right]:
+                result = max(result, right-left)
+                right += 1
+            else:
+                left += 1
+        return result
 
 
 tests = [
