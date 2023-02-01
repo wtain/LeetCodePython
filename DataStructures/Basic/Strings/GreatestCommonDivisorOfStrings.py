@@ -31,38 +31,52 @@ Constraints:
 1 <= str2.length <= 1000
 str1 and str2 consist of English uppercase letters.
 """
+from math import gcd
+
+from Common.ObjectTestingUtils import run_functional_tests
 
 
 # Runtime: 28 ms, faster than 90.07% of Python3 online submissions for Greatest Common Divisor of Strings.
 # Memory Usage: 14.2 MB, less than 63.36% of Python3 online submissions for Greatest Common Divisor of Strings.
+# class Solution:
+#     def gcdOfStrings(self, str1: str, str2: str) -> str:
+#         n1 = len(str1)
+#         n2 = len(str2)
+#         m = min(n1, n2)
+#         for l in range(m, 0, -1):
+#             if n1 % l != 0 or n2 % l != 0:
+#                 continue
+#             prefix = str1[0:l]
+#             # print(prefix)
+#             m1 = n1 // l
+#             m2 = n2 // l
+#             if prefix * m1 == str1 and prefix * m2 == str2:
+#                 return prefix
+#         return ""
+
+
+# Runtime
+# 37 ms
+# Beats
+# 64.59%
+# Memory
+# 13.9 MB
+# Beats
+# 70.81%
 class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
-        n1 = len(str1)
-        n2 = len(str2)
-        m = min(n1, n2)
-        for l in range(m, 0, -1):
-            if n1 % l != 0 or n2 % l != 0:
-                continue
-            prefix = str1[0:l]
-            # print(prefix)
-            m1 = n1 // l
-            m2 = n2 // l
-            if prefix * m1 == str1 and prefix * m2 == str2:
-                return prefix
-        return ""
-
+        if str1 + str2 != str2 + str1:
+            return ""
+        n1, n2 = len(str1), len(str2)
+        m = gcd(n1, n2)
+        return str1[:m]
 
 
 tests = [
-    ("ABCABC", "ABC", "ABC"),
-    ("ABABAB", "ABAB", "AB"),
-    ("LEET", "CODE", ""),
-    ("ABCDEF", "ABC", "")
+    ["ABCABC", "ABC", "ABC"],
+    ["ABABAB", "ABAB", "AB"],
+    ["LEET", "CODE", ""],
+    ["ABCDEF", "ABC", ""]
 ]
 
-for test in tests:
-    result = Solution().gcdOfStrings(test[0], test[1])
-    if result == test[2]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().gcdOfStrings, tests)
