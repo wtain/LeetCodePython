@@ -39,7 +39,7 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 1 <= numRows <= 1000
 """
 from functools import reduce
-from itertools import accumulate
+from itertools import accumulate, chain
 
 from Common.ObjectTestingUtils import run_functional_tests
 
@@ -52,23 +52,72 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 14 MB
 # Beats
 # 48.57%
+# class Solution:
+#     def convert(self, s: str, numRows: int) -> str:
+#         if not numRows:
+#             return s
+#
+#         n = len(s)
+#         j, dj = 0, 1
+#         v = [""] * numRows
+#         for i in range(n):
+#             v[j] += s[i]
+#             if j + dj == numRows:
+#                 dj = -dj
+#             if j + dj == -1:
+#                 dj = 1
+#             if numRows > 1:
+#                 j += dj
+#         return reduce(lambda r, s: (r+s), v, "")
+
+
+# Runtime
+# 97 ms
+# Beats
+# 38.64%
+# Memory
+# 13.8 MB
+# Beats
+# 94.57%
+# class Solution:
+#     def convert(self, s: str, numRows: int) -> str:
+#         if numRows <= 1:
+#             return s
+#         n = len(s)
+#         cycle_length = numRows + (numRows-2)
+#         result = ""
+#         for remainder in range(numRows):
+#             if remainder in [0, numRows-1]:
+#                 result += s[remainder::cycle_length]
+#             else:
+#                 result += "".join(s[i] for i in sorted(chain(range(remainder,n,cycle_length),
+#                                                              range(cycle_length-remainder,n,cycle_length))))
+#         return result
+
+
+# Runtime
+# 100 ms
+# Beats
+# 37.61%
+# Memory
+# 13.9 MB
+# Beats
+# 94.57%
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        if not numRows:
+        if numRows <= 1:
             return s
-
         n = len(s)
-        j, dj = 0, 1
-        v = [""]  * numRows
-        for i in range(n):
-            v[j] += s[i]
-            if j + dj == numRows:
-                dj = -dj
-            if j + dj == -1:
-                dj = 1
-            if numRows > 1:
-                j += dj
-        return reduce(lambda r, s: (r+s), v, "")
+        cycle_length = numRows + (numRows-2)
+        result = ""
+        for remainder in range(numRows):
+            if remainder in [0, numRows-1]:
+                result += s[remainder::cycle_length]
+            else:
+                result += "".join(s[i]+s[j] if j < n else s[i]
+                                  for i, j in zip(range(remainder,n,cycle_length),
+                                                  range(cycle_length-remainder,n+cycle_length,cycle_length)))
+        return result
 
 
 tests = [
