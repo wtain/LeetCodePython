@@ -51,6 +51,7 @@ m == toppingCosts.length
 1 <= baseCosts[i], toppingCosts[i] <= 104
 1 <= target <= 104
 """
+from functools import cache
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
@@ -210,6 +211,53 @@ class Solution:
                 result = min(result, maxi)
 
         return result
+
+
+# class Solution:
+#     def closestCost(self, baseCosts: List[int], toppingCosts: List[int], target: int) -> int:
+#
+#         @cache
+#         def impl(i: int, s: int) -> (int, int):
+#             nonlocal toppingCosts, target
+#
+#             maxi, diff1 = 0, float('Inf')
+#
+#             def update_best(s: int):
+#                 nonlocal maxi, diff1
+#                 if abs(target-s) < diff1:
+#                     maxi = s
+#                     diff1 = abs(target-s)
+#                 elif abs(target - s) == diff1:
+#                     maxi = min(maxi, s)
+#
+#             update_best(s)
+#
+#             if s > target:
+#                 return float('Inf'), float('Inf')
+#
+#             if i >= len(toppingCosts):
+#                 return float('Inf'), float('Inf')
+#
+#             maxi2, diff2 = impl(i+1, s)
+#             maxi3, diff3 = impl(i+1, s+toppingCosts[i])
+#             maxi4, diff4 = impl(i+1, s+2*toppingCosts[i])
+#             update_best(maxi2)
+#             update_best(maxi3)
+#             update_best(maxi4)
+#
+#             return maxi, diff1
+#
+#         result, diff = 0, float('Inf')
+#         for cost in baseCosts:
+#             maxi, diff1 = impl(0, cost)
+#
+#             if abs(target-maxi) < diff:
+#                 result = maxi
+#                 diff = abs(target-maxi)
+#             elif abs(target - maxi) == diff:
+#                 result = min(result, maxi)
+#
+#         return result
 
 
 tests = [
