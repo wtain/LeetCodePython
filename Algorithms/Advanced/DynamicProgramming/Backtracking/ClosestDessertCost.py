@@ -170,47 +170,147 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Beats
 # 19.41%
 # https://leetcode.com/problems/closest-dessert-cost/solutions/3131919/you-can-make-it-using-dp-cpp/
+# class Solution:
+#     def closestCost(self, baseCosts: List[int], toppingCosts: List[int], target: int) -> int:
+#
+#         def impl(i: int, s: int):
+#             nonlocal dp, maxi, toppingCosts, target, diff1
+#
+#             if abs(target-s) < diff1:
+#                 maxi = s
+#                 diff1 = abs(target-s)
+#             elif abs(target - s) == diff1:
+#                 maxi = min(maxi, s)
+#
+#             if s > target:
+#                 return
+#
+#             if i >= len(toppingCosts):
+#                 return
+#
+#             if dp[i][s] != -1:
+#                 return
+#
+#             impl(i+1, s)
+#             impl(i+1, s+toppingCosts[i])
+#             impl(i+1, s+2*toppingCosts[i])
+#
+#             dp[i][s] = 1
+#
+#         result, diff = 0, float('Inf')
+#         for cost in baseCosts:
+#             dp = [[-1] * (target+1) for _ in range(len(toppingCosts))]
+#             maxi = 0
+#             diff1 = float('Inf')
+#             impl(0, cost)
+#
+#             if abs(target-maxi) < diff:
+#                 result = maxi
+#                 diff = abs(target-maxi)
+#             elif abs(target - maxi) == diff:
+#                 result = min(result, maxi)
+#
+#         return result
+
+
+# Runtime
+# 8531 ms
+# Beats
+# 5.11%
+# Memory
+# 22.2 MB
+# Beats
+# 20.88%
+# class Solution:
+#     def closestCost(self, baseCosts: List[int], toppingCosts: List[int], target: int) -> int:
+#
+#         def check_cost(best_cost: int, cost: int, target: int) -> int:
+#             diff = abs(target-cost)
+#             best_diff = abs(target-best_cost)
+#             if diff < best_diff:
+#                 return cost
+#             if diff == best_diff and cost < best_cost:
+#                 return cost
+#             return best_cost
+#
+#         def best_toppings(toppings_target: int) -> int:
+#             if toppings_target <= 0:
+#                 return 0
+#             m = 2*len(toppingCosts)+1
+#             n = toppings_target + max(toppingCosts)
+#             dp = [[0] * m for _ in range(n)]
+#             for i in range(n):
+#                 dp[i][0] = 0
+#             for j in range(m):
+#                 dp[0][j] = 0
+#             result = 0
+#             for j in range(1, m):
+#                 t = (j-1) // 2
+#                 for i in range(n):
+#                     if toppingCosts[t] > i:
+#                         dp[i][j] = dp[i][j-1]
+#                     else:
+#                         # dp[i][j] = max(dp[i][j - 1], dp[i-toppingCosts[t]][j - 1] + toppingCosts[t])
+#                         dp[i][j] = check_cost(dp[i][j - 1], dp[i-toppingCosts[t]][j - 1] + toppingCosts[t], toppings_target)
+#                     # result = max(result, dp[i][j])
+#                     result = check_cost(result, dp[i][j], toppings_target)
+#             return result
+#
+#         best_cost = float('Inf')
+#         for base in baseCosts:
+#             cost = base + best_toppings(target - base)
+#             best_cost = check_cost(best_cost, cost, target)
+#         return best_cost
+
+
+# Runtime
+# 8968 ms
+# Beats
+# 5.11%
+# Memory
+# 22.3 MB
+# Beats
+# 19.78%
 class Solution:
     def closestCost(self, baseCosts: List[int], toppingCosts: List[int], target: int) -> int:
 
-        def impl(i: int, s: int):
-            nonlocal dp, maxi, toppingCosts, target, diff1
+        def check_cost(best_cost: int, cost: int, target: int) -> int:
+            diff = abs(target-cost)
+            best_diff = abs(target-best_cost)
+            if diff < best_diff:
+                return cost
+            if diff == best_diff and cost < best_cost:
+                return cost
+            return best_cost
 
-            if abs(target-s) < diff1:
-                maxi = s
-                diff1 = abs(target-s)
-            elif abs(target - s) == diff1:
-                maxi = min(maxi, s)
+        def best_toppings(toppings_target: int) -> int:
+            if toppings_target <= 0:
+                return 0
+            m = 2*len(toppingCosts)+1
+            n = toppings_target + max(toppingCosts)
+            dp = [[0] * m for _ in range(n)]
+            for i in range(n):
+                dp[i][0] = 0
+            for j in range(m):
+                dp[0][j] = 0
+            result = float('Inf')
+            for j in range(1, m):
+                t = (j-1) // 2
+                for i in range(n):
+                    if toppingCosts[t] > i:
+                        dp[i][j] = dp[i][j-1]
+                    else:
+                        # dp[i][j] = max(dp[i][j - 1], dp[i-toppingCosts[t]][j - 1] + toppingCosts[t])
+                        dp[i][j] = check_cost(dp[i][j - 1], dp[i-toppingCosts[t]][j - 1] + toppingCosts[t], toppings_target)
+                    # result = max(result, dp[i][j])
+                    result = check_cost(result, dp[i][j], toppings_target)
+            return result
 
-            if s > target:
-                return
-
-            if i >= len(toppingCosts):
-                return
-
-            if dp[i][s] != -1:
-                return
-
-            impl(i+1, s)
-            impl(i+1, s+toppingCosts[i])
-            impl(i+1, s+2*toppingCosts[i])
-
-            dp[i][s] = 1
-
-        result, diff = 0, float('Inf')
-        for cost in baseCosts:
-            dp = [[-1] * (target+1) for _ in range(len(toppingCosts))]
-            maxi = 0
-            diff1 = float('Inf')
-            impl(0, cost)
-
-            if abs(target-maxi) < diff:
-                result = maxi
-                diff = abs(target-maxi)
-            elif abs(target - maxi) == diff:
-                result = min(result, maxi)
-
-        return result
+        best_cost = float('Inf')
+        for base in baseCosts:
+            cost = base + best_toppings(target - base)
+            best_cost = check_cost(best_cost, cost, target)
+        return best_cost
 
 
 # class Solution:
@@ -261,6 +361,7 @@ class Solution:
 
 
 tests = [
+    [[1], [1,5002], 5001, 5003],
     [[52,48,17,44,33,17,58,52], [74,28,20,98,46,9,1,1,22,2], 93, 93],
     [[10], [1], 1, 10],
     [[1,7], [3,4], 10, 10],
@@ -269,5 +370,6 @@ tests = [
 ]
 
 run_functional_tests(Solution().closestCost, tests)
+# run_functional_tests(Solution().closestCost, tests, run_tests=2)
 # run_functional_tests(Solution().closestCost, tests, run_tests=4)
 # run_functional_tests(Solution().closestCost, tests, run_tests=5)
