@@ -65,6 +65,13 @@ def get_result_instance(tests):
     return result_instance
 
 
+def adapt_result(result, expected):
+    if type(result) is map:
+        if type(expected) is list:
+            return list(result)
+    return result
+
+
 def run_functional_tests(function, tests, **kwargs):
     if not tests:
         print(f"*** {FATAL} {ERROR}: No found")
@@ -88,6 +95,8 @@ def run_functional_tests(function, tests, **kwargs):
             expected = test[-1]
 
             duration = stop - start
+
+            result = adapt_result(result, expected)
 
             comparison_result = compare_result_and_expected(custom_check, expected, result, test)
 
