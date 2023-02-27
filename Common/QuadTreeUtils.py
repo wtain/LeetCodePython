@@ -83,9 +83,13 @@ def compareQuadTrees(t1: Node, t2: Node) -> bool:
         return True
     if not t1 or not t2:
         return False
-    if t1.val != t2.val:
+    if t1.isLeaf != t2.isLeaf:
         return False
+    if t1.isLeaf:
+        if t1.val != t2.val:
+            return False
     return compareQuadTrees(t1.topLeft, t2.topLeft) and \
            compareQuadTrees(t1.topRight, t2.topRight) and \
            compareQuadTrees(t1.bottomLeft, t2.bottomLeft) and \
            compareQuadTrees(t1.bottomRight, t2.bottomRight)
+
