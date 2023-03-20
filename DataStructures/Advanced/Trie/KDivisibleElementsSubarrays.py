@@ -56,24 +56,53 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 21.3 MB
 # Beats
 # 81.39%
+# class Solution:
+#     def countDistinct(self, nums: List[int], k: int, p: int) -> int:
+#         n = len(nums)
+#         i1 = 0
+#         np = 0
+#         Trie = lambda: collections.defaultdict(Trie)
+#         trie = Trie()
+#
+#         total = 0
+#
+#         def add_suffix(suffix):
+#             nonlocal trie, total
+#             node = trie
+#             suffix += ['$']
+#             for c in suffix:
+#                 if c == '$' and c not in node:
+#                     total += 1
+#                 node = node[c]
+#
+#         for i2 in range(n):
+#             if nums[i2] % p == 0:
+#                 np += 1
+#             while np > k and i1 <= i2:
+#                 if nums[i1] % p == 0:
+#                     np -= 1
+#                 i1 += 1
+#             suffix = []
+#             for i in range(i2, i1-1, -1):
+#                 suffix = [nums[i]] + suffix
+#                 add_suffix(suffix.copy())
+#         return total
+
+# Runtime
+# 346 ms
+# Beats
+# 72.99%
+# Memory
+# 21 MB
+# Beats
+# 81.39%
 class Solution:
     def countDistinct(self, nums: List[int], k: int, p: int) -> int:
         n = len(nums)
         i1 = 0
         np = 0
-        Trie = lambda: collections.defaultdict(Trie)
-        trie = Trie()
 
-        total = 0
-
-        def add_suffix(suffix):
-            nonlocal trie, total
-            node = trie
-            suffix += ['$']
-            for c in suffix:
-                if c == '$' and c not in node:
-                    total += 1
-                node = node[c]
+        hashes = set()
 
         for i2 in range(n):
             if nums[i2] % p == 0:
@@ -83,10 +112,12 @@ class Solution:
                     np -= 1
                 i1 += 1
             suffix = []
+            hash = 0
             for i in range(i2, i1-1, -1):
+                hash = hash * 1000001 + nums[i]
                 suffix = [nums[i]] + suffix
-                add_suffix(suffix.copy())
-        return total
+                hashes.add(hash)
+        return len(hashes)
 
 
 tests = [
