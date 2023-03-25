@@ -115,6 +115,14 @@ from Common.ObjectTestingUtils import run_functional_tests
 #
 #         return result
 
+# Runtime
+# 1996 ms
+# Beats
+# 97.51%
+# Memory
+# 75.1 MB
+# Beats
+# 71.89%
 class Solution:
     def countPairs(self, n: int, edges: List[List[int]]) -> int:
         p, rank = list(range(n)), [1] * n
