@@ -58,7 +58,8 @@ from Common.ObjectTestingUtils import run_functional_tests
 #             result.append(is_palindrome)
 #         return result
 
-
+# Here I actually solve more complicated problem
+# because I missed that we can rearrange the characters
 # class Solution:
 #     def canMakePaliQueries(self, s: str, queries: List[List[int]]) -> List[bool]:
 #         n = len(s)
@@ -154,7 +155,7 @@ class Solution:
             d.append(nx)
         for l, r, k in queries:
             odds = sum(d[l][i] ^ d[r+1][i] for i in range(26))
-            result.append(odds //2 <= k)
+            result.append(odds // 2 <= k)
         return result
 
 
