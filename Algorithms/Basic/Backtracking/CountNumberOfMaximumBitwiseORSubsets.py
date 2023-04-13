@@ -39,6 +39,7 @@ Constraints:
 1 <= nums.length <= 16
 1 <= nums[i] <= 105
 """
+from collections import defaultdict, Counter
 from functools import reduce
 from typing import List
 
@@ -61,24 +62,42 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 16.3 MB
 # Beats
 # 25.41%
+# class Solution:
+#     def countMaxOrSubsets(self, nums: List[int]) -> int:
+#         value = reduce(lambda s, t: s | t, nums)
+#         result = 0
+#         n = len(nums)
+#
+#         M = 1 << n
+#         dp = [0] * M
+#
+#         for i in range(1, M):
+#             for j in range(n):
+#                 if (1 << j) & i:
+#                     dp[i] = dp[i ^ (1 << j)] | nums[j]
+#                     if dp[i] == value:
+#                         result += 1
+#                     break
+#
+#         return result
+
+
+# Runtime
+# 42 ms
+# Beats
+# 96.45%
+# Memory
+# 13.9 MB
+# Beats
+# 49.45%
 class Solution:
     def countMaxOrSubsets(self, nums: List[int]) -> int:
         value = reduce(lambda s, t: s | t, nums)
-        result = 0
-        n = len(nums)
-
-        M = 1 << n
-        dp = [0] * M
-
-        for i in range(1, M):
-            for j in range(n):
-                if (1 << j) & i:
-                    dp[i] = dp[i ^ (1 << j)] | nums[j]
-                    if dp[i] == value:
-                        result += 1
-                    break
-
-        return result
+        dp = Counter([0])
+        for v in nums:
+            for m, c in list(dp.items()):
+                dp[m | v] += c
+        return dp[value]
 
 
 tests = [
