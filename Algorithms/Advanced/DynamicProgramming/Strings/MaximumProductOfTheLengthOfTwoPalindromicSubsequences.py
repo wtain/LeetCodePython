@@ -47,36 +47,77 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Beats
 # 86.49%
 # https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/solutions/1458289/mask-dp/
+# class Solution:
+#     def maxProduct(self, s: str) -> int:
+#         dp = [0] * (1 << 12)
+#
+#         def palindrome_size(mask):
+#             p1, p2 = 0, len(s)
+#             result = 0
+#             while p1 <= p2:
+#                 if mask & (1 << p1) == 0:
+#                     p1 += 1
+#                 elif mask & (1 << p2) == 0:
+#                     p2 -= 1
+#                 elif s[p1] != s[p2]:
+#                     return 0
+#                 else:
+#                     result += 1 + (1 if p1 != p2 else 0)
+#                     p1 += 1
+#                     p2 -= 1
+#             return result
+#
+#         result, mask = 0, (1 << len(s)) - 1
+#         for m in range(1, mask+1):
+#             dp[m] = palindrome_size(m)
+#
+#         for m1 in range(mask, -1, -1):
+#             if dp[m1] * (len(s) - dp[m1]) > result:
+#                 m2 = mask ^ m1
+#                 while m2 > 0:
+#                     result = max(result, dp[m1] * dp[m2])
+#                     m2 = (m2-1) & (mask ^ m1)
+#         return result
+
+
+# Runtime
+# 3237 ms
+# Beats
+# 21.38%
+# Memory
+# 13.8 MB
+# Beats
+# 94.84%
+# https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/solutions/1458289/mask-dp/
 class Solution:
     def maxProduct(self, s: str) -> int:
-        dp = [0] * (1 << 12)
 
-        def palindrome_size(mask):
-            p1, p2 = 0, len(s)
-            result = 0
-            while p1 <= p2:
-                if mask & (1 << p1) == 0:
-                    p1 += 1
-                elif mask & (1 << p2) == 0:
-                    p2 -= 1
-                elif s[p1] != s[p2]:
-                    return 0
-                else:
-                    result += 1 + (1 if p1 != p2 else 0)
-                    p1 += 1
-                    p2 -= 1
+        def max_palindrome(s):
+            n = len(s)
+            if not n:
+                return 0
+            dp = [[0] * n for _ in range(n)]
+            result = 1
+            for i in range(n-1, -1, -1):
+                dp[i][i] = 1
+                for j in range(i+1, n):
+                    if s[i] == s[j]:
+                        dp[i][j] = dp[i+1][j-1] + 2
+                    else:
+                        dp[i][j] = max(dp[i+1][j], dp[i][j-1])
+                    result = max(result, dp[i][j])
             return result
 
-        result, mask = 0, (1 << len(s)) - 1
-        for m in range(1, mask+1):
-            dp[m] = palindrome_size(m)
-
-        for m1 in range(mask, -1, -1):
-            if dp[m1] * (len(s) - dp[m1]) > result:
-                m2 = mask ^ m1
-                while m2 > 0:
-                    result = max(result, dp[m1] * dp[m2])
-                    m2 = (m2-1) & (mask ^ m1)
+        n = len(s)
+        result = 0
+        for i in range(1 << n):
+            left, right = "", ""
+            for j in range(n):
+                if i & (1 << j):
+                    left += s[j]
+                else:
+                    right += s[j]
+            result = max(result, max_palindrome(left) * max_palindrome(right))
         return result
 
 
