@@ -101,6 +101,31 @@ from Common.TreeUtils import build_tree_from_list
 #         return max(dp(root, LEFT), dp(root, RIGHT)) - 1
 
 
+# WRONG
+# class Solution:
+#     def longestZigZag(self, root: Optional[TreeNode]) -> int:
+#         LEFT, RIGHT = 0, 1
+#
+#         def dp(node: TreeNode, direction):
+#             nonlocal LEFT, RIGHT
+#             if not node:
+#                 return 0
+#             if not node.left and not node.right:
+#                 return 0
+#             left, right = 0, 0
+#             if node.left:
+#                 left = dp(node.left, LEFT)
+#             if node.right:
+#                 right = dp(node.right, RIGHT)
+#             if direction == RIGHT:
+#                 left += 1
+#             if direction == LEFT:
+#                 right += 1
+#             return max(left, right)
+#
+#         return max(dp(root, LEFT), dp(root, RIGHT)) - 1
+
+
 # Runtime
 # 532 ms
 # Beats
