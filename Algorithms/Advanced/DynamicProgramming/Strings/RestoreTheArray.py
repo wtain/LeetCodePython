@@ -73,26 +73,86 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 17.9 MB
 # Beats
 # 93.15%
+# class Solution:
+#     def numberOfArrays(self, s: str, k: int) -> int:
+#         MOD = 10 ** 9 + 7
+#         n = len(s)
+#
+#         dp = [0] * (n+1)
+#         dp[n] = 1
+#
+#         for i0 in range(n-1, -1, -1):
+#             v = 0
+#             result = 0
+#             for i in range(i0, n):
+#                 v *= 10
+#                 v += int(s[i])
+#                 if v > k or v == 0:
+#                     break
+#                 result += dp[i+1] % MOD
+#             dp[i0] = result % MOD
+#
+#         return dp[0]
+
+
+# Runtime
+# 2009 ms
+# Beats
+# 30.14%
+# Memory
+# 14.8 MB
+# Beats
+# 100%
+# https://leetcode.com/problems/restore-the-array/editorial/
+# class Solution:
+#     def numberOfArrays(self, s: str, k: int) -> int:
+#         MOD = 10 ** 9 + 7
+#         m, n = len(s), len(str(k))
+#
+#         dp = [1] + [0] * n
+#         for start in range(m):
+#             if s[start] == '0':
+#                 dp[start % (n+1)] = 0
+#                 continue
+#             for end in range(start, m):
+#                 curr_number = s[start:end+1]
+#                 if int(curr_number) > k:
+#                     break
+#                 dp[(end+1) % (n+1)] += dp[start % (n+1)]
+#                 dp[(end+1) % (n+1)] %= MOD
+#             dp[start % (n+1)] = 0
+#         return dp[m % (n+1)]
+
+
+# Runtime
+# 1780 ms
+# Beats
+# 43.83%
+# Memory
+# 14.9 MB
+# Beats
+# 100%
 class Solution:
     def numberOfArrays(self, s: str, k: int) -> int:
         MOD = 10 ** 9 + 7
-        n = len(s)
+        m, n = len(s), len(str(k))
 
-        dp = [0] * (n+1)
-        dp[n] = 1
-
-        for i0 in range(n-1, -1, -1):
-            v = 0
-            result = 0
-            for i in range(i0, n):
-                v *= 10
-                v += int(s[i])
-                if v > k or v == 0:
+        dp = [1] + [0] * n
+        for start in range(m):
+            if s[start] == '0':
+                dp[start % (n+1)] = 0
+                continue
+            value = 0
+            for end in range(start, m):
+                value *= 10
+                value += int(s[end])
+                if value > k:
                     break
-                result += dp[i+1] % MOD
-            dp[i0] = result % MOD
+                dp[(end+1) % (n+1)] += dp[start % (n+1)]
+                dp[(end+1) % (n+1)] %= MOD
+            dp[start % (n+1)] = 0
+        return dp[m % (n+1)]
 
-        return dp[0]
 
 """
 n = len(s)
