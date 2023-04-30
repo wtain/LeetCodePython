@@ -59,6 +59,78 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 56.6 MB
 # Beats
 # 18.87%
+# class Solution:
+#     def maxNumEdgesToRemove(self, n: int, edges: List[List[int]]) -> int:
+#
+#         class UnionFind:
+#             def __init__(self, n):
+#                 self.rank = [0] * n
+#                 self.p = list(range(n))
+#                 self.count = n
+#
+#             def get(self, i):
+#                 while i != self.p[i]:
+#                     i = self.p[i]
+#                 return self.p[i]
+#
+#             def connect(self, i, j):
+#                 i, j = self.get(i), self.get(j)
+#                 if i == j:
+#                     return
+#                 self.count -= 1
+#                 if self.rank[i] > self.rank[j]:
+#                     self.p[j] = self.p[i]
+#                 elif self.rank[i] < self.rank[j]:
+#                     self.p[i] = self.p[j]
+#                 else:
+#                     self.p[j] = self.p[i]
+#                     self.rank[i] += 1
+#
+#             def is_connected(self, i, j):
+#                 i, j = self.get(i), self.get(j)
+#                 return i == j
+#
+#             def is_fully_connected(self):
+#                 return self.count == 1
+#
+#         edges.sort(key=lambda x: -x[0])
+#
+#         n_removed = 0
+#         uf1, uf2 = UnionFind(n), UnionFind(n)
+#         for type, i, j in edges:
+#             i -= 1
+#             j -= 1
+#             if type == 3:
+#                 if uf1.is_connected(i, j):
+#                     n_removed += 1
+#                 else:
+#                     uf1.connect(i, j)
+#                     uf2.connect(i, j)
+#             elif type == 1:
+#                 if uf1.is_connected(i, j):
+#                     n_removed += 1
+#                 else:
+#                     uf1.connect(i, j)
+#             elif type == 2:
+#                 if uf2.is_connected(i, j):
+#                     n_removed += 1
+#                 else:
+#                     uf2.connect(i, j)
+#
+#         if not uf1.is_fully_connected() or not uf2.is_fully_connected():
+#             return -1
+#
+#         return n_removed
+
+
+# Runtime
+# 2212 ms
+# Beats
+# 51.57%
+# Memory
+# 56.7 MB
+# Beats
+# 18.24%
 class Solution:
     def maxNumEdgesToRemove(self, n: int, edges: List[List[int]]) -> int:
 
@@ -93,10 +165,10 @@ class Solution:
             def is_fully_connected(self):
                 return self.count == 1
 
-        edges.sort(key=lambda x: -x[0])
-
         n_removed = 0
+
         uf1, uf2 = UnionFind(n), UnionFind(n)
+
         for type, i, j in edges:
             i -= 1
             j -= 1
@@ -106,7 +178,11 @@ class Solution:
                 else:
                     uf1.connect(i, j)
                     uf2.connect(i, j)
-            elif type == 1:
+
+        for type, i, j in edges:
+            i -= 1
+            j -= 1
+            if type == 1:
                 if uf1.is_connected(i, j):
                     n_removed += 1
                 else:
