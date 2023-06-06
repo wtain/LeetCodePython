@@ -43,13 +43,43 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 # Runtime: 48 ms, faster than 7.17% of Python3 online submissions for Can Make Arithmetic Progression From Sequence.
 # Memory Usage: 14.6 MB, less than 5.86% of Python3 online submissions for Can Make Arithmetic Progression From Sequence.
+### WRONG
+# class Solution:
+#     def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
+#         amin, amax = min(arr), max(arr)
+#         n = len(arr)
+#         diff = (amax - amin) // (n - 1)
+#         if diff == 0:
+#             return True
+#         multiples = set()
+#         for i in range(n):
+#             di = arr[i] - amin
+#             if di % diff != 0:
+#                 return False
+#             m = di // diff
+#             if m < 0 or m > n-1:
+#                 return False
+#             if m in multiples:
+#                 return False
+#             multiples.add(m)
+#         return True
+
+
+# Runtime
+# 53 ms
+# Beats
+# 47.56%
+# Memory
+# 16.4 MB
+# Beats
+# 51.64%
 class Solution:
     def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
         amin, amax = min(arr), max(arr)
         n = len(arr)
         diff = (amax - amin) // (n - 1)
         if diff == 0:
-            return True
+            return amax - amin == 0
         multiples = set()
         for i in range(n):
             di = arr[i] - amin
@@ -65,8 +95,9 @@ class Solution:
 
 
 tests = [
+    [[0,0,1], False],
     [[3,5,1], True],
-    [[1,2,4], False]
+    [[1,2,4], False],
 ]
 
 run_functional_tests(Solution().canMakeArithmeticProgression, tests)
