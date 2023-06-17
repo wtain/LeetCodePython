@@ -32,6 +32,7 @@ Constraints:
 0 <= arr1[i], arr2[i] <= 10^9
 """
 import bisect
+from collections import defaultdict
 from functools import cache
 from typing import List
 
@@ -47,25 +48,51 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Beats
 # 17.69%
 # https://leetcode.com/problems/make-array-strictly-increasing/editorial/
+# class Solution:
+#     def makeArrayIncreasing(self, arr1: List[int], arr2: List[int]) -> int:
+#         arr2.sort()
+#
+#         @cache
+#         def dfs(i, prev):
+#             if i == len(arr1):
+#                 return 0
+#             cost = float('inf')
+#             if arr1[i] > prev:
+#                 cost = dfs(i+1, arr1[i])
+#             idx = bisect.bisect_right(arr2, prev)
+#             if idx < len(arr2):
+#                 cost = min(cost, 1 + dfs(i+1, arr2[idx]))
+#             return cost
+#
+#         res = dfs(0, -1)
+#
+#         return res if res < float('inf') else -1
+
+# Runtime
+# 680 ms
+# Beats
+# 78.46%
+# Memory
+# 16.8 MB
+# Beats
+# 67.69%
+# https://leetcode.com/problems/make-array-strictly-increasing/editorial/
 class Solution:
     def makeArrayIncreasing(self, arr1: List[int], arr2: List[int]) -> int:
+        dp = {-1: 0}
         arr2.sort()
+        n = len(arr2)
 
-        @cache
-        def dfs(i, prev):
-            if i == len(arr1):
-                return 0
-            cost = float('inf')
-            if arr1[i] > prev:
-                cost = dfs(i+1, arr1[i])
-            idx = bisect.bisect_right(arr2, prev)
-            if idx < len(arr2):
-                cost = min(cost, 1 + dfs(i+1, arr2[idx]))
-            return cost
-
-        res = dfs(0, -1)
-
-        return res if res < float('inf') else -1
+        for i in range(len(arr1)):
+            new_dp = defaultdict(lambda: float('inf'))
+            for prev in dp:
+                if arr1[i] > prev:
+                    new_dp[arr1[i]] = min(new_dp[arr1[i]], dp[prev])
+                idx = bisect.bisect_right(arr2, prev)
+                if idx < n:
+                    new_dp[arr2[idx]] = min(new_dp[arr2[idx]], 1 + dp[prev])
+            dp = new_dp
+        return min(dp.values()) if dp else -1
 
 
 tests = [
