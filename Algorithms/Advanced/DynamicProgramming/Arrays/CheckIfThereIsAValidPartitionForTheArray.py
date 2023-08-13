@@ -70,18 +70,39 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Details
 # 30.52mb
 # Beats 63.08%of users with Python3
+# class Solution:
+#     def validPartition(self, nums: List[int]) -> bool:
+#         n = len(nums)
+#         dp = [False] * (n+1)
+#         dp[0] = True
+#         dp[1] = False
+#         dp[2] = nums[0] == nums[1]
+#         for i in range(2, n):
+#             dp[i+1] = nums[i] == nums[i-1] and dp[i-1] or \
+#                       nums[i] == nums[i - 1] and nums[i-1] == nums[i-2] and dp[i - 2] or \
+#                       nums[i] == nums[i - 1]+1 and nums[i - 1] == nums[i - 2]+1 and dp[i - 2]
+#         return dp[-1]
+
+
+# Runtime
+# Details
+# 866ms
+# Beats 93.08%of users with Python3
+# Memory
+# Details
+# 30.42mb
+# Beats 68.46%of users with Python3
+# https://leetcode.com/problems/check-if-there-is-a-valid-partition-for-the-array/editorial/
 class Solution:
     def validPartition(self, nums: List[int]) -> bool:
         n = len(nums)
-        dp = [False] * (n+1)
-        dp[0] = True
-        dp[1] = False
-        dp[2] = nums[0] == nums[1]
-        for i in range(2, n):
-            dp[i+1] = nums[i] == nums[i-1] and dp[i-1] or \
-                      nums[i] == nums[i - 1] and nums[i-1] == nums[i-2] and dp[i - 2] or \
-                      nums[i] == nums[i - 1]+1 and nums[i - 1] == nums[i - 2]+1 and dp[i - 2]
-        return dp[-1]
+        dp = [True, False, False]
+        for i in range(n):
+            j = i + 1
+            dp[j % 3] = i > 0 and nums[i] == nums[i-1] and dp[(j-2) % 3] or \
+                      i > 1 and nums[i] == nums[i - 1] and nums[i-1] == nums[i-2] and dp[(j - 3) % 3] or \
+                      i > 1 and nums[i] == nums[i - 1]+1 and nums[i - 1] == nums[i - 2]+1 and dp[(j-3) % 3]
+        return dp[n % 3]
 
 
 tests = [
