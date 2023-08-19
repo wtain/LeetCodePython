@@ -105,7 +105,7 @@ class Solution:
             if degrees[i] == second_max_degree:
                 is_candidate[i] = True
                 candidate_count += 1
-            if max_degree > second_max_degree and degrees[i] == max_degree:
+            if second_max_degree < max_degree == degrees[i]:
                 king = i
 
         if max_degree == second_max_degree:
