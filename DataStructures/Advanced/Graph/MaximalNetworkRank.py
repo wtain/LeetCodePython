@@ -54,25 +54,80 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Details
 # 17.94mb
 # Beats 83.19%of users with Python3
+# class Solution:
+#     def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
+#         connected = [[False] * n for _ in range(n)]
+#         counts = [0] * n
+#         for a, b in roads:
+#             counts[a] += 1
+#             counts[b] += 1
+#             connected[a][b] = True
+#             connected[b][a] = True
+#         max_rank = 0
+#         for i in range(n):
+#             for j in range(n):
+#                 if i == j:
+#                     continue
+#                 rank = counts[i] + counts[j]
+#                 if connected[i][j]:
+#                     rank -= 1
+#                 max_rank = max(max_rank, rank)
+#         return max_rank
+
+
+# Runtime
+# Details
+# 273ms
+# Beats 100.00%of users with Python3
+# Memory
+# Details
+# 17.81MB
+# Beats 91.63%of users with Python3
+# https://leetcode.com/problems/maximal-network-rank/solutions/3924675/beat-100-o-v-e-most-efficient-solution-greedy-no-hash-no-double-loop/
 class Solution:
     def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
-        connected = [[False] * n for _ in range(n)]
-        counts = [0] * n
+        degrees = [0] * n
         for a, b in roads:
-            counts[a] += 1
-            counts[b] += 1
-            connected[a][b] = True
-            connected[b][a] = True
-        max_rank = 0
+            degrees[a] += 1
+            degrees[b] += 1
+        max_degree, second_max_degree = 0, 0
+        for degree in degrees:
+            if degree < second_max_degree:
+                continue
+            second_max_degree = degree
+            if second_max_degree > max_degree:
+                second_max_degree, max_degree = max_degree, second_max_degree
+
+        is_candidate = [False] * n
+        candidate_count = 0
+        king = -1
         for i in range(n):
-            for j in range(n):
-                if i == j:
-                    continue
-                rank = counts[i] + counts[j]
-                if connected[i][j]:
-                    rank -= 1
-                max_rank = max(max_rank, rank)
-        return max_rank
+            if degrees[i] == second_max_degree:
+                is_candidate[i] = True
+                candidate_count += 1
+            if max_degree > second_max_degree and degrees[i] == max_degree:
+                king = i
+
+        if max_degree == second_max_degree:
+            if candidate_count > max_degree + 1:
+                return max_degree * 2
+            connection_count = 0
+            for a, b in roads:
+                if is_candidate[a] and is_candidate[b]:
+                    connection_count += 1
+            if connection_count < candidate_count * (candidate_count - 1) // 2:
+                return max_degree * 2
+            return max_degree * 2 - 1
+
+        connection_count = 0
+        for a, b in roads:
+            if a != king and b != king:
+                continue
+            if is_candidate[a] or is_candidate[b]:
+                connection_count += 1
+        if connection_count < candidate_count:
+            return max_degree + second_max_degree
+        return max_degree + second_max_degree - 1
 
 
 tests = [

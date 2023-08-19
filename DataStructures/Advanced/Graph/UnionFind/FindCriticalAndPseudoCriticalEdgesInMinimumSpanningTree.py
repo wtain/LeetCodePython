@@ -96,7 +96,7 @@ class Solution:
             for x, y, w_ignore, j in new_edges:
                 if i != j and uf_ignore.union(x, y):
                     ignore_weight += w_ignore
-            if uf_ignore.max_size <n or ignore_weight > std_weight:
+            if uf_ignore.max_size < n or ignore_weight > std_weight:
                 critical.append(i)
                 continue
 
