@@ -54,20 +54,44 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Details
 # 17.30MB
 # Beats 73.49%of users with Python3
+# class Solution:
+#     def bestClosingTime(self, customers: str) -> int:
+#         n = len(customers)
+#         penalty = -sum(1 for c in customers if c == 'Y')
+#         mx, maxi = penalty, -1
+#         for i in range(n):
+#             if customers[i] == 'Y':
+#                 penalty += 1
+#             else:
+#                 penalty -= 1
+#             if penalty > mx:
+#                 maxi = i
+#                 mx = penalty
+#         return maxi+1
+
+
+# Runtime
+# Details
+# 101ms
+# Beats 92.47%of users with Python3
+# Memory
+# Details
+# 17.44MB
+# Beats 46.99%of users with Python3
+# https://leetcode.com/problems/minimum-penalty-for-a-shop/editorial/
 class Solution:
     def bestClosingTime(self, customers: str) -> int:
-        n = len(customers)
-        penalty = -sum(1 for c in customers if c == 'Y')
-        mx, maxi = penalty, -1
-        for i in range(n):
-            if customers[i] == 'Y':
-                penalty += 1
+        cur = mn = 0
+        earliest = 0
+        for i, c in enumerate(customers):
+            if c == 'Y':
+                cur -= 1
             else:
-                penalty -= 1
-            if penalty > mx:
-                maxi = i
-                mx = penalty
-        return maxi+1
+                cur += 1
+            if cur < mn:
+                earliest = i + 1
+                mn = cur
+        return earliest
 
 
 tests = [
