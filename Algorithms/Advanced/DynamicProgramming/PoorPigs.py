@@ -45,18 +45,34 @@ import math
 from Common.ObjectTestingUtils import run_functional_tests
 
 
+# WRONG
 # Runtime: 33 ms, faster than 90.51% of Python3 online submissions for Poor Pigs.
 # Memory Usage: 13.9 MB, less than 74.45% of Python3 online submissions for Poor Pigs.
 # https://leetcode.com/problems/poor-pigs/discuss/2386933/one-line-solution
+# class Solution:
+#     def poorPigs(self, buckets: int, minutesToDie: int, minutesToTest: int) -> int:
+#         return math.ceil(math.log(buckets)/math.log(1+minutesToTest/minutesToDie))
+
+
+# Runtime
+# Details
+# 27ms
+# Beats 99.20%of users with Python3
+# Memory
+# Details
+# 16.13MB
+# Beats 74.40%of users with Python3
+# https://leetcode.com/problems/poor-pigs/solutions/4220289/c-log2-1-line/?envType=daily-question&envId=2023-10-29
 class Solution:
     def poorPigs(self, buckets: int, minutesToDie: int, minutesToTest: int) -> int:
-        return math.ceil(math.log(buckets)/math.log(1+minutesToTest/minutesToDie))
+        return math.ceil(math.log2(buckets)/math.log2(1+minutesToTest/minutesToDie))
 
 
 tests = [
     [1000, 15, 60, 5],
     [4, 15, 15, 2],
-    [4, 15, 30, 2]
+    [4, 15, 30, 2],
+    [125,1,4,3],
 ]
 
 run_functional_tests(Solution().poorPigs, tests)
