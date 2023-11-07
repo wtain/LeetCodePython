@@ -46,6 +46,7 @@ n == dist.length == speed.length
 1 <= n <= 105
 1 <= dist[i], speed[i] <= 105
 """
+import heapq
 from typing import List
 
 from Common.ObjectTestingUtils import run_functional_tests
@@ -59,19 +60,42 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Details
 # 32.10MB
 # Beats 81.91%of users with Python3
+# class Solution:
+#     def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+#         times = [d / s for d, s in zip(dist, speed)]
+#         times.sort()
+#         n = len(times)
+#         count = 0
+#         next_shot = 0
+#         for i in range(n):
+#             if next_shot >= times[i]:
+#                 break
+#             next_shot += 1
+#             count += 1
+#         return count
+
+
+# Runtime
+# Details
+# 731ms
+# Beats 25.32%of users with Python3
+# Memory
+# Details
+# 32.64MB
+# Beats 7.24%of users with Python3
+# https://leetcode.com/problems/eliminate-maximum-number-of-monsters/editorial/?envType=daily-question&envId=2023-11-07
 class Solution:
     def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
         times = [d / s for d, s in zip(dist, speed)]
-        times.sort()
-        n = len(times)
-        count = 0
-        next_shot = 0
-        for i in range(n):
-            if next_shot >= times[i]:
+        heapq.heapify(times)
+        result = 0
+        while times:
+            t = heapq.heappop(times)
+            if t <= result:
                 break
-            next_shot += 1
-            count += 1
-        return count
+            result += 1
+        return result
+
 
 
 tests = [
