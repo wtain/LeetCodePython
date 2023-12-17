@@ -96,6 +96,28 @@ class FoodRatings:
         rating_neg, food = self.cuisine_ratings[cuisine][0]
         return food
 
+
+# WRONG
+# class FoodRatings:
+#
+#     def update_rating(self, cuisine, food, rating):
+#         if cuisine not in self.cuisine_ratings or self.cuisine_ratings[cuisine][0] < rating or self.cuisine_ratings[cuisine][0] == rating and self.cuisine_ratings[cuisine][1] > food:
+#             self.cuisine_ratings[cuisine] = [rating, food]
+#
+#     def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):
+#         self.cuisine_ratings = {}
+#         self.food_cuisine = {}
+#         for food, cuisine, rating in zip(foods, cuisines, ratings):
+#             self.food_cuisine[food] = cuisine
+#             self.update_rating(cuisine, food, rating)
+#
+#     def changeRating(self, food: str, newRating: int) -> None:
+#         cuisine = self.food_cuisine[food]
+#         self.update_rating(cuisine, food, newRating)
+#
+#     def highestRated(self, cuisine: str) -> str:
+#         return self.cuisine_ratings[cuisine][1]
+
 # Your FoodRatings object will be instantiated and called as such:
 # obj = FoodRatings(foods, cuisines, ratings)
 # obj.changeRating(food,newRating)
@@ -108,6 +130,25 @@ tests = [
         [[["kimchi", "miso", "sushi", "moussaka", "ramen", "bulgogi"], ["korean", "japanese", "japanese", "greek", "japanese", "korean"], [9, 12, 8, 15, 14, 7]], ["korean"], ["japanese"], ["sushi", 16], ["japanese"], ["ramen", 16], ["japanese"]],
         [null, "kimchi", "ramen", null, "sushi", null, "ramen"]
     ],
+    [
+        ["FoodRatings","changeRating","highestRated","changeRating","changeRating","changeRating","highestRated","highestRated"],
+        [[
+            ["emgqdbo","jmvfxjohq","qnvseohnoe","yhptazyko","ocqmvmwjq"],
+            ["snaxol","snaxol","snaxol","fajbervsj","fajbervsj"],
+            [2,6,18,6,5]],
+            ["qnvseohnoe",11],["fajbervsj"],["emgqdbo",3],["jmvfxjohq",9],["emgqdbo",14],["fajbervsj"],["snaxol"]],
+        [null,null,"yhptazyko",null,null,null,"yhptazyko","emgqdbo"]
+    ],
+    [
+        ["FoodRatings",
+         "changeRating","changeRating","changeRating","highestRated"],
+        [[
+            ["emgqdbo","jmvfxjohq","qnvseohnoe"],
+            ["snaxol","snaxol","snaxol"],
+            [2,6,18]],
+            ["qnvseohnoe",11],["jmvfxjohq",9],["emgqdbo",14],["snaxol"]],
+        [null,null,null,null,"emgqdbo"]
+    ]
 ]
 
 run_object_tests(tests, cls=FoodRatings)
