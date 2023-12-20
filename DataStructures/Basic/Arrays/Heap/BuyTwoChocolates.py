@@ -45,14 +45,63 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Beats
 # 23.41%
 # of users with Python3
+# class Solution:
+#     def buyChoco(self, prices: List[int], money: int) -> int:
+#         h = []
+#         for p in prices:
+#             heapq.heappush(h, -p)
+#             if len(h) > 2:
+#                 heapq.heappop(h)
+#         s = -(h[0] + h[1])
+#         if s > money:
+#             return money
+#         return money - s
+
+
+# WRONG
+# class Solution:
+#     def buyChoco(self, prices: List[int], money: int) -> int:
+#         h = []
+#         for p in prices:
+#             if len(h) < 2 or h[0] > p:
+#                 if len(h) > 2:
+#                     heapq.heappop(h)
+#                 heapq.heappush(h, p)
+#         s = h[0] + h[1]
+#         if s > money:
+#             return money
+#         return money - s
+
+
+# Runtime
+# 65
+# ms
+# Beats
+# 56.98%
+# of users with Python3
+# Memory
+# 16.23
+# MB
+# Beats
+# 55.48%
+# of users with Python3
 class Solution:
     def buyChoco(self, prices: List[int], money: int) -> int:
-        h = []
+        h1 = h2 = -1
         for p in prices:
-            heapq.heappush(h, -p)
-            if len(h) > 2:
-                heapq.heappop(h)
-        s = -(h[0] + h[1])
+            if h1 == -1:
+                h1 = p
+            elif h2 == -1:
+                if h1 <= p:
+                    h2 = p
+                else:
+                    h1, h2 = p, h1
+            else:
+                if p < h1:
+                    h1, h2 = p, h1
+                elif p < h2:
+                    h2 = p
+        s = h1 + h2
         if s > money:
             return money
         return money - s
@@ -61,6 +110,7 @@ class Solution:
 tests = [
     [[1,2,2], 3, 0],
     [[3,2,3], 3, 3],
+    [[98,54,6,34,66,63,52,39], 62, 22],
 ]
 
 run_functional_tests(Solution().buyChoco, tests)
