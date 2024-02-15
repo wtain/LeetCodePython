@@ -55,14 +55,39 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Beats
 # 99.23%
 # of users with Python3
+# class Solution:
+#     def largestPerimeter(self, nums: List[int]) -> int:
+#         nums.sort()
+#         sums = list(accumulate(nums))
+#         n = len(nums)
+#         for i in range(n-1, 1, -1):
+#             if nums[i] < sums[i-1]:
+#                 return sums[i]
+#         return -1
+
+
+
+# Runtime
+# 525
+# ms
+# Beats
+# 63.92%
+# of users with Python3
+# Memory
+# 31.58
+# MB
+# Beats
+# 91.17%
+# of users with Python3
 class Solution:
     def largestPerimeter(self, nums: List[int]) -> int:
         nums.sort()
-        sums = list(accumulate(nums))
+        p = sum(nums)
         n = len(nums)
         for i in range(n-1, 1, -1):
-            if nums[i] < sums[i-1]:
-                return sums[i]
+            if 2 * nums[i] < p:
+                return p
+            p -= nums[i]
         return -1
 
 
