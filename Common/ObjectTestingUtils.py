@@ -9,7 +9,8 @@ from Common.Helpers.CompareHelpers import compare_values, compare_result_and_exp
 from Common.Helpers.MetricsHelpers import get_input_mertic
 from Common.Helpers.ObjectHelpers import declare_class, create_object, call_method
 from Common.Helpers.ToStringHelpers import to_string
-from Common.DataTypes.Leetcode import TreeNode
+from Common.DataTypes.Leetcode import TreeNode, ListNode
+from Common.ListUtils import list_to_string
 from Common.QuadTreeUtils import printQuadTree
 from Common.TreeUtils import printTree
 from Common.DataTypes.QuadTree import Node as QuadTreeNode
@@ -104,7 +105,8 @@ def run_functional_tests(function, tests, **kwargs):
                 print(str(i) + f") {PASS}, took: " + "{:.6f}".format(duration) + " on size=" + str(input_size))
             else:
                 if type(expected) is str and type(result) is str:
-                    print(str(i) + f") {FAIL} - expected '" + expected + "', got '" + result + "', params: " + str(parameters))
+                    print(str(i) + f") {FAIL} - expected '" + expected + "', got '" + result + "', params: " +
+                          params_to_string(parameters))
                 elif type(expected) is TreeNode or type(result) is TreeNode:
                     print(str(i) + f") {FAIL} - Expected:")
                     printTree(expected)
@@ -123,7 +125,8 @@ def run_functional_tests(function, tests, **kwargs):
                     for res in result:
                         printTree(res)
                 else:
-                    print(str(i) + f") {FAIL} - expected " + tostring_func(expected), ", got " + tostring_func(result), "; took {:.6f}".format(duration) + ", params: " + str(parameters))
+                    print(str(i) + f") {FAIL} - expected " + tostring_func(expected), ", got " + tostring_func(result), "; took {:.6f}".format(duration) + ", params: " +
+                          params_to_string(parameters))
                 failed_tests.append(i)
         except Exception as e:
             print(str(i) + f") {FAIL} - {CRASH}, params: " + str(parameters))
@@ -137,6 +140,17 @@ def run_functional_tests(function, tests, **kwargs):
     else:
         print(status + ", " + str(nfail) + " failed of " + str(n))
         print("Failed tests: " + str(failed_tests))
+
+
+def param_to_string(param):
+    if type(param) is ListNode:
+        return list_to_string(param)
+    else:
+        return str(param)
+
+
+def params_to_string(parameters):
+    return ", ".join(param_to_string(param) for param in parameters)
 
 
 def parse_params(kwargs, tests):

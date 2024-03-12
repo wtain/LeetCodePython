@@ -106,6 +106,14 @@ def buildNumberAsList(arr: List[int]) -> ListNode:
     return h
 
 
+def list_to_string(l: ListNode):
+    result = []
+    while l:
+        result.append(str(l.val))
+        l = l.next
+    return " -> ".join(result)
+
+
 def printList(l: ListNode, new_line=False):
     while l:
         print(l.val, flush=True, sep=' ', end=' ')
