@@ -45,27 +45,57 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Beats
 # 87.31%
 # of users with Python3
+# class Solution:
+#     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+#         n, result = len(nums), 0
+#         ilo, ihi = 0, 0
+#         sumlo, sumhi = 0, 0
+#         for j in range(n):
+#             sumlo += nums[j]
+#             while ilo < j and sumlo > goal:
+#                 sumlo -= nums[ilo]
+#                 ilo += 1
+#
+#             sumhi += nums[j]
+#
+#             while ihi < j and (sumhi > goal or sumhi == goal and nums[ihi] == 0):
+#                 sumhi -= nums[ihi]
+#                 ihi += 1
+#
+#             if sumlo == goal:
+#                 result += ihi - ilo + 1
+#
+#         return result
+
+
+# Runtime
+# 223
+# ms
+# Beats
+# 52.83%
+# of users with Python3
+# Memory
+# 17.40
+# MB
+# Beats
+# 87.31%
+# of users with Python3
+# https://leetcode.com/problems/binary-subarrays-with-sum/editorial/?envType=daily-question&envId=2024-03-14
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
-        n, result = len(nums), 0
-        ilo, ihi = 0, 0
-        sumlo, sumhi = 0, 0
-        for j in range(n):
-            sumlo += nums[j]
-            while ilo < j and sumlo > goal:
-                sumlo -= nums[ilo]
-                ilo += 1
 
-            sumhi += nums[j]
+        def count_at_most(goal):
+            n = len(nums)
+            start, current_sum, total_count = 0, 0, 0
+            for end in range(n):
+                current_sum += nums[end]
+                while start <= end and current_sum > goal:
+                    current_sum -= nums[start]
+                    start += 1
+                total_count += end - start + 1
+            return total_count
 
-            while ihi < j and (sumhi > goal or sumhi == goal and nums[ihi] == 0):
-                sumhi -= nums[ihi]
-                ihi += 1
-
-            if sumlo == goal:
-                result += ihi - ilo + 1
-
-        return result
+        return count_at_most(goal) - count_at_most(goal-1)
 
 
 tests = [
