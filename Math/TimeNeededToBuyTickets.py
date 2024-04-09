@@ -43,16 +43,72 @@ from Common.ObjectTestingUtils import run_functional_tests
 
 # Runtime: 60 ms, faster than 42.86% of Python3 online submissions for Time Needed to Buy Tickets.
 # Memory Usage: 14.3 MB, less than 14.29% of Python3 online submissions for Time Needed to Buy Tickets.
+# class Solution:
+#     def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+#         i, n, cnt = 0, len(tickets), 0
+#         while tickets[k]:
+#             while not tickets[i]:
+#                 i = (i + 1) % n
+#             cnt += 1
+#             tickets[i] -= 1
+#             i = (i + 1) % n
+#         return cnt
+
+
+# Runtime
+# 54
+# ms
+# Beats
+# 21.32%
+# of users with Python3
+# Memory
+# 16.57
+# MB
+# Beats
+# 51.83%
+# of users with Python3
+# https://leetcode.com/problems/time-needed-to-buy-tickets/editorial/?envType=daily-question&envId=2024-04-09
+# class Solution:
+#     def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+#         n, t = len(tickets), 0
+#
+#         if tickets[k] == 1:
+#             return k+1
+#
+#         while tickets[k] > 0:
+#             for i in range(n):
+#                 if tickets[i] != 0:
+#                     tickets[i] -= 1
+#                     t += 1
+#
+#                 if tickets[k] == 0:
+#                     return t
+#         return t
+
+
+# Runtime
+# 35
+# ms
+# Beats
+# 92.79%
+# of users with Python3
+# Memory
+# 16.58
+# MB
+# Beats
+# 51.83%
+# of users with Python3
+# https://leetcode.com/problems/time-needed-to-buy-tickets/editorial/?envType=daily-question&envId=2024-04-09
 class Solution:
     def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
-        i, n, cnt = 0, len(tickets), 0
-        while tickets[k]:
-            while not tickets[i]:
-                i = (i + 1) % n
-            cnt += 1
-            tickets[i] -= 1
-            i = (i + 1) % n
-        return cnt
+        n, t = len(tickets), 0
+
+        for i in range(n):
+            if i <= k:
+                t += min(tickets[k], tickets[i])
+            else:
+                t += min(tickets[k] - 1, tickets[i])
+        return t
 
 
 tests = [
