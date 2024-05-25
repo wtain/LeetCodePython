@@ -50,28 +50,126 @@ from Common.ObjectTestingUtils import run_functional_tests
 # Beats
 # 87.62%
 # of users with Python3
+# class Solution:
+#     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+#
+#         @cache
+#         def impl(s1):
+#             n = len(s1)
+#             if not n:
+#                 return [""]
+#             result = []
+#             c = ""
+#             for i in range(n):
+#                 c += s1[i]
+#                 if c in wordDict:
+#                     r = impl(s1[i+1:])
+#                     for ri in r:
+#                         r1 = c
+#                         if ri:
+#                             r1 += " " + ri
+#                         result.append(r1)
+#             return result
+#
+#         return impl(s)
+
+
+# Runtime
+# 39
+# ms
+# Beats
+# 26.33%
+# of users with Python3
+# Memory
+# 16.47
+# MB
+# Beats
+# 87.62%
+# of users with Python3
+# https://leetcode.com/problems/word-break-ii/editorial/?envType=daily-question&envId=2024-05-25
+# class Solution:
+#     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+#         dp = {}
+#
+#         for start_idx in range(len(s), -1, -1):
+#             valid_sentences = []
+#             for end_idx in range(start_idx, len(s)):
+#                 current_word = s[start_idx:end_idx+1]
+#
+#                 if current_word in wordDict:
+#                     if end_idx == len(s) - 1:
+#                         valid_sentences.append(current_word)
+#                     else:
+#                         sentences_from_index = dp.get(end_idx+1, [])
+#                         for sentence in sentences_from_index:
+#                             valid_sentences.append(current_word + " " + sentence)
+#             dp[start_idx] = valid_sentences
+#
+#         return dp.get(0, [])
+
+
+# Runtime
+# 23
+# ms
+# Beats
+# 98.55%
+# of users with Python3
+# Memory
+# 16.42
+# MB
+# Beats
+# 87.62%
+# of users with Python3
+# https://leetcode.com/problems/word-break-ii/submissions/1267395716/?envType=daily-question&envId=2024-05-25
+class TrieNode:
+    def __init__(self):
+        self.is_end = False
+        self.children = [None] * 26
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            index = ord(char) - ord('a')
+            if not node.children[index]:
+                node.children[index] = TrieNode()
+            node = node.children[index]
+        node.is_end = True
+
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        trie = Trie()
+        for word in wordDict:
+            trie.insert(word)
+        dp = {}
+        for start_idx in range(len(s), -1, -1):
+            valid_sentences = []
 
-        @cache
-        def impl(s1):
-            n = len(s1)
-            if not n:
-                return [""]
-            result = []
-            c = ""
-            for i in range(n):
-                c += s1[i]
-                if c in wordDict:
-                    r = impl(s1[i+1:])
-                    for ri in r:
-                        r1 = c
-                        if ri:
-                            r1 += " " + ri
-                        result.append(r1)
-            return result
+            current_node = trie.root
 
-        return impl(s)
+            for end_idx in range(start_idx, len(s)):
+                char = s[end_idx]
+                index = ord(char) - ord('a')
+
+                if not current_node.children[index]:
+                    break
+
+                current_node = current_node.children[index]
+
+                if current_node.is_end:
+                    current_word = s[start_idx:end_idx+1]
+                    if end_idx == len(s) - 1:
+                        valid_sentences.append(current_word)
+                    else:
+                        sentences_from_index = dp.get(end_idx+1, [])
+                        for sentence in sentences_from_index:
+                            valid_sentences.append(current_word + " " + sentence)
+            dp[start_idx] = valid_sentences
+
+        return dp.get(0, [])
 
 
 tests = [
