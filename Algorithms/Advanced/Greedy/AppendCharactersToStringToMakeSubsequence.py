@@ -74,6 +74,22 @@ class Solution:
 
         return len(t) - longest_prefix
 
+
+
+# WRONF
+# class Solution:
+#     def appendCharacters(self, s: str, t: str) -> int:
+#         n1, n2 = len(s), len(t)
+#         i, j = 0, 0
+#         while i < n2:
+#             while j < n1 and s[j] != t[i]:
+#                 j += 1
+#             if j == n1:
+#                 return n2 - i
+#             i += 1
+#         return n2 - i
+
+
 tests = [
     ["coaching", "coding", 4],
     ["abcde", "a", 0],
