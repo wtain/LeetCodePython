@@ -63,31 +63,43 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 72.52%
 # of users with Python3
 # https://leetcode.com/problems/append-characters-to-string-to-make-subsequence/editorial/?envType=daily-question&envId=2024-06-03
-class Solution:
-    def appendCharacters(self, s: str, t: str) -> int:
-        first, longest_prefix = 0, 0
-
-        while first < len(s) and longest_prefix < len(t):
-            if s[first] == t[longest_prefix]:
-                longest_prefix += 1
-            first += 1
-
-        return len(t) - longest_prefix
-
-
-
-# WRONF
 # class Solution:
 #     def appendCharacters(self, s: str, t: str) -> int:
-#         n1, n2 = len(s), len(t)
-#         i, j = 0, 0
-#         while i < n2:
-#             while j < n1 and s[j] != t[i]:
-#                 j += 1
-#             if j == n1:
-#                 return n2 - i
-#             i += 1
-#         return n2 - i
+#         first, longest_prefix = 0, 0
+#
+#         while first < len(s) and longest_prefix < len(t):
+#             if s[first] == t[longest_prefix]:
+#                 longest_prefix += 1
+#             first += 1
+#
+#         return len(t) - longest_prefix
+
+
+
+# Runtime
+# 60
+# ms
+# Beats
+# 64.70%
+# of users with Python3
+# Memory
+# 17.44
+# MB
+# Beats
+# 96.17%
+# of users with Python3
+class Solution:
+    def appendCharacters(self, s: str, t: str) -> int:
+        n1, n2 = len(s), len(t)
+        i, j = 0, 0
+        while i < n2:
+            while j < n1 and s[j] != t[i]:
+                j += 1
+            if j == n1:
+                return n2 - i
+            i += 1
+            j += 1
+        return n2 - i
 
 
 tests = [
