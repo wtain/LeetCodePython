@@ -45,55 +45,84 @@ from Common.ObjectTestingUtils import run_functional_tests
 # 31.1 MB
 # Beats
 # 93.49%
+# class Solution:
+#
+#     def checkSubarraySumZero(self, nums: List[int]) -> bool:
+#         i, n = 0, len(nums)
+#
+#         def find(i) -> int:
+#             nonlocal n, nums
+#             for j in range(n):
+#                 if not nums[j]:
+#                     return j
+#             return n
+#
+#         while i < n:
+#             i = find(i)
+#             if i == n:
+#                 return False
+#             i += 1
+#             if i == n:
+#                 return False
+#             if not nums[i]:
+#                 return True
+#             i += 1
+#         return False
+#
+#     def checkSubarraySumImpl(self, nums: List[int], k: int) -> bool:
+#         n = len(nums)
+#         ps = [0] * n
+#         rems = defaultdict(int)
+#         ps[0] = nums[0] % k
+#         for i in range(1, n):
+#             ps[i] = (ps[i-1] + nums[i]) % k
+#             rems[ps[i]] = rems[ps[i]] + 1
+#         for i in range(n):
+#             if i < n-1:
+#                 rems[ps[i+1]] = rems[ps[i+1]] - 1
+#             if i > 0 and not ps[i]:
+#                 return True
+#             if rems[ps[i]] > 0:
+#                 return True
+#         return False
+#
+#     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+#         if len(nums) < 2:
+#             return False
+#         if not k:
+#             return self.checkSubarraySumZero(nums)
+#         if k < 0:
+#             k = -k
+#         return self.checkSubarraySumImpl(nums, k)
+
+
+# Runtime
+# 847
+# ms
+# Beats
+# 25.60%
+# of users with Python3
+# Memory
+# 36.06
+# MB
+# Beats
+# 91.22%
+# of users with Python3
+# https://leetcode.com/problems/continuous-subarray-sum/editorial/?envType=daily-question&envId=2024-06-08
 class Solution:
 
-    def checkSubarraySumZero(self, nums: List[int]) -> bool:
-        i, n = 0, len(nums)
-
-        def find(i) -> int:
-            nonlocal n, nums
-            for j in range(n):
-                if not nums[j]:
-                    return j
-            return n
-
-        while i < n:
-            i = find(i)
-            if i == n:
-                return False
-            i += 1
-            if i == n:
-                return False
-            if not nums[i]:
-                return True
-            i += 1
-        return False
-
-    def checkSubarraySumImpl(self, nums: List[int], k: int) -> bool:
-        n = len(nums)
-        ps = [0] * n
-        rems = defaultdict(int)
-        ps[0] = nums[0] % k
-        for i in range(1, n):
-            ps[i] = (ps[i-1] + nums[i]) % k
-            rems[ps[i]] = rems[ps[i]] + 1
-        for i in range(n):
-            if i < n-1:
-                rems[ps[i+1]] = rems[ps[i+1]] - 1
-            if i > 0 and not ps[i]:
-                return True
-            if rems[ps[i]] > 0:
-                return True
-        return False
-
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
-        if len(nums) < 2:
-            return False
-        if not k:
-            return self.checkSubarraySumZero(nums)
-        if k < 0:
-            k = -k
-        return self.checkSubarraySumImpl(nums, k)
+        prefix_mod = 0
+        mod_seen = { 0: -1 }
+
+        for i in range(len(nums)):
+            prefix_mod = (prefix_mod + nums[i]) % k
+            if prefix_mod in mod_seen:
+                if i - mod_seen[prefix_mod] > 1:
+                    return True
+            else:
+                mod_seen[prefix_mod] = i
+        return False
 
 
 tests = [
