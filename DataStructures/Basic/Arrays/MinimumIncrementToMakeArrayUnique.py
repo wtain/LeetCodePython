@@ -28,6 +28,8 @@ Note:
 from collections import Counter
 from typing import List
 
+from Common.ObjectTestingUtils import run_functional_tests
+
 
 # TLE
 # class Solution:
@@ -75,36 +77,65 @@ from typing import List
 #
 #         return result
 
+# WRONG
 # Runtime: 340 ms, faster than 52.52% of Python3 online submissions for Minimum Increment to Make Array Unique.
 # Memory Usage: 19.5 MB, less than 78.56% of Python3 online submissions for Minimum Increment to Make Array Unique.
+# class Solution:
+#     def minIncrementForUnique(self, A: List[int]) -> int:
+#         result = 0
+#
+#         taken = 0
+#         A.sort()
+#         A.append(100000)
+#         for i in range(1, len(A)):
+#             if A[i] == A[i-1]:
+#                 taken += 1
+#                 result -= A[i]
+#             else:
+#                 give = min(taken, A[i] - A[i-1] - 1)
+#                 result += give * (give+1) // 2 + give * A[i-1]
+#                 taken -= give
+#         return result
+
+
+# Runtime
+# 573
+# ms
+# Beats
+# 93.24%
+# Analyze Complexity
+# Memory
+# 30.17
+# MB
+# Beats
+# 89.64%
+# https://leetcode.com/problems/minimum-increment-to-make-array-unique/editorial/?envType=daily-question&envId=2024-06-14
 class Solution:
     def minIncrementForUnique(self, A: List[int]) -> int:
+        n = len(A)
+        max_val = max(A)
         result = 0
 
-        taken = 0
-        A.sort()
-        A.append(100000)
-        for i in range(1, len(A)):
-            if A[i] == A[i-1]:
-                taken += 1
-                result -= A[i]
-            else:
-                give = min(taken, A[i] - A[i-1] - 1)
-                result += give * (give+1) // 2 + give * A[i-1]
-                taken -= give
+        freq_cnt = [0] * (n + max_val + 1)
+
+        for val in A:
+            freq_cnt[val] += 1
+
+        for i in range(len(freq_cnt)):
+            if freq_cnt[i] <= 1:
+                continue
+
+            duplicates = freq_cnt[i] - 1
+            freq_cnt[i+1] += duplicates
+            freq_cnt[i] = 1
+            result += duplicates
+
         return result
 
 
-
-
 tests = [
-    ([1,2,2], 1),
-    ([3,2,1,2,1,7], 6)
+    [[1,2,2], 1],
+    [[3,2,1,2,1,7], 6],
 ]
 
-for test in tests:
-    result = Solution().minIncrementForUnique(test[0])
-    if result == test[1]:
-        print("PASS")
-    else:
-        print("FAIL - " + str(result))
+run_functional_tests(Solution().minIncrementForUnique, tests)
